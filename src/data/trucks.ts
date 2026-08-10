@@ -45,7 +45,10 @@ export const trucks: Truck[] = [
     id: 'cafe-chula',
     name: 'Cafe Chula',
     foodType: { en: 'Coffee & Mexican breakfast', es: 'Café y desayuno mexicano' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Mon–Thu 7am–2pm, Fri–Sat 7am–4pm, Sun 9am–4pm',
+      es: 'Lun–Jue 7am–2pm, Vie–Sáb 7am–4pm, Dom 9am–4pm',
+    },
     image: cafeChulaLogo,
     featuredImage: cafeChulaTruck,
     featured: true,
@@ -54,7 +57,10 @@ export const trucks: Truck[] = [
     id: 'tortilleria-el-patron',
     name: 'Tortilleria El Patron',
     foodType: { en: 'Fresh tortillas & Mexican eats', es: 'Tortillas frescas y comida mexicana' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Mon–Sun 9am–8pm',
+      es: 'Lun–Dom 9am–8pm',
+    },
     image: tortilleriaElPatronLogo,
     featuredImage: tortilleriaElPatronTruck,
     featured: true,
@@ -63,21 +69,30 @@ export const trucks: Truck[] = [
     id: 'las-jarochitas',
     name: 'Las Jarochitas',
     foodType: { en: 'Veracruz-style Mexican food', es: 'Comida mexicana estilo veracruzano' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Mon closed, Tue–Wed 10am–8pm, Thu 10am–6pm, Fri–Sat 10am–9pm, Sun 10am–6pm',
+      es: 'Lun cerrado, Mar–Mié 10am–8pm, Jue 10am–6pm, Vie–Sáb 10am–9pm, Dom 10am–6pm',
+    },
     image: lasJarochitasTruck,
   },
   {
     id: 'taqueria-romero',
     name: 'Taqueria Romero',
     foodType: { en: 'Tacos & Mexican eats', es: 'Tacos y comida mexicana' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Mon–Fri 12pm–8pm, Sat 12pm–10pm, Sun closed',
+      es: 'Lun–Vie 12pm–8pm, Sáb 12pm–10pm, Dom cerrado',
+    },
     image: taqueriaRomeroTruck,
   },
   {
     id: 'the-red-marino',
     name: 'The Red Marino',
     foodType: { en: 'Seafood & Mexican specialties', es: 'Mariscos y especialidades mexicanas' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Mon–Tue closed, Wed–Sun 12:30pm–8:30pm',
+      es: 'Lun–Mar cerrado, Mié–Dom 12:30pm–8:30pm',
+    },
     image: theRedMarinoTruck,
   },
   {
@@ -91,7 +106,10 @@ export const trucks: Truck[] = [
     id: 'adans-grill',
     name: "Adan's Grill",
     foodType: { en: 'Grilled Mexican specialties', es: 'Especialidades mexicanas a la parrilla' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Thu–Sun 12pm–9pm, Mon–Wed closed',
+      es: 'Jue–Dom 12pm–9pm, Lun–Mié cerrado',
+    },
   },
   {
     id: 'syrian-house',
@@ -116,7 +134,10 @@ export const trucks: Truck[] = [
     id: 'nieve-casera',
     name: 'Nieve Casera',
     foodType: { en: 'Homemade ice cream & paletas', es: 'Nieve y paletas caseras' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Mon–Fri 2pm–8pm, Sat 12pm–8pm, Sun 11am–8pm',
+      es: 'Lun–Vie 2pm–8pm, Sáb 12pm–8pm, Dom 11am–8pm',
+    },
     image: nieveCaseraTruck,
   },
   {

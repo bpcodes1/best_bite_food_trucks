@@ -32,10 +32,14 @@ The structure is The Atlantic's, with Ray's brand in the accent slot:
 
 | Role | Value | Notes |
 | --- | --- | --- |
-| Paper | Warm off-white — **pending exact value** | Warm, not the cool `#f7f7f7` The Atlantic uses |
-| Ink | `#17140f` near-black | From the logo |
-| Accent | `#f9bc15` brand yellow | From the logo |
-| Muted | Warm greys derived from ink | For secondary text, hairlines |
+| Paper | `#faf7f1` warm off-white | Warm, not the cool `#f7f7f7` The Atlantic uses |
+| Ink | `#1c1a17` warm near-black | Text. A typographic softening, not a brand value |
+| Brand yellow | `#fdc20c` | **Sampled from `src/assets/logo.png`** |
+| Brand black | `#010101` | **Sampled from the logo.** Used by the mark itself |
+
+The previous build shipped `#f9bc15` and `#17140f`. Both are wrong — the real
+mark is brighter and more saturated, and its black is effectively pure. Do not
+"correct" these back.
 
 **Yellow is not a compromise.** It is already one of the warmest, most
 appetite-forward colours available. Brand continuity and appetite appeal point
@@ -70,9 +74,26 @@ shipped.
 Italic headers are banned. Emphasis comes from weight, accent colour, or a drawn
 underline.
 
-**Pending: the two candidate pairings.** Per our own rules a runner-up display
-face ships switchable in dev, so the client meeting is a comparison and not a
-description. Neither is chosen yet — see Open decisions.
+**Chosen 2026-08-11:**
+
+| Role | Face | Why |
+| --- | --- | --- |
+| Display | **Archivo Black** | Omnibus-Type, Buenos Aires — drawn with Latin American Spanish as a first consideration. Authority without personality that competes with the vendor logos. |
+| Body | **Source Sans 3** | Humanist, wide Latin coverage, variable, comfortable at length. |
+| Label | **IBM Plex Mono** | Warmer than JetBrains Mono. Hours, prices, cuisine tags, microcopy. |
+
+**Anton** is the switchable runner-up, wired in dev so the client meeting is a
+comparison rather than a description:
+
+```
+document.documentElement.dataset.display = 'anton'   // switch
+delete document.documentElement.dataset.display      // back
+```
+
+Anton is single-weight and very condensed — check Spanish diacritics at large
+sizes before committing to it.
+
+Self-hosted via fontsource, latin subsets only. No Google Fonts request.
 
 ## Rhythm
 
@@ -94,6 +115,18 @@ Deliberate voids are part of the composition, not wasted space.
 **Cards** — The Atlantic's system. Must stay scannable at twelve vendor cards
 and legible at one. Hierarchy from type weight and scale, never from borders and
 shadows stacked up. Images are supporting, never load-bearing.
+
+**The real card problem is the vendor logos, not the photography.** Most files
+in `src/assets/food_trucks/` are logos on white grounds in unrelated styles —
+Las Jarochitas is red-and-green folk cartoon with drop shadows, Pupusas Chileros
+is hot-pink-and-cyan illustration with script lettering. Twelve of those in one
+grid reads as a flea market unless the container does the work:
+
+- **Identical containment for every logo.** Same box, same padding, same neutral
+  tile behind it. The container is consistent even when the contents are not.
+- **Never bleed a logo to the card edge.** That works for photographs and
+  destroys a logo. Bleed is for park and food photography only.
+- The logo is a small identifying mark. Type carries the card.
 
 **Chips** — outlined, not filled. Kraken uses them for specs (`3-6 CARDS`,
 `SADDLE-STITCHED`). Ours carry cuisine type and hours.
@@ -136,7 +169,7 @@ Pages share the system. They do not share a shape.
 | Page | Family | Why |
 | --- | --- | --- |
 | Únete al Parque | Narrative Workflow | One audience, one action. Block 40's IA, Kraken's close. |
-| Home | **Open** | Two audiences at once. The hardest page. Decide after Únete. |
+| Home | **Open shape, settled strategy** | Overwhelmingly for eaters, with one honest door to Únete low on the page. Vendors reach Únete through search, not by browsing Home — which is also the fix for the recruiting-copy bleed the audit found on the Square site. Shape decided after Únete. |
 | Vendors | Catalogue / Index-First | The Atlantic's card system, twelve items |
 | Events | Index-First | Chronological. The Yard maintains theirs through Nov 2026 — that is the bar. |
 | Contact | Long Document | Short page. NAP, hours, map, the same short form. |
@@ -156,11 +189,12 @@ we checked turned out to be English-only. This section is ours, not extracted.
 
 ## Open decisions
 
-1. **The type pairing.** Two candidates, a recommendation, and a switchable
-   runner-up. Blocks the first build.
-2. **The exact paper value.** Warm off-white, value pending, chosen against the
-   real vendor photography rather than in the abstract.
-3. **Home's macrostructure.** Deliberately deferred until Únete is built and the
-   system has proven itself on one page.
-4. **A warm-light-ground reference with photography of a physical place.** The
-   one genuine gap in the provenance above.
+1. **Únete's brief** — audience and action are clear (a Salem-area truck owner
+   deciding whether to move in; the inquiry is the action). **Tone is unpicked**
+   and it blocks the first build.
+2. **Home's macrostructure.** Deferred until Únete proves the system.
+3. **A warm-light-ground reference with photography of a physical place**, and
+   **a site holding many third-party logos in one grid** without looking like a
+   sponsor wall. The second is the Vendors page problem.
+4. **Which component library**, if any. Asked and not yet answered; it changes
+   how the interactive elements get built.

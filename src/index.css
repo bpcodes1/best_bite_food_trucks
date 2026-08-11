@@ -1,16 +1,78 @@
 @import 'tailwindcss';
 
+/* Self-hosted rather than Google Fonts: no external DNS lookup and no
+   render-blocking request on a pre-rendered site whose job is local search.
+
+   Latin subsets only where a subset entry exists. Spanish needs á é í ó ú ü ñ
+   ¿ ¡, all of which live in `latin`; `latin-ext` is carried for vendor names.
+   Source Sans 3 has no per-subset entry, so it ships whole — harmless, since
+   every @font-face carries a unicode-range and browsers only fetch the
+   subsets the page's text actually uses. */
+@import '@fontsource/archivo-black/latin-400.css';
+@import '@fontsource/archivo-black/latin-ext-400.css';
+@import '@fontsource-variable/source-sans-3';
+@import '@fontsource/ibm-plex-mono/latin-400.css';
+@import '@fontsource/ibm-plex-mono/latin-500.css';
+@import '@fontsource/ibm-plex-mono/latin-ext-400.css';
+/* Runner-up display face. Dev comparison only — see the toggle below. */
+@import '@fontsource/anton/latin-400.css';
+@import '@fontsource/anton/latin-ext-400.css';
+
 /* ---------------------------------------------------------------------------
-   Design tokens land here in Phase 2, after `hallmark study` runs on the
-   reference sites and the type pairing is chosen.
+   Design tokens. The system they belong to is documented in design.md at the
+   project root, which governs all ten addresses.
 
-   Deliberately empty. A default font stack is a decision nobody made, and it
-   is the main reason sites start looking like each other.
-
-   Brand constraint from the client context: yellow + black, taken from the
-   existing logo. Do not introduce a third brand colour here.
-
-   Per hallmark's output contract this file is APPEND-ONLY. The
-   `@import 'tailwindcss'` line above stays exactly where it is; tokens and
-   base rules go below it.
+   Brand values are SAMPLED FROM src/assets/logo.png, not inherited. The
+   previous build used #f9bc15 and #17140f; the mark is actually #fdc20c and
+   #010101. Do not "correct" these back.
    --------------------------------------------------------------------------- */
+@theme {
+  /* Type. Three families, at the ceiling.
+     Display  · Archivo Black — Omnibus-Type, drawn with Latin American
+                Spanish as a first consideration.
+     Body     · Source Sans 3 — humanist, wide Latin coverage, variable.
+     Label    · IBM Plex Mono — hours, prices, cuisine tags, microcopy. */
+  --font-display: 'Archivo Black', system-ui, sans-serif;
+  --font-sans: 'Source Sans 3 Variable', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Surface. Light warm ground: most vendor assets are logos on white, and a
+     white logo ground on a dark card is a glaring box you cannot remove. */
+  --color-paper: #faf7f1;
+  --color-ink: #1c1a17;
+  --color-brand-yellow: #fdc20c;
+  --color-brand-black: #010101;
+}
+
+/* Runner-up display face, switchable without a rebuild so the client meeting
+   is a comparison rather than a description. In devtools or the console:
+
+     document.documentElement.dataset.display = 'anton'   // switch
+     delete document.documentElement.dataset.display      // back to Archivo
+
+   Anton is very condensed and single-weight; watch Spanish diacritics at
+   large sizes before committing to it. */
+:root[data-display='anton'] {
+  --font-display: 'Anton', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    /* Long Spanish compounds must break rather than overflow the viewport. */
+    overflow-wrap: anywhere;
+  }
+}

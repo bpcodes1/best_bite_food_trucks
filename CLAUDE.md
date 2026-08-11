@@ -38,6 +38,10 @@ shared address the Spanish half of the site is never indexed.
   will catch it.
 - Language is derived from the URL via `useLang()`. There is no language state,
   no context, no provider. Never add one.
+- **Never auto-redirect by browser language or geo-IP.** Sending a visitor to
+  `/es` because of their headers, with no way back, breaks it for bilingual
+  readers, travellers, VPN users, and anyone researching in their second
+  language. The toggle is the only thing that changes language.
 - Every page needs its hreflang pair. `<Seo>` handles it; don't hand-roll head
   tags.
 

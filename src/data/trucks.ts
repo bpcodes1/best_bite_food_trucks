@@ -7,7 +7,6 @@ import elChilangoTruck from '../assets/food_trucks/el_chilango.jpg';
 import lasCuatasLokasTruck from '../assets/food_trucks/las_cuatas_lokas.jpg';
 import lasJarochitasTruck from '../assets/food_trucks/las_jarochitas.jpg';
 import nieveCaseraTruck from '../assets/food_trucks/nieve_casera.jpeg';
-import queRollonSushiTruck from '../assets/food_trucks/que_rollon_sushi.jpg';
 import taqueriaRomeroTruck from '../assets/food_trucks/taqueria_romero.jpeg';
 import theRedMarinoTruck from '../assets/food_trucks/the_red_marino.jpg';
 
@@ -139,12 +138,5 @@ export const trucks: Truck[] = [
       es: 'Lun–Vie 2pm–8pm, Sáb 12pm–8pm, Dom 11am–8pm',
     },
     image: nieveCaseraTruck,
-  },
-  {
-    id: 'que-rollon-sushi',
-    name: 'Que Rollón Sushi',
-    foodType: { en: 'Sushi rolls', es: 'Rollos de sushi' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
-    image: queRollonSushiTruck,
   },
 ];

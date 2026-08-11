@@ -22,11 +22,16 @@ category.
 
 ## Ground and palette
 
-**Light warm ground, not dark.** Kraken's dark ground works because its
-photography is intimate, high-contrast, and professionally lit. Ours is twelve
-phone photos of trucks in a parking lot, plus park shots the client audit calls
-"dark, empty, undersells." A dark ground amplifies that weakness. The park is
-also a daytime family venue, open 12:00 to 20:00.
+**Light warm ground, not dark.** Three reasons, in order of strength:
+
+1. **Most vendor assets are logos on white grounds.** A white logo ground
+   dropped onto a dark card is a glaring box that cannot be removed. On warm
+   off-white those grounds nearly disappear.
+2. **The park photography is bright and high-key** — sun, blue sky, warm
+   redwood, food shot in daylight. It belongs on a warm light ground. Kraken's
+   dark ground works because its photography is intimate and studio-lit; ours
+   is the opposite kind of good.
+3. The park is a daytime family venue, open 12:00 to 20:00.
 
 The structure is The Atlantic's, with Ray's brand in the accent slot:
 
@@ -53,8 +58,8 @@ imagery.
 
 ## Typography
 
-Three families is the ceiling and we use all three. Roles are locked; the exact
-faces are the one open decision.
+Three families is the ceiling and we use all three. Roles and faces are both
+settled — see Chosen, below.
 
 | Role | Carries | Locked role |
 | --- | --- | --- |

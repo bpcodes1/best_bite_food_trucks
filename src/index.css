@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Design tokens land here in Phase 2, after `hallmark study` runs on the
+   reference sites and the type pairing is chosen.
+
+   Deliberately empty. A default font stack is a decision nobody made, and it
+   is the main reason sites start looking like each other.
+
+   Brand constraint from the client context: yellow + black, taken from the
+   existing logo. Do not introduce a third brand colour here.
+
+   Per hallmark's output contract this file is APPEND-ONLY. The
+   `@import 'tailwindcss'` line above stays exactly where it is; tokens and
+   base rules go below it.
+   --------------------------------------------------------------------------- */

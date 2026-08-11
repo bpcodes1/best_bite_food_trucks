@@ -1,0 +1,9 @@
+# Intentionally rule-free. This site is PRE-RENDERED: Cloudflare Pages has a
+# real file for every address, so there is nothing to catch.
+#
+# Do NOT add the `/*  /index.html  200` splat here. That rule is load-bearing on
+# a plain SPA and a bug on this project: Pages serves each name.html natively
+# and its extension-strip redirect re-matches any rule targeting a .html file,
+# which 308-loops forever.
+#
+# Unmatched addresses should fall through to dist/404.html.

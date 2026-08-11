@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# NOTE: Cloudflare prepends its own managed block to this file in production,
+# including AI-crawler rules. Check the Cloudflare dashboard, not this repo, to
+# see what actually ships.

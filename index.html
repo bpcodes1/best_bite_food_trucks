@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      No <title> or <meta name="description"> here on purpose: every page
+      declares its own via <Seo>, and pre-rendering writes them into each built
+      file. A default here would leave two of each in every page, and the
+      generic one would win.
+
+      Fonts are deliberately absent. They get chosen in Phase 2, after
+      `hallmark study` runs on the reference sites. A default font stack is a
+      decision nobody made.
+    -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

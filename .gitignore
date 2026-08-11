@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+
+# Client context, pricing, and scoping documents. These live in the repo folder
+# for convenience but must never be committed.
+clients/
+*context*.xml
+*context*.md

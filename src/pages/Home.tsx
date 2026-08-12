@@ -4,7 +4,7 @@ import { Button, Label, Section } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { pathFor } from '../lib/routes'
 import { fullAddress, hoursRange, site } from '../lib/site'
-import truckChula from '../assets/food_trucks/cafe_chula_truck.jpg'
+import heroPark from '../assets/best_bite_outdoor.webp'
 import karaokeFlyer from '../assets/events/karaoke.webp'
 import fotoTacos from '../assets/tacos.webp'
 import fotoPupusas from '../assets/pupusas.png'
@@ -57,7 +57,8 @@ const copy = {
     h1b: 'One lot.',
     lede: 'Tacos, pupusas, mariscos, coffee and more, with seating, parking, and room for the whole family. Noon to eight, every day of the week.',
     cta: 'See the trucks',
-    heroAlt1: 'Café Chula, the coffee truck at Best Bite Food Park',
+    heroAlt: 'Food trucks parked at Best Bite Food Park on a clear day',
+    scroll: 'Scroll',
     foodH: 'Come hungry.',
     foodBody: `${site.stalls.filled} independent kitchens, most of them family businesses, all of them local. One page with every truck and what it serves.`,
     foodCta: 'Meet the vendors',
@@ -86,7 +87,8 @@ const copy = {
     h1b: 'Un solo lote.',
     lede: 'Tacos, pupusas, mariscos, café y más, con asientos, estacionamiento y espacio para toda la familia. De doce a ocho, todos los días.',
     cta: 'Conoce los trucks',
-    heroAlt1: 'Café Chula, el truck de café en Best Bite Food Park',
+    heroAlt: 'Food trucks estacionados en Best Bite Food Park en un día despejado',
+    scroll: 'Desliza',
     foodH: 'Ven con hambre.',
     foodBody: `${site.stalls.filled} cocinas independientes, casi todas negocios de familia, todas de aquí. Una página con cada truck y lo que vende.`,
     foodCta: 'Conoce a los vendedores',
@@ -118,48 +120,86 @@ export function Home() {
       <Seo title={t.title} description={t.description} />
       <LocalBusinessJsonLd />
 
-      {/* The Kraken interlock: text left, photo running off the right edge
-          with no margin. The left padding calc keeps the text aligned with
-          the site's max-w-6xl (72rem) container at wide viewports. The crop
-          is biased upward, toward the trucks, away from the empty foreground. */}
-      <section className="bg-paper text-ink">
-        <div className="grid lg:grid-cols-[minmax(0,11fr)_minmax(0,9fr)]">
-          <div className="px-5 pt-14 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:py-20 lg:pr-14 lg:pl-[max(2rem,calc((100vw-72rem)/2))]">
-            <Label>{t.eyebrow}</Label>
-            <h1 className="mt-5 text-[2.6rem] leading-[0.95] uppercase sm:text-5xl lg:text-6xl">
-              {t.h1a}
-              <br />
-              {t.h1b}
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{t.lede}</p>
-            <div className="mt-9">
-              <Button to={pathFor('vendors', lang)}>
-                {t.cta} <span aria-hidden="true">→</span>
-              </Button>
-              <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-muted uppercase">
-                {hoursRange()} · {site.address.street}
-              </p>
-            </div>
-          </div>
-          {/* THE TYPE SETS THE HEIGHT; THE PHOTOGRAPH FILLS WHAT IS LEFT.
-              design.md § Rhythm. The absolute positioning is what enforces
-              it — an in-flow <img> reports its own aspect ratio and drives
-              the grid row taller than the viewport, which is exactly the bug
-              this replaced (1044px hero against a 900px fold, plus a 387px
-              void where the type got centred inside it).
+      {/* FULL-SCREEN HERO. Exactly one viewport tall, minus the masthead, so
+          the next section is not visible until the reader scrolls. That is
+          the brief, and `--header-h` (src/index.css) is the measured masthead
+          height that makes the subtraction exact.
 
-              One photograph, not two. Two stacked doubled the height and
-              turned the hero back into two slabs. Café Chula is the
-              strongest single frame we have: in focus, sunlit, unmistakably
-              a food truck. `best_bite_outdoor.webp` (the lot, several trucks)
-              is the one-line swap if Ray would rather lead with the park. */}
-          <div className="relative aspect-[2/1] sm:aspect-[5/2] lg:aspect-auto">
-            <img
-              src={truckChula}
-              alt={t.heroAlt1}
-              fetchPriority="high"
-              className="absolute inset-0 h-full w-full object-cover object-[50%_42%]"
-            />
+          `svh`, not `vh`: on phones `100vh` counts the browser chrome that
+          hides on scroll, so a `vh` hero overshoots the screen on load — the
+          exact failure this replaced.
+
+          The photograph is `absolute inset-0`, contributing zero height, per
+          design.md § Rhythm. The section's own height rules it entirely.
+
+          Content is corner-anchored — eyebrow top, headline middle, locator
+          bottom — so a full screen reads as composed rather than as one large
+          empty photo. That is the move the Sunbeam reference makes.
+
+          The drone footage Ray is sourcing drops straight in here: swap the
+          <img> for a <video autoplay muted loop playsinline poster={heroPark}>
+          and nothing else on the page changes. */}
+      <section className="relative flex min-h-[calc(100svh-var(--header-h))] flex-col justify-between overflow-hidden bg-night px-5 py-9 text-paper sm:px-8 sm:py-12">
+        <img
+          src={heroPark}
+          alt={t.heroAlt}
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_38%]"
+        />
+        {/* Scrim, heavier at the left where the type sits, so the sunlit right
+            half of the photograph still reads as a bright daytime park. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-night/90 via-night/70 to-night/25"
+        />
+
+        <div className="relative">
+          <Label tone="night">{t.eyebrow}</Label>
+        </div>
+
+        <div className="relative max-w-3xl">
+          <h1 className="text-[2.6rem] leading-[0.95] uppercase sm:text-6xl lg:text-7xl">
+            {t.h1a}
+            <br />
+            {t.h1b}
+          </h1>
+          <p className="mt-5 max-w-lg text-lg leading-relaxed text-paper/80">{t.lede}</p>
+          <div className="mt-8">
+            <Button to={pathFor('vendors', lang)}>
+              {t.cta} <span aria-hidden="true">→</span>
+            </Button>
+          </div>
+        </div>
+
+        <div className="relative flex flex-wrap items-end justify-between gap-x-6 gap-y-2 font-mono text-[11px] tracking-[0.12em] text-paper/75 uppercase">
+          <p>
+            {site.address.street} · {site.address.city}, {site.address.state}
+          </p>
+          <p aria-hidden="true">{t.scroll}</p>
+        </div>
+      </section>
+
+      {/* The hours, at flood footprint, straight off the hero. Yellow against
+          the dark photograph is the page's hardest cut, and it puts the one
+          fact every visitor needs in the second screen. */}
+      <section className="bg-brand-yellow px-5 py-10 text-brand-black sm:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
+          <div className="min-w-0">
+            <Label tone="accent">{t.hoursLabel}</Label>
+            <p className="mt-2 font-display text-4xl leading-none sm:text-6xl">{hoursRange()}</p>
+          </div>
+          <div className="min-w-0 sm:text-right">
+            <p className="text-lg leading-snug font-medium">
+              {site.address.street}
+              <br />
+              {site.address.city}, {site.address.state}
+            </p>
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress())}`}
+              className="mt-2 inline-block font-mono text-[11px] tracking-[0.12em] uppercase underline decoration-2 underline-offset-4 hover:no-underline"
+            >
+              {t.directions}
+            </a>
           </div>
         </div>
       </section>
@@ -193,28 +233,17 @@ export function Home() {
         </div>
       </Section>
 
-      {/* The hours, at flood footprint. Compressed — one fact, stated loud. */}
-      <section className="bg-brand-yellow px-5 py-10 text-brand-black sm:px-8">
-        <div className="mx-auto flex max-w-6xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
-          <div className="min-w-0">
-            <Label tone="accent">{t.hoursLabel}</Label>
-            <p className="mt-2 font-display text-4xl leading-none sm:text-6xl">{hoursRange()}</p>
-          </div>
-          <div className="min-w-0 sm:text-right">
-            <p className="text-lg leading-snug font-medium">
-              {site.address.street}
-              <br />
-              {site.address.city}, {site.address.state}
-            </p>
-            <a
-              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress())}`}
-              className="mt-2 inline-block font-mono text-[11px] tracking-[0.12em] uppercase underline decoration-2 underline-offset-4 hover:no-underline"
-            >
-              {t.directions}
-            </a>
-          </div>
+      {/* Nuestra Historia, folded into Home per the Aug 10 descope. Cream
+          breaks the run of dark sections. DRAFT copy; Ray's voice notes
+          replace it. */}
+      <Section className="py-16 sm:py-20">
+        <div className="max-w-2xl">
+          <Label>{t.storyLabel}</Label>
+          <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.storyH}</h2>
+          <p className="mt-5 leading-relaxed text-muted">{t.storyP1}</p>
+          <p className="mt-4 leading-relaxed text-muted">{t.storyP2}</p>
         </div>
-      </section>
+      </Section>
 
       {/* Events teaser. The flyer is real park marketing, not decoration. */}
       <Section ground="night" className="py-14 sm:py-16">
@@ -233,18 +262,6 @@ export function Home() {
             decoding="async"
             className="w-full max-w-md justify-self-center object-cover lg:justify-self-end"
           />
-        </div>
-      </Section>
-
-      {/* Nuestra Historia, folded into Home per the Aug 10 descope. DRAFT
-          copy; Ray's voice notes replace it. One of the page's two eyebrows
-          lives here — a visitor scanning for "about us" needs the label. */}
-      <Section className="py-16 sm:py-20">
-        <div className="max-w-2xl">
-          <Label>{t.storyLabel}</Label>
-          <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.storyH}</h2>
-          <p className="mt-5 leading-relaxed text-muted">{t.storyP1}</p>
-          <p className="mt-4 leading-relaxed text-muted">{t.storyP2}</p>
         </div>
       </Section>
 

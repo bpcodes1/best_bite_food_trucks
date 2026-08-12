@@ -69,6 +69,24 @@
   --font-display: 'Anton', system-ui, sans-serif;
 }
 
+/* The masthead's measured height — brand row alone on phones, brand row plus
+   nav row from `sm` up. A full-height hero subtracts this so the first screen
+   ends exactly where the hero ends and the next section is not visible until
+   the reader scrolls.
+
+   Measured in the browser, not guessed. If the masthead's padding changes,
+   re-measure `document.querySelector('header').getBoundingClientRect().height`
+   and update both values, or the hero will overshoot or undershoot the fold. */
+:root {
+  --header-h: 80px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-h: 131px;
+  }
+}
+
 @layer base {
   html,
   body {

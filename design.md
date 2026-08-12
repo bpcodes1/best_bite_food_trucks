@@ -132,11 +132,26 @@ w-full object-cover` so it contributes **zero** height, and let the text
   That single mistake produced a 1044px hero against a 900px fold and a 387px
   void above the headline. Measure `getBoundingClientRect().height`; never
   assume the rule applied.
-- **A hero must fit the fold.** Ceiling: ~620px at desktop, and the section
-  after it must be visibly starting. A hero taller than the viewport reads as
-  a broken page, not a generous one, because the reader lands on a sliced
-  photograph. This is the opposite failure from the banned `min-height: 100vh`
-  centred hero, and it is just as bad.
+- **Home's hero is exactly one screen: `calc(100svh - var(--header-h))`.**
+  Enrique's call, 2026-08-12, after two rejected passes. The next section must
+  NOT be visible on landing. `--header-h` in `src/index.css` is the measured
+  masthead height (80px phone, 131px from `sm`); re-measure it if the masthead
+  padding ever changes.
+
+  Use `svh`, never `vh`. On phones `100vh` counts browser chrome that hides on
+  scroll, so a `vh` hero overshoots the screen on load.
+
+  This is a full-height hero but **not** the banned full-viewport centred
+  hero. The banned pattern is full height _plus_ everything centred _plus_ one
+  sentence _plus_ one lonely CTA. Ours is left-biased and corner-anchored —
+  eyebrow at the top, headline and CTA at the middle-left, locator and scroll
+  cue along the bottom — so a whole screen reads as composed. That distinction
+  is the whole difference, and the Sunbeam Bagels reference makes the same
+  move.
+
+  Interior pages do not take full-height heroes. They open at their content's
+  own height; only Home earns the whole screen.
+
 - One photograph in a hero, not a stack. Two stacked images double the height
   and turn an interlock back into slabs, which is the "half hero, half image"
   complaint by another route.

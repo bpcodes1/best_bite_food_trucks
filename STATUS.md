@@ -82,9 +82,11 @@ structure from. The page leans on terms instead.
    see what each section is about faster. Anton stays wired and switchable.
 2. **Home's macrostructure.** Deferred until the system has proven itself.
    Strategy is settled (see above); the shape is not.
-3. **The English `lease` slug.** Currently `/lease-a-space`. Enrique's SEO call,
-   targeting "food cart space for rent salem". Change it in `src/lib/routes.ts`
-   and it changes everywhere.
+3. **The English `lease` slug.** Currently `/lease-a-space`. Still pending as of
+   2026-08-11. Enrique's SEO call, targeting "food cart space for rent salem",
+   and he wants an on-page SEO framework applied to the choice rather than
+   guessing — Kyle Roof was floated. Change it in `src/lib/routes.ts` and it
+   changes everywhere. The Spanish slug `/es/unete-al-parque` is settled.
 4. **Form destination.** Undecided. Ray does not read email and Cynthia does not
    enter the picture until after delivery. The form is deliberately unwired
    until this is answered.

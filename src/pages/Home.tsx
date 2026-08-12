@@ -4,7 +4,8 @@ import { Button, Label, Section } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { pathFor } from '../lib/routes'
 import { fullAddress, hoursRange, site } from '../lib/site'
-import parkPhoto from '../assets/best_bite_outdoor.webp'
+import truckChula from '../assets/food_trucks/cafe_chula_truck.jpg'
+import truckPatron from '../assets/food_trucks/tortilleria_el_patron_truck.jpg'
 import karaokeFlyer from '../assets/events/karaoke.webp'
 import fotoTacos from '../assets/tacos.webp'
 import fotoPupusas from '../assets/pupusas.png'
@@ -14,21 +15,28 @@ import fotoRibs from '../assets/ribs.webp'
 
 /* Home — overwhelmingly for eaters.
  *
- * Macrostructure: appetite-led brochure, chosen 2026-08-12 after Únete proved
- * the system (design.md § Macrostructure). Vendors reach the leasing page
- * through search, not by browsing here, so recruiting gets exactly one honest
- * door at the bottom — which is also the fix for the recruiting-copy bleed the
- * July audit found on the Square site.
+ * Macrostructure: appetite-led brochure (design.md § Macrostructure). Rebuilt
+ * 2026-08-12 after a hallmark audit found the first pass drifting into named
+ * anti-patterns. The rules this file now holds:
  *
- * Section rhythm: generous cream hero, full-bleed photo, dark appetite band,
- * yellow hours flood, cream vendor teaser, dark events teaser, cream story,
- * bordered door. Dark carries photography, cream carries type — design.md.
+ * - THE HERO INTERLOCKS, per the Kraken DNA in design.md § Rhythm: text left,
+ *   photo running off the right edge with no margin. Never two stacked
+ *   full-width bands — that was the audit's critical finding ("half hero,
+ *   half image").
+ * - EYEBROWS ARE CAPPED AT TWO on this page: the hero locator and the story
+ *   label. Every section carrying a mono eyebrow was the audit's "labelled
+ *   lists" tell. Do not add one to a new section without removing one.
+ * - SECTION PADDING VARIES on purpose. Equal padding everywhere is the
+ *   templated tell design.md § Rhythm names.
+ * - The arrow glyph appears on the hero CTA and the door CTA only.
+ *
+ * Vendors reach the leasing page through search, not by browsing here, so
+ * recruiting gets exactly one honest door at the bottom.
  *
  * DRAFT COPY NOTE: the story section is draft copy written from true facts in
- * the client context (family-run, vendors stay 1+ year, month-to-month
- * philosophy). It is written to be replaced by Ray's own story when his voice
- * notes arrive. It deliberately names no founding date, no family member, and
- * no other checkable specific.
+ * the client context. It is written to be replaced by Ray's own story when
+ * his voice notes arrive. It deliberately names no founding date, no family
+ * member, and no other checkable specific.
  */
 
 const open = site.stalls.total - site.stalls.filled
@@ -46,19 +54,17 @@ const copy = {
     title: 'Best Bite Food Park | Food Truck Park in Salem, OR',
     description: `${site.stalls.filled} food trucks on Silverton Rd NE, open every day ${hoursRange()}. Tacos, pupusas, mariscos, coffee and more, with seating and parking. ${fullAddress()}.`,
     eyebrow: 'Food truck park · Salem, OR',
-    h1: `${site.stalls.filled} kitchens. One lot.`,
+    h1a: `${site.stalls.filled} kitchens.`,
+    h1b: 'One lot.',
     lede: 'Tacos, pupusas, mariscos, coffee and more, with seating, parking, and room for the whole family. Noon to eight, every day of the week.',
     cta: 'See the trucks',
-    heroAlt: 'Food trucks and tables at Best Bite Food Park',
-    foodLabel: 'What is cooking',
+    heroAlt1: 'Café Chula, the coffee truck at Best Bite Food Park',
+    heroAlt2: 'Tortillería El Patrón at Best Bite Food Park',
     foodH: 'Come hungry.',
+    foodBody: `${site.stalls.filled} independent kitchens, most of them family businesses, all of them local. One page with every truck and what it serves.`,
+    foodCta: 'Meet the vendors',
     hoursLabel: 'Open every day',
     directions: 'Get directions',
-    vendorsLabel: 'The trucks',
-    vendorsH: 'Who is cooking.',
-    vendorsBody: `${site.stalls.filled} independent kitchens, most of them family businesses, all of them local. One page with every truck and what it serves.`,
-    vendorsCta: 'Meet the vendors',
-    eventsLabel: 'Events',
     eventsH: 'Sundays are loud.',
     eventsBody:
       'Karaoke every Sunday, car cruises when school starts, cooking classes when the mood strikes. Free to come, and the kitchens stay open.',
@@ -70,7 +76,6 @@ const copy = {
       'Best Bite started with a simple idea: give Salem’s independent cooks a lot of their own, and give the neighborhood one place to eat from all of them at once. The kitchens here are small family businesses, and most of them have been with us for more than a year.',
     storyP2:
       'The park is open every day, noon to eight. Bring the kids, take a table, and try a truck you have not tried yet.',
-    doorLabel: 'For truck owners',
     doorH: 'Got a truck?',
     doorBody: `${open} of ${site.stalls.total} spaces are open, month to month, no long-term lease.`,
     doorCta: 'Lease a space',
@@ -79,19 +84,17 @@ const copy = {
     title: 'Best Bite Food Park | Parque de Food Trucks en Salem, OR',
     description: `${site.stalls.filled} food trucks en Silverton Rd NE, abierto todos los días ${hoursRange()}. Tacos, pupusas, mariscos, café y más, con asientos y estacionamiento. ${fullAddress()}.`,
     eyebrow: 'Parque de food trucks · Salem, OR',
-    h1: `${site.stalls.filled} cocinas. Un solo lote.`,
+    h1a: `${site.stalls.filled} cocinas.`,
+    h1b: 'Un solo lote.',
     lede: 'Tacos, pupusas, mariscos, café y más, con asientos, estacionamiento y espacio para toda la familia. De doce a ocho, todos los días.',
     cta: 'Conoce los trucks',
-    heroAlt: 'Food trucks y mesas en Best Bite Food Park',
-    foodLabel: 'Qué se cocina',
+    heroAlt1: 'Café Chula, el truck de café en Best Bite Food Park',
+    heroAlt2: 'Tortillería El Patrón en Best Bite Food Park',
     foodH: 'Ven con hambre.',
+    foodBody: `${site.stalls.filled} cocinas independientes, casi todas negocios de familia, todas de aquí. Una página con cada truck y lo que vende.`,
+    foodCta: 'Conoce a los vendedores',
     hoursLabel: 'Abierto todos los días',
     directions: 'Cómo llegar',
-    vendorsLabel: 'Los trucks',
-    vendorsH: 'Quiénes cocinan.',
-    vendorsBody: `${site.stalls.filled} cocinas independientes, casi todas negocios de familia, todas de aquí. Una página con cada truck y lo que vende.`,
-    vendorsCta: 'Conoce a los vendedores',
-    eventsLabel: 'Eventos',
     eventsH: 'Los domingos suenan.',
     eventsBody:
       'Karaoke todos los domingos, cruceros de autos cuando empieza la escuela, clases de cocina de vez en cuando. La entrada es libre y las cocinas siguen abiertas.',
@@ -103,7 +106,6 @@ const copy = {
       'Best Bite empezó con una idea simple: darles a los cocineros independientes de Salem un lote propio, y darle al barrio un solo lugar para comer de todos a la vez. Las cocinas de aquí son negocios de familia, y casi todas llevan más de un año con nosotros.',
     storyP2:
       'El parque abre todos los días de doce a ocho. Trae a los niños, agarra una mesa y prueba un truck que todavía no conoces.',
-    doorLabel: 'Para dueños de trucks',
     doorH: '¿Tienes un truck?',
     doorBody: `${open} de ${site.stalls.total} espacios están libres, mes a mes, sin contrato a largo plazo.`,
     doorCta: 'Pregunta por un espacio',
@@ -119,37 +121,54 @@ export function Home() {
       <Seo title={t.title} description={t.description} />
       <LocalBusinessJsonLd />
 
-      {/* Generous hero, then the photo bleeds edge to edge below it. */}
-      <Section className="pt-16 pb-12 sm:pt-24 sm:pb-16">
-        <div className="max-w-3xl">
-          <Label>{t.eyebrow}</Label>
-          <h1 className="mt-5 text-[2.6rem] leading-[0.95] uppercase sm:text-6xl lg:text-7xl">
-            {t.h1}
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{t.lede}</p>
-          <div className="mt-9">
-            <Button to={pathFor('vendors', lang)}>
-              {t.cta} <span aria-hidden="true">→</span>
-            </Button>
-            <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-muted uppercase">
-              {hoursRange()} · {site.address.street}
-            </p>
+      {/* The Kraken interlock: text left, photo running off the right edge
+          with no margin. The left padding calc keeps the text aligned with
+          the site's max-w-6xl (72rem) container at wide viewports. The crop
+          is biased upward, toward the trucks, away from the empty foreground. */}
+      <section className="bg-paper text-ink">
+        <div className="grid lg:grid-cols-[minmax(0,11fr)_minmax(0,9fr)]">
+          <div className="px-5 pt-14 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:flex lg:flex-col lg:justify-center lg:py-24 lg:pr-14 lg:pl-[max(2rem,calc((100vw-72rem)/2))]">
+            <Label>{t.eyebrow}</Label>
+            <h1 className="mt-5 text-[2.6rem] leading-[0.95] uppercase sm:text-5xl lg:text-6xl">
+              {t.h1a}
+              <br />
+              {t.h1b}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{t.lede}</p>
+            <div className="mt-9">
+              <Button to={pathFor('vendors', lang)}>
+                {t.cta} <span aria-hidden="true">→</span>
+              </Button>
+              <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-muted uppercase">
+                {hoursRange()} · {site.address.street}
+              </p>
+            </div>
+          </div>
+          {/* Two vendor trucks, stacked — plural on purpose. One truck would
+              crown a favourite; two say "kitchens", and both are on the
+              confirmed roster. The lot photo (best_bite_outdoor.webp) is the
+              one-line swap if Ray prefers the park itself here. */}
+          <div className="flex flex-col gap-1 lg:h-full">
+            <img
+              src={truckChula}
+              alt={t.heroAlt1}
+              fetchPriority="high"
+              className="aspect-[2.2/1] w-full object-cover object-[50%_35%] lg:aspect-auto lg:h-1/2 lg:min-h-0"
+            />
+            <img
+              src={truckPatron}
+              alt={t.heroAlt2}
+              className="aspect-[2.2/1] w-full object-cover object-[50%_55%] lg:aspect-auto lg:h-1/2 lg:min-h-0"
+            />
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Full-bleed, no gutter. The first thing after the claim is the proof. */}
-      <img
-        src={parkPhoto}
-        alt={t.heroAlt}
-        fetchPriority="high"
-        className="max-h-[30rem] w-full object-cover"
-      />
-
-      {/* Dark carries the food photography. Horizontal scroll at phone width. */}
-      <Section ground="night" className="py-14 sm:py-20">
-        <Label tone="night">{t.foodLabel}</Label>
-        <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.foodH}</h2>
+      {/* Appetite and the door to the trucks, one dark section. Generous
+          padding on purpose — this is the page's indulgent moment. */}
+      <Section ground="night" className="py-16 sm:py-24">
+        <h2 className="text-3xl leading-[1.02] uppercase sm:text-5xl">{t.foodH}</h2>
+        <p className="mt-5 max-w-xl leading-relaxed text-night-muted">{t.foodBody}</p>
         <div className="-mx-5 mt-10 flex snap-x gap-4 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8">
           {dishes.map((d) => {
             const caption = typeof d.caption === 'string' ? d.caption : d.caption[lang]
@@ -169,9 +188,12 @@ export function Home() {
             )
           })}
         </div>
+        <div className="mt-10">
+          <Button to={pathFor('vendors', lang)}>{t.foodCta}</Button>
+        </div>
       </Section>
 
-      {/* The hours, at flood footprint. The one fact every visitor needs. */}
+      {/* The hours, at flood footprint. Compressed — one fact, stated loud. */}
       <section className="bg-brand-yellow px-5 py-10 text-brand-black sm:px-8">
         <div className="mx-auto flex max-w-6xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
           <div className="min-w-0">
@@ -188,37 +210,20 @@ export function Home() {
               href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress())}`}
               className="mt-2 inline-block font-mono text-[11px] tracking-[0.12em] uppercase underline decoration-2 underline-offset-4 hover:no-underline"
             >
-              {t.directions} <span aria-hidden="true">→</span>
+              {t.directions}
             </a>
           </div>
         </div>
       </section>
 
-      {/* Vendor teaser. Names live on the Vendors page; this stays roster-proof. */}
-      <Section className="py-14 sm:py-20">
-        <div className="max-w-2xl">
-          <Label>{t.vendorsLabel}</Label>
-          <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.vendorsH}</h2>
-          <p className="mt-5 leading-relaxed text-muted">{t.vendorsBody}</p>
-          <div className="mt-8">
-            <Button to={pathFor('vendors', lang)} variant="outline">
-              {t.vendorsCta} <span aria-hidden="true">→</span>
-            </Button>
-          </div>
-        </div>
-      </Section>
-
       {/* Events teaser. The flyer is real park marketing, not decoration. */}
-      <Section ground="night" className="py-14 sm:py-20">
+      <Section ground="night" className="py-14 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-center">
           <div className="min-w-0">
-            <Label tone="night">{t.eventsLabel}</Label>
-            <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.eventsH}</h2>
+            <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.eventsH}</h2>
             <p className="mt-5 max-w-md leading-relaxed text-night-muted">{t.eventsBody}</p>
             <div className="mt-8">
-              <Button to={pathFor('events', lang)}>
-                {t.eventsCta} <span aria-hidden="true">→</span>
-              </Button>
+              <Button to={pathFor('events', lang)}>{t.eventsCta}</Button>
             </div>
           </div>
           <img
@@ -231,9 +236,10 @@ export function Home() {
         </div>
       </Section>
 
-      {/* Nuestra Historia, folded into Home per the Aug 10 descope. DRAFT copy;
-          Ray's voice notes replace it. See the note at the top of this file. */}
-      <Section className="py-14 sm:py-20">
+      {/* Nuestra Historia, folded into Home per the Aug 10 descope. DRAFT
+          copy; Ray's voice notes replace it. One of the page's two eyebrows
+          lives here — a visitor scanning for "about us" needs the label. */}
+      <Section className="py-16 sm:py-20">
         <div className="max-w-2xl">
           <Label>{t.storyLabel}</Label>
           <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.storyH}</h2>
@@ -244,11 +250,10 @@ export function Home() {
 
       {/* The one honest door to Únete. Compact, low, and the only recruiting
           copy on the page. */}
-      <Section className="border-t border-rule py-12 sm:py-14">
+      <Section className="border-t border-rule py-10 sm:py-12">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
-            <Label>{t.doorLabel}</Label>
-            <h2 className="mt-3 text-2xl leading-[1.02] uppercase sm:text-3xl">{t.doorH}</h2>
+            <h2 className="text-2xl leading-[1.02] uppercase sm:text-3xl">{t.doorH}</h2>
             <p className="mt-3 max-w-md leading-relaxed text-muted">{t.doorBody}</p>
           </div>
           <div className="shrink-0">

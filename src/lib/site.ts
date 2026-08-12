@@ -55,8 +55,8 @@ export const site = {
     /** Park capacity per the client context. */
     total: 15,
     /**
-     * Filled stalls. The context says 9; Enrique says 10 may be the real
-     * number. Resolves during the build. Card count is data, not structure.
+     * Filled stalls. Nine, confirmed by Enrique's definitive roster
+     * 2026-08-12 (see food_trucks.txt). Card count is data, not structure.
      */
     filled: 9,
   },

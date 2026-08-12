@@ -117,6 +117,18 @@ and encouraged — Kraken's hero image runs off the right edge with no margin.
 
 Deliberate voids are part of the composition, not wasted space.
 
+**Mono eyebrows are capped at two per page** (added 2026-08-12, from the
+hallmark audit of Home). The label role exists for data — chips, specs, hours,
+form labels — not as a section-head tic. A page where every section opens with
+an uppercase mono kicker reads as "a list of labelled lists", which is a named
+AI tell. Keep an eyebrow only where it does work the heading cannot: a locator
+("Food truck park · Salem, OR") or a scanning label ("Nuestra historia").
+Únete, Events, and Contact predate this rule and still violate it — they get
+the same pass Home got.
+
+**The arrow glyph (→) appears on at most two CTAs per page** — the primary
+action and the door. An arrow on every button is a tic, not an affordance.
+
 **Dark is a section, never the ground.** Alternate warm-cream sections with
 near-black ones rather than choosing one for the whole page. The rule for which
 goes where is not arbitrary:

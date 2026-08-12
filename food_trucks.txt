@@ -1,10 +1,12 @@
-* Pupusas Chileros
-* Cafe Chula
-* Tortilleria El Patron
-* Las Jarochitas
-* Taqueria Romero
-* The Red Marino
-* El Chilango Chilaquiles
-* Adan's Grill
-* Syrian House
-* La Flauta PDX
+# The definitive vendor roster — from Enrique, 2026-08-12.
+# Anyone not on this list does not appear on the site.
+
+Pupusas Chileros
+Cafe Chula
+Las Jarochitas
+Las Cuatas Lokas
+Nieve Casera
+Taqueria Romero
+The Red Marino
+Que Rollon Sushi
+El Patron Tortilleria

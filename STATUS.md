@@ -137,16 +137,30 @@ Run `npm run pending` for the live list.
 
 ## Blocked on Enrique
 
-- **The vendor roster.** Enrique is sending the definitive list (reaffirmed
-  2026-08-12: `food_trucks.txt` is NOT it). Vendors is the last unbuilt page
-  and waits on this. Per-vendor cuisine, hours and blurbs ride along — the
-  context says Bryan pulled reliable vendor hours and they have not landed in
-  the repo.
-- **Cloudflare wiring is unknown.** Enrique is not sure what is connected to
-  this repo (2026-08-12). Until that is checked in the dashboard, pushes to
-  `enrique` may or may not deploy anywhere, and live-host verification is
-  impossible. Check what project exists, which branch is production, and get
-  the `*.pages.dev` URL into this file.
+- **Cloudflare wiring is unknown.** Enrique is checking the dashboard
+  (2026-08-12). Until then, pushes to `enrique` may or may not deploy anywhere,
+  and live-host verification is impossible. Get the `*.pages.dev` URL into
+  this file.
+- **Nav and footer direction.** The hallmark audit flagged the header as the
+  named "AI nav" fingerprint and the footer as adjacent to the "AI footer".
+  Rebuilding chrome touches all ten addresses, so the direction is Enrique's
+  pick — options presented 2026-08-12, answer pending.
+
+## The vendor roster — RESOLVED 2026-08-12
+
+Enrique supplied the definitive list; it lives in `food_trucks.txt` (rewritten,
+no longer the stale scratch list). Nine vendors, all with images in
+`src/assets/food_trucks/`: Pupusas Chileros, Cafe Chula, Las Jarochitas,
+Las Cuatas Lokas, Nieve Casera, Taqueria Romero, The Red Marino, Que Rollon
+Sushi, El Patron Tortilleria. `el_chilango.jpg` was removed per his
+instruction; Adan's Grill, Syrian House, and La Flauta PDX are out.
+
+**Que Rollon Sushi is on the roster.** That is Asian cuisine, which Únete
+currently says the park is "especially looking for" and that the lineup is
+"mostly Mexican" (still true, 7 of 9). Confirm with Ray whether the Asian
+recruiting line stands before delivery. Vendors page is now unblocked;
+per-vendor cuisine, hours and blurbs still pending (Bryan pulled hours; not in
+the repo yet).
 
 - **Text Ray the descope offer**, get his yes, send the two-line written recap.
   Bryan already agreed to Option A. The context file's own rule: nothing gets
@@ -212,13 +226,29 @@ were never missing).
 letterspaced mono. The English nav fits there fine, which is the trap. A route
 test asserts the Spanish labels stay inside the width the header was built for.
 
+## The 2026-08-12 hallmark audit — what is fixed and what is open
+
+Enrique rejected the first Home pass ("half hero, half image, unprofessional,
+generic components"). `hallmark audit` confirmed it with named tells. Fixed on
+Home the same day: stacked-band hero rebuilt as the Kraken interlock (text
+left, two vendor-truck photos stacked and bleeding off the right edge — two
+trucks on purpose, one would crown a favourite), eyebrows cut 7 → 2, section
+padding varied, vendors teaser folded into the food band, arrows capped at two
+CTAs. The rules are now locked in design.md § Rhythm.
+
+**Still open from the audit:** the "AI nav" header and columnar footer
+(direction is Enrique's pick, all ten addresses); the same eyebrow pass on
+Únete, Events, and Contact; the lot photo `best_bite_outdoor.webp` is the
+one-line hero swap if Ray prefers the park itself over vendor trucks.
+
 ## Next
 
-1. **Build Vendors** the moment Enrique's roster lands. Everything else on the
-   page level is done.
-2. **Check the Cloudflare dashboard** — what is wired, which branch deploys,
+1. **Build Vendors** — roster is in. Apply the eyebrow cap from day one.
+2. **Rebuild the chrome** once Enrique picks the nav/footer direction.
+3. **Eyebrow pass on Únete, Events, Contact** per design.md § Rhythm.
+4. **Check the Cloudflare dashboard** — what is wired, which branch deploys,
    what the `*.pages.dev` URL is. Then `curl -I` every address on it.
-3. Confirm the Google Maps embed on Contact paints in a real browser.
+5. Confirm the Google Maps embed on Contact paints in a real browser.
 
 Before delivery, and none of it started:
 

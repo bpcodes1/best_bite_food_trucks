@@ -83,13 +83,23 @@ Salem, OR 97301-8655`, hours 12:00–20:00 every day. Everything else is pending
 
 ## Build constraints
 
-- **No animation library.** No GSAP, no Framer Motion. CSS only. This site's job
-  is ranking for local searches; the bundle stays small.
+- **The site has to feel alive, and no animation library.** Those are not in
+  tension. What is banned is GSAP, Framer Motion, Lottie and Lenis — roughly
+  50KB gzipped that only runs after hydration, on a pre-rendered site whose
+  visitors are on Salem cell service. CSS motion is expected, not rationed:
+  a dead-looking page sends visitors back to the search results, so appeal and
+  ranking optimise together. Full reasoning in `design.md` § Motion. If an
+  effect genuinely cannot be built in CSS, reopen that section and make the
+  case — do not quietly work around it.
+- **Nothing auto-advances without a pause control.** WCAG 2.2.2, and plain
+  courtesy to anyone who reads slowly.
 - **Nothing that only renders after JavaScript runs.** If a crawler reading the
   raw HTML can't see it, it doesn't count. That is the whole point of
   pre-rendering.
-- **Images ship compressed.** The inherited assets in `src/assets/` are ~9MB
-  against a 233KB JS bundle. `best_bite_inside.jpeg` alone is 2.86MB.
+- **Images ship compressed.** Run `npm run images` (sharp, devDependency,
+  never shipped) after adding any asset. It is idempotent. `src/assets` is
+  ~4.4MB against a ~280KB JS bundle, down from 9.2MB. `logo.png` is never
+  touched — the brand colours were sampled from it.
 - **`public/_redirects` stays rule-free.** Pre-rendered site — the splat rule
   308-loops forever here. The file carries a comment explaining why; leave it.
 - **No `404.html` in `public/`.** `prerender.mjs` generates `dist/404.html`.
@@ -121,6 +131,13 @@ hallmark stamp naming the macrostructure, tone, and studied sources. Brand
 values are **sampled from `src/assets/logo.png`** (`#fdc20c`, `#010101`) — the
 inherited `#f9bc15` / `#17140f` are wrong; do not restore them.
 
+**Home is the reference page.** It was rebuilt four times on 2026-08-12 against
+Enrique's feedback and it is what the other pages should be brought up to. Read
+`STATUS.md` § "What Home looks like now, and why" before designing anything.
+
+**Sunbeam Bagels is a structural reference only** (Enrique, 2026-08-12). Take
+layout ideas from it; keep our type, our yellow, our masthead.
+
 ## Verification
 
 - `npm run build` must pass before every push, and `dist/` must have 11 HTML files.
@@ -128,3 +145,14 @@ inherited `#f9bc15` / `#17140f` are wrong; do not restore them.
   `npm run preview`.
 - Never call a visual change done from code alone. Screenshot at 375 and 768,
   **in both languages.**
+- **Screenshot through the DevTools Protocol, not `--window-size`.** Headless
+  Chrome's `--window-size` is not a viewport: it renders at Chrome's default
+  minimum layout width and produces pictures of bugs that do not exist. Use
+  `Emulation.setDeviceMetricsOverride`, force `img.loading = 'eager'` and await
+  `decode()` before capturing (`captureBeyondViewport` never fires lazy
+  loading), and confirm any suspected overflow by reading
+  `document.documentElement.scrollWidth` before touching CSS. Both traps cost a
+  round-trip each on 2026-08-12.
+- **When feedback is ambiguous, ask which reading is meant.** "The hero gets cut
+  off" meant "it should fill the screen"; it was acted on as "it is too tall"
+  and cost three rebuilds.

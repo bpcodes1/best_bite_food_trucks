@@ -22,6 +22,7 @@ npm run dev
 | `npm run preview` | Serve `dist/` locally                                        |
 | `npm run test`    | Route-integrity tests                                        |
 | `npm run pending` | List every placeholder still unfilled                        |
+| `npm run images`  | Recompress `src/assets` in place (sharp). Safe to re-run     |
 | `npm run lint`    | ESLint                                                       |
 | `npm run format`  | Prettier                                                     |
 
@@ -61,18 +62,27 @@ language toggle, and hreflang tags all derive from it.
 ## Project structure
 
 ```
-prerender.mjs        build step 4 — writes one HTML file per address
-scripts/             check-pending.mjs
+prerender.mjs          build step 4 — writes one HTML file per address
+scripts/
+  check-pending.mjs    lists every unfilled placeholder
+  compress-images.mjs  recompresses src/assets in place
 src/
-  entry-server.tsx   SSR entry, used only at build time
-  main.tsx           browser entry, hydrates pre-rendered markup
-  AppRoutes.tsx      route tree, generated from lib/routes.ts
-  components/Seo.tsx per-page title, description, canonical, hreflang, OG
-  lib/routes.ts      every address on the site
-  lib/site.ts        name, address, hours, phone — the one NAP source
-  lib/useLang.ts     reads language off the URL
-  pages/             one component per page, rendered at two addresses
-  assets/            client-supplied photography (unoptimized, ~9MB)
+  entry-server.tsx     SSR entry, used only at build time
+  main.tsx             browser entry, hydrates pre-rendered markup
+  AppRoutes.tsx        route tree + chrome, generated from lib/routes.ts
+  components/
+    SiteHeader.tsx     masthead: brand row + sticky nav row + toggle
+    SiteFooter.tsx     statement close, NAP, every page link
+    Seo.tsx            per-page title, description, canonical, hreflang, OG
+    Schema.tsx         LocalBusiness JSON-LD, all values from lib/site.ts
+    FanGallery.tsx     the fanned image stack on Home
+    EventCard.tsx      one event: photo, title, tags, when, where
+    ui.tsx             Section, Label, Chip, Button, form field skins
+  lib/routes.ts        every address on the site, plus its nav label
+  lib/site.ts          name, address, hours, phone — the one NAP source
+  lib/useLang.ts       reads language off the URL
+  pages/               one component per page, rendered at two addresses
+  assets/              client photography, compressed (~4.4MB)
 ```
 
 ## Current state
@@ -80,9 +90,12 @@ src/
 See [STATUS.md](STATUS.md) for where the build actually is, and
 [design.md](design.md) for the design system every page defers to.
 
-In short: the scaffold is done, the type and colour system is wired, and Únete
-al Parque is built in both languages. Home, Vendors, Events and Contact are
-still single headings.
+In short: four of five pages are built in both languages — Home, Únete al
+Parque, Contact and Events — plus the masthead and footer. **Vendors is the
+only page still a single heading.**
+
+Home is the reference for how the rest of the site should look; the other three
+predate the 2026-08-12 design changes and are a generation behind.
 
 Anything Ray has not confirmed renders as visible brackets on the page. Run
 `npm run pending` for the list.

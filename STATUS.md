@@ -2,7 +2,7 @@
 
 Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
-**Last updated:** 2026-08-12 (afternoon — Home, Contact, Events built)
+**Last updated:** 2026-08-12 (end of session — Home rebuilt four times)
 **Branch:** `enrique` (never `main` — `main` is Bryan's, unrelated work)
 **Deadline:** ~Sept 2 (four weeks from the ~Aug 5 clock start)
 
@@ -10,26 +10,26 @@ Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
 ## Where we are
 
-**Four of five pages are built** in both languages: Únete al Parque, Home,
-Contact, and Events, plus the site chrome (header, nav, language toggle,
-footer). Only Vendors remains, and it is blocked on one thing: **Enrique is
-sending the definitive vendor list.** `food_trucks.txt` is NOT that list — he
-said so explicitly on 2026-08-12.
+**Four of five pages are built** in both languages: Home, Únete al Parque,
+Contact, and Events, plus the site chrome. **Vendors is the only unbuilt page**
+and it is no longer blocked — the roster is settled and all nine vendors have
+images in the repo.
 
-The placeholder boundary, decided by Enrique 2026-08-12: **draft copy yes,
-fake data no.** Full draft copy everywhere (including Home's story section,
-written to be replaced by Ray's voice notes), but contact details, prices,
-dates, and social handles stay as visible `[PENDIENTE]` brackets. `npm run
-pending` remains the authority on what is real.
+Home went through four rejected passes today and is the reference for how the
+rest of the site should now look. The other three pages work but predate the
+masthead, the washes, and the eyebrow cap — they are a design generation
+behind.
 
-The three event flyers in `src/assets/events/` are **real park marketing**
-(Enrique confirmed 2026-08-12). Karaoke every Sunday is a real recurring event,
-stated on the park's own flyer; the Back to School Cruise is real with its date
-pending. Events is built on them.
+### START HERE NEXT SESSION
 
-`main` contains Bryan's separate build. **Do not read it as a reference or a
-target.** Our branch was reset to a clean slate on purpose, keeping only the
-client-supplied photography.
+1. **Ask Enrique what the remaining Home changes are.** He said on
+   2026-08-12 that he wants "more Home changes" plus the other pages built, but
+   the session ended before he listed them. **Do not guess and do not start
+   redesigning Home on your own read of it** — three of the four rejected
+   passes were caused by acting on my interpretation instead of his words. Ask,
+   then build.
+2. **Build Vendors.** Everything it needs is in the repo.
+3. **Bring Únete, Events and Contact up to Home's standard.**
 
 ## Built and verified
 
@@ -37,28 +37,26 @@ client-supplied photography.
 | --------------- | ------------------------------------------------------------------------- |
 | Scaffold        | Vite + React 19 + TS + Tailwind v4, pre-rendered to 11 HTML files         |
 | Addresses       | 5 pages × 2 languages, all deriving from `src/lib/routes.ts`              |
-| Design system   | `design.md` — governs all ten addresses, `hallmark audit` enforces it     |
+| Chrome          | Masthead nav + statement footer, both derived from `routes.ts`            |
+| Home            | Full-screen hero, tinting fan gallery, events grid, story, door           |
+| Únete al Parque | Built EN + ES. Design predates the 2026-08-12 rules                       |
+| Contact         | NAP, map, form, cross-door to Únete, LocalBusiness schema                 |
+| Events          | Built on the three real flyers, dated events in a data array              |
+| Vendors         | **NOT BUILT** — still a single `<h1>`                                     |
 | Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets |
-| Únete al Parque | Built EN + ES, ~21 kB of finished HTML per address                        |
-| Home            | Built EN + ES, appetite-led brochure, LocalBusiness schema, ~18 kB        |
-| Contact         | Built EN + ES, NAP + map + form + cross-door to Únete, schema, ~16 kB     |
-| Events          | Built EN + ES on the real flyers, dated events are a data array, ~14 kB   |
-| Chrome          | Header, nav, language toggle, footer — all derived from `routes.ts`       |
-| Assets          | 9.2 MB → 4.6 MB via `npm run images` (sharp); favicon 984 kB → 4 kB       |
-| Schema          | `LocalBusinessJsonLd` on Home + Contact, all values from `site.ts`        |
+| Assets          | 9.2 MB → 4.4 MB via `npm run images` (sharp, devDependency)               |
+| Schema          | `LocalBusinessJsonLd` on Home + Contact, values from `site.ts`            |
 
-Verified: build passes, lint clean, 9 route tests pass, 11 HTML files, content
-and JSON-LD present in the raw HTML with no JavaScript, `lang` attributes
-correct per address, hreflang pairs on every page.
+Verified: build passes, lint clean, 9 route tests, 11 HTML files, content and
+JSON-LD present in the raw HTML with no JavaScript, `lang` correct per address,
+hreflang pairs on every page, no horizontal overflow at 375 in Spanish.
 
-Screenshots reviewed (in `qa-screenshots/`, git-ignored): every built page at
-375 and 768 in Spanish, chrome at 1280 in English, the collapsed menu open.
-Spanish is the longer language, so if Spanish fits, English fits; the header
-was checked in English separately because the wide nav only appears at `lg`.
+Screenshots in `qa-screenshots/` (git-ignored), refreshed at the end of the
+session: Home at 375/768 ES and 1540 EN, Únete and Contact at 768 ES.
 
 **Not verified: the Google Maps embed on Contact.** It renders as an empty box
-in headless Chrome screenshots (headless quirk, most likely). Confirm it paints
-in a real browser before any client review.
+in headless screenshots. Almost certainly a headless quirk — confirm in a real
+browser before any client review.
 
 ## Decisions, and why
 
@@ -71,198 +69,208 @@ a plain SPA makes every page depend on the crawler executing our JavaScript.
 screen but not the address, and Google files pages by address. A shared address
 leaves the entire Spanish half unindexed.
 
-**Light warm ground, dark as a section.** Most vendor assets are logos on white,
-and a white logo ground on a dark card is a box you cannot remove. Cream carries
-logos; night carries photography.
-
 **Brand colours are sampled from `src/assets/logo.png`**, not inherited.
 `#fdc20c` and `#010101`. Bryan's `#f9bc15` / `#17140f` are both wrong. Do not
 "correct" them back.
 
-**No monospace body**, despite the Kraken reference doing exactly that. Mono has
-no narrow characters and Spanish already runs 20–25% long. Mono is labels only.
+**No monospace body**, despite both the Kraken and Sunbeam references doing
+exactly that. Mono has no narrow characters and Spanish already runs 20–25%
+long. Mono is labels only.
 
-**Únete first, not Home.** Únete has one audience and one action — the cleanest
-brief in the project. Home has to serve hungry locals and prospective vendors at
-once, which is the hardest content problem here. Building Únete first means Home
-inherits a proven system instead of inventing one.
+**Únete first, not Home.** Únete had one audience and one action. Home has to
+serve hungry locals and prospective vendors at once, which is the hardest
+content problem here.
 
-**Home is overwhelmingly for eaters.** Vendors reach Únete through search
-("food cart space for rent salem"), not by browsing Home. One honest door to
-Únete low on the page. This is also the fix for the recruiting-copy bleed the
-July audit found on the Square site.
+**Home is overwhelmingly for eaters.** Vendors reach Únete through search, not
+by browsing Home. One honest door to Únete low on the page. This is also the
+fix for the recruiting-copy bleed the July audit found on the Square site.
 
-**Utilitarian tone.** Market sophistication reads Stage 1 — no Salem competitor
-has a leasing page at all — and Stage 1 rewards a simple direct claim.
+**No price on the page.** Ray's call, relayed 2026-08-11.
 
-**No price on the page.** Ray's call, relayed 2026-08-11. Noted tradeoff: openly
-stated economics is the strongest thing about the Block 40 page we took the
-structure from. The page leans on terms instead.
+**Dark is rationed to two surfaces per page** (hero scrim + footer), amended
+2026-08-12. Four dark bands made a daytime family park look like a whisky bar.
+The old "dark carries the food photography" rule is retired.
+
+**Motion is required, animation libraries are not.** Amended 2026-08-12 after
+Enrique pushed back, correctly. A dead-looking page sends visitors back to the
+search results, so appeal and ranking optimise together rather than trading
+off. What is banned is GSAP / Framer Motion / Lottie / Lenis — roughly 50 kB
+gzipped that only runs after hydration, on a pre-rendered site whose visitors
+are on Salem cell service. Everything wanted from the Sunbeam reference is CSS.
+**If an effect genuinely cannot be built in CSS, reopen design.md § Motion and
+make the case. Do not quietly work around it.**
+
+**Sunbeam Bagels is a structural reference only.** Enrique's call: take the
+layout ideas, keep our type, our yellow, our masthead. Their retro serif would
+mean redoing Únete; their monospace-everywhere would fight Spanish.
 
 ## Open decisions
 
-1. **Display face — leaning Archivo Black, not closed.** Enrique reviewed Anton
-   and likes both, leaning Archivo Black because it is wider and a reader can
-   see what each section is about faster. Anton stays wired and switchable.
-2. **Home's macrostructure.** Deferred until the system has proven itself.
-   Strategy is settled (see above); the shape is not.
-3. **The English `lease` slug.** Currently `/lease-a-space`. **Deliberately left
-   alone 2026-08-12** rather than left undecided: it is one edit in
-   `src/lib/routes.ts`, nothing external links to it yet, and no GBP or
-   directory work has started, so the change stays free right up until the
-   domain goes live. Revisit before cutover, not before. Enrique's SEO call,
-   targeting "food cart space for rent salem". The Spanish slug
-   `/es/unete-al-parque` is settled.
-4. **Form destination.** Undecided. Ray does not read email and Cynthia does not
-   enter the picture until after delivery. The form is deliberately unwired
-   until this is answered.
-5. **Component library.** Asked and effectively closed — the interactive surface
-   is a nav, a toggle, one form and one accordion. Not worth a dependency.
-   DaisyUI and HeroUI were considered and rejected (own theme systems, and
-   HeroUI pulls framer-motion, which `design.md` bans).
+1. **The remaining Home changes.** Unspecified. Ask Enrique. See START HERE.
+2. **Display face — leaning Archivo Black, not closed.** Anton stays wired and
+   switchable: `document.documentElement.dataset.display = 'anton'`.
+3. **The English `lease` slug.** Currently `/lease-a-space`. Deliberately left
+   alone — one edit in `routes.ts`, nothing external links to it yet, so the
+   change stays free until the domain goes live. Revisit before cutover.
+4. **Form destination.** Undecided, so both forms are deliberately unwired and
+   show a visible placeholder on submit. Ray does not read email; Cynthia does
+   not enter the picture until after delivery.
+5. **The story section on Home.** Deliberately left plain. It is the most
+   likely thing to be replaced wholesale when Ray's voice notes arrive, so
+   designing it now is probably wasted work. Enrique has not overruled this.
 
 ## Blocked on Ray
 
-Six placeholders close the moment he replies. They render as visible brackets.
-Run `npm run pending` for the live list.
+Nothing new as of 2026-08-12. Placeholders render as visible brackets; run
+`npm run pending` for the live list (25 at the end of this session).
 
 - Site phone, site email
-- Stall size, what is included (power, water, trash)
-- Reply time ("we get back to you within…")
 - Instagram, Facebook, TikTok handles
-- Per-vendor plate photos, and his story for the Home section
-- Whether Que Rollon Sushi is a current vendor — it is Asian cuisine, which is
-  exactly what he says he is recruiting for, and it would rewrite the leasing
-  positioning
+- Stall size, what is included (power, water, trash), reply time
+- **Per-vendor plate photos** — the single highest-value thing he can send.
+  They unlock real vendor attribution on the gallery washes, and the
+  photography is the ceiling on how good this site can look.
+- His story for the Home section (voice note or text)
+- Drone video — last to arrive, possibly post-delivery. It drops into the
+  hero as a `<video>` with the same classes and nothing else changes.
+- **Whether the Asian-cuisine recruiting line still stands.** Que Rollon Sushi
+  is on the confirmed roster, and Únete currently tells prospective vendors the
+  park is "especially looking for Asian food" because the lineup is "mostly
+  Mexican". Still true at 7 of 9, but he said it when he had none.
 
 ## Blocked on Enrique
 
-- **Cloudflare wiring is unknown.** Enrique is checking the dashboard
-  (2026-08-12). Until then, pushes to `enrique` may or may not deploy anywhere,
-  and live-host verification is impossible. Get the `*.pages.dev` URL into
-  this file.
+- **Cloudflare wiring is still unknown** (not checked as of 2026-08-12). Until
+  someone opens the dashboard, pushes to `enrique` may or may not deploy
+  anywhere and no live-host verification is possible. Find: which project
+  exists, which branch is production, and the `*.pages.dev` URL. Put it here.
+- **Text Ray the descope offer**, get his yes, send the two-line written recap.
+  Bryan already agreed to Option A. Open since 2026-08-10, and the whole site
+  is now built past it.
+- **The domain.** Long-lead, and it gates `site.origin`, every canonical, and
+  cutover.
+- **GBP overhaul.** Promised as an early win "within days of kickoff"; that was
+  ~Aug 5. Independent of the build.
+- Better hero photography. `best_bite_sign.jpg` is 1024×576, the lowest-
+  resolution asset in the repo, and it upscales ~3× on a retina screen.
+  Enrique chose it as the best of a weak set and said so.
 
 ## The vendor roster — RESOLVED 2026-08-12
 
-Enrique supplied the definitive list; it lives in `food_trucks.txt` (rewritten,
-no longer the stale scratch list). Nine vendors, all with images in
-`src/assets/food_trucks/`: Pupusas Chileros, Cafe Chula, Las Jarochitas,
+Enrique's definitive list, in `food_trucks.txt`. Nine vendors, all with images
+in `src/assets/food_trucks/`: Pupusas Chileros, Cafe Chula, Las Jarochitas,
 Las Cuatas Lokas, Nieve Casera, Taqueria Romero, The Red Marino, Que Rollon
-Sushi, El Patron Tortilleria. `el_chilango.jpg` was removed per his
-instruction; Adan's Grill, Syrian House, and La Flauta PDX are out.
+Sushi, El Patron Tortilleria.
 
-**Que Rollon Sushi is on the roster.** That is Asian cuisine, which Únete
-currently says the park is "especially looking for" and that the lineup is
-"mostly Mexican" (still true, 7 of 9). Confirm with Ray whether the Asian
-recruiting line stands before delivery. Vendors page is now unblocked;
-per-vendor cuisine, hours and blurbs still pending (Bryan pulled hours; not in
-the repo yet).
-
-- **Text Ray the descope offer**, get his yes, send the two-line written recap.
-  Bryan already agreed to Option A. The context file's own rule: nothing gets
-  built past mockups until that recap exists. Open since 2026-08-10, and Únete
-  plus the chrome are now built past it.
-- **The domain.** Long-lead. Registration and DNS are slow and it gates cutover.
-- **GBP overhaul.** Promised as an early win "within days of kickoff"; that was
-  ~Aug 5. Independent of the build.
-- Ask Bryan where Que Rollon Sushi came from.
+`el_chilango.jpg` was deleted per his instruction. Adan's Grill, Syrian House
+and La Flauta PDX are out. Per-vendor cuisine, hours and blurbs are still
+missing (the context says Bryan pulled hours; they are not in the repo).
 
 ## Traps a new session will fall into
 
-**`clients/` is git-ignored and must stay that way.** It holds pricing, the
-retainer, and an objection playbook marked internal. `.gitignore` and
-`.git/info/exclude` both cover it.
+**"Cut off" meant "should fill the screen", not "is too tall".** Three of
+Home's four rejected hero passes came from me acting on my reading of a
+complaint instead of asking which he meant. When feedback is ambiguous, ask.
+It costs one message; guessing cost a day.
 
-**hallmark has been modified on this machine.** Its source-refusal rules were
-removed at Enrique's explicit request — marketplace blocklist, signature-work
-soft-refusal, and the attestation gate on `design.md` emission. Originals are at
-`~/.agents/skills/hallmark/SKILL.md.orig` and `references/study.md.orig`.
-**Re-running `npx skills add nutlope/hallmark` restores the rules** and the strip
-must be redone. Remote URL safety and junk-or-blocked detection were kept
-deliberately — those are security, not taste.
+**Tailwind v4 emits `translate` and `scale`, not `transform`.**
+`-translate-x-*` compiles to `translate: var(--tw-translate-x) ...` and
+`scale-*` to the `scale` property. A `transition-[transform,opacity]` therefore
+animates a property that never changes, and the element jumps while only the
+fade runs. Use `transition-[translate,scale,opacity]`. This cost a whole
+round-trip on the gallery.
 
-**`hallmark study` in URL mode cannot see CSS through its own fetch.** WebFetch
-converts pages to markdown and throws stylesheets away, so the type and colour
-passes come back empty. Pull the raw HTML with `curl` and grep for `font-family`,
-`@font-face`, and hex values. That is how the Atlantic and Kraken diagnoses were
-actually produced.
-
-**`prerender.mjs` has `MIN_BODY_BYTES = 10`.** It is that low because four of the
-five pages are still a single `<h1>`. **Raise it to ~500 once every page has real
-content**, or it stops catching the empty-shell failure it exists to catch.
-
-**The form is deliberately unwired**, and submitting shows a visible placeholder.
-Do not "fix" it into a success message. The previous build told people their
-message had been received and sent nothing.
-
-**The promo slot on Únete renders nothing on purpose.** Ray confirmed there is no
-active vendor promotion. Do not carry the Square site's "first month rent free"
-text and do not invent a stand-in.
-
-**`base` is `/`**, which is right for localhost, Cloudflare `*.pages.dev`, and the
-production domain. Only a GitHub Pages _project_ site would need a subpath.
-
-**Headless Chrome's `--window-size` is not a viewport.** Screenshotting with
-`--headless=new --window-size=375,1000` renders the page at Chrome's default
-minimum layout width, not 375, and produces a picture that looks like the header
-is overflowing when it is not. It cost an hour and nearly a fix to a bug that did
-not exist. Drive the browser through the DevTools Protocol and set
-`Emulation.setDeviceMetricsOverride` instead, and confirm any suspected overflow
+**Headless Chrome's `--window-size` is not a viewport.** It renders at Chrome's
+default minimum layout width, producing screenshots that look like the header
+overflows when it does not. Drive the browser through the DevTools Protocol
+with `Emulation.setDeviceMetricsOverride`, and confirm any suspected overflow
 by reading `document.documentElement.scrollWidth` before touching CSS.
 
-**`captureBeyondViewport` does not fire lazy loading.** A full-page CDP
-screenshot of a page with `loading="lazy"` images shows blank holes where the
-below-fold images belong, because nothing ever scrolled. Force
-`img.loading = 'eager'` and await `img.decode()` on every image before
-capturing. This too produced a phantom bug report (missing Home images that
-were never missing).
+**`captureBeyondViewport` does not fire lazy loading.** Full-page CDP
+screenshots show blank holes where below-fold `loading="lazy"` images belong.
+Force `img.loading = 'eager'` and await `img.decode()` before capturing. This
+produced a phantom "missing images" report.
 
-**The nav collapses below `lg`, not below `md`.** The five Spanish labels run to
-46 characters against English's 38 and overflow a 768px header set in
-letterspaced mono. The English nav fits there fine, which is the trap. A route
-test asserts the Spanish labels stay inside the width the header was built for.
+**`--header-h` in `src/index.css` is measured, not guessed.** 80px on phones,
+131px from `sm` up. Home's hero is `calc(100svh - var(--header-h))`. If the
+masthead's padding changes, re-measure
+`document.querySelector('header').getBoundingClientRect().height` or the hero
+will overshoot or undershoot the fold.
 
-## The 2026-08-12 hallmark audit — what is fixed and what is open
+**`site.hours` stays 24-hour.** Schema.org's `openingHoursSpecification`
+requires it. `hoursRange()` derives the twelve-hour display string, so the page
+reads `12:00pm - 8:00pm` while the JSON-LD reads `12:00`/`20:00`. Do not
+"simplify" by storing the display string.
 
-Enrique rejected the first Home pass ("half hero, half image, unprofessional,
-generic components"). `hallmark audit` confirmed it with named tells. Fixed on
-Home the same day: stacked-band hero rebuilt as the Kraken interlock (text
-left, two vendor-truck photos stacked and bleeding off the right edge — two
-trucks on purpose, one would crown a favourite), eyebrows cut 7 → 2, section
-padding varied, vendors teaser folded into the food band, arrows capped at two
-CTAs. The rules are now locked in design.md § Rhythm.
+**`clients/` is git-ignored and must stay that way.** Pricing, the retainer,
+and an objection playbook marked internal.
 
-**Chrome rebuilt the same day, Enrique's picks:** masthead nav (brand row
-scrolls away, full-width nav row sticks — which is also why the Spanish labels
-now fit from `sm` up instead of `lg`) and the statement footer (big display
-line, one dense row, NAP exact-string). Verified 375/768 ES, no overflow at
-640, all links still in the raw pre-rendered HTML.
+**hallmark has been modified on this machine.** Source-refusal rules removed at
+Enrique's explicit request. Originals at `~/.agents/skills/hallmark/*.orig`.
+Re-running `npx skills add nutlope/hallmark` restores them and the strip must
+be redone.
 
-**Still open from the audit:** the eyebrow pass on Únete, Events, and Contact;
-the lot photo `best_bite_outdoor.webp` is the one-line hero swap if Ray
-prefers the park itself over vendor trucks.
+**`hallmark study` in URL mode cannot see CSS.** WebFetch converts pages to
+markdown and drops stylesheets. Pull raw HTML with `curl`, find the stylesheet
+`href`, and `curl` that too — that is how the Sunbeam type and palette were
+read. Image mode is the only mode that can judge rhythm.
+
+**`prerender.mjs` has `MIN_BODY_BYTES = 10`.** Raise it to ~500 once Vendors is
+built — it is the last page whose body is a single `<h1>`, and at 10 the check
+cannot catch the empty-shell failure it exists for.
+
+**Both forms are deliberately unwired.** Submitting shows a visible
+placeholder. Do not "fix" it into a success message; the previous build told
+people their message had been received and sent nothing.
+
+**The promo slot on Únete renders nothing on purpose.** Ray confirmed there is
+no active vendor promotion.
+
+## What Home looks like now, and why
+
+Section order, and each one a different shape and ground:
+
+1. **Hero** — full-bleed sign photo with a left-heavy scrim, exactly
+   `100svh - var(--header-h)`. Corner-anchored: eyebrow top, headline and CTA
+   middle-left, address and scroll cue bottom. This is a full-height hero but
+   **not** the banned full-viewport _centred_ hero — the distinction is
+   left-bias and corner detail, and it is why Sunbeam's reads as designed.
+2. **Hours** — brand yellow at flood footprint.
+3. **Gallery** — the fanned stack, ground cross-fading to the active dish's
+   wash. Adapted from `origin/bryan:src/components/FanGallery.tsx`, rebuilt on
+   our tokens with a live caption, arrow keys, and no autoplay.
+4. **Events** — pale yellow flood, three real flyers as `EventCard`s.
+5. **Story** — cream, deliberately plain. Draft copy.
+6. **Door to Únete** — the only recruiting copy on the page.
+7. **Footer** — night, statement close.
+
+**Washes** (`--color-wash-*` in `src/index.css`) are grounds only — never type,
+buttons, rules or accents — so design.md's no-third-brand-colour rule still
+holds. The gallery washes are keyed to the **dish**; Enrique asked for the
+**vendor's** colour, and that is a data change in `dishes` the day Ray's plate
+photos make attribution possible. Only two of six photos are attributable
+today, and guessing the rest would be inventing a client fact.
 
 ## Next
 
-1. **Build Vendors** — roster is in. Apply the eyebrow cap from day one.
-2. **Eyebrow pass on Únete, Events, Contact** per design.md § Rhythm.
-3. **Check the Cloudflare dashboard** — what is wired, which branch deploys,
-   what the `*.pages.dev` URL is. Then `curl -I` every address on it.
-4. Confirm the Google Maps embed on Contact paints in a real browser.
+1. **Ask Enrique what the remaining Home changes are**, then do them.
+2. **Build Vendors.** Roster settled, nine images present. `EventCard` is the
+   closest existing pattern — same shape, cuisine tags instead of event tags.
+   Apply the eyebrow cap and the wash rules from day one.
+3. **Bring Únete, Events and Contact up to Home's standard** — the eyebrow
+   pass, the lighter grounds, and the new card voice.
+4. **Check the Cloudflare dashboard**, then `curl -I` every address on the live
+   host. Never verify routing with `npm run preview`.
+5. Confirm the Contact map paints in a real browser.
 
-Before delivery, and none of it started:
+Before delivery, none of it started:
 
-4. **`site.origin` is still `http://localhost:5173`.** Every canonical,
-   hreflang, OG tag, sitemap entry, and the JSON-LD `url` point at localhost.
+6. **`site.origin` is still `http://localhost:5173`.** Every canonical,
+   hreflang, OG tag, sitemap entry and the JSON-LD `url` point at localhost.
    One edit in `site.ts`, gated on the domain.
-5. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
-   card. `Seo.tsx` has og:type/title/description/url/locale and nothing else.
-6. **`FAQPage` schema on Únete** — LocalBusiness exists on Home and Contact;
-   the FAQ page markup is the remaining schema piece.
-7. Raise `MIN_BODY_BYTES` in `prerender.mjs` from 10 to ~500 once Vendors is
-   real — it is the last page whose body is a single `<h1>`.
-8. `hallmark audit` across all ten addresses.
-9. Wire the forms once the destination question is answered (Ray does not read
-   email; Cynthia is post-delivery).
-10. `curl -I` every address on the live host. Never verify routing with
-    `npm run preview`.
+7. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
+   card.
+8. **`FAQPage` schema on Únete.** LocalBusiness exists on Home and Contact.
+9. Raise `MIN_BODY_BYTES` to ~500 once Vendors is real.
+10. `hallmark audit` across all ten addresses.
+11. Wire the forms once the destination is decided.

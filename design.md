@@ -87,8 +87,10 @@ underline.
 | Body    | **Source Sans 3** | Humanist, wide Latin coverage, variable, comfortable at length.                                                                                             |
 | Label   | **IBM Plex Mono** | Warmer than JetBrains Mono. Hours, prices, cuisine tags, microcopy.                                                                                         |
 
-**Anton** is the switchable runner-up, wired in dev so the client meeting is a
-comparison rather than a description:
+**Anton** is the switchable runner-up and the decision is **leaning, not
+closed**. Enrique reviewed both 2026-08-11 and leans Archivo Black: it is the
+wider face, so a reader takes in what each section is about, and what the CTA
+is, in a single glance. Anton stays wired.
 
 ```
 document.documentElement.dataset.display = 'anton'   // switch

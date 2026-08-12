@@ -77,9 +77,12 @@ src/
 
 ## Current state
 
-Scaffold only. No design, no fonts, no colors, no layout, no copy. Every page
-renders a single heading. Design tokens land in `src/index.css` after
-`hallmark study` runs on the reference sites.
+See [STATUS.md](STATUS.md) for where the build actually is, and
+[design.md](design.md) for the design system every page defers to.
 
-Five values are still placeholders and render as visible brackets on the page —
-run `npm run pending` to see them.
+In short: the scaffold is done, the type and colour system is wired, and Únete
+al Parque is built in both languages. Home, Vendors, Events and Contact are
+still single headings.
+
+Anything Ray has not confirmed renders as visible brackets on the page. Run
+`npm run pending` for the list.

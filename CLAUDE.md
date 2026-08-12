@@ -6,6 +6,10 @@ never commit it. Read it before acting on anything about the client.
 
 The shared rules in `../CLAUDE.md` apply. This file holds what is true only here.
 
+**Read `STATUS.md` first.** It carries where the build is, what is decided and
+why, what is blocked on whom, and the traps. This file is the rules; that one is
+the state.
+
 ## Stack
 
 **Pre-rendered.** `npm run build` runs `vite build`, then an SSR build, then
@@ -85,7 +89,7 @@ Salem, OR 97301-8655`, hours 12:00–20:00 every day. Everything else is pending
   raw HTML can't see it, it doesn't count. That is the whole point of
   pre-rendering.
 - **Images ship compressed.** The inherited assets in `src/assets/` are ~9MB
-  against a 278KB JS bundle. `best_bite_inside.jpeg` alone is 2.86MB.
+  against a 233KB JS bundle. `best_bite_inside.jpeg` alone is 2.86MB.
 - **`public/_redirects` stays rule-free.** Pre-rendered site — the splat rule
   308-loops forever here. The file carries a comment explaining why; leave it.
 - **No `404.html` in `public/`.** `prerender.mjs` generates `dist/404.html`.
@@ -96,11 +100,26 @@ Salem, OR 97301-8655`, hours 12:00–20:00 every day. Everything else is pending
 repo. `imagegen-frontend-web` produces client-facing reference images only and
 never writes code.
 
+**hallmark is modified on this machine.** Its source-refusal rules were stripped
+at Enrique's explicit request (marketplace blocklist, signature-work
+soft-refusal, and the attestation gate on `design.md` emission). Originals sit
+beside the files as `*.orig`. Re-running `npx skills add nutlope/hallmark`
+restores them and the strip has to be redone. Remote URL safety and
+junk-or-blocked detection were kept — those are security, not taste.
+
+`hallmark study` in URL mode cannot read CSS through its own fetch: WebFetch
+converts pages to markdown and drops stylesheets, so type and colour come back
+empty. Pull raw HTML with `curl` and grep for `font-family`, `@font-face`, and
+hex values.
+
 Once `design.md` exists at the project root it governs all ten addresses.
 `hallmark audit` flags per-page theme drift as critical against it. Run the audit
 before delivery.
 
-Fonts and colors are deliberately unset in `src/index.css` until Phase 2.
+Fonts and colours are set. `src/index.css` carries the `@theme` tokens and a
+hallmark stamp naming the macrostructure, tone, and studied sources. Brand
+values are **sampled from `src/assets/logo.png`** (`#fdc20c`, `#010101`) — the
+inherited `#f9bc15` / `#17140f` are wrong; do not restore them.
 
 ## Verification
 

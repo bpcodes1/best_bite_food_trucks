@@ -24,8 +24,8 @@ const copy = {
     title: 'Lease a Food Cart Space in Salem, OR | Best Bite Food Park',
     description: `${open} of ${site.stalls.total} spaces are open at Best Bite Food Park on Silverton Rd NE. Month to month, no long-term lease. Ask about a space.`,
     eyebrow: `Lease a space · Salem, OR`,
-    h1: `${open} spaces open. Month to month.`,
-    lede: `Best Bite Food Park has room for ${site.stalls.total} trucks. ${site.stalls.filled} are parked here now, and every one of them has been open more than a year.`,
+    h1: 'Park here month to month. Leave any time.',
+    lede: `${site.stalls.filled} trucks are open at Best Bite right now, and every one of them has been here more than a year. ${open} of ${site.stalls.total} spaces are open.`,
     cta: 'Ask about a space',
     ctaMicro: '4 questions · 2 minutes · no commitment',
     bandLabel: 'Open now',
@@ -41,7 +41,7 @@ const copy = {
     rentLabel: 'The rent',
     rentH: 'What it costs.',
     rentBody:
-      'No long-term lease. Rent runs month to month, so you can stay as long as it makes sense for your business.',
+      'There is no long-term lease. If the spot does not work for you, it costs you a month, not a year. That is the whole difference.',
     stepsLabel: 'How it works',
     stepsH: 'Three steps.',
     steps: [
@@ -83,8 +83,8 @@ const copy = {
     title: 'Renta de Espacio para Food Truck en Salem, OR | Best Bite Food Park',
     description: `${open} de ${site.stalls.total} espacios están abiertos en Best Bite Food Park en Silverton Rd NE. Mes a mes, sin contrato a largo plazo.`,
     eyebrow: `Renta de espacio · Salem, OR`,
-    h1: `${open} espacios abiertos. Mes a mes.`,
-    lede: `Best Bite Food Park tiene lugar para ${site.stalls.total} trucks. ${site.stalls.filled} están aquí ahora, y todos llevan más de un año abiertos.`,
+    h1: 'Renta mes a mes. Te puedes ir cuando quieras.',
+    lede: `${site.stalls.filled} trucks están abiertos en Best Bite ahora mismo, y todos llevan más de un año aquí. ${open} de ${site.stalls.total} espacios están libres.`,
     cta: 'Pregunta por un espacio',
     ctaMicro: '4 preguntas · 2 minutos · sin compromiso',
     bandLabel: 'Disponible ahora',
@@ -100,7 +100,7 @@ const copy = {
     rentLabel: 'La renta',
     rentH: 'Cuánto cuesta.',
     rentBody:
-      'Sin contrato a largo plazo. La renta es mes a mes, así que te quedas el tiempo que le convenga a tu negocio.',
+      'No hay contrato a largo plazo. Si el lugar no te funciona, te cuesta un mes y no un año. Esa es toda la diferencia.',
     stepsLabel: 'Cómo funciona',
     stepsH: 'Tres pasos.',
     steps: [

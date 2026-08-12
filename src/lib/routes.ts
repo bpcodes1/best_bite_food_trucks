@@ -24,10 +24,11 @@ export interface RouteDef {
    * What the nav and the footer call this page. Kept here rather than in the
    * header component so that adding a page stays one edit to one file.
    *
-   * These are the strings that decide whether the nav fits. `Únete al Parque`
-   * is 15 characters against `Lease a Space` at 13, and the five Spanish
-   * labels together overflow a 768px header — which is why the nav collapses
-   * below `lg` and not below `md`. See SiteHeader.
+   * These are the strings that decide whether the nav fits. The masthead
+   * gives the nav row the full page width, so the five Spanish labels
+   * (46 characters against English's 38) fit from `sm` up; below `sm` the
+   * menu collapses. A route test pins the Spanish budget at 50 characters —
+   * grow past it and the nav row needs rethinking before the label ships.
    */
   label: Record<Lang, string>
 }

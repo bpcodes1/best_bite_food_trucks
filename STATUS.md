@@ -141,10 +141,6 @@ Run `npm run pending` for the live list.
   (2026-08-12). Until then, pushes to `enrique` may or may not deploy anywhere,
   and live-host verification is impossible. Get the `*.pages.dev` URL into
   this file.
-- **Nav and footer direction.** The hallmark audit flagged the header as the
-  named "AI nav" fingerprint and the footer as adjacent to the "AI footer".
-  Rebuilding chrome touches all ten addresses, so the direction is Enrique's
-  pick — options presented 2026-08-12, answer pending.
 
 ## The vendor roster — RESOLVED 2026-08-12
 
@@ -236,19 +232,23 @@ trucks on purpose, one would crown a favourite), eyebrows cut 7 → 2, section
 padding varied, vendors teaser folded into the food band, arrows capped at two
 CTAs. The rules are now locked in design.md § Rhythm.
 
-**Still open from the audit:** the "AI nav" header and columnar footer
-(direction is Enrique's pick, all ten addresses); the same eyebrow pass on
-Únete, Events, and Contact; the lot photo `best_bite_outdoor.webp` is the
-one-line hero swap if Ray prefers the park itself over vendor trucks.
+**Chrome rebuilt the same day, Enrique's picks:** masthead nav (brand row
+scrolls away, full-width nav row sticks — which is also why the Spanish labels
+now fit from `sm` up instead of `lg`) and the statement footer (big display
+line, one dense row, NAP exact-string). Verified 375/768 ES, no overflow at
+640, all links still in the raw pre-rendered HTML.
+
+**Still open from the audit:** the eyebrow pass on Únete, Events, and Contact;
+the lot photo `best_bite_outdoor.webp` is the one-line hero swap if Ray
+prefers the park itself over vendor trucks.
 
 ## Next
 
 1. **Build Vendors** — roster is in. Apply the eyebrow cap from day one.
-2. **Rebuild the chrome** once Enrique picks the nav/footer direction.
-3. **Eyebrow pass on Únete, Events, Contact** per design.md § Rhythm.
-4. **Check the Cloudflare dashboard** — what is wired, which branch deploys,
+2. **Eyebrow pass on Únete, Events, Contact** per design.md § Rhythm.
+3. **Check the Cloudflare dashboard** — what is wired, which branch deploys,
    what the `*.pages.dev` URL is. Then `curl -I` every address on it.
-5. Confirm the Google Maps embed on Contact paints in a real browser.
+4. Confirm the Google Maps embed on Contact paints in a real browser.
 
 Before delivery, and none of it started:
 

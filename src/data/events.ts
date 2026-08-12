@@ -1,6 +1,6 @@
-import cruiseImage from '../assets/events/cruise_into_the_school_year.PNG';
-import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.PNG';
-import karaokeImage from '../assets/events/karaoke.PNG';
+import cruiseImage from '../assets/events/cruise_into_the_school_year.png';
+import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.png';
+import karaokeImage from '../assets/events/karaoke.png';
 
 export interface EventItem {
   id: string;

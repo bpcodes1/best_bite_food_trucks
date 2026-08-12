@@ -4,7 +4,7 @@ import { Button, Label, Section } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { pathFor } from '../lib/routes'
 import { fullAddress, hoursRange, site } from '../lib/site'
-import heroPark from '../assets/best_bite_outdoor.webp'
+import heroSign from '../assets/best_bite_sign.jpg'
 import karaokeFlyer from '../assets/events/karaoke.webp'
 import fotoTacos from '../assets/tacos.webp'
 import fotoPupusas from '../assets/pupusas.png'
@@ -57,7 +57,7 @@ const copy = {
     h1b: 'One lot.',
     lede: 'Tacos, pupusas, mariscos, coffee and more, with seating, parking, and room for the whole family. Noon to eight, every day of the week.',
     cta: 'See the trucks',
-    heroAlt: 'Food trucks parked at Best Bite Food Park on a clear day',
+    heroAlt: 'The Best Bite Food Park sign on Silverton Rd NE, Salem',
     scroll: 'Scroll',
     foodH: 'Come hungry.',
     foodBody: `${site.stalls.filled} independent kitchens, most of them family businesses, all of them local. One page with every truck and what it serves.`,
@@ -87,7 +87,7 @@ const copy = {
     h1b: 'Un solo lote.',
     lede: 'Tacos, pupusas, mariscos, café y más, con asientos, estacionamiento y espacio para toda la familia. De doce a ocho, todos los días.',
     cta: 'Conoce los trucks',
-    heroAlt: 'Food trucks estacionados en Best Bite Food Park en un día despejado',
+    heroAlt: 'El letrero de Best Bite Food Park en Silverton Rd NE, Salem',
     scroll: 'Desliza',
     foodH: 'Ven con hambre.',
     foodBody: `${site.stalls.filled} cocinas independientes, casi todas negocios de familia, todas de aquí. Una página con cada truck y lo que vende.`,
@@ -137,14 +137,14 @@ export function Home() {
           empty photo. That is the move the Sunbeam reference makes.
 
           The drone footage Ray is sourcing drops straight in here: swap the
-          <img> for a <video autoplay muted loop playsinline poster={heroPark}>
+          <img> for a <video autoplay muted loop playsinline poster={heroSign}>
           and nothing else on the page changes. */}
       <section className="relative flex min-h-[calc(100svh-var(--header-h))] flex-col justify-between overflow-hidden bg-night px-5 py-9 text-paper sm:px-8 sm:py-12">
         <img
-          src={heroPark}
+          src={heroSign}
           alt={t.heroAlt}
           fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_38%]"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_50%]"
         />
         {/* Scrim, heavier at the left where the type sits, so the sunlit right
             half of the photograph still reads as a bright daytime park. */}

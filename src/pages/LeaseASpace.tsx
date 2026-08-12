@@ -38,8 +38,8 @@ const copy = {
     address: 'Address',
     includedLabel: 'What you get',
     includedH: 'What comes with a space.',
-    rentLabel: 'The rent',
-    rentH: 'What it costs.',
+    rentLabel: 'The terms',
+    rentH: 'How the rent works.',
     rentBody:
       'There is no long-term lease. If the spot does not work for you, it costs you a month, not a year. That is the whole difference.',
     stepsLabel: 'How it works',
@@ -64,9 +64,12 @@ const copy = {
         q: 'How many spaces are open?',
         a: `${open} of ${site.stalls.total}.`,
       },
-      { q: 'What does it cost?', a: pending('rent amount, ask Ray') },
-      { q: 'How big is a space?', a: pending('stall dimensions, ask Ray') },
-      { q: 'Is power and water included?', a: pending('utilities, ask Ray') },
+      {
+        q: 'What does it cost?',
+        a: 'Ask through the form below and we will give you the rent for the space that is open.',
+      },
+      { q: 'How big is a space?', a: pending('stall size') },
+      { q: 'Is power and water included?', a: pending('utilities') },
     ],
     formLabel: 'Ask about a space',
     formH: 'Four questions.',
@@ -76,8 +79,9 @@ const copy = {
     notesL: 'Anything else',
     notesPh: 'When you want to start, size of your truck, questions',
     submit: 'Send',
-    reassure: `No commitment, and nothing to sign. We reply within ${pending('response time, ask Ray')}.`,
+    reassure: `No commitment, and nothing to sign. We reply within ${pending('reply time')}.`,
     escape: 'Or message us on Instagram',
+    includedPending: pending('what is included'),
   },
   es: {
     title: 'Renta de Espacio para Food Truck en Salem, OR | Best Bite Food Park',
@@ -97,8 +101,8 @@ const copy = {
     address: 'Dirección',
     includedLabel: 'Qué recibes',
     includedH: 'Qué incluye un espacio.',
-    rentLabel: 'La renta',
-    rentH: 'Cuánto cuesta.',
+    rentLabel: 'Las condiciones',
+    rentH: 'Cómo funciona la renta.',
     rentBody:
       'No hay contrato a largo plazo. Si el lugar no te funciona, te cuesta un mes y no un año. Esa es toda la diferencia.',
     stepsLabel: 'Cómo funciona',
@@ -127,9 +131,12 @@ const copy = {
         q: '¿Cuántos espacios hay disponibles?',
         a: `${open} de ${site.stalls.total}.`,
       },
-      { q: '¿Cuánto cuesta?', a: pending('renta, preguntar a Ray') },
-      { q: '¿De qué tamaño es un espacio?', a: pending('medidas del espacio, preguntar a Ray') },
-      { q: '¿Incluye luz y agua?', a: pending('servicios, preguntar a Ray') },
+      {
+        q: '¿Cuánto cuesta?',
+        a: 'Pregunta por el formulario de abajo y te decimos la renta del espacio disponible.',
+      },
+      { q: '¿De qué tamaño es un espacio?', a: pending('medidas del espacio') },
+      { q: '¿Incluye luz y agua?', a: pending('servicios') },
     ],
     formLabel: 'Pregunta por un espacio',
     formH: 'Cuatro preguntas.',
@@ -139,8 +146,9 @@ const copy = {
     notesL: 'Algo más',
     notesPh: 'Cuándo quieres empezar, tamaño de tu truck, preguntas',
     submit: 'Enviar',
-    reassure: `Sin compromiso y sin nada que firmar. Respondemos en ${pending('tiempo de respuesta, preguntar a Ray')}.`,
+    reassure: `Sin compromiso y sin nada que firmar. Respondemos en ${pending('tiempo de respuesta')}.`,
     escape: 'O escríbenos por Instagram',
+    includedPending: pending('qué incluye'),
   },
 } as const
 
@@ -249,7 +257,7 @@ export function LeaseASpace() {
             <Label>{t.includedLabel}</Label>
             <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.includedH}</h2>
             <div className="mt-6 flex flex-wrap gap-2">
-              <Chip>{pending('what is included, ask Ray')}</Chip>
+              <Chip>{t.includedPending}</Chip>
             </div>
           </div>
         </div>

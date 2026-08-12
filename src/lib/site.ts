@@ -42,13 +42,13 @@ export const site = {
     openEveryDay: true,
   },
 
-  phone: pending('site phone — ask Ray'),
-  email: pending('site email — ask Ray'),
+  phone: pending('teléfono'),
+  email: pending('correo'),
 
   social: {
-    instagram: pending('Instagram handle — active, ~1k followers'),
-    facebook: pending('Facebook URL'),
-    tiktok: pending('TikTok handle'),
+    instagram: pending('Instagram'),
+    facebook: pending('Facebook'),
+    tiktok: pending('TikTok'),
   },
 
   stalls: {

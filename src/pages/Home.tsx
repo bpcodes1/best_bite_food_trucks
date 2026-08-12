@@ -10,6 +10,7 @@ import karaokeFlyer from '../assets/events/karaoke.webp'
 import cruiseFlyer from '../assets/events/back_to_school_cruise.webp'
 import schoolFlyer from '../assets/events/cruise_into_the_school_year.png'
 import { FanGallery } from '../components/FanGallery'
+import { EventCard } from '../components/EventCard'
 import fotoTacos from '../assets/tacos.webp'
 import fotoBurrito from '../assets/tacos_burrito.webp'
 import fotoPupusas from '../assets/pupusas.webp'
@@ -99,17 +100,27 @@ const copy = {
     flyers: {
       karaoke: {
         title: 'Karaoke y música',
+        tags: ['Music', 'Family'],
+        description:
+          'The park invites you every Sunday: family atmosphere, good food, good music. Come sing and dance with us.',
         when: 'Every Sunday',
+        where: 'Best Bite Food Park',
         alt: 'Flyer for karaoke Sundays at Best Bite Food Park',
       },
       cruise: {
         title: 'Back to School Cruise',
+        tags: ['Cars', 'Sunday'],
+        description: 'Meet up, cruise, and cruise back in for dinner at the park.',
         when: pending('Back to School Cruise date'),
+        where: 'Lancaster Dr · Best Bite Food Park',
         alt: 'Flyer for the Back to School Cruise at Best Bite Food Park',
       },
       school: {
         title: 'Cruise Into the School Year',
+        tags: ['Lowriders', 'Family', 'Community'],
+        description: 'Lowriders, food, family, community, all in the lot.',
         when: pending('Cruise Into the School Year date'),
+        where: 'Best Bite Food Park',
         alt: 'Flyer for Cruise Into the School Year at Best Bite Food Park',
       },
     },
@@ -150,17 +161,27 @@ const copy = {
     flyers: {
       karaoke: {
         title: 'Karaoke y música',
+        tags: ['Música', 'Familiar'],
+        description:
+          'El parque te invita todos los domingos: ambiente familiar, buena comida y buena música. Ven a cantar y bailar con nosotros.',
         when: 'Todos los domingos',
+        where: 'Best Bite Food Park',
         alt: 'Volante del karaoke de los domingos en Best Bite Food Park',
       },
       cruise: {
         title: 'Back to School Cruise',
+        tags: ['Autos', 'Domingo'],
+        description: 'Nos reunimos, damos el crucero y regresamos al parque a cenar.',
         when: pending('fecha del Back to School Cruise'),
+        where: 'Lancaster Dr · Best Bite Food Park',
         alt: 'Volante del Back to School Cruise en Best Bite Food Park',
       },
       school: {
         title: 'Cruise Into the School Year',
+        tags: ['Lowriders', 'Familia', 'Comunidad'],
+        description: 'Lowriders, comida, familia y comunidad, todo en el lote.',
         when: pending('fecha del Cruise Into the School Year'),
+        where: 'Best Bite Food Park',
         alt: 'Volante de Cruise Into the School Year en Best Bite Food Park',
       },
     },
@@ -319,25 +340,23 @@ export function Home() {
             </div>
           </div>
 
-          <ul className="mt-12 grid gap-6 sm:grid-cols-3">
-            {flyers.map((f) => (
-              <li
-                key={f.key}
-                className="border-2 border-dashed border-ink/25 bg-paper/60 p-3 sm:p-4"
-              >
-                <img
-                  src={f.img}
-                  alt={t.flyers[f.key].alt}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-square w-full object-cover"
-                />
-                <p className="mt-3 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">
-                  {t.flyers[f.key].when}
-                </p>
-                <p className="mt-1.5 text-lg leading-snug uppercase">{t.flyers[f.key].title}</p>
-              </li>
-            ))}
+          <ul className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
+            {flyers.map((f) => {
+              const e = t.flyers[f.key]
+              return (
+                <li key={f.key} className="min-w-0">
+                  <EventCard
+                    image={f.img}
+                    imageAlt={e.alt}
+                    title={e.title}
+                    tags={e.tags}
+                    description={e.description}
+                    when={e.when}
+                    where={e.where}
+                  />
+                </li>
+              )
+            })}
           </ul>
         </div>
       </section>

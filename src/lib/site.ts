@@ -76,12 +76,29 @@ export function fullAddress(): string {
 }
 
 /**
- * The hours range, assembled once for the same reason the address is.
+ * The hours range as a reader sees it: `12:00pm - 8:00pm`.
  *
- * The Square site printed 10:00-9:00 on a flyer graphic and 12:00-8:00 in its
- * hours block, on the same homepage. Two components each typing their own
- * version is exactly how that happens, and Google reads the contradiction.
+ * Assembled once for the same reason the address is. The Square site printed
+ * 10:00-9:00 on a flyer graphic and 12:00-8:00 in its hours block on the same
+ * homepage; two components each typing their own version is exactly how that
+ * happens, and Google reads the contradiction.
+ *
+ * DERIVED, never hand-written. `site.hours` keeps the 24-hour values because
+ * schema.org's openingHoursSpecification requires them in that form — see
+ * `LocalBusinessJsonLd`. Only the display format is twelve-hour, so the page
+ * and the structured data can never disagree about when the park is open.
+ *
+ * Both languages get the same string. `pm` is read the same way by a
+ * Spanish-dominant reader in Salem, and inventing a second format is one more
+ * thing that can drift.
  */
+function twelveHour(time: string): string {
+  const [h, m] = time.split(':').map(Number)
+  const suffix = h >= 12 ? 'pm' : 'am'
+  const hour = h % 12 === 0 ? 12 : h % 12
+  return `${hour}:${String(m).padStart(2, '0')}${suffix}`
+}
+
 export function hoursRange(): string {
-  return `${site.hours.open} - ${site.hours.close}`
+  return `${twelveHour(site.hours.open)} - ${twelveHour(site.hours.close)}`
 }

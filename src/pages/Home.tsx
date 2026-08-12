@@ -65,11 +65,22 @@ const dishes = [
 
 /* The three flyers are the park's own marketing, confirmed real by Enrique
    2026-08-12. Dates that a flyer does not state stay bracketed — see the
-   Events page, which owns the full list. */
+   Events page, which owns the full list.
+
+   `fit` is per flyer because it depends on the art, not on the layout. See the
+   note in EventCard: a flyer fills its square unless something that matters
+   sits close enough to an edge to be cropped away.
+
+   The school-year flyer is the exception, and only until Ray's replacement
+   arrives. The file we have is not the full poster — Enrique flagged it
+   2026-08-12 and there is a scrollbar baked into its right edge, so it is a
+   partial screen capture rather than the artwork. Filling the square would
+   also cut through the Best Bite mark in its top-left corner. It letterboxes
+   until the real file lands; then delete the `fit` and it matches the others. */
 const flyers = [
-  { key: 'karaoke', img: karaokeFlyer },
-  { key: 'cruise', img: cruiseFlyer },
-  { key: 'school', img: schoolFlyer },
+  { key: 'karaoke', img: karaokeFlyer, fit: 'fill' },
+  { key: 'cruise', img: cruiseFlyer, fit: 'fill' },
+  { key: 'school', img: schoolFlyer, fit: 'whole' },
 ] as const
 
 const copy = {
@@ -353,6 +364,7 @@ export function Home() {
                     description={e.description}
                     when={e.when}
                     where={e.where}
+                    fit={f.fit}
                   />
                 </li>
               )

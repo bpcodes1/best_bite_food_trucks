@@ -64,6 +64,14 @@ export interface EventCardProps {
   /** Renders a visible bracket until a real date exists. */
   when: string
   where: string
+  /**
+   * How the flyer meets its square.
+   *
+   * `fill` (default) crops to the square edge so no ground shows through.
+   * `whole` letterboxes the flyer inside the square instead, leaving a paper
+   * margin. See the note on the element below before choosing `whole`.
+   */
+  fit?: 'fill' | 'whole'
 }
 
 export function EventCard({
@@ -74,25 +82,35 @@ export function EventCard({
   description,
   when,
   where,
+  fit = 'fill',
 }: EventCardProps) {
   return (
     <article className="flex min-w-0 flex-col">
-      {/* WHOLE FLYER, NEVER CROPPED. These are posters: every one carries
-          words, and `object-cover` cut them off. The three run from 0.97 to
-          1.24 in aspect, so no single crop box can hold all of them — hence
-          `object-contain` in a square mat, which letterboxes instead of
-          cutting. The paper ground and the padding make that gap read as a
-          mount around a pinned-up flyer rather than as a mistake.
+      {/* THE FLYER FILLS ITS SQUARE. Enrique's call 2026-08-12: the paper
+          margin left by letterboxing read as a white background, and he wants
+          the art to meet the edge.
 
-          A future flyer of any shape will also fit. Do not "tidy" this back
-          to object-cover. */}
-      <div className="rounded-sm border border-rule bg-paper p-2.5 sm:p-3">
+          This replaced `object-contain`, which was itself a fix for
+          `object-cover` cutting words off the posters that morning. The
+          reconciliation is that cropping is safe HERE, on THESE flyers,
+          because both were measured first — Back to School is 3% off square
+          and loses a sliver of sky; karaoke is 18.5% wide and loses about 8%
+          a side, which clears "TODOS LOS DOMINGOS" and costs only a
+          decorative starburst.
+
+          That is the rule, and it is a measurement, not a preference: BEFORE
+          adding a flyer, check its aspect and check what sits near the edge it
+          will lose. `sharp` reports the aspect; open the image and look at the
+          margins. A flyer whose words run close to the frame gets `whole`
+          instead, which letterboxes it — one odd poster is not a reason to
+          put the margin back on the two that do not need it. */}
+      <div className="overflow-hidden rounded-sm border border-rule bg-paper">
         <img
           src={image}
           alt={imageAlt}
           loading="lazy"
           decoding="async"
-          className="aspect-square w-full object-contain"
+          className={`aspect-square w-full ${fit === 'fill' ? 'object-cover' : 'object-contain p-2.5 sm:p-3'}`}
         />
       </div>
 

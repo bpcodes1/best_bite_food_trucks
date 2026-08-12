@@ -77,13 +77,24 @@ export function EventCard({
 }: EventCardProps) {
   return (
     <article className="flex min-w-0 flex-col">
-      <img
-        src={image}
-        alt={imageAlt}
-        loading="lazy"
-        decoding="async"
-        className="aspect-[4/3] w-full rounded-sm object-cover"
-      />
+      {/* WHOLE FLYER, NEVER CROPPED. These are posters: every one carries
+          words, and `object-cover` cut them off. The three run from 0.97 to
+          1.24 in aspect, so no single crop box can hold all of them — hence
+          `object-contain` in a square mat, which letterboxes instead of
+          cutting. The paper ground and the padding make that gap read as a
+          mount around a pinned-up flyer rather than as a mistake.
+
+          A future flyer of any shape will also fit. Do not "tidy" this back
+          to object-cover. */}
+      <div className="rounded-sm border border-rule bg-paper p-2.5 sm:p-3">
+        <img
+          src={image}
+          alt={imageAlt}
+          loading="lazy"
+          decoding="async"
+          className="aspect-square w-full object-contain"
+        />
+      </div>
 
       <h3 className="mt-5 text-xl leading-[1.1] uppercase sm:text-2xl">{title}</h3>
 

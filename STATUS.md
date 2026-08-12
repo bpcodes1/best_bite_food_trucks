@@ -22,14 +22,16 @@ behind.
 
 ### START HERE NEXT SESSION
 
-1. **Ask Enrique what the remaining Home changes are.** He said on
-   2026-08-12 that he wants "more Home changes" plus the other pages built, but
-   the session ended before he listed them. **Do not guess and do not start
-   redesigning Home on your own read of it** — three of the four rejected
-   passes were caused by acting on my interpretation instead of his words. Ask,
-   then build.
-2. **Build Vendors.** Everything it needs is in the repo.
-3. **Bring Únete, Events and Contact up to Home's standard.**
+1. **Build Vendors.** Everything it needs is in the repo. This is the only
+   unbuilt page and the last thing between us and a complete site.
+2. **Bring Únete, Events and Contact up to Home's standard** — the eyebrow cap,
+   the lighter grounds, the new card voice.
+
+Home is **done for now**. Enrique's last outstanding item on it — the event
+flyers being cropped — was fixed 2026-08-12: they render `object-contain` in a
+square mat so no poster ever loses its words. Ask before redesigning any part
+of Home; do not act on your own read of it. Three of the four rejected hero
+passes came from doing exactly that.
 
 ## Built and verified
 

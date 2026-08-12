@@ -203,7 +203,12 @@ export function LeaseASpace() {
         </div>
       </section>
 
-      {/* Night section. Dark carries the photography — never the vendor logos. */}
+      {/* The one dark section on this page. Dark is rationed to two surfaces
+          per page (design.md § Rhythm, amended 2026-08-12) and the footer is
+          the other one, so nothing else here may go night. The old "dark
+          carries the food photography" reasoning is retired; this section is
+          dark for contrast against the yellow band above it, and it holds park
+          photography rather than vendor logos, which need a light ground. */}
       <Section ground="night" className="py-14 sm:py-20">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
           <div className="min-w-0">

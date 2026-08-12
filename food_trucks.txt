@@ -1,12 +1,18 @@
 # The definitive vendor roster — from Enrique, 2026-08-12.
 # Anyone not on this list does not appear on the site.
+#
+# Names updated 2026-08-12 to match src/lib/vendors.ts, which is what actually
+# renders. Two changes, both Enrique's calls: "El Patron Tortilleria" became
+# "Tortilleria El Patrón" (Bryan's word order, kept after checking the logo),
+# and names now carry the accents the vendor's own logo carries. Taqueria
+# Romero and Que Rollon Sushi stay unaccented because their logos are.
 
 Pupusas Chileros
-Cafe Chula
+Café Chula
 Las Jarochitas
 Las Cuatas Lokas
 Nieve Casera
 Taqueria Romero
 The Red Marino
 Que Rollon Sushi
-El Patron Tortilleria
+Tortilleria El Patrón

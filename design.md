@@ -115,6 +115,20 @@ and encouraged — Kraken's hero image runs off the right edge with no margin.
 
 Deliberate voids are part of the composition, not wasted space.
 
+**Dark is a section, never the ground.** Alternate warm-cream sections with
+near-black ones rather than choosing one for the whole page. The rule for which
+goes where is not arbitrary:
+
+- **Cream sections carry the vendor logos.** Most arrive on white grounds, and
+  white-on-dark is a box that cannot be removed.
+- **Dark sections carry the food and park photography.** Warm plated food and
+  golden-hour park shots gain contrast and appetite against near-black.
+
+That reconciliation came from the Kado reference (Dribbble, 2026-08-11) and it
+is the only thing taken from it. Its pastel gradient sections break the
+no-third-colour rule, and its testimonials are placeholder text repeated three
+times under one invented name.
+
 ## Components
 
 **Cards** — The Atlantic's system. Must stay scannable at twelve vendor cards

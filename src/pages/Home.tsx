@@ -5,7 +5,6 @@ import { useLang } from '../lib/useLang'
 import { pathFor } from '../lib/routes'
 import { fullAddress, hoursRange, site } from '../lib/site'
 import truckChula from '../assets/food_trucks/cafe_chula_truck.jpg'
-import truckPatron from '../assets/food_trucks/tortilleria_el_patron_truck.jpg'
 import karaokeFlyer from '../assets/events/karaoke.webp'
 import fotoTacos from '../assets/tacos.webp'
 import fotoPupusas from '../assets/pupusas.png'
@@ -59,7 +58,6 @@ const copy = {
     lede: 'Tacos, pupusas, mariscos, coffee and more, with seating, parking, and room for the whole family. Noon to eight, every day of the week.',
     cta: 'See the trucks',
     heroAlt1: 'Café Chula, the coffee truck at Best Bite Food Park',
-    heroAlt2: 'Tortillería El Patrón at Best Bite Food Park',
     foodH: 'Come hungry.',
     foodBody: `${site.stalls.filled} independent kitchens, most of them family businesses, all of them local. One page with every truck and what it serves.`,
     foodCta: 'Meet the vendors',
@@ -89,7 +87,6 @@ const copy = {
     lede: 'Tacos, pupusas, mariscos, café y más, con asientos, estacionamiento y espacio para toda la familia. De doce a ocho, todos los días.',
     cta: 'Conoce los trucks',
     heroAlt1: 'Café Chula, el truck de café en Best Bite Food Park',
-    heroAlt2: 'Tortillería El Patrón en Best Bite Food Park',
     foodH: 'Ven con hambre.',
     foodBody: `${site.stalls.filled} cocinas independientes, casi todas negocios de familia, todas de aquí. Una página con cada truck y lo que vende.`,
     foodCta: 'Conoce a los vendedores',
@@ -127,7 +124,7 @@ export function Home() {
           is biased upward, toward the trucks, away from the empty foreground. */}
       <section className="bg-paper text-ink">
         <div className="grid lg:grid-cols-[minmax(0,11fr)_minmax(0,9fr)]">
-          <div className="px-5 pt-14 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:flex lg:flex-col lg:justify-center lg:py-24 lg:pr-14 lg:pl-[max(2rem,calc((100vw-72rem)/2))]">
+          <div className="px-5 pt-14 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:py-20 lg:pr-14 lg:pl-[max(2rem,calc((100vw-72rem)/2))]">
             <Label>{t.eyebrow}</Label>
             <h1 className="mt-5 text-[2.6rem] leading-[0.95] uppercase sm:text-5xl lg:text-6xl">
               {t.h1a}
@@ -144,21 +141,24 @@ export function Home() {
               </p>
             </div>
           </div>
-          {/* Two vendor trucks, stacked — plural on purpose. One truck would
-              crown a favourite; two say "kitchens", and both are on the
-              confirmed roster. The lot photo (best_bite_outdoor.webp) is the
-              one-line swap if Ray prefers the park itself here. */}
-          <div className="flex flex-col gap-1 lg:h-full">
+          {/* THE TYPE SETS THE HEIGHT; THE PHOTOGRAPH FILLS WHAT IS LEFT.
+              design.md § Rhythm. The absolute positioning is what enforces
+              it — an in-flow <img> reports its own aspect ratio and drives
+              the grid row taller than the viewport, which is exactly the bug
+              this replaced (1044px hero against a 900px fold, plus a 387px
+              void where the type got centred inside it).
+
+              One photograph, not two. Two stacked doubled the height and
+              turned the hero back into two slabs. Café Chula is the
+              strongest single frame we have: in focus, sunlit, unmistakably
+              a food truck. `best_bite_outdoor.webp` (the lot, several trucks)
+              is the one-line swap if Ray would rather lead with the park. */}
+          <div className="relative aspect-[2/1] sm:aspect-[5/2] lg:aspect-auto">
             <img
               src={truckChula}
               alt={t.heroAlt1}
               fetchPriority="high"
-              className="aspect-[2.2/1] w-full object-cover object-[50%_35%] lg:aspect-auto lg:h-1/2 lg:min-h-0"
-            />
-            <img
-              src={truckPatron}
-              alt={t.heroAlt2}
-              className="aspect-[2.2/1] w-full object-cover object-[50%_55%] lg:aspect-auto lg:h-1/2 lg:min-h-0"
+              className="absolute inset-0 h-full w-full object-cover object-[50%_42%]"
             />
           </div>
         </div>

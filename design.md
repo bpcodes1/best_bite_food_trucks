@@ -115,7 +115,31 @@ every section is the templated tell.
 **Left-biased with asymmetric spans.** Not centred. Full-bleed edges are allowed
 and encouraged — Kraken's hero image runs off the right edge with no margin.
 
-Deliberate voids are part of the composition, not wasted space.
+Deliberate voids are part of the composition, not wasted space. **A void is
+composed only if something placed it there.** Space produced by one column
+being taller than another is an accident wearing the same clothes. See the
+hero rule below.
+
+**The type sets the height. The photograph fills what is left.** This is the
+rule two Home heroes were rejected for breaking, and it is not negotiable.
+
+- An in-flow `<img>` reports its own aspect ratio and drives the row it sits
+  in. Put the photograph in a `relative` cell with `absolute inset-0 h-full
+w-full object-cover` so it contributes **zero** height, and let the text
+  column's padding and content set the row.
+- Percentage heights (`h-1/2`, `h-full`) on an image inside an auto-height
+  parent silently do nothing — the browser falls back to the intrinsic ratio.
+  That single mistake produced a 1044px hero against a 900px fold and a 387px
+  void above the headline. Measure `getBoundingClientRect().height`; never
+  assume the rule applied.
+- **A hero must fit the fold.** Ceiling: ~620px at desktop, and the section
+  after it must be visibly starting. A hero taller than the viewport reads as
+  a broken page, not a generous one, because the reader lands on a sliced
+  photograph. This is the opposite failure from the banned `min-height: 100vh`
+  centred hero, and it is just as bad.
+- One photograph in a hero, not a stack. Two stacked images double the height
+  and turn an interlock back into slabs, which is the "half hero, half image"
+  complaint by another route.
 
 **Mono eyebrows are capped at two per page** (added 2026-08-12, from the
 hallmark audit of Home). The label role exists for data — chips, specs, hours,

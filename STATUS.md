@@ -56,6 +56,9 @@ hreflang pairs on every page, no horizontal overflow at 375 in Spanish.
 Screenshots in `qa-screenshots/` (git-ignored), refreshed at the end of the
 session: Home at 375/768 ES and 1540 EN, Únete and Contact at 768 ES.
 
+**Nothing has ever been deployed.** Every "verified" line above means verified
+locally. No live host exists to check against.
+
 **Not verified: the Google Maps embed on Contact.** It renders as an empty box
 in headless screenshots. Almost certainly a headless quirk — confirm in a real
 browser before any client review.
@@ -142,10 +145,9 @@ Nothing new as of 2026-08-12. Placeholders render as visible brackets; run
 
 ## Blocked on Enrique
 
-- **Cloudflare wiring is still unknown** (not checked as of 2026-08-12). Until
-  someone opens the dashboard, pushes to `enrique` may or may not deploy
-  anywhere and no live-host verification is possible. Find: which project
-  exists, which branch is production, and the `*.pages.dev` URL. Put it here.
+- **Create the Cloudflare Pages project.** Nothing exists yet — see the section
+  below for the order and the two traps. Until it exists, Ray cannot look at
+  the site on his own phone, which the approve-before-build flow depends on.
 - **Text Ray the descope offer**, get his yes, send the two-line written recap.
   Bryan already agreed to Option A. Open since 2026-08-10, and the whole site
   is now built past it.
@@ -167,6 +169,42 @@ Sushi, El Patron Tortilleria.
 `el_chilango.jpg` was deleted per his instruction. Adan's Grill, Syrian House
 and La Flauta PDX are out. Per-vendor cuisine, hours and blurbs are still
 missing (the context says Bryan pulled hours; they are not in the repo).
+
+## Deployment: nothing exists yet
+
+Enrique checked the dashboard 2026-08-12 — **there is no Cloudflare project for
+Best Bite.** Pushing to `enrique` moves code to GitHub and stops there. The
+shared rule in `../CLAUDE.md` that every push is a production deploy is not
+true here yet, so do not claim a change is live and do not try to `curl` a
+host that does not exist.
+
+Setting it up is worth doing before the domain arrives, because Ray cannot
+review a site that only runs on Enrique's laptop, and approve-before-build is
+the promise in the offer.
+
+**Do these in order. Steps 1 and 2 are the traps.**
+
+1. **Point `site.origin` at the `*.pages.dev` URL before the first deploy.**
+   It is `http://localhost:5173` today, so a deploy right now would publish ten
+   pages whose canonical, hreflang, OG and JSON-LD URLs all point at
+   `localhost`. One edit in `src/lib/site.ts`; swap it again at domain cutover.
+2. **Block crawling at the Cloudflare account level, not in `public/`.** The
+   preview will carry visible `[PENDIENTE]` brackets and draft copy, and it
+   must not be indexed. An `X-Robots-Tag: noindex` in `public/_headers` ships
+   with the build and would de-index the real site on launch day — that is a
+   named rule in `../CLAUDE.md` and it has burned a project before.
+3. Create the Pages project, connect it to `bpcodes1/best_bite_food_trucks`,
+   build command `npm run build`, output directory `dist`.
+4. **Set the production branch to `enrique`.** If it defaults to `main` the
+   published site is Bryan's unrelated build and none of our work appears.
+5. Set any environment variables for **both** Production and Preview. Setting
+   only one is a silent failure.
+6. After the first deploy, confirm `dist/` produced 11 HTML files and then
+   `curl -I` all ten addresses on the live host. Never verify routing with
+   `npm run preview`.
+7. At domain cutover, add an account-level redirect from `<project>.pages.dev`
+   to the real domain. The `pages.dev` URL never goes away on its own and will
+   otherwise sit there as an indexable duplicate of the whole site, forever.
 
 ## Traps a new session will fall into
 

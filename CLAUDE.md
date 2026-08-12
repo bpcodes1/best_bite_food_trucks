@@ -24,9 +24,16 @@ No head-tag library. React 19 hoists `<title>`, `<meta>`, and `<link>` natively
 and emits them at the front of the SSR string, which `prerender.mjs` splits off.
 Adding react-helmet-async back would be dead weight — it was tried and removed.
 
-Preview host is Cloudflare Pages (`*.pages.dev`). Production is a domain not yet
-purchased. `base` is `/` — only a GitHub Pages _project_ site would need a
-subpath.
+**Nothing is deployed anywhere.** Enrique checked the Cloudflare dashboard on
+2026-08-12: there is no project for Best Bite. Pushing to `enrique` moves code
+to GitHub and nothing else — the shared rule in `../CLAUDE.md` that "every push
+is a production deploy" is **not** true on this project yet. Do not tell anyone
+a change is live, and do not `curl` a live host that does not exist.
+
+Intended host is still Cloudflare Pages; production is a domain not yet
+purchased. See `STATUS.md` § "Deployment: nothing exists yet" for the setup
+order, which has two traps in it. `base` is `/` — only a GitHub Pages _project_
+site would need a subpath.
 
 ## The site is bilingual, and that changes the rules
 

@@ -9,11 +9,11 @@ Amend it deliberately. Do not work around it on one page.
 
 Extracted 2026-08-11 via `hallmark study`.
 
-| Source | Mode | What we took | What we rejected |
-| --- | --- | --- | --- |
-| theatlantic.com | URL | Card system at scale (48 articles, 69 h3, still scannable), type-carried hierarchy, one saturated accent on near-neutral paper, zero hover-scale in 108KB of CSS | Eight font families. News-index density. |
-| krakenindustries.co | Image | Three-step flow, form philosophy, accent at flood footprint, varied section rhythm, rail-as-progress | Dark ground. Wizard pattern. Configurator logic. |
-| block40foodhall.com/kiosk-opportunities | URL | Leasing page information architecture, economics stated openly | Everything visual — it is a GoDaddy template. |
+| Source                                  | Mode  | What we took                                                                                                                                                     | What we rejected                                 |
+| --------------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| theatlantic.com                         | URL   | Card system at scale (48 articles, 69 h3, still scannable), type-carried hierarchy, one saturated accent on near-neutral paper, zero hover-scale in 108KB of CSS | Eight font families. News-index density.         |
+| krakenindustries.co                     | Image | Three-step flow, form philosophy, accent at flood footprint, varied section rhythm, rail-as-progress                                                             | Dark ground. Wizard pattern. Configurator logic. |
+| block40foodhall.com/kiosk-opportunities | URL   | Leasing page information architecture, economics stated openly                                                                                                   | Everything visual — it is a GoDaddy template.    |
 
 Neither visual source is a food business. That is deliberate. Every food park
 site audited (The Yard on Divi, Gather, Rose City, Block 40 on GoDaddy) is a
@@ -35,12 +35,12 @@ category.
 
 The structure is The Atlantic's, with Ray's brand in the accent slot:
 
-| Role | Value | Notes |
-| --- | --- | --- |
-| Paper | `#faf7f1` warm off-white | Warm, not the cool `#f7f7f7` The Atlantic uses |
-| Ink | `#1c1a17` warm near-black | Text. A typographic softening, not a brand value |
-| Brand yellow | `#fdc20c` | **Sampled from `src/assets/logo.png`** |
-| Brand black | `#010101` | **Sampled from the logo.** Used by the mark itself |
+| Role         | Value                     | Notes                                              |
+| ------------ | ------------------------- | -------------------------------------------------- |
+| Paper        | `#faf7f1` warm off-white  | Warm, not the cool `#f7f7f7` The Atlantic uses     |
+| Ink          | `#1c1a17` warm near-black | Text. A typographic softening, not a brand value   |
+| Brand yellow | `#fdc20c`                 | **Sampled from `src/assets/logo.png`**             |
+| Brand black  | `#010101`                 | **Sampled from the logo.** Used by the mark itself |
 
 The previous build shipped `#f9bc15` and `#17140f`. Both are wrong — the real
 mark is brighter and more saturated, and its black is effectively pure. Do not
@@ -61,11 +61,11 @@ imagery.
 Three families is the ceiling and we use all three. Roles and faces are both
 settled — see Chosen, below.
 
-| Role | Carries | Locked role |
-| --- | --- | --- |
-| Display | Headlines, numerals, band statements, wordmark | Heavy — weight and presence, per Kraken |
-| Body | All running copy, both languages | Humanist or neutral sans, wide language support |
-| Label | Eyebrows, chips, specs, prices, microcopy | Monospace, uppercase, letterspaced |
+| Role    | Carries                                        | Locked role                                     |
+| ------- | ---------------------------------------------- | ----------------------------------------------- |
+| Display | Headlines, numerals, band statements, wordmark | Heavy — weight and presence, per Kraken         |
+| Body    | All running copy, both languages               | Humanist or neutral sans, wide language support |
+| Label   | Eyebrows, chips, specs, prices, microcopy      | Monospace, uppercase, letterspaced              |
 
 **Monospace body is banned here**, despite Kraken doing exactly that. Monospace
 has no narrow characters, and Spanish runs 20–25% longer than English before you
@@ -81,11 +81,11 @@ underline.
 
 **Chosen 2026-08-11:**
 
-| Role | Face | Why |
-| --- | --- | --- |
+| Role    | Face              | Why                                                                                                                                                         |
+| ------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Display | **Archivo Black** | Omnibus-Type, Buenos Aires — drawn with Latin American Spanish as a first consideration. Authority without personality that competes with the vendor logos. |
-| Body | **Source Sans 3** | Humanist, wide Latin coverage, variable, comfortable at length. |
-| Label | **IBM Plex Mono** | Warmer than JetBrains Mono. Hours, prices, cuisine tags, microcopy. |
+| Body    | **Source Sans 3** | Humanist, wide Latin coverage, variable, comfortable at length.                                                                                             |
+| Label   | **IBM Plex Mono** | Warmer than JetBrains Mono. Hours, prices, cuisine tags, microcopy.                                                                                         |
 
 **Anton** is the switchable runner-up, wired in dev so the client meeting is a
 comparison rather than a description:
@@ -185,13 +185,13 @@ easings. Honour `prefers-reduced-motion`.
 
 Pages share the system. They do not share a shape.
 
-| Page | Family | Why |
-| --- | --- | --- |
-| Únete al Parque | Narrative Workflow | One audience, one action. Block 40's IA, Kraken's close. |
-| Home | **Open shape, settled strategy** | Overwhelmingly for eaters, with one honest door to Únete low on the page. Vendors reach Únete through search, not by browsing Home — which is also the fix for the recruiting-copy bleed the audit found on the Square site. Shape decided after Únete. |
-| Vendors | Catalogue / Index-First | The Atlantic's card system, twelve items |
-| Events | Index-First | Chronological. The Yard maintains theirs through Nov 2026 — that is the bar. |
-| Contact | Long Document | Short page. NAP, hours, map, the same short form. |
+| Page            | Family                           | Why                                                                                                                                                                                                                                                     |
+| --------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Únete al Parque | Narrative Workflow               | One audience, one action. Block 40's IA, Kraken's close.                                                                                                                                                                                                |
+| Home            | **Open shape, settled strategy** | Overwhelmingly for eaters, with one honest door to Únete low on the page. Vendors reach Únete through search, not by browsing Home — which is also the fix for the recruiting-copy bleed the audit found on the Square site. Shape decided after Únete. |
+| Vendors         | Catalogue / Index-First          | The Atlantic's card system, twelve items                                                                                                                                                                                                                |
+| Events          | Index-First                      | Chronological. The Yard maintains theirs through Nov 2026 — that is the bar.                                                                                                                                                                            |
+| Contact         | Long Document                    | Short page. NAP, hours, map, the same short form.                                                                                                                                                                                                       |
 
 ## Bilingual constraints
 

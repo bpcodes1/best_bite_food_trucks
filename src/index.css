@@ -1,3 +1,9 @@
+/* Hallmark · macrostructure: Narrative Workflow · tone: utilitarian · anchor hue: yellow 46
+ * theme: studied-DNA (sources: theatlantic.com URL, krakenindustries.co image)
+ * paper oklch(97% 0.012 85) #faf7f1 · accent oklch(82% 0.163 82) #fdc20c
+ * display Archivo Black · body Source Sans 3 · label IBM Plex Mono
+ * system: design.md — all ten addresses defer to it
+ */
 @import 'tailwindcss';
 
 /* Self-hosted rather than Google Fonts: no external DNS lookup and no
@@ -37,9 +43,16 @@
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   /* Surface. Light warm ground: most vendor assets are logos on white, and a
-     white logo ground on a dark card is a glaring box you cannot remove. */
+     white logo ground on a dark card is a glaring box you cannot remove.
+
+     Dark is a SECTION, never the ground. Cream carries vendor logos; night
+     carries food and park photography. See design.md § Rhythm. */
   --color-paper: #faf7f1;
   --color-ink: #1c1a17;
+  --color-muted: #6b635a;
+  --color-rule: #ded6c9;
+  --color-night: #16130f;
+  --color-night-muted: #a39a8d;
   --color-brand-yellow: #fdc20c;
   --color-brand-black: #010101;
 }
@@ -57,6 +70,12 @@
 }
 
 @layer base {
+  html,
+  body {
+    /* clip, never hidden — hidden silently breaks position: sticky */
+    overflow-x: clip;
+  }
+
   html {
     color-scheme: light;
   }

@@ -1,0 +1,274 @@
+# Design Context — Bryan Piedra / BE Tech Web Design
+
+## Purpose
+This file provides Claude with design direction for all website projects. Before
+generating any UI, layout, or styling code, read and internalize these
+preferences. All future website work should reflect these patterns unless the
+client explicitly requires otherwise.
+
+## About the Business
+Small freelance web design and development studio based in Salem, OR. We serve
+local small businesses — restaurants, contractors, service providers, barbers,
+and e-commerce clients. Our work needs to feel polished and professional while
+remaining approachable and locally relevant.
+
+## Design Preference Reference Sites (In Order of Preference)
+
+These are BE Tech's own past client builds. Their source lives locally at
+C:\be-tech\<folder>, so exact tokens (not guesses) are captured below each one.
+Analyze in this priority order — lean toward #1 and #2 as the default aesthetic.
+
+### 1. raysproduce.com — TOP REFERENCE (source: rays_produce/)
+Clean layout, local/community feel, straightforward navigation, warm and
+approachable. Wholesale food distributor.
+- **Stack:** Plain CSS (no Tailwind) — per-component .css files, CSS custom
+  properties for fonts only.
+- **Fonts:** Headings `'Arial Black', 'Arial Bold', 'Montserrat', Gadget,
+  sans-serif` (bold, blocky, confident). Body `'Nunito', 'Helvetica Neue',
+  Arial, sans-serif`.
+- **Colors:** Earthy, produce-green palette.
+  - Deep forest green (footer bg): `#1a3d0e`
+  - Primary CTA green: `#0B5017` (hover `#0a3a1a`)
+  - Nav link / heading green: `#2d5015`
+  - Body-on-green text: `#4a5a40`
+  - Accent/bright green (overline text, hover on dark): `#a8e070`
+  - Soft border green: `#c8d8bc`
+  - Footer link green: `#a8c890`
+  - White `#ffffff` for cards/nav-scrolled background
+- **Nav:** Fixed, 90px tall, transparent over hero → white with soft green
+  border once scrolled. Logo has generous transparent padding so it can be
+  drawn oversized (150px box) without visually overwhelming the bar. Solid
+  filled-green CTA button lives at the end of the nav, separate from the link
+  list. Hamburger on mobile with 44×44 tap target, converts to full-width
+  white dropdown.
+- **Hero:** Full-bleed photo hero, `min-height: 100vh` on desktop, content
+  bottom-aligned (`align-items: flex-end`) not centered. Dark-to-transparent
+  gradient overlay from the bottom (`rgba(15,40,8,0.82)` → transparent) so
+  white text stays legible without a flat scrim. Small uppercase kicker line
+  in accent green above a large (`clamp(32px,5vw,60px)`) bold white headline.
+  Two CTAs: solid green primary + outline-white secondary, small
+  (13px/600 weight) uppercase-feeling but not literally uppercase.
+- **Buttons:** Small radius (3px, almost square), 11px/22px padding,
+  600 weight, no shadow. Hover = darken background, not lift.
+- **Footer:** Dark green background, two-column grid (brand block + 4-col nav
+  grid collapsing to 2 on mobile), logo gets its own white rounded card so it
+  reads on the dark field. Bottom bar is a separate thin strip with a top
+  border, muted green copyright text.
+- **Other:** A "Se Habla Español" pill badge (green outline) appears in both
+  nav and footer — a real local-market trust/accessibility signal, not
+  decoration. Good pattern for bilingual local businesses.
+
+### 2. forgesalem.com — (source: forgesalem-website/)
+Strong local brand identity, bold but clean, good use of imagery and
+whitespace. Mixed-use event/retail venue (multiple tenant brands under one
+roof), so its nav runs 8 items — an exception to the 4-6 rule, justified by the
+site literally being a directory of sub-brands. Don't copy the item count for
+a normal single-business client; copy the visual language.
+- **Stack:** Tailwind, CSS custom properties layered on top for the brand
+  palette (`--cherry`, `--ink`, etc. defined in `index.css`, mirrored in
+  `tailwind.config.js`).
+- **Fonts:** Display/headings `'Cormorant Garamond', 'Playfair Display',
+  Georgia, serif` — light weight (300), large, editorial. Body `Inter,
+  system-ui, sans-serif`.
+- **Colors:** Dark, moody, editorial with one hot accent.
+  - Void/near-black `#161f28`, Deep `#1f2e3c`, Charcoal `#3c4b59`, Ink `#2a3540`
+  - Cherry red accent `#e10600` (Rose `#b50500` for hover/pressed)
+  - Gold/steel-blue accent `#669bbc`
+  - Warm neutrals: Paper `#f3eedf`, Cream `#fff9e3`, Forge-white `#faf5f1`
+- **Buttons:** Outlined, not filled, by default — 1px border in `--ink`,
+  uppercase-ish small label (0.62rem), heavy letter-spacing (0.2em), fills
+  solid on hover. Variants swap border/fill color (`--cherry`, `--gold`)
+  rather than changing shape. This "thin outline → fills on hover" button is a
+  distinct, reusable pattern worth offering as an alternative to solid CTAs
+  for upscale/boutique clients.
+- **Hero/section titles:** Huge, light-weight serif (`clamp(3rem,6vw,5.5rem)`
+  down to `0.95` line-height) — headline as art, not just information.
+  Italic serif pull-quotes used as a recurring editorial device.
+- **Nav:** Transitions from transparent to solid on scroll (40px threshold),
+  same idea as rays_produce but with a full-screen mobile overlay menu instead
+  of a dropdown.
+
+### 3. rhcsiteservices.com — (source: rhc_site_services/)
+Professional services aesthetic, structured layout, trust-building design.
+Portable sanitation / site equipment rental. This project has a written design
+system (design.md, name: "Refined Industrialism") — the most complete design
+spec of the six; use it as the template for how to write a design.md for new
+projects.
+- **Stack:** Tailwind + `src/rhc-design.css` as single source of visual truth.
+- **Fonts:** Headlines `Archivo Narrow` (condensed, authoritative, uppercase
+  for sub-headlines to nod at industrial signage). Body `Public Sans` (open,
+  institutional, generous x-height for readability in "field conditions").
+- **Colors:** Slate grey + burnt orange, on a warm off-white, not pure white.
+  - Surface/background: soft cream-white `#f9f9ff`
+  - Primary/structural (Slate Grey): `#1d2b3e` (container `#334155`)
+  - Secondary/accent (Burnt Orange): `#a73a00` (container `#fd651e`) — used
+    sparingly, only for critical CTAs, active states, highlights
+  - Text: charcoal `#111c2d`, never pure black
+- **Grid & spacing:** 12-column grid, 64px desktop / 20px mobile outer
+  margins, all vertical spacing a multiple of 8px, 80–120px between major
+  sections. This is the most rigorous spacing discipline of the six projects —
+  good default for "structured, trust-building" professional-services clients.
+- **Depth:** Deliberately flat — no drop shadows. Depth comes from thin 1px
+  borders at ~20% opacity and subtle background-tone shifts, not elevation.
+  Hover states shift background/border color, never "lift."
+  Buttons/inputs: soft radius (4px), feature cards get a touch more (8px).
+  Photography stays hard-cornered (0px) to read as "precise."
+- **Business-integrity rule worth generalizing:** the site's CLAUDE.md
+  forbids fabricated testimonials/stats and pins the phone number to only the
+  final CTA section — a reminder that trust signals must be real, and that
+  CTA placement is a deliberate, not incidental, decision.
+
+### 4. ccaconst.com — (source: cca_construction/)
+Construction/contractor feel, solid and dependable, minimal but effective.
+- **Stack:** Tailwind + shadcn/ui (`hsl(var(--token))` pattern), same
+  component primitives as pupusaschileros and quickstopbarbershop below.
+- **Fonts:** Display `'Playfair Display', Georgia, serif` for headings, `Inter`
+  for body — serif heading / sans body pairing, but heavier and more grounded
+  than forgesalem's light editorial serif.
+- **Colors:** Burgundy + warm neutral, dependable rather than flashy.
+  - Background/cream: `hsl(36 33% 97%)` (warm off-white, not stark white)
+  - Foreground/ink: near-black `hsl(0 0% 10%)`
+  - Primary (Burgundy): `hsl(352 55% 27%)` (dark variant `18%` lightness,
+    soft/tint variant `hsl(352 30% 96%)` for subtle backgrounds)
+- **Pattern:** Confirms the "one strong accent on a warm neutral field"
+  formula rather than a bright multi-color palette — appropriate for
+  contractor/trades clients where "solid and dependable" beats "trendy."
+
+### 5. pupusaschileros.com — (source: pupusaschileros/)
+Food/culture brand, warm colors, personality-forward, good use of photography.
+- **Stack:** Tailwind + shadcn/ui, same token pattern as cca_construction.
+- **Fonts:** Display `Playfair Display`, body `DM Sans`.
+- **Colors:** The one deliberately vibrant, multi-accent palette of the six —
+  earned by the food/culture brand personality, not a default to reach for.
+  - Primary/brand pink: `hsl(322 75% 43%)`
+  - Brand blue (secondary accent): `hsl(203 98% 71%)`
+  - Brand gold (secondary accent): `hsl(38 90% 55%)`
+  - Warm cream background tint: `hsl(30 60% 97%)`
+  - Foreground: warm near-black `hsl(20 10% 12%)`
+- **When to use this instead of an earth-tone palette:** restaurants/food
+  trucks/culture-forward brands where personality and appetite appeal matter
+  more than "trustworthy and grounded." Still keep one dominant accent (pink)
+  with gold/blue as supporting, not three competing leads.
+
+### 6. quickstopbarbershop.com — (source: quickstopbarbershop/)
+Premium local service, clean and modern, lifestyle feel.
+- **Stack:** Tailwind + shadcn/ui, same token pattern as cca_construction and
+  pupusaschileros.
+- **Fonts:** Display `Playfair Display`, body `Inter`.
+- **Colors:** Black + gold + deep red — barbershop-premium, not
+  produce-earthy.
+  - Background: pure white `hsl(0 0% 100%)`, foreground near-black `hsl(0 0% 8%)`
+  - Primary (deep red): `hsl(2 92% 39%)`
+  - Gold accent: `hsl(40 60% 50%)`
+  - Dark surface (for dark sections/footer): `hsl(0 0% 8%)`
+- **Pattern:** Confirms Playfair Display as the studio's default "premium"
+  display serif across contractor, food, and lifestyle clients alike — pair it
+  with a plainer sans (Inter/DM Sans/Public Sans) for body copy every time.
+
+## Cross-Site Patterns (confirmed across all six real builds)
+
+- **Serif display + sans body is the house pairing.** 5 of 6 sites use a serif
+  (Playfair Display, Cormorant Garamond, or Arial Black-as-display) for
+  headlines and a plain grotesk sans (Inter, DM Sans, Public Sans, Nunito) for
+  body copy. Default to this pairing unless the client's industry calls for
+  something else.
+- **One accent color, everything else neutral.** Every site has exactly one
+  or two brand accent hues (green, cherry, burnt-orange, burgundy, pink, gold)
+  laid over a warm neutral (cream/off-white), never pure white/pure black as
+  the base. Backgrounds trend warm (`hsl(*, *%, 94-97%)` range), not sterile.
+- **Buttons stay small, low-radius, no heavy shadow.** Radius is consistently
+  3px–8px (never fully rounded/pill except badges), hover states darken or
+  fill rather than lift with a shadow. This shows up identically in
+  rays_produce (3px) and rhc_site_services (4px design-token default).
+  Forgesalem's outline-then-fill button is the one stylistic variant, reserved
+  for a more boutique/editorial brand.
+  Its outline-then-fill button is the one deliberate variant — reach for it
+  only on boutique/editorial-feeling brands, not as the default.
+- **Nav: transparent-over-hero → solid-on-scroll.** rays_produce and
+  forgesalem both do this; treat it as the default nav behavior for any site
+  with a full-bleed photo hero, not just an option.
+- **Hero content is bottom- or center-anchored over a gradient-scrimmed photo,
+  never a flat color block**, when real photography is available.
+- **shadcn/ui + Tailwind + HSL CSS-variable tokens is the default component
+  stack** for 3 of 6 (cca_construction, pupusaschileros, quickstopbarbershop) —
+  prefer this over raw Tailwind classes or hand-rolled CSS for new projects
+  unless the client repo already has an established pattern (e.g.
+  rays_produce's plain-CSS approach, which is fine to continue on that repo
+  but not to start fresh with).
+
+## Design Patterns to Extract and Apply
+
+### Typography
+- Prefer clean, readable sans-serif fonts for body text
+- Use bold, confident headings — not overly decorative
+- Maintain clear hierarchy: H1 → H2 → body with consistent sizing scale
+- Avoid overly thin or light font weights for local business sites
+  (readability is key)
+
+### Color
+- Favor grounded, real-world palettes — earth tones, neutrals, with one
+  strong accent color
+- Avoid overly corporate or sterile color schemes
+- Colors should feel local and trustworthy, not trendy or tech-startup
+- Use color to guide attention, not decorate
+
+### Layout & Spacing
+- Generous whitespace — content should breathe
+- Clear section breaks between page content
+- Mobile-first always — these clients' customers are on their phones
+- Hero sections should be bold and immediate — what they do, who they are,
+  right away
+- Avoid cluttered layouts; prioritize clarity over showing everything at once
+
+### Imagery
+- Real photography over stock when possible
+- If using stock, favor lifestyle and local community feel
+- Hero images should be high quality and optimized (target under 300KB after
+  compression)
+- Images should support the brand, not just fill space
+
+### Navigation
+- Keep nav simple and minimal — 4 to 6 items max (see forgesalem.com note
+  above for the one justified exception: multi-tenant/directory sites)
+- Mobile hamburger menu expected
+- Sticky nav preferred for longer pages
+
+### Components & UI Patterns
+- Clear, prominent CTAs (call-to-action buttons) — one primary per section
+- Services displayed in clean card or grid layouts
+- Testimonials/social proof section is a must for local businesses — and must
+  be real (see rhc_site_services note: fabricated testimonials were removed
+  from a live client site; never invent one)
+- Contact section should always include phone, address (if applicable), and
+  a form or direct link
+- Footer: logo, nav links, contact info, copyright
+
+### Tone
+- Websites should feel like a real local business, not a template
+- Personality matters — avoid generic filler copy
+- Trust signals are important: years in business, local roots, photos of
+  real work
+
+## Stack Assumptions (Unless Told Otherwise)
+- React + Vite
+- Tailwind CSS (shadcn/ui + HSL CSS-variable tokens preferred for new builds —
+  see Cross-Site Patterns above)
+- Images in /src/assets/
+- Mobile-first responsive design
+
+## Instructions for Claude
+When starting any new website project:
+1. Ask for the client's industry, target audience, and any brand colors or
+   assets they have
+2. Reference the design sites above — lean toward #1 and #2 (Rays Produce and
+   Forge Salem) as the default aesthetic, but pick the closer analog by
+   industry: contractors/trades → cca_construction or rhc_site_services;
+   food/restaurant → pupusaschileros; lifestyle/personal-care →
+   quickstopbarbershop
+3. Prioritize clean layout, strong typography, and mobile responsiveness
+   above all else
+4. Always optimize images and flag any that exceed 300KB
+5. Build with real local business needs in mind — bookings, menus, service
+   lists, contact forms
+6. Never fabricate testimonials, stats, founding dates, or other factual
+   claims — confirm with the client first (see rhc_site_services precedent)

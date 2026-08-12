@@ -1,8 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Inter Variable', system-ui, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Inter Variable', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-nav: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --color-brand-yellow: #f9bc15;
   --color-brand-yellow-dark: #e0a80a;

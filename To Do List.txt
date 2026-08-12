@@ -1,0 +1,10 @@
+To Do List
+
+The Forge
+- Set up Email Notifications
+
+Cellar 54
+- Demo Payment Flow
+- Set up Twilio for Submission Form
+- Initiate Transfer of Domain
+- Restrict Google Calendar API

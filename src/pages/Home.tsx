@@ -1,5 +1,4 @@
 import { Hero } from '../components/Hero';
-import { StatusBar } from '../components/StatusBar';
 import { TrustBar } from '../components/home/TrustBar';
 import { FoodTrucksTeaser } from '../components/home/FoodTrucksTeaser';
 import { FoodsGallery } from '../components/home/FoodsGallery';
@@ -12,7 +11,6 @@ export function Home() {
   return (
     <>
       <Hero />
-      <StatusBar />
       <TrustBar />
       <FoodTrucksTeaser />
       <FoodsGallery />

@@ -30,7 +30,9 @@ export function TruckCard({ truck }: TruckCardProps) {
       </div>
       <div className="flex flex-1 flex-col gap-1 p-4">
         <h3 className="font-heading text-lg font-bold text-brand-black">{truck.name}</h3>
-        <p className="text-sm text-brand-black/70">{truck.foodType[lang]}</p>
+        <span className="inline-block w-fit rounded-full bg-brand-yellow/15 px-2.5 py-0.5 text-xs font-bold text-brand-black/80">
+          {truck.foodType[lang]}
+        </span>
         <p className="mt-auto pt-2 text-sm text-brand-black/60">{truck.hours[lang]}</p>
       </div>
     </li>

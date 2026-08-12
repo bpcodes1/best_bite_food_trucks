@@ -7,7 +7,7 @@ function TruckIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      className="h-6 w-6"
+      className="h-5 w-5"
       aria-hidden="true"
     >
       <path d="M2 8h11v8H2z" />
@@ -20,7 +20,7 @@ function TruckIcon() {
 
 function PawIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
       <ellipse cx="12" cy="16" rx="5" ry="4" />
       <circle cx="5" cy="9" r="2" />
       <circle cx="10" cy="5.5" r="2" />
@@ -37,7 +37,7 @@ function MusicIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      className="h-6 w-6"
+      className="h-5 w-5"
       aria-hidden="true"
     >
       <path d="M9 18V5l11-2v13" />
@@ -50,7 +50,7 @@ function MusicIcon() {
 function ParkingIcon() {
   return (
     <div
-      className="flex h-6 w-6 items-center justify-center rounded border-2 border-current text-xs font-bold leading-none"
+      className="flex h-5 w-5 items-center justify-center rounded border-2 border-current text-xs font-bold leading-none"
       aria-hidden="true"
     >
       P
@@ -69,13 +69,13 @@ export function TrustBar() {
   ];
 
   return (
-    <section aria-label={t.trustBar.heading} className="border-b border-brand-black/10 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-8">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:divide-x sm:divide-brand-black/10">
+    <section aria-label={t.trustBar.heading} className="border-b border-brand-black/10 bg-brand-yellow">
+      <div className="mx-auto max-w-6xl px-4 py-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:divide-x sm:divide-brand-black/10">
           {badges.map(({ key, icon: Icon, label }) => (
-            <div key={key} className="flex flex-col items-center gap-2 text-center sm:px-4">
+            <div key={key} className="flex flex-col items-center gap-1.5 text-center sm:px-4">
               <Icon />
-              <span className="text-sm font-bold text-brand-black">{label}</span>
+              <span className="text-xs font-bold text-brand-black">{label}</span>
             </div>
           ))}
         </div>

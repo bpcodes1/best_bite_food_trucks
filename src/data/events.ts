@@ -1,3 +1,7 @@
+import cruiseImage from '../assets/events/cruise_into_the_school_year.PNG';
+import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.PNG';
+import karaokeImage from '../assets/events/karaoke.PNG';
+
 export interface EventItem {
   id: string;
   name: { en: string; es: string };
@@ -5,28 +9,49 @@ export interface EventItem {
   date: string;
   time: { en: string; es: string };
   description: { en: string; es: string };
+  /**
+   * Optional photo. Drop real photos in `src/assets/` and import them here so
+   * Vite can hash and optimize them. Events without a photo yet show a
+   * placeholder in the homepage teaser cards.
+   */
+  image?: string;
 }
 
 export const events: EventItem[] = [
   {
-    id: 'salsa-night',
-    name: { en: 'Salsa Night', es: 'Noche de Salsa' },
-    date: '2026-08-08',
-    time: { en: '7pm–10pm', es: '7pm–10pm' },
+    id: 'karaoke-night',
+    name: { en: 'Karaoke Night', es: 'Noche de Karaoke' },
+    // Recurring every Sunday — date reflects the next occurrence.
+    date: '2026-08-16',
+    time: { en: '6pm–9pm, every Sunday', es: '6pm–9pm, todos los domingos' },
     description: {
-      en: 'Live band and a dance floor between the trucks.',
-      es: 'Banda en vivo y pista de baile entre los food trucks.',
+      en: 'DJ Mike PDX joins us every Sunday from 6pm–9pm. Bring family and friends for karaoke night, amazing food, and more!',
+      es: 'DJ Mike PDX nos acompaña todos los domingos de 6pm a 9pm. ¡Trae a tu familia y amigos para una noche de karaoke, comida increíble y más!',
     },
+    image: karaokeImage,
   },
   {
     id: 'cruise-into-the-school-year',
     name: { en: 'Cruise Into The School Year', es: 'Cruise Into The School Year' },
-    date: '2026-08-09',
+    date: '2026-08-16',
     time: { en: '3pm–6pm', es: '3pm–6pm' },
     description: {
-      en: 'A lowrider car show with food, family activities, and community vibes to kick off the new school year.',
-      es: 'Una exhibición de lowriders con comida, actividades familiares y buen ambiente comunitario para arrancar el nuevo año escolar.',
+      en: 'Enjoy a lowrider showcase, delicious food, local vendors, games, face painting, music by our live DJ, activities for all ages, and school supplies while they last!',
+      es: 'Disfruta de una exhibición de lowriders, comida deliciosa, vendedores locales, juegos, pintura facial, música con DJ en vivo, actividades para todas las edades, ¡y útiles escolares hasta agotar existencias!',
     },
+    image: cruiseImage,
+  },
+  {
+    id: 'back-to-school-cruise',
+    name: { en: 'Sunday Back to School Cruise', es: 'Cruise de Regreso a Clases del Domingo' },
+    // Placeholder date — real date to follow.
+    date: '2026-08-30',
+    time: { en: '3pm–6pm', es: '3pm–6pm' },
+    description: {
+      en: 'Enjoy a lowrider showcase, delicious food, local vendors, games, face painting, music by our live DJ, activities for all ages, and school supplies while they last!',
+      es: 'Disfruta de una exhibición de lowriders, comida deliciosa, vendedores locales, juegos, pintura facial, música con DJ en vivo, actividades para todas las edades, ¡y útiles escolares hasta agotar existencias!',
+    },
+    image: backToSchoolCruiseImage,
   },
   {
     id: 'trivia-tuesday',

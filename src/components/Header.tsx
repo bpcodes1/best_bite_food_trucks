@@ -13,7 +13,7 @@ const rightRoutes = secondaryRoutes.slice(splitIndex);
 
 function navLinkClassName({ isActive }: { isActive: boolean }) {
   return [
-    'rounded-md px-3 py-2 font-heading text-base font-bold transition-colors',
+    'rounded-md px-3 py-2 text-base font-bold transition-colors',
     isActive ? 'bg-brand-black text-brand-yellow' : 'text-brand-black hover:bg-brand-black/10',
   ].join(' ');
 }
@@ -23,7 +23,7 @@ export function Header() {
   const { t } = useLanguage();
 
   return (
-    <header className="bg-brand-yellow">
+    <header className="h-20 font-nav bg-brand-yellow">
       <nav aria-label="Primary">
         <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-6 px-4 py-3">
           <div className="col-start-1 flex items-center gap-3 justify-self-start md:justify-self-end">

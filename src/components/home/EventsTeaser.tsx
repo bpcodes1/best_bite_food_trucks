@@ -2,13 +2,32 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../../i18n/useLanguage';
 import { ROUTES } from '../../lib/routes';
 import { getUpcomingEvents } from '../../lib/parkStatus';
-import { EventCard } from '../EventCard';
+import { EventListingCard } from '../EventListingCard';
 
 const FEATURED_COUNT = 3;
 
+// Stand-in artwork until real event photos are added — a labeled color
+// swatch per event, not a fabricated photo.
+const PLACEHOLDER_COLORS = ['#f9bc15', '#c94f3c', '#2f6b57'];
+
+function placeholderImage(label: string, background: string): string {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400">
+    <rect width="100%" height="100%" fill="${background}" />
+    <text x="50%" y="50%" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">${label}</text>
+  </svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
+
 export function EventsTeaser() {
-  const { t } = useLanguage();
-  const upcomingEvents = getUpcomingEvents(FEATURED_COUNT);
+  const { lang, t } = useLanguage();
+  // Pull every upcoming event, then prioritize the ones with a real photo —
+  // otherwise events with a fixed, further-out date would crowd out ones
+  // whose real date/time is still TBD but already have real artwork.
+  const allUpcoming = getUpcomingEvents(Number.MAX_SAFE_INTEGER);
+  const upcomingEvents = [
+    ...allUpcoming.filter((event) => event.image),
+    ...allUpcoming.filter((event) => !event.image),
+  ].slice(0, FEATURED_COUNT);
 
   if (upcomingEvents.length === 0) return null;
 
@@ -30,9 +49,17 @@ export function EventsTeaser() {
           </Link>
         </div>
 
-        <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {upcomingEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
+        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {upcomingEvents.map((event, index) => (
+            <li key={event.id}>
+              <EventListingCard
+                imageUrl={event.image ?? placeholderImage(event.name[lang], PLACEHOLDER_COLORS[index])}
+                name={event.name[lang]}
+                time={event.time[lang]}
+                description={event.description[lang]}
+                ctaLabel={t.eventsTeaser.viewAll}
+              />
+            </li>
           ))}
         </ul>
       </div>

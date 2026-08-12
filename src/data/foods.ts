@@ -1,21 +1,30 @@
+import tacosImage from '../assets/tacos.webp';
+import coffeeImage from '../assets/coffee.webp';
+import pupusasImage from '../assets/pupusas.png';
+import mariscosImage from '../assets/mariscos.webp';
+import ribsImage from '../assets/ribs.webp';
+
 export interface FoodItem {
   id: string;
   name: { en: string; es: string };
   /**
-   * Optional photo. Drop real photos in `src/assets/foods/` and import them here
-   * (e.g. `import image from '../assets/foods/tacos.jpg'`) so Vite can hash and
-   * optimize them. Items without a photo yet show an "Images coming soon" placeholder.
+   * Optional photo. Drop real photos in `src/assets/` and import them here so
+   * Vite can hash and optimize them. Items without a photo yet show an
+   * "Images coming soon" placeholder.
    */
   image?: string;
 }
 
 export const foods: FoodItem[] = [
-  { id: 'tacos', name: { en: 'Tacos', es: 'Tacos' } },
+  { id: 'tacos', name: { en: 'Tacos', es: 'Tacos' }, image: tacosImage },
   { id: 'tortas', name: { en: 'Tortas', es: 'Tortas' } },
   { id: 'elote', name: { en: 'Elote', es: 'Elote' } },
   { id: 'tamales', name: { en: 'Tamales', es: 'Tamales' } },
   { id: 'quesadillas', name: { en: 'Quesadillas', es: 'Quesadillas' } },
   { id: 'aguas-frescas', name: { en: 'Aguas Frescas', es: 'Aguas Frescas' } },
   { id: 'churros', name: { en: 'Churros', es: 'Churros' } },
-  { id: 'coffee', name: { en: 'Coffee', es: 'Café' } },
+  { id: 'coffee', name: { en: 'Coffee', es: 'Café' }, image: coffeeImage },
+  { id: 'pupusas', name: { en: 'Pupusas', es: 'Pupusas' }, image: pupusasImage },
+  { id: 'mariscos', name: { en: 'Seafood', es: 'Mariscos' }, image: mariscosImage },
+  { id: 'ribs', name: { en: 'Ribs', es: 'Costillas' }, image: ribsImage },
 ];

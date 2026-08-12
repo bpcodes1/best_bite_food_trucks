@@ -10,17 +10,12 @@ export interface Translations {
     contact: string;
   };
   hero: {
+    kicker: string;
     titleLine1: string;
     titleLine2: string;
     imageAlt: string;
     ctaTrucks: string;
     ctaJoin: string;
-  };
-  statusBar: {
-    open: string;
-    closed: string;
-    nextEvent: string;
-    noUpcomingEvents: string;
   };
   trustBar: {
     heading: string;
@@ -35,6 +30,7 @@ export interface Translations {
     viewAll: string;
   };
   foodsSection: {
+    kicker: string;
     heading: string;
     subheading: string;
     imagesComingSoon: string;
@@ -125,17 +121,12 @@ export const translations: Record<Lang, Translations> = {
       contact: 'Contact',
     },
     hero: {
+      kicker: 'Salem, OR · Food Truck Park',
       titleLine1: 'Best Bite',
       titleLine2: 'Food Park',
       imageAlt: 'Aerial view of the Best Bite Food Park',
       ctaTrucks: 'See the food trucks',
       ctaJoin: 'Join the park',
-    },
-    statusBar: {
-      open: 'Open',
-      closed: 'Closed',
-      nextEvent: 'Next up',
-      noUpcomingEvents: 'More events coming soon',
     },
     trustBar: {
       heading: 'Why Visit',
@@ -146,11 +137,11 @@ export const translations: Record<Lang, Translations> = {
     },
     trucksTeaser: {
       heading: 'Featured Food Trucks',
-      subheading:
-        'We rotate our featured food trucks every month, so there is always a new crew to discover. This month we are spotlighting two local favorites — check back often, because the lineup never stays the same for long.',
+      subheading: 'Our featured trucks rotate monthly, so there is always something new to try.',
       viewAll: 'View all food trucks',
     },
     foodsSection: {
+      kicker: 'Gallery',
       heading: 'What to Eat',
       subheading:
         'A taste of the flavors you will find across the park — from savory street food to something sweet.',
@@ -264,17 +255,12 @@ export const translations: Record<Lang, Translations> = {
       contact: 'Contacto',
     },
     hero: {
+      kicker: 'Salem, OR · Parque de Food Trucks',
       titleLine1: 'Best Bite',
       titleLine2: 'Food Park',
       imageAlt: 'Vista aérea del Best Bite Food Park',
       ctaTrucks: 'Ver los food trucks',
       ctaJoin: 'Únete al parque',
-    },
-    statusBar: {
-      open: 'Abierto',
-      closed: 'Cerrado',
-      nextEvent: 'Próximamente',
-      noUpcomingEvents: 'Más eventos muy pronto',
     },
     trustBar: {
       heading: 'Por Qué Visitarnos',
@@ -286,10 +272,11 @@ export const translations: Record<Lang, Translations> = {
     trucksTeaser: {
       heading: 'Food Trucks Destacados',
       subheading:
-        'Rotamos nuestros food trucks destacados cada mes, así que siempre hay algo nuevo que descubrir. Este mes destacamos a dos favoritos locales — vuelve seguido, porque la alineación cambia constantemente.',
+        'Nuestros food trucks destacados rotan cada mes, así que siempre hay algo nuevo que probar.',
       viewAll: 'Ver todos los food trucks',
     },
     foodsSection: {
+      kicker: 'Galería',
       heading: 'Qué Comer',
       subheading:
         'Una probada de los sabores que encontrarás en el parque — de antojitos salados a algo dulce.',

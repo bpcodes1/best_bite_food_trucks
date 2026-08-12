@@ -6,8 +6,10 @@ import { pathFor } from '../lib/routes'
 import { fullAddress, hoursRange, site } from '../lib/site'
 import heroSign from '../assets/best_bite_sign.jpg'
 import karaokeFlyer from '../assets/events/karaoke.webp'
+import { FanGallery } from '../components/FanGallery'
 import fotoTacos from '../assets/tacos.webp'
-import fotoPupusas from '../assets/pupusas.png'
+import fotoBurrito from '../assets/tacos_burrito.webp'
+import fotoPupusas from '../assets/pupusas.webp'
 import fotoMariscos from '../assets/mariscos.webp'
 import fotoCoffee from '../assets/coffee.webp'
 import fotoRibs from '../assets/ribs.webp'
@@ -40,8 +42,13 @@ import fotoRibs from '../assets/ribs.webp'
 
 const open = site.stalls.total - site.stalls.filled
 
+/* The gallery's contents. Captions are dish types, not vendor names: Ray's
+   per-vendor plate photos have not arrived, and naming a vendor beside a
+   photograph we cannot attribute would be inventing a client fact. Swap in
+   vendor names the day the real photos land. */
 const dishes = [
   { img: fotoTacos, caption: 'Tacos' },
+  { img: fotoBurrito, caption: { en: 'Burritos', es: 'Burritos' } },
   { img: fotoPupusas, caption: 'Pupusas' },
   { img: fotoMariscos, caption: 'Mariscos' },
   { img: fotoCoffee, caption: { en: 'Coffee', es: 'Café' } },
@@ -62,6 +69,11 @@ const copy = {
     foodH: 'Come hungry.',
     foodBody: `${site.stalls.filled} independent kitchens, most of them family businesses, all of them local. One page with every truck and what it serves.`,
     foodCta: 'Meet the vendors',
+    gallery: {
+      previous: 'Previous dish',
+      next: 'Next dish',
+      region: 'What people are eating at the park',
+    },
     hoursLabel: 'Open every day',
     directions: 'Get directions',
     eventsH: 'Sundays are loud.',
@@ -92,6 +104,11 @@ const copy = {
     foodH: 'Ven con hambre.',
     foodBody: `${site.stalls.filled} cocinas independientes, casi todas negocios de familia, todas de aquí. Una página con cada truck y lo que vende.`,
     foodCta: 'Conoce a los vendedores',
+    gallery: {
+      previous: 'Platillo anterior',
+      next: 'Siguiente platillo',
+      region: 'Lo que se come en el parque',
+    },
     hoursLabel: 'Abierto todos los días',
     directions: 'Cómo llegar',
     eventsH: 'Los domingos suenan.',
@@ -204,31 +221,25 @@ export function Home() {
         </div>
       </section>
 
-      {/* Appetite and the door to the trucks, one dark section. Generous
-          padding on purpose — this is the page's indulgent moment. */}
+      {/* Appetite, and the door to the trucks. Dark carries the food
+          photography per design.md § Rhythm. Generous padding on purpose —
+          this is the page's indulgent moment, and the fan is the one piece
+          of the page a reader can play with. */}
       <Section ground="night" className="py-16 sm:py-24">
-        <h2 className="text-3xl leading-[1.02] uppercase sm:text-5xl">{t.foodH}</h2>
-        <p className="mt-5 max-w-xl leading-relaxed text-night-muted">{t.foodBody}</p>
-        <div className="-mx-5 mt-10 flex snap-x gap-4 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8">
-          {dishes.map((d) => {
-            const caption = typeof d.caption === 'string' ? d.caption : d.caption[lang]
-            return (
-              <figure key={caption} className="w-52 shrink-0 snap-start sm:w-60">
-                <img
-                  src={d.img}
-                  alt={caption}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-40 w-full object-cover sm:h-44"
-                />
-                <figcaption className="mt-2.5 font-mono text-[11px] tracking-[0.12em] text-night-muted uppercase">
-                  {caption}
-                </figcaption>
-              </figure>
-            )
-          })}
+        <div className="max-w-xl">
+          <h2 className="text-3xl leading-[1.02] uppercase sm:text-5xl">{t.foodH}</h2>
+          <p className="mt-5 leading-relaxed text-night-muted">{t.foodBody}</p>
         </div>
-        <div className="mt-10">
+        <div className="mt-8 sm:mt-10">
+          <FanGallery
+            items={dishes.map((d) => ({
+              src: d.img,
+              label: typeof d.caption === 'string' ? d.caption : d.caption[lang],
+            }))}
+            labels={t.gallery}
+          />
+        </div>
+        <div className="mt-14 flex justify-center">
           <Button to={pathFor('vendors', lang)}>{t.foodCta}</Button>
         </div>
       </Section>

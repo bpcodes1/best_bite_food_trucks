@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-08-12",
+    "macrostructure": "Appetite-led brochure (Home, full-screen hero)",
+    "theme": "studied-DNA",
+    "theme_axes": "light / heavy-grotesque / warm-yellow",
+    "enrichment": "E-fan: reader-driven fanned image stack, CSS transforms only",
+    "brief": "Home v3. Hero is exactly one screen (100svh - masthead). Food strip replaced by a fanned gallery adapted from origin/bryan FanGallery, rebuilt on our tokens with live caption, keyboard arrows, no autoplay. Sunbeam Bagels taken as a STRUCTURAL reference only - our type, our yellow, our masthead all kept.",
+    "scope": "page"
+  },
+  {
+    "date": "2026-08-12",
     "macrostructure": "Appetite-led brochure (Home)",
     "theme": "studied-DNA",
     "theme_axes": "light / heavy-grotesque / warm-yellow",

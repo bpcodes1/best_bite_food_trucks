@@ -225,14 +225,44 @@ we extracted:
 
 ## Motion
 
-**No animation library.** No GSAP, Framer Motion, Lottie, Lenis. CSS only. This
-site's job is ranking for local searches and the bundle stays small.
+**The site has to feel alive. That is not in tension with ranking — it is part
+of it.** Enrique's argument, 2026-08-12, and it is correct: Google reads how
+people behave when they land, so a page that looks dead sends them back to the
+results and the ranking follows them down. Appeal and ranking optimise
+together. Build motion; do not ration it out of caution.
 
-**No hover-scale on cards.** The Atlantic ships zero instances across 108KB of
-CSS. If a publication at that scale does not need it, neither do we.
+**What is banned is the animation _library_, not the animation.** No GSAP, no
+Framer Motion, no Lottie, no Lenis. The earlier wording here said "CSS only"
+and read as "no motion", which is not what it meant.
 
-No `transition: all`. Animate `transform` and `opacity` only. Three named
-easings. Honour `prefers-reduced-motion`.
+The case for the ban is arithmetic, not taste. Framer Motion is roughly 50 kB
+gzipped on top of a 251 kB bundle, and it only runs once JavaScript has loaded
+and hydrated — on a pre-rendered site whose visitors are mostly on phones on
+Salem cell service, that is load time spent on something CSS does for free.
+Everything wanted from the Sunbeam reference is CSS: keyframed rotation,
+transform-based fans and collages, gradient-border glows, and native
+scroll-driven animation via `animation-timeline` with an `@supports` fallback.
+
+**If an effect genuinely cannot be built in CSS, reopen this section and make
+the case for a library.** Do not quietly work around the rule, and do not
+quietly break it.
+
+Craft rules, unchanged:
+
+- Animate `transform` and `opacity` only — both GPU-composited. Never
+  `transition: all`, never `width`/`height`/`top`/`left`.
+- Three named easings. No bounce or elastic on UI state.
+- Honour `prefers-reduced-motion`.
+- **No hover-scale on cards.** The Atlantic ships zero instances across 108 kB
+  of CSS. If a publication at that scale does not need it, neither do we.
+- **Nothing auto-advances without a control.** Carousels, rotating showcases,
+  and slideshows that move on their own must be pausable — WCAG 2.2.2, and it
+  is also plain courtesy to anyone who reads slowly. The Sunbeam showcase
+  autoplays with no pause and would fail an audit; ours are reader-driven,
+  which sidesteps the requirement rather than patching it.
+- **Motion is not the main lever.** Most of why a reference site feels alive is
+  that every section is a different shape, and that its photography is good.
+  Reach for structure and better assets before reaching for animation.
 
 ## Macrostructure per page
 

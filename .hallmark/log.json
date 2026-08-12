@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-08-12",
+    "macrostructure": "Appetite-led brochure (Home v4)",
+    "theme": "studied-DNA + washes",
+    "theme_axes": "light / heavy-grotesque / warm-yellow",
+    "enrichment": "E-fan gallery with photo-keyed ground tinting; dashed-outline flyer cards at flood footprint",
+    "brief": "Home v4. Gallery transition bug fixed (Tailwind v4 emits translate/scale, not transform). Gallery ground now cross-fades to the active dish wash. Events rebuilt as a light flood block with all three real flyers in dashed cards. Dark surfaces rationed to hero + footer after Enrique said the site read too brown.",
+    "scope": "page"
+  },
+  {
+    "date": "2026-08-12",
     "macrostructure": "Appetite-led brochure (Home, full-screen hero)",
     "theme": "studied-DNA",
     "theme_axes": "light / heavy-grotesque / warm-yellow",

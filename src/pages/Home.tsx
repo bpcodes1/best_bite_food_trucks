@@ -1,11 +1,14 @@
+import { useState } from 'react'
 import { Seo } from '../components/Seo'
 import { LocalBusinessJsonLd } from '../components/Schema'
 import { Button, Label, Section } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { pathFor } from '../lib/routes'
-import { fullAddress, hoursRange, site } from '../lib/site'
+import { fullAddress, hoursRange, pending, site } from '../lib/site'
 import heroSign from '../assets/best_bite_sign.jpg'
 import karaokeFlyer from '../assets/events/karaoke.webp'
+import cruiseFlyer from '../assets/events/back_to_school_cruise.webp'
+import schoolFlyer from '../assets/events/cruise_into_the_school_year.png'
 import { FanGallery } from '../components/FanGallery'
 import fotoTacos from '../assets/tacos.webp'
 import fotoBurrito from '../assets/tacos_burrito.webp'
@@ -47,12 +50,25 @@ const open = site.stalls.total - site.stalls.filled
    photograph we cannot attribute would be inventing a client fact. Swap in
    vendor names the day the real photos land. */
 const dishes = [
-  { img: fotoTacos, caption: 'Tacos' },
-  { img: fotoBurrito, caption: { en: 'Burritos', es: 'Burritos' } },
-  { img: fotoPupusas, caption: 'Pupusas' },
-  { img: fotoMariscos, caption: 'Mariscos' },
-  { img: fotoCoffee, caption: { en: 'Coffee', es: 'Café' } },
-  { img: fotoRibs, caption: 'BBQ' },
+  { img: fotoTacos, caption: 'Tacos', wash: 'var(--color-wash-tacos)' },
+  {
+    img: fotoBurrito,
+    caption: { en: 'Burritos', es: 'Burritos' },
+    wash: 'var(--color-wash-burrito)',
+  },
+  { img: fotoPupusas, caption: 'Pupusas', wash: 'var(--color-wash-pupusas)' },
+  { img: fotoMariscos, caption: 'Mariscos', wash: 'var(--color-wash-mariscos)' },
+  { img: fotoCoffee, caption: { en: 'Coffee', es: 'Café' }, wash: 'var(--color-wash-coffee)' },
+  { img: fotoRibs, caption: 'BBQ', wash: 'var(--color-wash-ribs)' },
+] as const
+
+/* The three flyers are the park's own marketing, confirmed real by Enrique
+   2026-08-12. Dates that a flyer does not state stay bracketed — see the
+   Events page, which owns the full list. */
+const flyers = [
+  { key: 'karaoke', img: karaokeFlyer },
+  { key: 'cruise', img: cruiseFlyer },
+  { key: 'school', img: schoolFlyer },
 ] as const
 
 const copy = {
@@ -80,7 +96,23 @@ const copy = {
     eventsBody:
       'Karaoke every Sunday, car cruises when school starts, cooking classes when the mood strikes. Free to come, and the kitchens stay open.',
     eventsCta: 'See what is on',
-    eventsAlt: 'Flyer for karaoke Sundays at Best Bite Food Park',
+    flyers: {
+      karaoke: {
+        title: 'Karaoke y música',
+        when: 'Every Sunday',
+        alt: 'Flyer for karaoke Sundays at Best Bite Food Park',
+      },
+      cruise: {
+        title: 'Back to School Cruise',
+        when: pending('Back to School Cruise date'),
+        alt: 'Flyer for the Back to School Cruise at Best Bite Food Park',
+      },
+      school: {
+        title: 'Cruise Into the School Year',
+        when: pending('Cruise Into the School Year date'),
+        alt: 'Flyer for Cruise Into the School Year at Best Bite Food Park',
+      },
+    },
     storyLabel: 'Our story',
     storyH: 'Family run, Salem grown.',
     storyP1:
@@ -115,7 +147,23 @@ const copy = {
     eventsBody:
       'Karaoke todos los domingos, cruceros de autos cuando empieza la escuela, clases de cocina de vez en cuando. La entrada es libre y las cocinas siguen abiertas.',
     eventsCta: 'Mira qué hay',
-    eventsAlt: 'Volante del karaoke de los domingos en Best Bite Food Park',
+    flyers: {
+      karaoke: {
+        title: 'Karaoke y música',
+        when: 'Todos los domingos',
+        alt: 'Volante del karaoke de los domingos en Best Bite Food Park',
+      },
+      cruise: {
+        title: 'Back to School Cruise',
+        when: pending('fecha del Back to School Cruise'),
+        alt: 'Volante del Back to School Cruise en Best Bite Food Park',
+      },
+      school: {
+        title: 'Cruise Into the School Year',
+        when: pending('fecha del Cruise Into the School Year'),
+        alt: 'Volante de Cruise Into the School Year en Best Bite Food Park',
+      },
+    },
     storyLabel: 'Nuestra historia',
     storyH: 'De familia, y de Salem.',
     storyP1:
@@ -131,6 +179,10 @@ const copy = {
 export function Home() {
   const lang = useLang()
   const t = copy[lang]
+  // The gallery's ground answers the food in front of it. Starts on the first
+  // dish's wash so the first paint already matches; the gallery pushes the
+  // rest as the reader cycles.
+  const [wash, setWash] = useState<string>(dishes[0].wash)
 
   return (
     <>
@@ -221,58 +273,83 @@ export function Home() {
         </div>
       </section>
 
-      {/* Appetite, and the door to the trucks. Dark carries the food
-          photography per design.md § Rhythm. Generous padding on purpose —
-          this is the page's indulgent moment, and the fan is the one piece
-          of the page a reader can play with. */}
-      <Section ground="night" className="py-16 sm:py-24">
-        <div className="max-w-xl">
-          <h2 className="text-3xl leading-[1.02] uppercase sm:text-5xl">{t.foodH}</h2>
-          <p className="mt-5 leading-relaxed text-night-muted">{t.foodBody}</p>
+      {/* Appetite, and the door to the trucks. The ground tints to the active
+          dish, which is Enrique's idea and the liveliest thing on the page.
+          Light, not dark: this section used to be night, and four dark bands
+          in a row made the whole site read brown. See design.md § Ground. */}
+      <section
+        style={{ backgroundColor: wash }}
+        className="px-5 py-16 text-ink transition-colors duration-700 ease-out motion-reduce:transition-none sm:px-8 sm:py-24"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-xl">
+            <h2 className="text-3xl leading-[1.02] uppercase sm:text-5xl">{t.foodH}</h2>
+            <p className="mt-5 leading-relaxed text-muted">{t.foodBody}</p>
+          </div>
+          <div className="mt-8 sm:mt-10">
+            <FanGallery
+              items={dishes.map((d) => ({
+                src: d.img,
+                label: typeof d.caption === 'string' ? d.caption : d.caption[lang],
+                wash: d.wash,
+              }))}
+              labels={t.gallery}
+              onWashChange={setWash}
+            />
+          </div>
+          <div className="mt-10 flex justify-center">
+            <Button to={pathFor('vendors', lang)}>{t.foodCta}</Button>
+          </div>
         </div>
-        <div className="mt-8 sm:mt-10">
-          <FanGallery
-            items={dishes.map((d) => ({
-              src: d.img,
-              label: typeof d.caption === 'string' ? d.caption : d.caption[lang],
-            }))}
-            labels={t.gallery}
-          />
-        </div>
-        <div className="mt-14 flex justify-center">
-          <Button to={pathFor('vendors', lang)}>{t.foodCta}</Button>
-        </div>
-      </Section>
+      </section>
 
-      {/* Nuestra Historia, folded into Home per the Aug 10 descope. Cream
-          breaks the run of dark sections. DRAFT copy; Ray's voice notes
-          replace it. */}
+      {/* Events, at flood footprint. Three flyers, not one: Enrique asked for
+          a real sneak peek, and all three are the park's own marketing.
+          Dashed outlines are the Sunbeam move — a card edge that reads as
+          pinned-up paper rather than as a UI panel. */}
+      <section className="bg-wash-events px-5 py-16 text-ink sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="min-w-0 max-w-xl">
+              <h2 className="text-3xl leading-[1.02] uppercase sm:text-5xl">{t.eventsH}</h2>
+              <p className="mt-5 leading-relaxed text-muted">{t.eventsBody}</p>
+            </div>
+            <div className="shrink-0">
+              <Button to={pathFor('events', lang)}>{t.eventsCta}</Button>
+            </div>
+          </div>
+
+          <ul className="mt-12 grid gap-6 sm:grid-cols-3">
+            {flyers.map((f) => (
+              <li
+                key={f.key}
+                className="border-2 border-dashed border-ink/25 bg-paper/60 p-3 sm:p-4"
+              >
+                <img
+                  src={f.img}
+                  alt={t.flyers[f.key].alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-square w-full object-cover"
+                />
+                <p className="mt-3 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">
+                  {t.flyers[f.key].when}
+                </p>
+                <p className="mt-1.5 text-lg leading-snug uppercase">{t.flyers[f.key].title}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Nuestra Historia, folded into Home per the Aug 10 descope. DRAFT
+          copy; Ray's voice notes replace it. */}
       <Section className="py-16 sm:py-20">
         <div className="max-w-2xl">
           <Label>{t.storyLabel}</Label>
           <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.storyH}</h2>
           <p className="mt-5 leading-relaxed text-muted">{t.storyP1}</p>
           <p className="mt-4 leading-relaxed text-muted">{t.storyP2}</p>
-        </div>
-      </Section>
-
-      {/* Events teaser. The flyer is real park marketing, not decoration. */}
-      <Section ground="night" className="py-14 sm:py-16">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-center">
-          <div className="min-w-0">
-            <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.eventsH}</h2>
-            <p className="mt-5 max-w-md leading-relaxed text-night-muted">{t.eventsBody}</p>
-            <div className="mt-8">
-              <Button to={pathFor('events', lang)}>{t.eventsCta}</Button>
-            </div>
-          </div>
-          <img
-            src={karaokeFlyer}
-            alt={t.eventsAlt}
-            loading="lazy"
-            decoding="async"
-            className="w-full max-w-md justify-self-center object-cover lg:justify-self-end"
-          />
         </div>
       </Section>
 

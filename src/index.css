@@ -55,6 +55,31 @@
   --color-night-muted: #a39a8d;
   --color-brand-yellow: #fdc20c;
   --color-brand-black: #010101;
+
+  /* WASHES — light section grounds, added 2026-08-12.
+     Not brand colours and never used for type, buttons, rules or accents:
+     they exist only as a ground behind photography. Brand yellow and brand
+     black remain the only two brand values, so design.md's "no third brand
+     colour" rule still holds.
+
+     Every wash is high-lightness and low-chroma on purpose — a soft tint of
+     the photograph it sits behind, not a saturated block. Ink stays readable
+     on all of them (checked against #1c1a17).
+
+     The gallery washes are keyed to the DISH in the photograph. When Ray
+     sends per-vendor plate photos we can attribute, they become that vendor's
+     brand colour instead, which is what Enrique actually asked for — the swap
+     is a data change in DISH_WASH, not a rebuild. */
+  --color-wash-tacos: #fbeae6;
+  --color-wash-burrito: #fdf3dd;
+  --color-wash-pupusas: #fbf0d9;
+  --color-wash-mariscos: #fceee0;
+  --color-wash-coffee: #f6eef4;
+  --color-wash-ribs: #f2eee9;
+
+  /* The events flood. A pale tint of the brand yellow rather than a new hue,
+     so it reads as family with the full-strength hours band above it. */
+  --color-wash-events: #fdf1cf;
 }
 
 /* Runner-up display face, switchable without a rebuild so the client meeting

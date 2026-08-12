@@ -168,14 +168,36 @@ the same pass Home got.
 **The arrow glyph (→) appears on at most two CTAs per page** — the primary
 action and the door. An arrow on every button is a tic, not an affordance.
 
-**Dark is a section, never the ground.** Alternate warm-cream sections with
-near-black ones rather than choosing one for the whole page. The rule for which
-goes where is not arbitrary:
+**Dark is a section, never the ground — and it is now rationed.** Amended
+2026-08-12: Enrique's read was that the site leaned too brown and black, and he
+was right. Four dark bands in a row (hero scrim, food, events, footer) made a
+daytime family park look like a whisky bar.
+
+The current allowance is **two dark surfaces on a page**: the hero's scrimmed
+photograph and the footer. Everything between them is light. Food photography
+reads perfectly well on a warm light ground — the Sunbeam reference does
+exactly that — so the old "dark carries the food" rule no longer earns its
+keep.
 
 - **Cream sections carry the vendor logos.** Most arrive on white grounds, and
   white-on-dark is a box that cannot be removed.
-- **Dark sections carry the food and park photography.** Warm plated food and
-  golden-hour park shots gain contrast and appetite against near-black.
+- **The hero and the footer may be dark.** Nothing else, without a reason
+  written down here.
+
+**Washes** — light section grounds, added 2026-08-12 with the tinting gallery.
+Tokens live in `src/index.css` as `--color-wash-*`.
+
+- A wash is a **ground only**. Never type, never a button, never a rule or an
+  accent. Brand yellow and brand black stay the only two brand values, so the
+  no-third-brand-colour rule below still holds exactly as written.
+- Every wash is high-lightness, low-chroma — a soft tint of the photograph in
+  front of it, not a saturated block. Ink must stay readable on all of them.
+- The gallery's ground cross-fades to the active dish's wash. That is Enrique's
+  idea and it is the liveliest thing on Home. **He asked for the vendor's
+  brand colour**, and that is where this lands the day Ray's per-vendor plate
+  photos arrive — only two of six photographs can be attributed to a vendor
+  today, and guessing the rest would be inventing a client fact. The swap is a
+  data change in `dishes`, not a rebuild.
 
 That reconciliation came from the Kado reference (Dribbble, 2026-08-11) and it
 is the only thing taken from it. Its pastel gradient sections break the

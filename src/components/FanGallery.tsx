@@ -27,6 +27,15 @@ export interface FanItem {
   src: string
   /** Already resolved to the page's language by the caller. */
   label: string
+  /**
+   * The wash this photograph brings with it. The section behind the gallery
+   * cross-fades to it as the card becomes active, so the ground answers the
+   * food. Enrique's idea, 2026-08-12: he asked for the vendor's colour, and
+   * that is where this goes the day we can attribute a photo to a vendor —
+   * only two of six are attributable today, and guessing the rest would be
+   * inventing a client fact.
+   */
+  wash: string
 }
 
 /**
@@ -77,14 +86,20 @@ interface FanGalleryProps {
   items: FanItem[]
   /** Accessible names for the controls, in the page's language. */
   labels: { previous: string; next: string; region: string }
+  /** Notified with the active item's wash so the section can tint to match. */
+  onWashChange?: (wash: string) => void
 }
 
-export function FanGallery({ items, labels }: FanGalleryProps) {
+export function FanGallery({ items, labels, onWashChange }: FanGalleryProps) {
   const [active, setActive] = useState(0)
   const captionId = useId()
   const length = items.length
 
-  const goTo = (next: number) => setActive(((next % length) + length) % length)
+  function goTo(next: number) {
+    const index = ((next % length) + length) % length
+    setActive(index)
+    onWashChange?.(items[index].wash)
+  }
 
   // Arrow keys work whenever focus is anywhere inside the gallery, which is
   // what a reader who has just tabbed to the Next button will try first.
@@ -121,10 +136,21 @@ export function FanGallery({ items, labels }: FanGalleryProps) {
               loading="lazy"
               decoding="async"
               aria-hidden={near ? undefined : true}
-              /* A hairline in the paper colour, not a drop shadow: the cards
-                 overlap, so their edges have to separate from each other, and
-                 design.md bans hierarchy built out of stacked shadows. */
-              className={`absolute top-1/2 left-1/2 -ml-[5.5rem] h-52 w-44 -translate-y-1/2 rounded-sm border-4 border-paper object-cover transition-[transform,opacity] duration-500 ease-out motion-reduce:transition-none sm:-ml-[8.5rem] sm:h-[24rem] sm:w-[17rem] ${placement}`}
+              /* A white polaroid edge, not the paper token: the ground behind
+                 this gallery changes colour with the active dish, and a cream
+                 border disappears against the warmer washes. The shadow is a
+                 hairline separation between overlapping cards, not decoration
+                 — design.md bans hierarchy built out of stacked shadows.
+
+                 `translate,scale`, NOT `transform`. Tailwind v4 compiles
+                 `-translate-x-*` and `scale-*` to the individual `translate`
+                 and `scale` CSS properties, not to the `transform` shorthand.
+                 A `transition-[transform,opacity]` therefore animates a
+                 property that never changes, and the cards jump between
+                 positions while only the fade runs. That was the bug.
+                 `transition-all` also works and is what Bryan's version used,
+                 but design.md bans it. */
+              className={`absolute top-1/2 left-1/2 -ml-[5.5rem] h-52 w-44 -translate-y-1/2 rounded-sm border-[6px] border-white object-cover shadow-[0_2px_10px_rgba(28,26,23,0.12)] transition-[translate,scale,opacity] duration-500 ease-out motion-reduce:transition-none sm:-ml-[8.5rem] sm:h-[24rem] sm:w-[17rem] ${placement}`}
             />
           )
         })}
@@ -133,7 +159,7 @@ export function FanGallery({ items, labels }: FanGalleryProps) {
       <p
         id={captionId}
         aria-live="polite"
-        className="mt-7 text-center font-display text-2xl uppercase sm:text-3xl"
+        className="mt-7 text-center font-display text-2xl text-ink uppercase sm:text-3xl"
       >
         {items[active].label}
       </p>
@@ -143,7 +169,7 @@ export function FanGallery({ items, labels }: FanGalleryProps) {
           type="button"
           onClick={() => goTo(active - 1)}
           aria-label={labels.previous}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-night-muted/50 text-paper transition-colors duration-150 ease-out hover:border-brand-yellow hover:text-brand-yellow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-rule text-ink transition-colors duration-150 ease-out hover:border-ink hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
           <Chevron direction="left" />
         </button>
@@ -151,7 +177,7 @@ export function FanGallery({ items, labels }: FanGalleryProps) {
           type="button"
           onClick={() => goTo(active + 1)}
           aria-label={labels.next}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-night-muted/50 text-paper transition-colors duration-150 ease-out hover:border-brand-yellow hover:text-brand-yellow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-rule text-ink transition-colors duration-150 ease-out hover:border-ink hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
           <Chevron direction="right" />
         </button>

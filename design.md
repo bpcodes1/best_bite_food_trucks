@@ -187,13 +187,13 @@ easings. Honour `prefers-reduced-motion`.
 
 Pages share the system. They do not share a shape.
 
-| Page            | Family                           | Why                                                                                                                                                                                                                                                     |
-| --------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Únete al Parque | Narrative Workflow               | One audience, one action. Block 40's IA, Kraken's close.                                                                                                                                                                                                |
-| Home            | **Open shape, settled strategy** | Overwhelmingly for eaters, with one honest door to Únete low on the page. Vendors reach Únete through search, not by browsing Home — which is also the fix for the recruiting-copy bleed the audit found on the Square site. Shape decided after Únete. |
-| Vendors         | Catalogue / Index-First          | The Atlantic's card system, twelve items                                                                                                                                                                                                                |
-| Events          | Index-First                      | Chronological. The Yard maintains theirs through Nov 2026 — that is the bar.                                                                                                                                                                            |
-| Contact         | Long Document                    | Short page. NAP, hours, map, the same short form.                                                                                                                                                                                                       |
+| Page            | Family                    | Why                                                                                                                                                                                                                                                                                                                                                            |
+| --------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Únete al Parque | Narrative Workflow        | One audience, one action. Block 40's IA, Kraken's close.                                                                                                                                                                                                                                                                                                       |
+| Home            | **Appetite-led brochure** | Chosen 2026-08-12, after Únete proved the system. Overwhelmingly for eaters: generous hero, full-bleed park photo, dark food band, hours at flood footprint, vendor and events teasers, the story folded in (descope Option A), and exactly one honest door to Únete at the bottom — the fix for the recruiting-copy bleed the audit found on the Square site. |
+| Vendors         | Catalogue / Index-First   | The Atlantic's card system. Card count is data, not structure. Roster comes from Enrique.                                                                                                                                                                                                                                                                      |
+| Events          | Index-First               | Built 2026-08-12: the recurring event at flood footprint (karaoke Sundays is real, from the park's own flyer), dated events as a data array, past programming as the honest stand-in for the calendar the park does not have yet. The Yard's live calendar stays the bar.                                                                                      |
+| Contact         | Long Document             | Short page. NAP, hours, map, the same short form, plus a cross-door routing truck owners to Únete before they write.                                                                                                                                                                                                                                           |
 
 ## Bilingual constraints
 
@@ -210,12 +210,12 @@ we checked turned out to be English-only. This section is ours, not extracted.
 
 ## Open decisions
 
-1. **Únete's brief** — audience and action are clear (a Salem-area truck owner
-   deciding whether to move in; the inquiry is the action). **Tone is unpicked**
-   and it blocks the first build.
-2. **Home's macrostructure.** Deferred until Únete proves the system.
-3. **A warm-light-ground reference with photography of a physical place**, and
-   **a site holding many third-party logos in one grid** without looking like a
-   sponsor wall. The second is the Vendors page problem.
-4. **Which component library**, if any. Asked and not yet answered; it changes
-   how the interactive elements get built.
+1. **A site holding many third-party logos in one grid** without looking like a
+   sponsor wall. This is the Vendors page problem, and it is the last unbuilt
+   page. The containment rules in § Components are the working answer; a studied
+   reference would still strengthen it.
+
+Resolved and folded into the tables above: Únete's tone (utilitarian, built),
+Home's macrostructure (appetite-led brochure, 2026-08-12), the component
+library question (closed — the interactive surface is a nav, a toggle, two
+forms and one accordion; not worth a dependency).

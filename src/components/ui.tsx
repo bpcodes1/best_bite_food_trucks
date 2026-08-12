@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 
 /**
  * The small shared primitives. Anything used by exactly one page stays in that
@@ -65,17 +66,23 @@ export function Chip({ children, tone = 'ink' }: { children: ReactNode; tone?: '
 
 /**
  * Buttons name the action AND its outcome — never "Next" or "Submit".
- * All eight states are styled; `.is-*` classes let the states be demoed at once.
+ *
+ * Three renderings from one skin: `to` for an internal page (react-router
+ * Link — a raw anchor would force a full reload and drop out of the SPA),
+ * `as="a"` + `href` for in-page jumps and external URLs, and the default
+ * button for forms.
  */
 export function Button({
   as = 'button',
   href,
+  to,
   variant = 'solid',
   type,
   children,
 }: {
   as?: 'button' | 'a'
   href?: string
+  to?: string
   variant?: 'solid' | 'outline'
   type?: 'button' | 'submit'
   children: ReactNode
@@ -91,6 +98,13 @@ export function Button({
       ? 'bg-brand-yellow text-brand-black hover:bg-ink hover:text-brand-yellow'
       : 'border border-current text-ink hover:bg-ink hover:text-paper'
 
+  if (to) {
+    return (
+      <Link to={to} className={`${base} ${skin}`}>
+        {children}
+      </Link>
+    )
+  }
   if (as === 'a') {
     return (
       <a href={href} className={`${base} ${skin}`}>
@@ -104,3 +118,14 @@ export function Button({
     </button>
   )
 }
+
+/**
+ * The text-input skin, shared by the Únete and Contact forms. One string so
+ * the two forms cannot drift apart visually.
+ */
+export const field =
+  'mt-1.5 w-full border border-rule bg-transparent px-3 py-2.5 text-ink ' +
+  'placeholder:text-muted/70 focus:border-ink focus:outline-none'
+
+/** The mono uppercase skin form labels share with the Label component. */
+export const fieldLabel = 'font-mono text-[11px] tracking-[0.12em] uppercase'

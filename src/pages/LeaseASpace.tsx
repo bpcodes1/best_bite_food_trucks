@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { Seo } from '../components/Seo'
-import { Button, Chip, Label, Section } from '../components/ui'
+import { Button, Chip, Label, Section, field } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { hoursRange, pending, site } from '../lib/site'
 import parkPhoto from '../assets/best_bite_outdoor.webp'
@@ -151,10 +151,6 @@ const copy = {
     includedPending: pending('qué incluye'),
   },
 } as const
-
-const field =
-  'mt-1.5 w-full border border-rule bg-transparent px-3 py-2.5 text-ink ' +
-  'placeholder:text-muted/70 focus:border-ink focus:outline-none'
 
 export function LeaseASpace() {
   const lang = useLang()

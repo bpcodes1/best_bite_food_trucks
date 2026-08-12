@@ -2,7 +2,7 @@
 
 Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
-**Last updated:** 2026-08-12
+**Last updated:** 2026-08-12 (afternoon — Home, Contact, Events built)
 **Branch:** `enrique` (never `main` — `main` is Bryan's, unrelated work)
 **Deadline:** ~Sept 2 (four weeks from the ~Aug 5 clock start)
 
@@ -10,15 +10,22 @@ Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
 ## Where we are
 
-The scaffold and the site chrome are done, and one of five pages is built.
-Únete al Parque (the leasing page) is complete in both languages and now fully
-verified at 375 and 768 in Spanish. Four pages remain: Home, Vendors, Events,
-Contact — in that build order, Contact first.
+**Four of five pages are built** in both languages: Únete al Parque, Home,
+Contact, and Events, plus the site chrome (header, nav, language toggle,
+footer). Only Vendors remains, and it is blocked on one thing: **Enrique is
+sending the definitive vendor list.** `food_trucks.txt` is NOT that list — he
+said so explicitly on 2026-08-12.
 
-Until 2026-08-12 the site had **no header, nav, footer or language toggle** and
-not one `<Link>` anywhere. Únete was a page with no way in and no way out. That
-is now built and every one of the ten addresses cross-links to the other nine in
-its pre-rendered HTML.
+The placeholder boundary, decided by Enrique 2026-08-12: **draft copy yes,
+fake data no.** Full draft copy everywhere (including Home's story section,
+written to be replaced by Ray's voice notes), but contact details, prices,
+dates, and social handles stay as visible `[PENDIENTE]` brackets. `npm run
+pending` remains the authority on what is real.
+
+The three event flyers in `src/assets/events/` are **real park marketing**
+(Enrique confirmed 2026-08-12). Karaoke every Sunday is a real recurring event,
+stated on the park's own flyer; the Back to School Cruise is real with its date
+pending. Events is built on them.
 
 `main` contains Bryan's separate build. **Do not read it as a reference or a
 target.** Our branch was reset to a clean slate on purpose, keeping only the
@@ -33,20 +40,25 @@ client-supplied photography.
 | Design system   | `design.md` — governs all ten addresses, `hallmark audit` enforces it     |
 | Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets |
 | Únete al Parque | Built EN + ES, ~21 kB of finished HTML per address                        |
+| Home            | Built EN + ES, appetite-led brochure, LocalBusiness schema, ~18 kB        |
+| Contact         | Built EN + ES, NAP + map + form + cross-door to Únete, schema, ~16 kB     |
+| Events          | Built EN + ES on the real flyers, dated events are a data array, ~14 kB   |
 | Chrome          | Header, nav, language toggle, footer — all derived from `routes.ts`       |
+| Assets          | 9.2 MB → 4.6 MB via `npm run images` (sharp); favicon 984 kB → 4 kB       |
+| Schema          | `LocalBusinessJsonLd` on Home + Contact, all values from `site.ts`        |
 
 Verified: build passes, lint clean, 9 route tests pass, 11 HTML files, content
-present in the HTML with no JavaScript, `lang` attributes correct per address,
-hreflang pairs on every page.
+and JSON-LD present in the raw HTML with no JavaScript, `lang` attributes
+correct per address, hreflang pairs on every page.
 
-Screenshots reviewed: Únete full page at 375 ES and 768 ES; chrome at 375 ES,
-768 ES and 1280 EN, including the collapsed menu open. Measured
-`document.documentElement.scrollWidth` at 375 on both — no horizontal overflow.
+Screenshots reviewed (in `qa-screenshots/`, git-ignored): every built page at
+375 and 768 in Spanish, chrome at 1280 in English, the collapsed menu open.
+Spanish is the longer language, so if Spanish fits, English fits; the header
+was checked in English separately because the wide nav only appears at `lg`.
 
-English was skipped deliberately on page bodies — Spanish is the longer
-language, so if Spanish fits, English fits. The **header is the exception** and
-was checked in English separately, because the wide nav only appears at `lg`
-and English is what shows there most often.
+**Not verified: the Google Maps embed on Contact.** It renders as an empty box
+in headless Chrome screenshots (headless quirk, most likely). Confirm it paints
+in a real browser before any client review.
 
 ## Decisions, and why
 
@@ -125,20 +137,16 @@ Run `npm run pending` for the live list.
 
 ## Blocked on Enrique
 
-- **The vendor roster.** Enrique is sending the definitive list of vendors that
-  go on the site (his to supply, confirmed 2026-08-12). Vendors cannot be built
-  without it, and nothing about it should be guessed. What is in the repo does
-  not reconcile three ways:
-  - `food_trucks.txt` lists 10 names.
-  - `src/assets/food_trucks/` holds 12 images.
-  - Three images have no matching name: Nieve Casera, Las Cuatas Lokas,
-    Que Rollon Sushi.
-  - Three names have no image: Adan's Grill, Syrian House, La Flauta PDX.
-  - The client context says 9 active vendors, and `site.stalls.filled` is 9.
-
-  Cuisine, per-vendor hours and blurbs are also still missing. The context says
-  Bryan pulled reliable vendor hours and Enrique is passing them over; they have
-  not landed in the repo.
+- **The vendor roster.** Enrique is sending the definitive list (reaffirmed
+  2026-08-12: `food_trucks.txt` is NOT it). Vendors is the last unbuilt page
+  and waits on this. Per-vendor cuisine, hours and blurbs ride along — the
+  context says Bryan pulled reliable vendor hours and they have not landed in
+  the repo.
+- **Cloudflare wiring is unknown.** Enrique is not sure what is connected to
+  this repo (2026-08-12). Until that is checked in the dashboard, pushes to
+  `enrique` may or may not deploy anywhere, and live-host verification is
+  impossible. Check what project exists, which branch is production, and get
+  the `*.pages.dev` URL into this file.
 
 - **Text Ray the descope offer**, get his yes, send the two-line written recap.
   Bryan already agreed to Option A. The context file's own rule: nothing gets
@@ -192,6 +200,13 @@ not exist. Drive the browser through the DevTools Protocol and set
 `Emulation.setDeviceMetricsOverride` instead, and confirm any suspected overflow
 by reading `document.documentElement.scrollWidth` before touching CSS.
 
+**`captureBeyondViewport` does not fire lazy loading.** A full-page CDP
+screenshot of a page with `loading="lazy"` images shows blank holes where the
+below-fold images belong, because nothing ever scrolled. Force
+`img.loading = 'eager'` and await `img.decode()` on every image before
+capturing. This too produced a phantom bug report (missing Home images that
+were never missing).
+
 **The nav collapses below `lg`, not below `md`.** The five Spanish labels run to
 46 characters against English's 38 and overflow a 768px header set in
 letterspaced mono. The English nav fits there fine, which is the trap. A route
@@ -199,31 +214,25 @@ test asserts the Spanish labels stay inside the width the header was built for.
 
 ## Next
 
-1. **Build Contact** — smallest page, and it establishes the NAP +
-   `LocalBusiness` schema pattern the rest of the site reuses.
-2. **Build Home** against `design.md`. Macrostructure is still open; strategy is
-   settled (eaters first, one honest door to Únete low on the page).
-3. **Build Vendors** once Enrique's roster lands.
-4. **Build Events** as structure with bracketed placeholders — decided
-   2026-08-12. Real events do not exist yet and none get invented.
-5. Compress `src/assets/` — still ~9 MB against a 251 kB JS bundle.
-   `best_bite_inside.jpeg` is 2.7 MB, `cafe_chula.png` 1.2 MB. `sips` cannot
-   write webp on this machine and its PNG output is unoptimised, so this
-   probably needs a real tool (`sharp` as a devDependency) — ask before adding.
-   `logo-256.png` is already done: 67 kB, used by the header and footer, with
-   the 984 kB original kept as the source of truth.
+1. **Build Vendors** the moment Enrique's roster lands. Everything else on the
+   page level is done.
+2. **Check the Cloudflare dashboard** — what is wired, which branch deploys,
+   what the `*.pages.dev` URL is. Then `curl -I` every address on it.
+3. Confirm the Google Maps embed on Contact paints in a real browser.
 
 Before delivery, and none of it started:
 
-6. **`site.origin` is still `http://localhost:5173`.** Every canonical,
-   hreflang, OG tag and sitemap entry in `dist/` points at localhost right now.
-   One edit, gated on the domain.
-7. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
+4. **`site.origin` is still `http://localhost:5173`.** Every canonical,
+   hreflang, OG tag, sitemap entry, and the JSON-LD `url` point at localhost.
+   One edit in `site.ts`, gated on the domain.
+5. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
    card. `Seo.tsx` has og:type/title/description/url/locale and nothing else.
-8. **No schema markup at all.** `LocalBusiness` on Contact and Home, `FAQPage`
-   on Únete.
-9. Raise `MIN_BODY_BYTES` in `prerender.mjs` from 10 to ~500 once all five pages
-   are real. It cannot catch the empty-shell failure at 10.
-10. `hallmark audit` across all ten addresses.
-11. `curl -I` every address on the live host. Never verify routing with
+6. **`FAQPage` schema on Únete** — LocalBusiness exists on Home and Contact;
+   the FAQ page markup is the remaining schema piece.
+7. Raise `MIN_BODY_BYTES` in `prerender.mjs` from 10 to ~500 once Vendors is
+   real — it is the last page whose body is a single `<h1>`.
+8. `hallmark audit` across all ten addresses.
+9. Wire the forms once the destination question is answered (Ray does not read
+   email; Cynthia is post-delivery).
+10. `curl -I` every address on the live host. Never verify routing with
     `npm run preview`.

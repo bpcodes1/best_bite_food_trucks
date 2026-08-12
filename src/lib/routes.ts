@@ -20,6 +20,16 @@ export interface RouteDef {
   /** Stable id. Never appears in a URL, so it is safe to keep in code. */
   key: string
   path: Record<Lang, string>
+  /**
+   * What the nav and the footer call this page. Kept here rather than in the
+   * header component so that adding a page stays one edit to one file.
+   *
+   * These are the strings that decide whether the nav fits. `Únete al Parque`
+   * is 15 characters against `Lease a Space` at 13, and the five Spanish
+   * labels together overflow a 768px header — which is why the nav collapses
+   * below `lg` and not below `md`. See SiteHeader.
+   */
+  label: Record<Lang, string>
 }
 
 /**
@@ -31,11 +41,31 @@ export interface RouteDef {
  * queries in a way `/es/vendors` cannot.
  */
 export const ROUTES: RouteDef[] = [
-  { key: 'home', path: { en: '/', es: '/es' } },
-  { key: 'vendors', path: { en: '/vendors', es: '/es/vendedores' } },
-  { key: 'events', path: { en: '/events', es: '/es/eventos' } },
-  { key: 'lease', path: { en: '/lease-a-space', es: '/es/unete-al-parque' } },
-  { key: 'contact', path: { en: '/contact', es: '/es/contacto' } },
+  {
+    key: 'home',
+    path: { en: '/', es: '/es' },
+    label: { en: 'Home', es: 'Inicio' },
+  },
+  {
+    key: 'vendors',
+    path: { en: '/vendors', es: '/es/vendedores' },
+    label: { en: 'Vendors', es: 'Vendedores' },
+  },
+  {
+    key: 'events',
+    path: { en: '/events', es: '/es/eventos' },
+    label: { en: 'Events', es: 'Eventos' },
+  },
+  {
+    key: 'lease',
+    path: { en: '/lease-a-space', es: '/es/unete-al-parque' },
+    label: { en: 'Lease a Space', es: 'Únete al Parque' },
+  },
+  {
+    key: 'contact',
+    path: { en: '/contact', es: '/es/contacto' },
+    label: { en: 'Contact', es: 'Contacto' },
+  },
 ]
 
 /** Every address the site answers on, in pre-render order. */

@@ -74,3 +74,14 @@ export function fullAddress(): string {
   const { street, city, state, zip } = site.address
   return `${street}, ${city}, ${state} ${zip}`
 }
+
+/**
+ * The hours range, assembled once for the same reason the address is.
+ *
+ * The Square site printed 10:00-9:00 on a flyer graphic and 12:00-8:00 in its
+ * hours block, on the same homepage. Two components each typing their own
+ * version is exactly how that happens, and Google reads the contradiction.
+ */
+export function hoursRange(): string {
+  return `${site.hours.open} - ${site.hours.close}`
+}

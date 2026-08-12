@@ -5,6 +5,10 @@ dist-ssr
 .DS_Store
 .vite
 
+# QA screenshots of the local build. Verification artifacts, not source —
+# they go stale the moment a page changes and would bloat the repo.
+qa-screenshots/
+
 # Client context, pricing, and scoping documents. These live in the repo folder
 # for convenience but must never be committed.
 clients/

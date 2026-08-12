@@ -3,7 +3,7 @@ import type { FormEvent } from 'react'
 import { Seo } from '../components/Seo'
 import { Button, Chip, Label, Section } from '../components/ui'
 import { useLang } from '../lib/useLang'
-import { pending, site } from '../lib/site'
+import { hoursRange, pending, site } from '../lib/site'
 import parkPhoto from '../assets/best_bite_outdoor.webp'
 
 /* Únete al Parque — the money page.
@@ -229,9 +229,7 @@ export function LeaseASpace() {
                 <dt className="font-mono text-[11px] tracking-[0.12em] text-night-muted uppercase">
                   {t.hours}
                 </dt>
-                <dd className="mt-1.5">
-                  {site.hours.open} - {site.hours.close}
-                </dd>
+                <dd className="mt-1.5">{hoursRange()}</dd>
               </div>
             </dl>
           </div>

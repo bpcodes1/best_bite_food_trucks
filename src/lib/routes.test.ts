@@ -19,6 +19,26 @@ describe('routes', () => {
     expect(new Set(ALL_PATHS).size).toBe(ALL_PATHS.length)
   })
 
+  it('gives every page a nav label in both languages', () => {
+    for (const route of ROUTES) {
+      for (const lang of LANGS) {
+        expect(route.label[lang], `${route.key} is missing a ${lang} label`).toBeTruthy()
+      }
+    }
+  })
+
+  /**
+   * The header's collapse breakpoint is set by how wide the Spanish nav runs,
+   * not by a guess. If labels get longer this fails before a layout does.
+   */
+  it('keeps the Spanish nav labels inside the width the header was built for', () => {
+    const width = (lang: 'en' | 'es') =>
+      ROUTES.reduce((n, route) => n + route.label[lang].length, 0)
+
+    expect(width('es')).toBeGreaterThan(width('en'))
+    expect(width('es')).toBeLessThanOrEqual(50)
+  })
+
   it('produces two addresses per page', () => {
     expect(ALL_PATHS).toHaveLength(ROUTES.length * LANGS.length)
   })

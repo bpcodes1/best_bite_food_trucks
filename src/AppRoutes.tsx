@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { LANGS, ROUTES } from './lib/routes'
+import { SiteHeader } from './components/SiteHeader'
+import { SiteFooter } from './components/SiteFooter'
 import { Home } from './pages/Home'
 import { Vendors } from './pages/Vendors'
 import { Events } from './pages/Events'
@@ -20,16 +22,28 @@ const PAGES: Record<string, () => React.ReactElement> = {
   contact: Contact,
 }
 
+/**
+ * The chrome wraps the routes rather than each page, so it is rendered by both
+ * the browser entry and `entry-server.tsx` — which renders `AppRoutes`, not
+ * `App`. Putting the header in `App` would ship a pre-rendered site with no
+ * navigation in any of its files.
+ */
 export function AppRoutes() {
   return (
-    <Routes>
-      {ROUTES.flatMap((route) => {
-        const Page = PAGES[route.key]
-        return LANGS.map((lang) => (
-          <Route key={`${route.key}-${lang}`} path={route.path[lang]} element={<Page />} />
-        ))
-      })}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <SiteHeader />
+      <main id="content">
+        <Routes>
+          {ROUTES.flatMap((route) => {
+            const Page = PAGES[route.key]
+            return LANGS.map((lang) => (
+              <Route key={`${route.key}-${lang}`} path={route.path[lang]} element={<Page />} />
+            ))
+          })}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <SiteFooter />
+    </>
   )
 }

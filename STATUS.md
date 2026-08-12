@@ -2,7 +2,7 @@
 
 Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-08-12
 **Branch:** `enrique` (never `main` — `main` is Bryan's, unrelated work)
 **Deadline:** ~Sept 2 (four weeks from the ~Aug 5 clock start)
 
@@ -10,9 +10,15 @@ Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
 ## Where we are
 
-The scaffold is done and one of five pages is built. Únete al Parque (the
-leasing page) is complete in both languages, pre-rendered, and verified in the
-browser at 375 and desktop. Four pages remain: Home, Vendors, Events, Contact.
+The scaffold and the site chrome are done, and one of five pages is built.
+Únete al Parque (the leasing page) is complete in both languages and now fully
+verified at 375 and 768 in Spanish. Four pages remain: Home, Vendors, Events,
+Contact — in that build order, Contact first.
+
+Until 2026-08-12 the site had **no header, nav, footer or language toggle** and
+not one `<Link>` anywhere. Únete was a page with no way in and no way out. That
+is now built and every one of the ten addresses cross-links to the other nine in
+its pre-rendered HTML.
 
 `main` contains Bryan's separate build. **Do not read it as a reference or a
 target.** Our branch was reset to a clean slate on purpose, keeping only the
@@ -26,15 +32,21 @@ client-supplied photography.
 | Addresses       | 5 pages × 2 languages, all deriving from `src/lib/routes.ts`              |
 | Design system   | `design.md` — governs all ten addresses, `hallmark audit` enforces it     |
 | Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets |
-| Únete al Parque | Built EN + ES, ~13.5 kB of finished HTML per address                      |
+| Únete al Parque | Built EN + ES, ~21 kB of finished HTML per address                        |
+| Chrome          | Header, nav, language toggle, footer — all derived from `routes.ts`       |
 
-Verified: build passes, lint clean, 7 route tests pass, content present in the
-HTML with no JavaScript, `lang` attributes correct per address, hreflang pairs
-on every page. Screenshots reviewed at 375 and desktop in Spanish.
+Verified: build passes, lint clean, 9 route tests pass, 11 HTML files, content
+present in the HTML with no JavaScript, `lang` attributes correct per address,
+hreflang pairs on every page.
 
-**Not verified:** 375 from the steps down through the form, and 768 at any
-point. English was skipped deliberately — Spanish is the longer language, so if
-Spanish fits, English fits.
+Screenshots reviewed: Únete full page at 375 ES and 768 ES; chrome at 375 ES,
+768 ES and 1280 EN, including the collapsed menu open. Measured
+`document.documentElement.scrollWidth` at 375 on both — no horizontal overflow.
+
+English was skipped deliberately on page bodies — Spanish is the longer
+language, so if Spanish fits, English fits. The **header is the exception** and
+was checked in English separately, because the wide nav only appears at `lg`
+and English is what shows there most often.
 
 ## Decisions, and why
 
@@ -82,11 +94,13 @@ structure from. The page leans on terms instead.
    see what each section is about faster. Anton stays wired and switchable.
 2. **Home's macrostructure.** Deferred until the system has proven itself.
    Strategy is settled (see above); the shape is not.
-3. **The English `lease` slug.** Currently `/lease-a-space`. Still pending as of
-   2026-08-11. Enrique's SEO call, targeting "food cart space for rent salem",
-   and he wants an on-page SEO framework applied to the choice rather than
-   guessing — Kyle Roof was floated. Change it in `src/lib/routes.ts` and it
-   changes everywhere. The Spanish slug `/es/unete-al-parque` is settled.
+3. **The English `lease` slug.** Currently `/lease-a-space`. **Deliberately left
+   alone 2026-08-12** rather than left undecided: it is one edit in
+   `src/lib/routes.ts`, nothing external links to it yet, and no GBP or
+   directory work has started, so the change stays free right up until the
+   domain goes live. Revisit before cutover, not before. Enrique's SEO call,
+   targeting "food cart space for rent salem". The Spanish slug
+   `/es/unete-al-parque` is settled.
 4. **Form destination.** Undecided. Ray does not read email and Cynthia does not
    enter the picture until after delivery. The form is deliberately unwired
    until this is answered.
@@ -111,9 +125,25 @@ Run `npm run pending` for the live list.
 
 ## Blocked on Enrique
 
+- **The vendor roster.** Enrique is sending the definitive list of vendors that
+  go on the site (his to supply, confirmed 2026-08-12). Vendors cannot be built
+  without it, and nothing about it should be guessed. What is in the repo does
+  not reconcile three ways:
+  - `food_trucks.txt` lists 10 names.
+  - `src/assets/food_trucks/` holds 12 images.
+  - Three images have no matching name: Nieve Casera, Las Cuatas Lokas,
+    Que Rollon Sushi.
+  - Three names have no image: Adan's Grill, Syrian House, La Flauta PDX.
+  - The client context says 9 active vendors, and `site.stalls.filled` is 9.
+
+  Cuisine, per-vendor hours and blurbs are also still missing. The context says
+  Bryan pulled reliable vendor hours and Enrique is passing them over; they have
+  not landed in the repo.
+
 - **Text Ray the descope offer**, get his yes, send the two-line written recap.
   Bryan already agreed to Option A. The context file's own rule: nothing gets
-  built past mockups until that recap exists. Open since 2026-08-10.
+  built past mockups until that recap exists. Open since 2026-08-10, and Únete
+  plus the chrome are now built past it.
 - **The domain.** Long-lead. Registration and DNS are slow and it gates cutover.
 - **GBP overhaul.** Promised as an early win "within days of kickoff"; that was
   ~Aug 5. Independent of the build.
@@ -154,11 +184,46 @@ text and do not invent a stand-in.
 **`base` is `/`**, which is right for localhost, Cloudflare `*.pages.dev`, and the
 production domain. Only a GitHub Pages _project_ site would need a subpath.
 
+**Headless Chrome's `--window-size` is not a viewport.** Screenshotting with
+`--headless=new --window-size=375,1000` renders the page at Chrome's default
+minimum layout width, not 375, and produces a picture that looks like the header
+is overflowing when it is not. It cost an hour and nearly a fix to a bug that did
+not exist. Drive the browser through the DevTools Protocol and set
+`Emulation.setDeviceMetricsOverride` instead, and confirm any suspected overflow
+by reading `document.documentElement.scrollWidth` before touching CSS.
+
+**The nav collapses below `lg`, not below `md`.** The five Spanish labels run to
+46 characters against English's 38 and overflow a 768px header set in
+letterspaced mono. The English nav fits there fine, which is the trap. A route
+test asserts the Spanish labels stay inside the width the header was built for.
+
 ## Next
 
-1. Screenshots of 375 from the steps down through the form, and 768.
-2. Build Home, Vendors, Events, Contact against `design.md`.
-3. Compress `src/assets/` — roughly 9 MB against a 233 kB JS bundle.
-4. `hallmark audit` across all ten addresses before delivery.
-5. `curl -I` every address on the live host. Never verify routing with
-   `npm run preview`.
+1. **Build Contact** — smallest page, and it establishes the NAP +
+   `LocalBusiness` schema pattern the rest of the site reuses.
+2. **Build Home** against `design.md`. Macrostructure is still open; strategy is
+   settled (eaters first, one honest door to Únete low on the page).
+3. **Build Vendors** once Enrique's roster lands.
+4. **Build Events** as structure with bracketed placeholders — decided
+   2026-08-12. Real events do not exist yet and none get invented.
+5. Compress `src/assets/` — still ~9 MB against a 251 kB JS bundle.
+   `best_bite_inside.jpeg` is 2.7 MB, `cafe_chula.png` 1.2 MB. `sips` cannot
+   write webp on this machine and its PNG output is unoptimised, so this
+   probably needs a real tool (`sharp` as a devDependency) — ask before adding.
+   `logo-256.png` is already done: 67 kB, used by the header and footer, with
+   the 984 kB original kept as the source of truth.
+
+Before delivery, and none of it started:
+
+6. **`site.origin` is still `http://localhost:5173`.** Every canonical,
+   hreflang, OG tag and sitemap entry in `dist/` points at localhost right now.
+   One edit, gated on the domain.
+7. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
+   card. `Seo.tsx` has og:type/title/description/url/locale and nothing else.
+8. **No schema markup at all.** `LocalBusiness` on Contact and Home, `FAQPage`
+   on Únete.
+9. Raise `MIN_BODY_BYTES` in `prerender.mjs` from 10 to ~500 once all five pages
+   are real. It cannot catch the empty-shell failure at 10.
+10. `hallmark audit` across all ten addresses.
+11. `curl -I` every address on the live host. Never verify routing with
+    `npm run preview`.

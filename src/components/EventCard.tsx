@@ -72,6 +72,16 @@ export interface EventCardProps {
    * margin. See the note on the element below before choosing `whole`.
    */
   fit?: 'fill' | 'whole'
+  /**
+   * Where the square sits on a `fill` crop, vertically: 0 pins it to the top
+   * of the art, 100 to the bottom, 50 centres it. Default 50.
+   *
+   * A number rather than "top" / "centre" because the right answer is measured
+   * per poster, not chosen from a menu. Slide the window until nothing that
+   * matters is halved, read the offset, convert it: a poster 1661px tall in a
+   * 1290px square can slide 371px, so an 70px nudge is 70/371 = 19.
+   */
+  focus?: number
 }
 
 export function EventCard({
@@ -83,6 +93,7 @@ export function EventCard({
   when,
   where,
   fit = 'fill',
+  focus = 50,
 }: EventCardProps) {
   return (
     <article className="flex min-w-0 flex-col">
@@ -101,16 +112,19 @@ export function EventCard({
           That is the rule, and it is a measurement, not a preference: BEFORE
           adding a flyer, check its aspect and check what sits near the edge it
           will lose. `sharp` reports the aspect; open the image and look at the
-          margins. A flyer whose words run close to the frame gets `whole`
-          instead, which letterboxes it — one odd poster is not a reason to
-          put the margin back on the two that do not need it. */}
+          margins. Then pick `focus`, and only fall back to `whole` when no
+          crop keeps what matters — one odd poster is not a reason to put the
+          margin back on the ones that do not need it. */}
       <div className="overflow-hidden rounded-sm border border-rule bg-paper">
         <img
           src={image}
           alt={imageAlt}
           loading="lazy"
           decoding="async"
-          className={`aspect-square w-full ${fit === 'fill' ? 'object-cover' : 'object-contain p-2.5 sm:p-3'}`}
+          style={fit === 'fill' ? { objectPosition: `50% ${focus}%` } : undefined}
+          className={`aspect-square w-full ${
+            fit === 'fill' ? 'object-cover' : 'object-contain p-2.5 sm:p-3'
+          }`}
         />
       </div>
 

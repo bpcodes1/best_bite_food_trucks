@@ -8,7 +8,7 @@ import { fullAddress, hoursRange, pending, site } from '../lib/site'
 import heroSign from '../assets/best_bite_sign.jpg'
 import karaokeFlyer from '../assets/events/karaoke.webp'
 import cruiseFlyer from '../assets/events/back_to_school_cruise.webp'
-import schoolFlyer from '../assets/events/cruise_into_the_school_year.png'
+import schoolFlyer from '../assets/events/Cruise-school-year.jpeg'
 import { FanGallery } from '../components/FanGallery'
 import { EventCard } from '../components/EventCard'
 import fotoTacos from '../assets/tacos.webp'
@@ -67,20 +67,23 @@ const dishes = [
    2026-08-12. Dates that a flyer does not state stay bracketed — see the
    Events page, which owns the full list.
 
-   `fit` is per flyer because it depends on the art, not on the layout. See the
-   note in EventCard: a flyer fills its square unless something that matters
-   sits close enough to an edge to be cropped away.
+   `fit` and `focus` are per flyer because they depend on the art, not on the
+   layout. See the note in EventCard: a flyer fills its square unless something
+   that matters sits close enough to an edge to be cropped away.
 
-   The school-year flyer is the exception, and only until Ray's replacement
-   arrives. The file we have is not the full poster — Enrique flagged it
-   2026-08-12 and there is a scrollbar baked into its right edge, so it is a
-   partial screen capture rather than the artwork. Filling the square would
-   also cut through the Best Bite mark in its top-left corner. It letterboxes
-   until the real file lands; then delete the `fit` and it matches the others. */
+   The school-year poster is the one that needed a `focus`. Enrique supplied
+   the real artwork 2026-08-12, replacing a partial screen capture that had a
+   scrollbar baked into its edge. The real one is 1290x1661 — taller than it is
+   wide — so it can slide 371px inside its square, and where it stops decides
+   what survives. Centred (50) cuts at y=186 and slices the Best Bite mark in
+   half. Hard to the top (0) keeps the mark but halves the date bubble. 19 is
+   a 70px nudge, the largest that still clears the mark, and it lands with the
+   logo, the headline, the tagline, the date and the 3PM-6PM pill all whole.
+   Checked by rendering the crop, not by reasoning about it. */
 const flyers = [
-  { key: 'karaoke', img: karaokeFlyer, fit: 'fill' },
-  { key: 'cruise', img: cruiseFlyer, fit: 'fill' },
-  { key: 'school', img: schoolFlyer, fit: 'whole' },
+  { key: 'karaoke', img: karaokeFlyer, fit: 'fill', focus: 50 },
+  { key: 'cruise', img: cruiseFlyer, fit: 'fill', focus: 50 },
+  { key: 'school', img: schoolFlyer, fit: 'fill', focus: 19 },
 ] as const
 
 const copy = {
@@ -130,7 +133,11 @@ const copy = {
         title: 'Cruise Into the School Year',
         tags: ['Lowriders', 'Family', 'Community'],
         description: 'Lowriders, food, family, community, all in the lot.',
-        when: pending('Cruise Into the School Year date'),
+        /* Date, time and address are printed on the poster Enrique supplied
+           2026-08-12. Read off the artwork, not inferred. Time is formatted
+           the way `hoursRange()` formats the park's own hours, so the two
+           never read as coming from different sites. */
+        when: 'Sunday, August 16, 2026, 3:00pm - 6:00pm',
         where: 'Best Bite Food Park',
         alt: 'Flyer for Cruise Into the School Year at Best Bite Food Park',
       },
@@ -191,7 +198,7 @@ const copy = {
         title: 'Cruise Into the School Year',
         tags: ['Lowriders', 'Familia', 'Comunidad'],
         description: 'Lowriders, comida, familia y comunidad, todo en el lote.',
-        when: pending('fecha del Cruise Into the School Year'),
+        when: 'Domingo 16 de agosto de 2026, 3:00pm - 6:00pm',
         where: 'Best Bite Food Park',
         alt: 'Volante de Cruise Into the School Year en Best Bite Food Park',
       },
@@ -365,6 +372,7 @@ export function Home() {
                     when={e.when}
                     where={e.where}
                     fit={f.fit}
+                    focus={f.focus}
                   />
                 </li>
               )

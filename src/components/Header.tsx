@@ -23,7 +23,7 @@ export function Header() {
   const { t } = useLanguage();
 
   return (
-    <header className="h-20 font-nav bg-brand-yellow">
+    <header className="sticky top-0 z-50 font-nav bg-brand-yellow">
       <nav aria-label="Primary">
         <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-6 px-4 py-3">
           <div className="col-start-1 flex items-center gap-3 justify-self-start md:justify-self-end">

@@ -12,7 +12,6 @@ export const ROUTES = {
   foodTrucks: '/food-trucks',
   events: '/events',
   joinThePark: '/join-the-park',
-  ourStory: '/our-story',
   contact: '/contact',
 } as const;
 
@@ -21,6 +20,5 @@ export const NAV_ROUTES: NavRoute[] = [
   { path: ROUTES.foodTrucks, key: 'foodTrucks' },
   { path: ROUTES.events, key: 'events' },
   { path: ROUTES.joinThePark, key: 'joinThePark' },
-  { path: ROUTES.ourStory, key: 'ourStory' },
   { path: ROUTES.contact, key: 'contact' },
 ];

@@ -6,7 +6,6 @@ export interface Translations {
     foodTrucks: string;
     events: string;
     joinThePark: string;
-    ourStory: string;
     contact: string;
   };
   hero: {
@@ -117,7 +116,6 @@ export const translations: Record<Lang, Translations> = {
       foodTrucks: 'Food Trucks',
       events: 'Events',
       joinThePark: 'Join the Park',
-      ourStory: 'Our Story',
       contact: 'Contact',
     },
     hero: {
@@ -251,7 +249,6 @@ export const translations: Record<Lang, Translations> = {
       foodTrucks: 'Food Trucks',
       events: 'Eventos',
       joinThePark: 'Únete al Parque',
-      ourStory: 'Nuestra Historia',
       contact: 'Contacto',
     },
     hero: {

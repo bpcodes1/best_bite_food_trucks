@@ -55,8 +55,7 @@ that file plus the route/page wiring in `App.tsx`.
 2. Food Trucks (`/food-trucks`)
 3. Events (`/events`)
 4. Join the Park (`/join-the-park`)
-5. Our Story (`/our-story`)
-6. Contact (`/contact`)
+5. Contact (`/contact`)
 
 Each page currently renders a placeholder via `src/components/PagePlaceholder.tsx`.
 Replace the contents of each file in `src/pages/` with real content as it's provided.

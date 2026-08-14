@@ -147,6 +147,45 @@
     scroll-margin-top: 5rem;
   }
 
+  /* Scroll reveal. Driven by src/lib/useReveal.ts, which adds `.js-reveal` to
+     <html> itself — so without JavaScript, without IntersectionObserver, or
+     with reduced motion preferred, nothing here applies and every element is
+     simply visible. That ordering is deliberate on a pre-rendered site: a
+     reveal must never be able to leave the page blank.
+
+     Time-based, not scroll-linked. A scroll-linked version was built first and
+     rejected: tying the animation to scroll position means a fast flick
+     finishes it in one frame and the reader sees nothing. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .reveal {
+      opacity: 0;
+      transform: translateY(72px);
+      transition:
+        opacity 0.85s ease-out,
+        transform 0.85s cubic-bezier(0.16, 0.84, 0.44, 1);
+    }
+
+    .js-reveal .reveal.is-revealed {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Middle, then right, then left, across each row of three. Only meaningful
+       at the three-column breakpoint; below it a row is one card and the
+       stagger would just be an arbitrary delay. */
+    @media (min-width: 1024px) {
+      .js-reveal .reveal-row > .reveal:nth-child(3n + 2) {
+        transition-delay: 0s;
+      }
+      .js-reveal .reveal-row > .reveal:nth-child(3n) {
+        transition-delay: 0.22s;
+      }
+      .js-reveal .reveal-row > .reveal:nth-child(3n + 1) {
+        transition-delay: 0.44s;
+      }
+    }
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;

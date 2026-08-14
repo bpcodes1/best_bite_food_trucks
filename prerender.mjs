@@ -22,9 +22,11 @@ const HEAD_RE = /^(?:<title[^>]*>[\s\S]*?<\/title>|<meta\b[^>]*\/?>|<link\b[^>]*
 // Catches the failure where a page renders its head tags but no markup — the
 // crawler gets an empty shell and nobody notices until the rankings don't come.
 //
-// RAISE THIS TO ~500 once the pages have real content. It is 10 right now
-// because the scaffold's pages are deliberately a single <h1> and nothing else.
-const MIN_BODY_BYTES = 10
+// Raised from 10 to 500 on 2026-08-12, when Vendors stopped being a bare <h1>
+// and every address gained real content. At 10 this check could not catch the
+// failure it exists for. The smallest real page renders several kB, so 500 is
+// far below anything legitimate and far above an empty shell.
+const MIN_BODY_BYTES = 500
 
 function buildPage(url) {
   const rendered = render(url)

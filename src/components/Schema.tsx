@@ -1,4 +1,5 @@
 import { site } from '../lib/site'
+import { VENDORS } from '../lib/vendors'
 
 /**
  * LocalBusiness structured data, rendered on Home and Contact.
@@ -36,6 +37,55 @@ export function LocalBusinessJsonLd() {
       opens: site.hours.open,
       closes: site.hours.close,
     },
+  }
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+  )
+}
+
+/**
+ * The nine vendors as named entities, for the Vendors page.
+ *
+ * This is the point of that page beyond showing cards. Search engines work out
+ * what a place IS partly from the entities attached to it, and a food park is
+ * defined by its kitchens. Nine named FoodEstablishments, each with a cuisine
+ * and each located at the park's address, say what "Best Bite Food Park" means
+ * far more precisely than any sentence we could write about variety.
+ *
+ * Only facts that exist go in. No ratings, no price range, no telephone: none
+ * of those are known per vendor, and schema is exactly where an invented value
+ * does the most damage, because it is a machine-readable claim.
+ *
+ * `servesCuisine` uses the English string for every language. It is a
+ * classification for a machine, not a sentence for a reader, and giving Google
+ * two different cuisine values for the same entity on two addresses would
+ * muddy the thing this markup exists to clarify.
+ */
+export function VendorListJsonLd() {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Food trucks at ${site.name}`,
+    numberOfItems: VENDORS.length,
+    itemListElement: VENDORS.map((vendor, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'FoodEstablishment',
+        name: vendor.name,
+        servesCuisine: vendor.cuisine.en,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: site.address.street,
+          addressLocality: site.address.city,
+          addressRegion: site.address.state,
+          postalCode: site.address.zip,
+          addressCountry: 'US',
+        },
+        containedInPlace: { '@type': 'FoodEstablishment', name: site.name },
+      },
+    })),
   }
 
   return (

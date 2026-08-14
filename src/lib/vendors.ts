@@ -22,10 +22,18 @@
  * that it is therefore INVISIBLE to `npm run pending`. `hoursKnown` is the flag
  * to filter on when you want the real list of what is still missing.
  *
- * HOURS ARE DISPLAY STRINGS, not structured data, because that is the form
- * they arrived in. They feed no schema. The park's own hours in `site.ts` stay
- * 24-hour for exactly the opposite reason — `openingHoursSpecification`
- * requires it. Do not try to make these two match in shape.
+ * HOURS ARE HELD TWICE, ON PURPOSE. `hours` is the sentence a reader sees, in
+ * the wording the vendor used. `hoursByDay` is the same information as ranges
+ * a machine can compare against the clock, which is what lets a card say
+ * whether that kitchen is open right now. Neither can be derived from the
+ * other safely: parsing the sentences would break the first time a vendor
+ * phrases theirs a new way, and generating the sentences from the ranges would
+ * throw away the vendor's own wording. Edit them together. A route test fails
+ * if a vendor claims known hours and has no ranges.
+ *
+ * The park's own hours in `site.ts` are a third shape again, 24-hour, because
+ * `openingHoursSpecification` in the schema requires it. Do not try to unify
+ * all three.
  *
  * NAMES ARE SPELLED THE WAY THE VENDOR SPELLS THEM, accents included, read off
  * their own logo. Enrique's call 2026-08-12. That is why this file carries
@@ -65,6 +73,25 @@ export interface Vendor {
   hours: Record<'en' | 'es', string>
   /** False where the vendor never sent hours. The real missing-data list. */
   hoursKnown: boolean
+  /**
+   * The same hours as machine-readable ranges, so the card can answer "is this
+   * one open right now". Keyed 0=Sunday .. 6=Saturday, values are [open, close]
+   * in minutes from midnight. A day missing from the map means closed that day.
+   *
+   * This exists because the display strings cannot drive the badge — nobody is
+   * parsing "Mon closed, Tue–Wed 10am–8pm, Thu 10am–6pm" at runtime, and a
+   * parser would be a silent liability the first time a vendor phrases hours a
+   * new way. The two are maintained together: change one, change the other.
+   * `npm run test` pins them to each other.
+   */
+  hoursByDay?: Record<number, [number, number]>
+  /**
+   * Ground for the card when this vendor has no photograph yet. A real
+   * --color-wash-* token from src/index.css, which are grounds only and never
+   * type or accents, so design.md's no-third-brand-colour rule still holds.
+   * Delete nothing when a photo arrives: the photo simply takes precedence.
+   */
+  wash: string
   /** Every vendor has a logo. Nine of nine, checked by eye 2026-08-12. */
   logo: string
   /** A photograph of the truck. Only two vendors have one. */
@@ -90,6 +117,7 @@ export const VENDORS: Vendor[] = [
     },
     hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
     hoursKnown: false,
+    wash: 'var(--color-wash-pupusas)',
     logo: pupusasChileros,
     logoGround: 'white',
   },
@@ -107,6 +135,16 @@ export const VENDORS: Vendor[] = [
       es: 'Lun–Jue 7am–2pm, Vie–Sáb 7am–4pm, Dom 9am–4pm',
     },
     hoursKnown: true,
+    hoursByDay: {
+      0: [540, 960],
+      1: [420, 840],
+      2: [420, 840],
+      3: [420, 840],
+      4: [420, 840],
+      5: [420, 960],
+      6: [420, 960],
+    },
+    wash: 'var(--color-wash-coffee)',
     logo: cafeChula,
     photo: cafeChulaTruck,
     logoGround: 'colour',
@@ -123,6 +161,15 @@ export const VENDORS: Vendor[] = [
       es: 'Lun cerrado, Mar–Mié 10am–8pm, Jue 10am–6pm, Vie–Sáb 10am–9pm, Dom 10am–6pm',
     },
     hoursKnown: true,
+    hoursByDay: {
+      0: [600, 1080],
+      2: [600, 1200],
+      3: [600, 1200],
+      4: [600, 1080],
+      5: [600, 1260],
+      6: [600, 1260],
+    },
+    wash: 'var(--color-wash-tacos)',
     logo: lasJarochitas,
     logoGround: 'white',
   },
@@ -132,6 +179,7 @@ export const VENDORS: Vendor[] = [
     cuisine: { en: 'Mexican street food', es: 'Antojitos mexicanos' },
     hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
     hoursKnown: false,
+    wash: 'var(--color-wash-burrito)',
     logo: lasCuatasLokas,
     logoGround: 'black',
   },
@@ -152,6 +200,16 @@ export const VENDORS: Vendor[] = [
       es: 'Lun–Vie 2pm–8pm, Sáb 12pm–8pm, Dom 11am–8pm',
     },
     hoursKnown: true,
+    hoursByDay: {
+      0: [660, 1200],
+      1: [840, 1200],
+      2: [840, 1200],
+      3: [840, 1200],
+      4: [840, 1200],
+      5: [840, 1200],
+      6: [720, 1200],
+    },
+    wash: 'var(--color-wash-ribs)',
     logo: nieveCasera,
     logoGround: 'colour',
   },
@@ -166,6 +224,15 @@ export const VENDORS: Vendor[] = [
       es: 'Lun–Vie 12pm–8pm, Sáb 12pm–10pm, Dom cerrado',
     },
     hoursKnown: true,
+    hoursByDay: {
+      1: [720, 1200],
+      2: [720, 1200],
+      3: [720, 1200],
+      4: [720, 1200],
+      5: [720, 1200],
+      6: [720, 1320],
+    },
+    wash: 'var(--color-wash-tacos)',
     logo: taqueriaRomero,
     logoGround: 'black',
   },
@@ -181,6 +248,8 @@ export const VENDORS: Vendor[] = [
       es: 'Lun–Mar cerrado, Mié–Dom 12:30pm–8:30pm',
     },
     hoursKnown: true,
+    hoursByDay: { 0: [750, 1230], 3: [750, 1230], 4: [750, 1230], 5: [750, 1230], 6: [750, 1230] },
+    wash: 'var(--color-wash-mariscos)',
     logo: theRedMarino,
     logoGround: 'white',
   },
@@ -199,6 +268,7 @@ export const VENDORS: Vendor[] = [
     cuisine: { en: 'Sushi', es: 'Sushi' },
     hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
     hoursKnown: false,
+    wash: 'var(--color-wash-ribs)',
     logo: queRollonSushi,
     logoGround: 'black',
   },
@@ -216,6 +286,16 @@ export const VENDORS: Vendor[] = [
     },
     hours: { en: 'Mon–Sun 9am–8pm', es: 'Lun–Dom 9am–8pm' },
     hoursKnown: true,
+    hoursByDay: {
+      0: [540, 1200],
+      1: [540, 1200],
+      2: [540, 1200],
+      3: [540, 1200],
+      4: [540, 1200],
+      5: [540, 1200],
+      6: [540, 1200],
+    },
+    wash: 'var(--color-wash-burrito)',
     logo: elPatron,
     photo: elPatronTruck,
     logoGround: 'white',

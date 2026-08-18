@@ -14,7 +14,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "pending": "node scripts/check-pending.mjs",
-    "images": "node scripts/compress-images.mjs"
+    "images": "node scripts/compress-images.mjs",
+    "shots": "node scripts/shots.mjs"
   },
   "dependencies": {
     "@fontsource-variable/source-sans-3": "^5.3.0",

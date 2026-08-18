@@ -2,7 +2,12 @@
 
 Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
-**Last updated:** 2026-08-17 (Vendors built and shipped; 63 in-person photos landed)
+**Last updated:** 2026-08-18 (`npm run shots` built; two Vendors bands added;
+silver cart identified; Bryan's branch harvested — 8 of 9 cards now have a truck
+photo and the karaoke time is real; stale docs corrected)
+
+A word on "shipped" in this file: it means the code is built and committed to
+`enrique`. **Nothing has been delivered to Ray and nothing is on the internet.**
 **Branch:** `enrique` (never `main` — `main` is Bryan's, unrelated work)
 **Deadline:** ~Sept 2 (four weeks from the ~Aug 5 clock start)
 
@@ -10,37 +15,44 @@ Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
 ## START HERE NEXT SESSION
 
-1. **Answer the open question below about the silver cart**, then finish placing
-   the in-person photos. Everything is staged and the path is written out.
-2. **Build `npm run shots`.** Agreed with Enrique 2026-08-17 and not yet done.
-   See "The QA script" below — it exists five times as throwaway code and needs
-   to exist once as a committed script.
-3. **Add the new sections to Vendors.** Enrique approved two: a practical strip
-   and a karaoke teaser. See "Vendors: agreed next changes".
+1. **Commit the 2026-08-18 work.** Enrique's call was to hold it as one batch
+   until the photos were in. They are in. Nothing is committed yet.
+2. **Decide whether Vendors keeps three dark surfaces.** `src/index.css`
+   rations dark to two per page and this one spends three. See Open decisions.
+3. **Bring Únete, Events and Contact up to Home's standard.** The last
+   structural job on the site. Everything else left is content from Ray or
+   hosting from Enrique.
+
+Done 2026-08-18, all uncommitted: `npm run shots`, the karaoke band and the
+practical band on Vendors, bigger cards via the page measure, the silver cart
+identification, Bryan's branch harvested (8 of 9 cards now have a truck photo,
+karaoke time and DJ now real), and four stale claims corrected in `README.md`
+and `design.md`.
 
 ## Where we are
 
 **All five pages are built in both languages.** Home, Vendors, Únete al Parque,
-Events, Contact, plus chrome. Vendors shipped 2026-08-16 and was the last one.
+Events, Contact, plus chrome. Vendors was the last one, built 2026-08-16.
 
 Home is the reference for how the site should look. Únete, Events and Contact
 still predate the 2026-08-12 design changes and are a generation behind.
 
 ## Built and verified
 
-|                 |                                                                           |
-| --------------- | ------------------------------------------------------------------------- |
-| Scaffold        | Vite + React 19 + TS + Tailwind v4, pre-rendered to 11 HTML files         |
-| Addresses       | 5 pages × 2 languages, all deriving from `src/lib/routes.ts`              |
-| Chrome          | Masthead nav + statement footer, both derived from `routes.ts`            |
-| Home            | Full-screen hero, tinting fan gallery, events grid, story, door           |
-| Vendors         | **BUILT** — hero, nine cards, open/closed badge, scroll reveal, door      |
-| Únete al Parque | Built EN + ES. Design predates the 2026-08-12 rules                       |
-| Contact         | NAP, map, form, cross-door to Únete, LocalBusiness schema                 |
-| Events          | Built on the three real flyers, dated events in a data array              |
-| Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets |
-| Schema          | LocalBusiness on Home + Contact; ItemList of nine vendors on Vendors      |
-| Tests           | 16, across `routes.test.ts` and `vendors.test.ts`                         |
+|                 |                                                                                |
+| --------------- | ------------------------------------------------------------------------------ |
+| Scaffold        | Vite + React 19 + TS + Tailwind v4, pre-rendered to 11 HTML files              |
+| Addresses       | 5 pages × 2 languages, all deriving from `src/lib/routes.ts`                   |
+| Chrome          | Masthead nav + statement footer, both derived from `routes.ts`                 |
+| Home            | Full-screen hero, tinting fan gallery, events grid, story, door                |
+| Vendors         | **BUILT** — hero, nine 4:3 cards (8 with a truck photo), karaoke + facts bands |
+| QA              | `npm run shots` — every address, 375/768, both languages, overflow as a number |
+| Únete al Parque | Built EN + ES. Design predates the 2026-08-12 rules                            |
+| Contact         | NAP, map, form, cross-door to Únete, LocalBusiness schema                      |
+| Events          | Built on the three real flyers, dated events in a data array                   |
+| Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets      |
+| Schema          | LocalBusiness on Home + Contact; ItemList of nine vendors on Vendors           |
+| Tests           | 16, across `routes.test.ts` and `vendors.test.ts`                              |
 
 Verified 2026-08-16: build passes, lint clean, 16 tests, 11 HTML files, all nine
 vendors present in the raw HTML with JavaScript off, no horizontal overflow at
@@ -72,19 +84,19 @@ sideways without it.
 
 ### What is in them, identified from contact sheets
 
-| Photos    | What                                                       |
-| --------- | ---------------------------------------------------------- |
-| 7974–7978 | **Las Cuatas Lokas** — green trailer                       |
-| 7979–7984 | **Las Jarochitas** — red truck under the pergola           |
-| 7985–7987 | **Que Rollon Sushi** — the black step van                  |
-| 7988–7991 | **The Red Marino** — white trailer                         |
-| 7992–7995 | **UNIDENTIFIED silver serving cart** — open question below |
-| 7996–8004 | Blue and white tent, picnic tables — park atmosphere       |
-| 8005–8008 | Wooden wagon planter, lot views                            |
-| 8009–8012 | Hand-wash station                                          |
-| 8013–8014 | Wide shots of the lot with the tent                        |
-| 8015–8031 | **The Best Bite park sign**, many angles, high resolution  |
-| 8032–8036 | Restroom trailer                                           |
+| Photos    | What                                                            |
+| --------- | --------------------------------------------------------------- |
+| 7974–7978 | **Las Cuatas Lokas** — green trailer                            |
+| 7979–7984 | **Las Jarochitas** — red truck under the pergola                |
+| 7985–7987 | **Que Rollon Sushi** — the black step van                       |
+| 7988–7991 | **The Red Marino** — white trailer                              |
+| 7992–7995 | **Syrian House Cuisine** — the silver cart. Cut from the roster |
+| 7996–8004 | Blue and white tent, picnic tables — park atmosphere            |
+| 8005–8008 | Wooden wagon planter, lot views                                 |
+| 8009–8012 | Hand-wash station                                               |
+| 8013–8014 | Wide shots of the lot with the tent                             |
+| 8015–8031 | **The Best Bite park sign**, many angles, high resolution       |
+| 8032–8036 | Restroom trailer                                                |
 
 Que Rollon carries no name badge on the van. It was identified by the phone
 number printed on its menu board, (503) 991-8991, matching the number on its
@@ -92,20 +104,90 @@ logo in `src/assets/food_trucks/`. Not a guess.
 
 ### Already pulled into the repo
 
-Four truck photos, wired into `vendors.ts` and live on the page:
+Four truck photos, wired into `vendors.ts` and on the page:
 `las_cuatas_lokas_truck.webp`, `las_jarochitas_truck.webp`,
 `the_red_marino_truck.webp`, `que_rollon_sushi_truck.webp`.
 
-Three park photos staged for the sections that do not exist yet, in
-`src/assets/park/`: `seating_tent.webp`, `lot_wagon.webp`, `park_sign.webp`.
+Park photos in `src/assets/park/`: `seating_tent.webp`, `lot_wagon.webp`,
+`park_sign.webp`. `seating_tent.webp` is now **unused** — the karaoke band took
+Bryan's better one. `lot_wagon.webp` and `park_sign.webp` are still unused.
 
-**Six of nine vendors now have a truck photograph.** Café Chula and El Patrón
-came from Bryan earlier; the four above are new.
+### The silver cart is Syrian House Cuisine — resolved 2026-08-18
 
-### Still missing a photo
+Not a mystery vendor and not one of the three missing photos. The trailer
+carries "SYRIAN HOUSE CUISINE 503-754-8737" on the window frame and the menu
+board reads "Authentic Syrian Food": shawarma, gyros, kabab, hummus, baba
+ganoush, samosas, dolma, tabouleh, falafel, baklava. Read directly off the
+photograph at full resolution, not inferred.
 
-Pupusas Chileros, Nieve Casera, Taqueria Romero — unless the silver cart is one
-of them.
+**Syrian House is deliberately off the roster.** `src/lib/vendors.ts` line 6
+has said so since 2026-08-12 — Enrique cut Adan's Grill, Syrian House and
+La Flauta PDX together. This was never an open question; nobody had read the
+name off the board. It is also the "one Mediterranean option" the client
+context names as the park's only non-Mexican cuisine.
+
+One thing worth a text to Ray, and it is a roster question rather than a photo
+one: the cart was on the lot with its OPEN sign lit on 2026-08-17, five days
+after being cut. Either it is still trading and the roster is wrong, or it has
+since left. Nine vendors is a number printed on four pages and inside the
+structured data, so it has to be right.
+
+### Still missing a photo — one vendor, down from three
+
+**Only Pupusas Chileros.** Nothing in the 63 covers it and nothing on any branch
+does either. It has to come from Ray. Its card carries the logo wash panel and
+holds its shape, which is exactly what that treatment exists for.
+
+Nieve Casera and Taqueria Romero were closed on 2026-08-18 from Bryan's branch —
+see below.
+
+## Bryan's branch, harvested 2026-08-18
+
+`origin/bryan` at `17569a6` ("Update Best Bite Website with New Images") carries
+assets `origin/main` does not. **Enrique confirmed Bryan shot these himself**, so
+they are ours on the same footing as the 2026-08-17 park visit.
+
+Both truck photos were verified against the vehicles' own signage rather than
+against Bryan's filenames, because a filename is a claim and not evidence:
+
+| Taken                              | As                           | Verified by                                                                 |
+| ---------------------------------- | ---------------------------- | --------------------------------------------------------------------------- |
+| `food_trucks/nieve_casera.jpg`     | `nieve_casera_truck.webp`    | "VillegasIceCream.com" and (503) 953-4667 on the trailer, matching its logo |
+| `food_trucks/taqueria_romero.webp` | `taqueria_romero_truck.webp` | "TAQUERIA ROMERO MEXICAN FOOD LLC" on the trailer's side                    |
+| `outdoor_seating.jpg`              | `park/outdoor_seating.webp`  | n/a — park atmosphere                                                       |
+| `inside_sign.png`                  | `park/inside_sign.webp`      | n/a — staged, unused                                                        |
+| `events/karaoke_full.jpg`          | `events/karaoke.webp`        | replaced the cropped copy                                                   |
+
+**Eight of nine cards now carry a truck photograph.**
+
+`taqueria_romero_truck.webp` is **680×510**, below what a 411px card wants on a
+2x screen, so it renders slightly soft. Better than no photograph, and on the
+list to reshoot when Ray sends the Pupusas Chileros one.
+
+### What the uncropped karaoke flyer was hiding
+
+The copy of the flyer in this repo was a crop, and the crop had removed exactly
+the strip carrying **"DE 6PM A 9PM"** and **"MUSICA Y KARAOKE A CARGO DE Dj Mike
+G."** Both were `pending()` brackets on Events. Enrique's call 2026-08-18 was to
+put the time and the name on the site. Placeholders went 23 → 21.
+
+Two things to watch, both recorded in the header comment of `Events.tsx`:
+
+- **The flyer carries no date.** 6pm–9pm is true as of whenever it was printed
+  and nobody has confirmed it since. On the Ray list.
+- **Dj Mike G is a real person, not something Ray controls.** If he stops
+  working the park the site is wrong about a named individual, which is worse
+  than being wrong about a time.
+
+**The flyer had Instagram chrome baked into it** — an avatar circle bottom-left,
+a mute button bottom-right, and a partial player strip along the bottom. It was
+a screenshot of a story, not the artwork. Trimmed to 1040×1595, which removes
+all three and clips only the outer edge of the two microphone illustrations.
+Check for this on any future flyer arriving as a screenshot.
+
+**The flyer misspells "disfrutar" as "DIAFRUTAR".** It is Ray's graphic, not our
+copy, so it is not ours to fix — but it is now on a page we are delivering, and
+he may want to know.
 
 ### Two things the photos revealed
 
@@ -122,9 +204,11 @@ reference page and nothing changes there without asking.
 
 ## Open decisions
 
-1. **What is the silver cart in photos 7992–7995?** Blocks finishing the photo
-   pass. It is a small aluminium serving cart with photo menus and an OPEN sign.
-   Could be Pupusas Chileros, Nieve Casera or Taqueria Romero.
+1. **Is Syrian House Cuisine still on the lot, and does the roster hold at
+   nine?** The silver cart is identified (see the photos section) and it is
+   already off the roster by Enrique's 2026-08-12 call, but it was trading on
+   2026-08-17. A text to Ray settles it. Nine is printed on four pages and in
+   the structured data.
 2. **Whether to delete `src/assets/in_person_images.zip`.** It is git-ignored so
    it is harmless, but it is 219 MB sitting in the working tree. Enrique has not
    said.
@@ -134,28 +218,67 @@ reference page and nothing changes there without asking.
    before delivery. Target is "food cart space for rent salem".
 4. **Display face — leaning Archivo Black, not closed.** Anton stays wired:
    `document.documentElement.dataset.display = 'anton'`.
-5. **Form destination.** Undecided, so both forms are deliberately unwired and
+5. **Vendors spends three dark surfaces and the system allows two.**
+   `src/index.css` rations dark to the hero scrim and the footer, amended
+   2026-08-12 after four dark bands in a row made a daytime family park look
+   like a whisky bar. Vendors adds the Únete door on `ground="night"`, which is
+   a third. Not changed unilaterally — the door was built and approved that way,
+   and `hallmark audit` will flag it as critical against design.md, so it wants
+   a decision either way. The two bands added 2026-08-18 are both light because
+   of this.
+6. **Whether the karaoke band's photograph is the right one.**
+   `seating_tent.webp` shows the tent and tables from across the lot, with
+   traffic cones in the foreground. It is honest and it is ours. `lot_wagon.webp`
+   is the alternative.
+7. **Form destination.** Undecided, so both forms are deliberately unwired and
    show a visible placeholder on submit.
-6. **The story section on Home.** Deliberately plain, most likely to be replaced
+8. **The story section on Home.** Deliberately plain, most likely to be replaced
    wholesale when Ray's voice notes arrive.
 
-## Vendors: agreed next changes
+## Vendors: the three agreed changes, built 2026-08-18
 
-Enrique approved these 2026-08-16, none built yet:
+Approved by Enrique 2026-08-16, all three now in.
 
-- **A practical strip** — address, hours, parking, seating in one dense band.
-  Contact owns this too, but making someone leave the page to find out where the
-  park is fails Laja's reduce-the-user's-work test.
-- **A karaoke-every-Sunday teaser** linking to Events. A reason to come that is
-  not food, and already true.
-- **Bigger cards.** Three options, in order of impact per effort: widen the
-  container from 1152 to ~1280 (one number, cards go 355px → ~400px); change the
-  card image from 4:3 to 4:5 so the photograph gets taller without touching the
-  grid; or drop to two columns at desktop. Recommendation was aspect + container,
-  keeping three columns.
+**The karaoke band** sits between the roster and the facts band, on paper, with
+`park/outdoor_seating.webp` beside it — Bryan's shot from inside the tent
+looking down the tables, which replaced the one taken from across the lot with
+traffic cones in the foreground. It links to Events and now carries
+"6:00pm - 9:00pm · Every Sunday", read off the park's own flyer.
 
-`src/assets/park/seating_tent.webp` and `lot_wagon.webp` exist for the practical
-strip and any atmosphere section.
+**The practical band** is the yellow flood. Hours as the large numeral, then
+address, parking and seating as mono spec rows, then a link to Contact for the
+map. Accent at flood footprint is design.md § Ground's stated use of the yellow,
+and it was the only way to give the band weight without a third dark surface.
+
+**Bigger cards come from the page measure alone.** `measure="wide"` takes Vendors
+from 1152 to 1280, so a card goes 368px → 411px.
+
+The media box went 4:3 → 4:5 the same day and **came straight back to 4:3**.
+Every truck was photographed side-on in landscape, so a portrait box cuts about
+a third of the vehicle off at both ends and Las Jarochitas lost part of its own
+signage. Enrique compared 4:5, 1:1, 4:3 and 3:2 rendered at real card width and
+chose 4:3 — nearly the whole truck without the dead asphalt 3:2 brings in.
+
+**Do not make that box taller again to reclaim card height.** The constraint is
+the source photography and it does not change until every truck is reshot
+portrait. This is written into `VendorCard.tsx` as well.
+
+One structural note: **`measure` is per page, not per section.** `Section` takes
+it as a prop and Vendors passes `wide` on all four. Mixing measures on one page
+misaligns one heading's left edge against the next at wide viewports. Home is
+deliberately untouched at the default — it is the approved reference page.
+
+## Facts taken from photographs, not from a document
+
+**On-site parking and covered picnic tables now print on Vendors.** Neither is
+in the client context file. Both were read off Enrique's own photographs of the
+lot, 2026-08-17 (IMG_7996–8014): a paved lot with marked bays, and picnic tables
+under the striped tent.
+
+That is stronger evidence than a document, but it is still our reading of a
+photograph rather than something Ray said, so it is logged here rather than left
+buried in the page. **Nothing about cost is claimed** — "free parking" would be
+an invention and is not on the page.
 
 ## How Vendors is built, and why
 
@@ -262,31 +385,57 @@ Yelp, Travel Salem. The Yard's own site appears in neither. So the highest-
 leverage search work is off the website — the Business Profile overhaul and the
 FoodParks.io listing, both already in the proposal.
 
-## The QA script — agreed, not built
+## The QA script — built 2026-08-18
 
-Enrique approved building `npm run shots` on 2026-08-17.
+`npm run shots`, at `scripts/shots.mjs`. Every requirement from the 2026-08-17
+agreement is in it, each one commented with the round-trip it cost.
 
-The problem it solves: the browser-driving code for screenshots has been written
-from scratch five times in one session, and got it wrong twice — once producing
-mojibake because the page lacked a charset, once measuring at 980px instead of
-375 because it lacked a viewport meta, which made a "no overflow" reading
-worthless. It should exist once, correctly, and be run on demand.
+**No new dependency.** Node 24 ships a global `WebSocket`, so the DevTools
+Protocol client is about forty lines at the top of the file, and Chrome is
+already on the machine. No puppeteer, no 300MB browser download.
 
-It is **not** scheduled and does not run on its own. `qa-screenshots/` is already
-git-ignored so nothing accumulates.
+```
+npm run shots                 every address, 375 and 768, both languages
+npm run shots -- vendors      one route key
+npm run shots -- vendors 1280 that route, at 1280 as well
+npm run shots -- es 375       Spanish only, phone only
+npm run shots -- --fold       also capture the first screen alone
+```
 
-Requirements, all learned the hard way and all in `CLAUDE.md`:
+Positional arguments are order-free: numbers are widths, `en`/`es` filter
+language, anything else matches a route key.
 
-- Drive Chrome through the DevTools Protocol with
-  `Emulation.setDeviceMetricsOverride`. `--window-size` is not a viewport.
-- Force `img.loading = 'eager'` and await `decode()` before capturing;
-  `captureBeyondViewport` never fires lazy loading.
-- Await `document.fonts.ready`.
-- Neutralise the reveal before capturing, or cards photograph mid-transition and
-  look faded. Set `transition: none` and remove `.js-reveal`; a fixed wait is
-  not enough.
-- Read `document.documentElement.scrollWidth` and report overflow as a number.
-- Every page, 375 and 768, both languages.
+What it does beyond taking pictures:
+
+- **Refuses to run against a stale `dist/`.** If anything in `src/` is newer
+  than the build, it exits rather than photograph the previous build. This is
+  the same failure as verifying a deploy against the old build. `--stale-ok`
+  overrides.
+- **Reports overflow as a number**, and names the widest offending element with
+  its class list, so a fix has somewhere to start.
+- **Fails the process** on overflow, a broken image, a missing `<title>`, or a
+  wrong `<html lang>`. Exit 0 means all four are clean.
+- **Rewrites `qa-screenshots/README.txt` every run**, so it can never describe
+  an older set.
+- Route list is imported from `dist-ssr/entry-server.js`, exactly as
+  `prerender.mjs` does, so it photographs the addresses that were generated
+  rather than the ones the source says should exist. `ROUTES` and `LANGS` were
+  added to that file's exports for this.
+
+**It is not a routing check and says so in its own header.** It serves `dist/`
+from a static server it starts itself, so every address answering proves nothing
+about Cloudflare Pages. `curl -I` against the live host, and nowhere else.
+
+The reveal is neutralised two ways: reduced motion is emulated through the
+protocol, which makes `useReveal` bail before it ever adds `.js-reveal`, and an
+`!important` override is injected on top of that. `opacity`, `transform`,
+`translate`, `scale` and `rotate` are all pinned, because Tailwind v4 emits the
+last three as their own properties.
+
+Not scheduled, does not run on its own, and `qa-screenshots/` is git-ignored.
+
+Baseline 2026-08-18: 20 screenshots, ten addresses at 375 and 768, no overflow,
+no broken images, every page titled, every `<html lang>` correct.
 
 ## Capabilities now available, that were not before
 
@@ -321,14 +470,22 @@ Placeholders render as visible brackets; run `npm run pending` (23 at last count
 - Instagram, Facebook, TikTok handles — these are `sameAs` entity
   disambiguation, not decoration.
 - Stall size, what is included, reply time
-- Truck photos for **Pupusas Chileros, Nieve Casera, Taqueria Romero**. Ask for
-  them in one session with three rules: shoot straight on, whole truck in frame,
-  all in one go so the light matches. Leave room around the truck for cropping.
+- A truck photo for **Pupusas Chileros** — the last one missing. Three rules:
+  shoot straight on, whole truck in frame, leave room around it for cropping.
+  Worth asking for a **replacement Taqueria Romero** in the same message, since
+  Bryan's is 680×510 and renders soft.
+- **Confirm karaoke is still 6pm–9pm**, and that naming Dj Mike G on the site is
+  fine by him. Both are now printed on Events and on Vendors.
 - His story for the Home section
 - Drone video — last to arrive, drops into the hero as a `<video>`
 - **Whether the Asian-cuisine recruiting line still stands.** Que Rollon Sushi
   is on the roster and now has a photograph, but Únete still tells prospective
   vendors the park is "especially looking for Asian food".
+- **Confirm parking and seating**, which now print on Vendors and were read off
+  photographs rather than stated by him. See "Facts taken from photographs".
+- **Is Syrian House Cuisine still on the lot?** It was trading on 2026-08-17,
+  five days after being cut from the roster. Nine is printed on four pages and
+  inside the structured data.
 
 ## Blocked on Enrique
 

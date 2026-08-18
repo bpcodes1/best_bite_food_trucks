@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Seo } from '../components/Seo'
 import { Button, Label, Section } from '../components/ui'
 import { VendorCard } from '../components/VendorCard'
@@ -5,9 +6,14 @@ import { VendorListJsonLd } from '../components/Schema'
 import { useLang } from '../lib/useLang'
 import { useReveal } from '../lib/useReveal'
 import { pathFor } from '../lib/routes'
-import { hoursRange, site } from '../lib/site'
+import { fullAddress, hoursRange, site } from '../lib/site'
 import { VENDORS } from '../lib/vendors'
 import heroLot from '../assets/best_bite_outdoor.webp'
+// Bryan's, from `origin/bryan` 2026-08-18. Replaced `park/seating_tent.webp`,
+// which was shot from across the lot with traffic cones in the foreground.
+// This one is taken from inside the tent, looking down the tables — the same
+// place karaoke happens, which is what the band is about.
+import seatingTent from '../assets/park/outdoor_seating.webp'
 
 /* Vendors — the catalogue, and the page that answers "is it worth the drive".
  *
@@ -39,6 +45,35 @@ import heroLot from '../assets/best_bite_outdoor.webp'
  * the park's 12:00–20:00 — Café Chula opens at 7am. The line under the roster
  * states whose hours are whose, without which the page reads as contradicting
  * itself, which is the exact fault the Square site had.
+ *
+ * TWO SECTIONS ADDED 2026-08-18, both approved by Enrique 2026-08-16.
+ *
+ * The KARAOKE band is a reason to come that is not food, and it is already
+ * true — the park's own flyer says every Sunday, and Events is built on it.
+ * The time came off that flyer on 2026-08-18 and is stated here as well as on
+ * Events. It is repeated rather than linked to because this is the page a
+ * reader is on when they decide whether to drive over, and it is one short
+ * line. See `Events.tsx` for the two caveats that come with it: the flyer
+ * carries no date, and Dj Mike G is a real person rather than something Ray
+ * controls.
+ *
+ * The PRACTICAL band answers "where is it and when", which Contact also owns.
+ * Duplicating it is the point: sending a reader to another page to find out
+ * where the park is fails Laja's reduce-the-user's-work test, and this is the
+ * page they are on when they decide whether to drive over. NAP still comes
+ * from `site.ts` and is not retyped, so the two pages cannot drift.
+ *
+ * WHERE PARKING AND SEATING COME FROM. Neither is in the client context file.
+ * Both are read off Enrique's own photographs of the lot, 2026-08-17
+ * (IMG_7996–8014): a paved on-site lot with marked bays, and picnic tables
+ * under the striped tent. That is stronger evidence than a document, but it is
+ * still an inference from a photograph rather than something Ray stated, so it
+ * is flagged in STATUS.md for him to confirm. Nothing about cost is claimed —
+ * "free parking" would be an invention and is not on the page.
+ *
+ * BOTH BANDS ARE LIGHT ON PURPOSE. `src/index.css` rations dark to two surfaces
+ * per page and this page already spends both, on the hero scrim and the footer,
+ * before the Únete door takes a third. Adding a night band here would make four.
  */
 
 const copy = {
@@ -55,6 +90,22 @@ const copy = {
     rosterBody:
       'Nine independent kitchens, most of them family businesses. Take a lap before you decide.',
     parkLine: `The park is open every day ${hoursRange()}. Each kitchen keeps its own hours.`,
+    karaokeLabel: 'Every Sunday',
+    karaokeH: 'Karaoke runs on Sundays.',
+    karaokeBody:
+      'Music, families, and the kitchens open right through it. Free to come, and a reason to be here that is not lunch.',
+    karaokeTime: '6:00pm - 9:00pm · Every Sunday',
+    karaokeCta: 'See what else is on',
+    karaokeAlt: 'Rows of picnic tables under the striped tent at Best Bite Food Park',
+    practicalLabel: 'Before you drive over',
+    practicalH: 'Where it is, and when.',
+    practicalEvery: 'Open every day',
+    practicalRows: [
+      ['Address', fullAddress()],
+      ['Parking', 'On-site lot'],
+      ['Seating', 'Covered picnic tables'],
+    ] as const,
+    practicalCta: 'Map and directions',
     doorLabel: 'Own a truck?',
     doorH: 'There is room for you here.',
     doorBody: 'Month to month, no long contract, and the lot already has the traffic.',
@@ -73,6 +124,22 @@ const copy = {
     rosterBody:
       'Nueve cocinas independientes, la mayoría negocios familiares. Da una vuelta antes de decidir.',
     parkLine: `El parque abre todos los días ${hoursRange()}. Cada cocina tiene su propio horario.`,
+    karaokeLabel: 'Todos los domingos',
+    karaokeH: 'Los domingos hay karaoke.',
+    karaokeBody:
+      'Música, familias, y las cocinas abiertas mientras dura. Entrada libre, y una razón para venir que no es el almuerzo.',
+    karaokeTime: '6:00pm - 9:00pm · Todos los domingos',
+    karaokeCta: 'Ver qué más hay',
+    karaokeAlt: 'Filas de mesas de picnic bajo la carpa en Best Bite Food Park',
+    practicalLabel: 'Antes de venir',
+    practicalH: 'Dónde queda, y cuándo.',
+    practicalEvery: 'Abierto todos los días',
+    practicalRows: [
+      ['Dirección', fullAddress()],
+      ['Estacionamiento', 'Lote propio'],
+      ['Asientos', 'Mesas de picnic bajo carpa'],
+    ] as const,
+    practicalCta: 'Mapa y cómo llegar',
     doorLabel: '¿Tienes un truck?',
     doorH: 'Aquí hay lugar para ti.',
     doorBody: 'Mes a mes, sin contrato largo, y el lote ya tiene movimiento.',
@@ -122,7 +189,7 @@ export function Vendors() {
         </p>
       </section>
 
-      <Section className="pt-14 pb-16 sm:pt-20 sm:pb-20">
+      <Section measure="wide" className="pt-14 pb-16 sm:pt-20 sm:pb-20">
         <div className="max-w-2xl">
           <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.rosterH}</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">{t.rosterBody}</p>
@@ -141,9 +208,81 @@ export function Vendors() {
         </p>
       </Section>
 
+      {/* A reason to come that is not food, and already true. Photograph rather
+          than a flyer: the flyer lives on Events, and repeating it here would
+          make this a preview of that page instead of an invitation. */}
+      <Section measure="wide" className="border-t border-rule py-12 sm:py-16">
+        <div className="grid items-center gap-8 sm:grid-cols-2 sm:gap-12">
+          <img
+            src={seatingTent}
+            alt={t.karaokeAlt}
+            loading="lazy"
+            decoding="async"
+            width={1600}
+            height={1200}
+            className="reveal aspect-[4/3] w-full object-cover"
+          />
+          <div className="reveal min-w-0">
+            <Label>{t.karaokeLabel}</Label>
+            <h2 className="mt-3 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.karaokeH}</h2>
+            <p className="mt-4 max-w-md text-lg leading-relaxed text-muted">{t.karaokeBody}</p>
+            <p className="mt-4 font-mono text-[11px] tracking-[0.12em] uppercase">
+              {t.karaokeTime}
+            </p>
+            <p className="mt-6">
+              <Link
+                to={pathFor('events', lang)}
+                className="inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-xs tracking-[0.12em] uppercase hover:border-brand-yellow hover:text-muted"
+              >
+                {t.karaokeCta} <span aria-hidden="true">→</span>
+              </Link>
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Accent at flood footprint, per design.md § Ground. The hours are the
+          large numeral because that is the fact someone standing in a car park
+          at 8:15pm actually needs. */}
+      <Section measure="wide" ground="accent" className="py-12 sm:py-14">
+        <div className="grid gap-8 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-14">
+          <div className="min-w-0">
+            <Label tone="accent">{t.practicalLabel}</Label>
+            <p className="mt-3 text-3xl leading-none whitespace-nowrap uppercase sm:text-4xl">
+              {hoursRange()}
+            </p>
+            <p className="mt-2 font-mono text-[11px] tracking-[0.12em] uppercase">
+              {t.practicalEvery}
+            </p>
+          </div>
+
+          <dl className="min-w-0">
+            {t.practicalRows.map(([term, value]) => (
+              <div
+                key={term}
+                className="flex flex-col gap-0.5 border-t border-brand-black/20 py-3 sm:flex-row sm:gap-6 sm:py-2.5"
+              >
+                <dt className="font-mono text-[11px] tracking-[0.12em] uppercase sm:w-40 sm:shrink-0">
+                  {term}
+                </dt>
+                <dd className="min-w-0 leading-snug">{value}</dd>
+              </div>
+            ))}
+            <p className="mt-5">
+              <Link
+                to={pathFor('contact', lang)}
+                className="inline-flex items-center gap-2 border-b border-brand-black pb-1 font-mono text-xs tracking-[0.12em] uppercase hover:opacity-70"
+              >
+                {t.practicalCta} <span aria-hidden="true">→</span>
+              </Link>
+            </p>
+          </dl>
+        </div>
+      </Section>
+
       {/* The one door to Únete. Small on purpose: this page is for eaters, and
           a truck owner who got here is already looking. */}
-      <Section ground="night" className="py-12 sm:py-14">
+      <Section measure="wide" ground="night" className="py-12 sm:py-14">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
             <Label tone="night">{t.doorLabel}</Label>

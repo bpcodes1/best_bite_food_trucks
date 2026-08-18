@@ -16,6 +16,19 @@ import cruiseFlyer from '../assets/events/back_to_school_cruise.webp'
  * todos los domingos" — a real recurring event. What a flyer does not state
  * (times, dates) renders as visible brackets, never as a guess.
  *
+ * THE KARAOKE TIME AND THE DJ'S NAME CAME OFF THE FLYER, 2026-08-18, and both
+ * used to be brackets. The copy of the flyer in this repo was a crop, and the
+ * crop had removed exactly the strip carrying "DE 6PM A 9PM" and "MUSICA Y
+ * KARAOKE A CARGO DE Dj Mike G." The uncropped original on `origin/bryan`
+ * (`events/karaoke_full.jpg`) has both, and it now replaces the cropped file so
+ * the picture and the text agree.
+ *
+ * TWO THINGS TO WATCH. The flyer carries no date, so "6pm to 9pm" is true as of
+ * whenever it was printed and nobody has confirmed it since — it is on the list
+ * for Ray. And Dj Mike G is a real person rather than something Ray controls:
+ * if he stops working the park, this line is wrong about a named individual,
+ * which is worse than being wrong about a time. Enrique's call, 2026-08-18.
+ *
  * DATED_EVENTS is deliberately a data array: when Ray sends the next event,
  * adding it is an entry here, not a layout change. That is the retainer
  * workflow this page is built for.
@@ -58,7 +71,7 @@ const copy = {
     sundayH: 'Karaoke y música.',
     sundayBody:
       'The park invites you every Sunday: family atmosphere, good food, good music. Come sing and dance with us.',
-    sundayTime: pending('karaoke start time'),
+    sundayTime: '6:00pm - 9:00pm · Music and karaoke with Dj Mike G.',
     sundayAlt: 'Flyer for karaoke Sundays at Best Bite Food Park',
     comingLabel: 'On the calendar',
     comingH: 'Coming up.',
@@ -82,7 +95,7 @@ const copy = {
     sundayH: 'Karaoke y música.',
     sundayBody:
       'El parque te invita todos los domingos: ambiente familiar, buena comida y buena música. Ven a cantar y bailar con nosotros.',
-    sundayTime: pending('hora del karaoke'),
+    sundayTime: '6:00pm - 9:00pm · Música y karaoke a cargo de Dj Mike G.',
     sundayAlt: 'Volante del karaoke de los domingos en Best Bite Food Park',
     comingLabel: 'En el calendario',
     comingH: 'Lo que viene.',

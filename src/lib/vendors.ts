@@ -70,6 +70,17 @@ import lasCuatasLokasTruck from '../assets/food_trucks/las_cuatas_lokas_truck.we
 import lasJarochitasTruck from '../assets/food_trucks/las_jarochitas_truck.webp'
 import theRedMarinoTruck from '../assets/food_trucks/the_red_marino_truck.webp'
 import queRollonSushiTruck from '../assets/food_trucks/que_rollon_sushi_truck.webp'
+// Shot by Bryan at the park, taken from `origin/bryan` 2026-08-18 (Enrique
+// confirmed the provenance). Both were verified against the trucks' own
+// signage rather than against his filenames: the Nieve Casera trailer carries
+// "VillegasIceCream.com" and (503) 953-4667, matching its logo, and the red
+// trailer's side reads "TAQUERIA ROMERO MEXICAN FOOD LLC".
+//
+// `taqueria_romero_truck.webp` is only 680x510, below what a 411px card wants
+// on a 2x screen, so it renders slightly soft. It is better than no photograph
+// and is on the list of things to reshoot. See STATUS.md.
+import nieveCaseraTruck from '../assets/food_trucks/nieve_casera_truck.webp'
+import taqueriaRomeroTruck from '../assets/food_trucks/taqueria_romero_truck.webp'
 
 export interface Vendor {
   /** Stable id. Never appears in a URL. */
@@ -101,7 +112,9 @@ export interface Vendor {
   wash: string
   /** Every vendor has a logo. Nine of nine, checked by eye 2026-08-12. */
   logo: string
-  /** A photograph of the truck. Six of nine have one; see STATUS.md for who. */
+  /** A photograph of the truck. Eight of nine have one. Only Pupusas Chileros
+   *  does not, and no photograph of it exists in any branch — it has to come
+   *  from Ray. See STATUS.md. */
   photo?: string
   /**
    * The ground the logo is drawn on, checked by eye. This is the containment
@@ -221,6 +234,7 @@ export const VENDORS: Vendor[] = [
     wash: 'var(--color-wash-ribs)',
     logo: nieveCasera,
     logoGround: 'colour',
+    photo: nieveCaseraTruck,
   },
   {
     /* The logo reads "Taqueria Romero LLC". The LLC is dropped: it is a
@@ -244,6 +258,7 @@ export const VENDORS: Vendor[] = [
     wash: 'var(--color-wash-tacos)',
     logo: taqueriaRomero,
     logoGround: 'black',
+    photo: taqueriaRomeroTruck,
   },
   {
     id: 'the-red-marino',

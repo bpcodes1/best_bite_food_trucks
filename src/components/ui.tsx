@@ -9,32 +9,52 @@ import { Link } from 'react-router-dom'
  * no arbitrary hex. See design.md.
  */
 
-type Ground = 'cream' | 'night'
+type Ground = 'cream' | 'night' | 'accent'
 
 const GROUND: Record<Ground, string> = {
   cream: 'bg-paper text-ink',
   night: 'bg-night text-paper',
+  // Accent at flood footprint, per design.md § Ground: full-bleed bands, not a
+  // timid underline. Dark is rationed to two surfaces per page, so a band that
+  // needs to carry weight takes the yellow rather than a third night ground.
+  accent: 'bg-brand-yellow text-brand-black',
+}
+
+type Measure = 'default' | 'wide'
+
+const MEASURE: Record<Measure, string> = {
+  default: 'max-w-6xl',
+  wide: 'max-w-7xl',
 }
 
 /**
  * Section padding is deliberately NOT uniform across the page — equal padding
  * everywhere is the templated tell design.md calls out. Callers pass their own
- * vertical rhythm; this only owns the ground and the gutter.
+ * vertical rhythm; this only owns the ground, the measure and the gutter.
+ *
+ * MEASURE IS PER PAGE, NOT PER SECTION. `wide` exists for Vendors, whose job is
+ * a nine-card grid and which reads better at 1280 than 1152. If you use it,
+ * use it on every section of that page: two measures on one page misaligns the
+ * left edge of one heading against the next at wide viewports, which reads as a
+ * bug rather than as rhythm. Home stays at the default — it is the approved
+ * reference page and nothing changes there without asking.
  */
 export function Section({
   ground = 'cream',
+  measure = 'default',
   className = '',
   id,
   children,
 }: {
   ground?: Ground
+  measure?: Measure
   className?: string
   id?: string
   children: ReactNode
 }) {
   return (
     <section id={id} className={`${GROUND[ground]} px-5 sm:px-8 ${className}`}>
-      <div className="mx-auto max-w-6xl">{children}</div>
+      <div className={`mx-auto ${MEASURE[measure]}`}>{children}</div>
     </section>
   )
 }

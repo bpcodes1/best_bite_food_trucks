@@ -63,6 +63,13 @@ import theRedMarino from '../assets/food_trucks/the_red_marino.jpg'
 import queRollonSushi from '../assets/food_trucks/que_rollon_sushi.jpg'
 import elPatron from '../assets/food_trucks/tortilleria_el_patron_logo.png'
 import elPatronTruck from '../assets/food_trucks/tortilleria_el_patron_truck.jpg'
+// Shot in person at the park 2026-08-17 and identified from the contact sheets.
+// Que Rollon's van carries no name badge — it was matched by the phone number
+// printed on its menu board, (503) 991-8991, against the number on its logo.
+import lasCuatasLokasTruck from '../assets/food_trucks/las_cuatas_lokas_truck.webp'
+import lasJarochitasTruck from '../assets/food_trucks/las_jarochitas_truck.webp'
+import theRedMarinoTruck from '../assets/food_trucks/the_red_marino_truck.webp'
+import queRollonSushiTruck from '../assets/food_trucks/que_rollon_sushi_truck.webp'
 
 export interface Vendor {
   /** Stable id. Never appears in a URL. */
@@ -94,7 +101,7 @@ export interface Vendor {
   wash: string
   /** Every vendor has a logo. Nine of nine, checked by eye 2026-08-12. */
   logo: string
-  /** A photograph of the truck. Only two vendors have one. */
+  /** A photograph of the truck. Six of nine have one; see STATUS.md for who. */
   photo?: string
   /**
    * The ground the logo is drawn on, checked by eye. This is the containment
@@ -171,6 +178,7 @@ export const VENDORS: Vendor[] = [
     },
     wash: 'var(--color-wash-tacos)',
     logo: lasJarochitas,
+    photo: lasJarochitasTruck,
     logoGround: 'white',
   },
   {
@@ -181,6 +189,7 @@ export const VENDORS: Vendor[] = [
     hoursKnown: false,
     wash: 'var(--color-wash-burrito)',
     logo: lasCuatasLokas,
+    photo: lasCuatasLokasTruck,
     logoGround: 'black',
   },
   {
@@ -251,6 +260,7 @@ export const VENDORS: Vendor[] = [
     hoursByDay: { 0: [750, 1230], 3: [750, 1230], 4: [750, 1230], 5: [750, 1230], 6: [750, 1230] },
     wash: 'var(--color-wash-mariscos)',
     logo: theRedMarino,
+    photo: theRedMarinoTruck,
     logoGround: 'white',
   },
   {
@@ -270,6 +280,7 @@ export const VENDORS: Vendor[] = [
     hoursKnown: false,
     wash: 'var(--color-wash-ribs)',
     logo: queRollonSushi,
+    photo: queRollonSushiTruck,
     logoGround: 'black',
   },
   {

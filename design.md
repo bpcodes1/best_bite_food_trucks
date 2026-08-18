@@ -206,21 +206,39 @@ times under one invented name.
 
 ## Components
 
-**Cards** — The Atlantic's system. Must stay scannable at twelve vendor cards
-and legible at one. Hierarchy from type weight and scale, never from borders and
-shadows stacked up. Images are supporting, never load-bearing.
+**Cards** — The Atlantic's system. Must stay scannable at nine vendor cards and
+legible at one. Hierarchy from type weight and scale, never from borders and
+shadows stacked up.
 
-**The real card problem is the vendor logos, not the photography.** Most files
-in `src/assets/food_trucks/` are logos on white grounds in unrelated styles —
-Las Jarochitas is red-and-green folk cartoon with drop shadows, Pupusas Chileros
-is hot-pink-and-cyan illustration with script lettering. Twelve of those in one
-grid reads as a flea market unless the container does the work:
+**AMENDED 2026-08-17: on the vendor card, the photograph IS load-bearing.**
+This section previously read "images are supporting, never load-bearing," and
+the shipped Vendors page does the opposite: the truck photograph fills the card
+and the vendor's name sits inside it over a scrim. The rule was written before
+we had any truck photography, when the only assets were nine logos. Once the
+photographs existed the old rule produced a worse page, so it changed rather
+than being worked around. Structure came from the Foogra reference Enrique
+supplied; the reasoning is that the logos stop competing the moment they are no
+longer the thing being looked at.
 
-- **Identical containment for every logo.** Same box, same padding, same neutral
-  tile behind it. The container is consistent even when the contents are not.
+The Atlantic rule still governs everywhere else. Type carries every other card
+on this site, including events.
+
+**The logo problem is real and the photograph is what solves it.** The nine
+files in `src/assets/food_trucks/` arrive on four incompatible grounds — four
+white, three solid black, one pink, and one photograph of a sticker held in
+someone's hand. No amount of containment makes those nine coexist at size. The
+rules below therefore apply only while a vendor has no photograph:
+
+- **Identical containment for every logo.** Same square, same padding, same
+  tile, whatever shape the logo arrives in. Sizing each mark to its own aspect
+  made the grid read as a flea market.
 - **Never bleed a logo to the card edge.** That works for photographs and
-  destroys a logo. Bleed is for park and food photography only.
-- The logo is a small identifying mark. Type carries the card.
+  destroys a logo.
+- A card without a photograph gets a `--color-wash-*` ground and holds the name
+  in the same position a photographed card does, so nothing moves when the
+  picture arrives.
+- Three logos are drawn on solid black and still read as dark squares inside
+  the tile. The fix is transparent artwork from those vendors, not CSS.
 
 **Chips** — outlined, not filled. Kraken uses them for specs (`3-6 CARDS`,
 `SADDLE-STITCHED`). Ours carry cuisine type and hours.

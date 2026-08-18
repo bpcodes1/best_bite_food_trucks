@@ -14,3 +14,10 @@ qa-screenshots/
 clients/
 *context*.xml
 *context*.md
+
+# Raw asset drops from Ray or from a park visit. Camera-original HEIC at ~3MB
+# each; the whole in_person_images zip is 219MB. Convert what you need into
+# src/assets and leave the originals out of git — the repo is not the archive.
+*.zip
+src/assets/**/*.heic
+src/assets/**/*.HEIC

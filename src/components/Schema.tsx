@@ -1,4 +1,4 @@
-import { site } from '../lib/site'
+import { PENDING_MARKER, site } from '../lib/site'
 import { VENDORS } from '../lib/vendors'
 
 /**
@@ -85,6 +85,44 @@ export function VendorListJsonLd() {
         },
         containedInPlace: { '@type': 'FoodEstablishment', name: site.name },
       },
+    })),
+  }
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+  )
+}
+
+/**
+ * The Únete FAQ as FAQPage structured data.
+ *
+ * The answers are already on the page inside native `<details>`, so this adds
+ * no content — it only tells Google that the question/answer pairs are exactly
+ * that. Laja's data puts an FAQ section at roughly +18% traffic, and a leasing
+ * page is where a prospect arrives already holding questions.
+ *
+ * PENDING ANSWERS ARE FILTERED OUT, and that filter is the whole reason this
+ * takes the array rather than reading the copy itself. Two of the six answers
+ * are `pending()` brackets waiting on Ray. A visible `[PENDIENTE — stall size]`
+ * on the page is honest, because a reader can see it is a gap. The same string
+ * inside JSON-LD is a machine-readable claim that Best Bite's official answer
+ * to "how big is a space" is a placeholder, and it can be surfaced as a rich
+ * result. Structured data is exactly where a placeholder does the most damage.
+ *
+ * If every answer is pending the component renders nothing rather than an empty
+ * FAQPage, which Google treats as a markup error.
+ */
+export function FaqJsonLd({ items }: { items: readonly { q: string; a: string }[] }) {
+  const answered = items.filter((item) => !item.a.includes(PENDING_MARKER))
+  if (!answered.length) return null
+
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: answered.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
     })),
   }
 

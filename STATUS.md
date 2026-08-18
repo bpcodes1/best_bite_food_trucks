@@ -4,7 +4,8 @@ Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
 **Last updated:** 2026-08-18 (`npm run shots` built; two Vendors bands added;
 silver cart identified; Bryan's branch harvested — 8 of 9 cards now have a truck
-photo and the karaoke time is real; stale docs corrected)
+photo and the karaoke time is real; Únete brought up to Home's standard; stale
+docs corrected)
 
 A word on "shipped" in this file: it means the code is built and committed to
 `enrique`. **Nothing has been delivered to Ray and nothing is on the internet.**
@@ -15,13 +16,12 @@ A word on "shipped" in this file: it means the code is built and committed to
 
 ## START HERE NEXT SESSION
 
-1. **Commit the 2026-08-18 work.** Enrique's call was to hold it as one batch
-   until the photos were in. They are in. Nothing is committed yet.
+1. **Bring Events up to Home's standard**, then Contact. Únete is done — see
+   the scorecard under "What Home looks like now, and why". Work one page at a
+   time, and score it against the seven-point checklist before and after.
 2. **Decide whether Vendors keeps three dark surfaces.** `src/index.css`
    rations dark to two per page and this one spends three. See Open decisions.
-3. **Bring Únete, Events and Contact up to Home's standard.** The last
-   structural job on the site. Everything else left is content from Ray or
-   hosting from Enrique.
+3. **`og:image`.** Every share of all ten addresses is still a bare text card.
 
 Done 2026-08-18, all uncommitted: `npm run shots`, the karaoke band and the
 practical band on Vendors, bigger cards via the page measure, the silver cart
@@ -34,8 +34,10 @@ and `design.md`.
 **All five pages are built in both languages.** Home, Vendors, Únete al Parque,
 Events, Contact, plus chrome. Vendors was the last one, built 2026-08-16.
 
-Home is the reference for how the site should look. Únete, Events and Contact
-still predate the 2026-08-12 design changes and are a generation behind.
+Home is the reference for how the site should look, and what that means is
+written out under "What Home looks like now, and why". **Únete was brought up to
+it 2026-08-18.** Events and Contact still predate the 2026-08-12 changes and are
+a generation behind.
 
 ## Built and verified
 
@@ -47,11 +49,11 @@ still predate the 2026-08-12 design changes and are a generation behind.
 | Home            | Full-screen hero, tinting fan gallery, events grid, story, door                |
 | Vendors         | **BUILT** — hero, nine 4:3 cards (8 with a truck photo), karaoke + facts bands |
 | QA              | `npm run shots` — every address, 375/768, both languages, overflow as a number |
-| Únete al Parque | Built EN + ES. Design predates the 2026-08-12 rules                            |
+| Únete al Parque | **BUILT** — photo hero, 6/15 accent band, three steps, FAQ + schema, form      |
 | Contact         | NAP, map, form, cross-door to Únete, LocalBusiness schema                      |
 | Events          | Built on the three real flyers, dated events in a data array                   |
 | Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets      |
-| Schema          | LocalBusiness on Home + Contact; ItemList of nine vendors on Vendors           |
+| Schema          | LocalBusiness on Home + Contact; ItemList of nine vendors; FAQPage on Únete    |
 | Tests           | 16, across `routes.test.ts` and `vendors.test.ts`                              |
 
 Verified 2026-08-16: build passes, lint clean, 16 tests, 11 HTML files, all nine
@@ -108,9 +110,11 @@ Four truck photos, wired into `vendors.ts` and on the page:
 `las_cuatas_lokas_truck.webp`, `las_jarochitas_truck.webp`,
 `the_red_marino_truck.webp`, `que_rollon_sushi_truck.webp`.
 
-Park photos in `src/assets/park/`: `seating_tent.webp`, `lot_wagon.webp`,
-`park_sign.webp`. `seating_tent.webp` is now **unused** — the karaoke band took
-Bryan's better one. `lot_wagon.webp` and `park_sign.webp` are still unused.
+Park photos in `src/assets/park/`. All but one are now placed: `lot_wagon.webp`
+is the Únete hero, `seating_tent.webp` is the Únete park section (the karaoke
+band took Bryan's better tent shot). **`park_sign.webp` is unused and should
+stay that way** until Ray updates his sign — its vendor board still lists Adan's
+Grill and El Chilango, both cut from the roster.
 
 ### The silver cart is Syrian House Cuisine — resolved 2026-08-18
 
@@ -201,6 +205,125 @@ the repo. `park_sign.webp` is far better. Not swapped — Home is Enrique's
 reference page and nothing changes there without asking.
 
 ---
+
+## What Home looks like now, and why
+
+`CLAUDE.md` has told every session to read this section before designing
+anything since 2026-08-12. **It did not exist until 2026-08-18.** The rules were
+only ever in the header comment of `Home.tsx`, where nobody looking for them
+would find them. Written out here because Únete, Events and Contact are being
+brought up to this standard and "Home's standard" has to mean something checkable.
+
+Home was rebuilt four times on 2026-08-12 against Enrique's feedback, and a
+hallmark audit of the first pass named the anti-patterns. These are the rules
+that survived.
+
+**The hero is the only full-screen one on the site.** `100svh` minus
+`--header-h`, so nothing below is visible until the reader scrolls. `svh` and
+never `vh`: on a phone `100vh` counts browser chrome that hides on scroll, so a
+`vh` hero overshoots on load. Every other page gets less — a page that takes the
+whole viewport reads as a homepage, and if they all do it none of them does.
+
+**Hero content is corner-anchored**: eyebrow at the top, headline in the middle,
+locator at the bottom, with the photograph `absolute inset-0` contributing zero
+height. The section's own height rules it. A full screen anchored at three
+corners reads as composed; the same screen with one centred block reads as a
+large empty photo.
+
+**The hero interlocks rather than stacking.** Type sits left against a scrim
+that is heavy on the left and nearly clear on the right, so the sunlit half of
+the photograph still reads as a bright daytime park. The audit's critical
+finding on the first pass was "half hero, half image" — two stacked full-width
+bands. Do not rebuild that.
+
+**Eyebrows are capped at two section kickers, plus the accent band's own
+label.** Home's header comment says "capped at two: the hero locator and the
+story label" and the page actually renders three — the third is inside the
+yellow band, where it is part of the numeral treatment rather than a section
+kicker. The comment was never updated; the page is right and the sentence is
+incomplete. Recorded here rather than "fixed" on Home, which is approved.
+
+The rule that matters: a mono eyebrow on every section was the audit's "labelled
+lists" tell. Adding one means removing one. This is the rule most likely to be
+broken by accident, because an eyebrow always looks like an improvement on the
+section you happen to be looking at — Únete had accumulated eight.
+
+**Section padding varies on purpose.** Equal padding everywhere is the templated
+tell named in design.md § Rhythm. `Section` owns the ground, the measure and the
+gutter; every caller passes its own vertical rhythm.
+
+**The arrow glyph appears twice**, on the hero CTA and the door CTA. It marks
+the primary path in and the primary path out, and it means nothing if every
+button has one.
+
+**Dark is rationed to two surfaces per page**, per `src/index.css`, amended
+2026-08-12 after four dark bands in a row made a daytime family park look like a
+whisky bar. Home spends both on the hero scrim and the footer. Vendors currently
+spends three — see Open decisions.
+
+**Grounds change every section, and the accent floods.** Home runs night hero →
+brand-yellow flood carrying the hours as a 6xl numeral → a wash that tints to
+whichever dish the gallery is showing → a pale events flood → cream → cream. The
+yellow band exists because the accent at flood footprint is design.md's stated
+use of it: full-bleed bands, solid buttons, large numerals, never a timid
+underline.
+
+**One honest door to the leasing page, at the bottom, and no recruiting copy
+anywhere else.** The Square site bled aspirational vendor-recruitment language
+into its customer-facing hero and the audit called it out. Every page follows
+this: eaters throughout, one door at the end.
+
+### How to tell whether a page has been brought up to it
+
+Not by reading the code. Run `npm run shots -- <page>` and check the page
+against these, in both languages:
+
+1. Does the hero take less than a full screen, and does the next section peek?
+   The formula is `100svh − var(--header-h) − 6rem`, the same on every page but
+   Home. Home alone takes `100svh − var(--header-h)`.
+2. Are there at most two section-kicker eyebrows, plus the accent band's?
+3. Does the ground change at least three times down the page?
+4. Is there one accent-flood band carrying a real fact at large size?
+5. Are there at most two dark surfaces, counting the footer?
+6. Do arrows appear on at most two buttons?
+7. Is the vertical padding different between at least two sections?
+
+### Únete al Parque — brought up 2026-08-18
+
+Scored 4 of 7 before, 7 of 7 after. What was wrong:
+
+- **Eight mono eyebrows** against the cap. Five removed. The three left mirror
+  Home: hero locator, accent band label, and the numbered-steps kicker.
+- **A type-only hero** on the page whose job is making a truck owner picture
+  their truck in this lot. Now opens on `lot_wagon.webp` — trucks trading on
+  both sides, open asphalt between them — scrimmed and corner-anchored.
+  **Not `park_sign.webp`**, whose vendor board still lists two cut vendors.
+- **Five sections sharing `py-14 sm:py-20`.** Now runs tight after the hero and
+  opens toward the ask.
+- The park section **gave up its night ground** so the hero could take it; the
+  ration is two per page counting the footer.
+- One **wash band** breaks the run of cream between the yellow band and the
+  footer.
+- The "one lot" section was illustrated with **a plate of food that is also the
+  Vendors hero**. Now `seating_tent.webp`, which shows the parking and seating
+  the paragraph beside it describes.
+
+**The headline had to get shorter, and that was the real lesson.** It was one
+sentence that wrapped to four lines in English and five in Spanish, and in a
+corner-anchored hero the headline grows into the space the eyebrow and locator
+are anchored in — at 1280 the three blocks collided. Split to two lines like
+Home's. A corner-anchored hero constrains the copy, not just the layout, and
+that applies to Events and Contact next.
+
+`gap-y-10` on the hero is load-bearing for the same reason: `justify-between`
+alone lets anchored blocks butt together when a Spanish string runs long.
+
+**`FAQPage` schema is now on the page**, which closes item 3 of the delivery
+list. `FaqJsonLd` filters out any answer still holding a `pending()` bracket —
+two of six are. A visible `[PENDIENTE — stall size]` is honest because a reader
+can see it is a gap; the same string inside JSON-LD is a machine-readable claim
+that this is Best Bite's official answer, and it can surface as a rich result.
+Verified: 4 questions in the markup, zero `PENDIENTE`.
 
 ## Open decisions
 
@@ -437,6 +560,27 @@ Not scheduled, does not run on its own, and `qa-screenshots/` is git-ignored.
 Baseline 2026-08-18: 20 screenshots, ten addresses at 375 and 768, no overflow,
 no broken images, every page titled, every `<html lang>` correct.
 
+### The script shipped with a bug in it, fixed the same day
+
+**It captured at 4x while labelling everything 2x.** `deviceScaleFactor` on
+`Emulation.setDeviceMetricsOverride` and `scale` on the clip passed to
+`Page.captureScreenshot` **multiply**. Both were 2, so a 375px viewport wrote a
+1500px-wide file. Four times the bytes for no extra detail, and every "the file
+is 2x the tested width" statement was wrong.
+
+It went unnoticed for hours because **a 4x screenshot looks perfect** — it is
+just a sharp screenshot. It only surfaced when a crop taken at the documented
+750px showed the right half of the page missing, which read as a layout bug on
+Únete that did not exist. That is the "when a number surprises you, suspect the
+instrument" rule from `../CLAUDE.md` catching a third tool in a week.
+
+The fix is one place: `deviceScaleFactor: SCALE`, clip `scale: 1`. **The script
+now asserts its own output** — it reads the PNG's width out of the file header
+after every capture and throws if it does not equal the tested width times the
+density. A measuring tool that cannot be trusted about its own units makes every
+measurement drawn from it worthless, and this one had already produced one false
+finding.
+
 ## Capabilities now available, that were not before
 
 **Google Drive works.** The connector is authenticated as
@@ -462,7 +606,8 @@ pass here before.
 
 ## Blocked on Ray
 
-Placeholders render as visible brackets; run `npm run pending` (23 at last count).
+Everything here is one text message. Placeholders render as visible brackets;
+run `npm run pending` (21 at last count).
 
 - Site phone, site email — **launch blockers**, not nice-to-haves. Shepard
   counts contact information as a positive signal, and visible `[PENDIENTE]`
@@ -489,7 +634,6 @@ Placeholders render as visible brackets; run `npm run pending` (23 at last count
 
 ## Blocked on Enrique
 
-- **The silver cart identification.** See Open decisions.
 - **Create the Cloudflare Pages project.** Nothing exists yet — see the section
   below for the order and the two traps.
 - **Text Ray the descope offer**, get his yes, send the two-line written recap.
@@ -566,8 +710,8 @@ success message.
 1. `site.origin` is still `http://localhost:5173`.
 2. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
    card. `park_sign.webp` is now a candidate.
-3. `FAQPage` schema on Únete. Laja values an FAQ at +18% traffic.
-4. Bring Únete, Events and Contact up to Home's standard.
+3. ~~`FAQPage` schema on Únete~~ — done 2026-08-18.
+4. Bring **Events and Contact** up to Home's standard. Únete is done.
 5. Wire the forms once the destination is decided.
 6. `hallmark audit` across all ten addresses.
 7. Confirm the Contact map paints in a real browser — it renders empty in

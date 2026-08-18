@@ -1,10 +1,19 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { Seo } from '../components/Seo'
+import { FaqJsonLd } from '../components/Schema'
 import { Button, Chip, Label, Section, field } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { hoursRange, pending, site } from '../lib/site'
-import parkPhoto from '../assets/best_bite_outdoor.webp'
+/* Was `best_bite_outdoor.webp`, a plate of food on a table. It illustrated a
+   section headed "One lot, open every day" whose copy is about parking,
+   seating and room to pull in — and it is also the Vendors hero, so the page
+   was repeating another page's photograph to say something it did not say.
+   `seating_tent.webp` shows the parking, the seating and the room, which is
+   the paragraph beside it. Freed up when the karaoke band took Bryan's
+   better tent shot. */
+import parkPhoto from '../assets/park/seating_tent.webp'
+import heroLot from '../assets/park/lot_wagon.webp'
 
 /* Únete al Parque — the money page.
  *
@@ -15,6 +24,42 @@ import parkPhoto from '../assets/best_bite_outdoor.webp'
  *
  * Every factual claim here traces to clients/ray-bestbite-context.xml or to
  * src/lib/site.ts. Anything Ray has not confirmed renders as visible brackets.
+ *
+ * BROUGHT UP TO HOME'S STANDARD 2026-08-18. It was built before the 2026-08-12
+ * rebuild and was a generation behind. Measured against the checklist in
+ * STATUS.md § "What Home looks like now, and why", it failed three of seven:
+ *
+ * EIGHT MONO EYEBROWS against a cap of two. That is precisely the "labelled
+ * lists" tell the hallmark audit named on Home's first pass, and it is the
+ * easiest rule to break by accident because an eyebrow always looks like an
+ * improvement on the section you are looking at. Five were removed. The three
+ * left mirror Home exactly: the hero locator, the accent band's own label, and
+ * one section kicker (the numbered steps, where a kicker earns its place
+ * because the sequence is the point). Everywhere else the h2 already says what
+ * the section is, and the eyebrow above it was saying it a second time in a
+ * smaller font.
+ *
+ * A TYPE-ONLY HERO on a page whose whole job is to make a truck owner picture
+ * their truck in this lot. It now opens on the lot itself, scrimmed, with the
+ * content corner-anchored the way Home's is. `lot_wagon.webp`, unused until
+ * now: trucks trading on both sides and open asphalt between them, which is
+ * the argument the page is making. NOT `park_sign.webp`, whose vendor board
+ * still lists Adan's Grill and El Chilango, both cut from the roster — that
+ * photograph cannot be published anywhere until Ray updates his sign.
+ *
+ * FIVE SECTIONS SHARING py-14 sm:py-20. Equal padding everywhere is the
+ * templated tell in design.md § Rhythm. The rhythm now runs tight after the
+ * hero and opens up toward the ask.
+ *
+ * The hero is a screen minus the masthead minus a 6rem peek, matching Vendors.
+ * The rule across the site is now one line: Home takes the whole viewport,
+ * every other page takes the viewport minus that peek, so the next section
+ * always shows and no page but Home reads as a homepage.
+ *
+ * DARK STAYS AT TWO SURFACES. The hero took the night ground, so the park
+ * section gave it up and is now cream. Counting the footer that is two, which
+ * is the ration in src/index.css. Adding the hero without moving the park
+ * section would have made three.
  */
 
 const open = site.stalls.total - site.stalls.filled
@@ -24,21 +69,27 @@ const copy = {
     title: 'Lease a Food Cart Space in Salem, OR | Best Bite Food Park',
     description: `${open} of ${site.stalls.total} spaces are open at Best Bite Food Park on Silverton Rd NE. Month to month, no long-term lease. Ask about a space.`,
     eyebrow: `Lease a space · Salem, OR`,
-    h1: 'Park here month to month. Leave any time.',
+    /* Two lines, split like Home's. It was "Park here month to month. Leave any
+       time." as one string, which wrapped to four lines in English and five in
+       Spanish. A corner-anchored hero cannot carry that: the headline grows
+       into the space the eyebrow and the locator are anchored in, and at 1280
+       the three blocks collided. The verb was doing no work that the eyebrow
+       and lede were not already doing. */
+    h1a: 'Month to month.',
+    h1b: 'Leave any time.',
     lede: `${site.stalls.filled} trucks are open at Best Bite right now, and every one of them has been here more than a year. ${open} of ${site.stalls.total} spaces are open.`,
     cta: 'Ask about a space',
     ctaMicro: '4 questions · 2 minutes · no commitment',
+    heroAlt: 'The lot at Best Bite Food Park, with food trucks open on both sides',
     bandLabel: 'Open now',
     bandBody: `${open} of ${site.stalls.total} spaces are available. We are especially looking for Asian food.`,
-    placeLabel: 'The park',
     placeH: 'One lot, open every day.',
     placeBody:
       'Silverton Rd NE, with parking, seating and room to pull in. Open seven days a week.',
+    placeAlt: 'Covered seating and open parking at Best Bite Food Park',
     hours: 'Hours',
     address: 'Address',
-    includedLabel: 'What you get',
     includedH: 'What comes with a space.',
-    rentLabel: 'The terms',
     rentH: 'How the rent works.',
     rentBody:
       'There is no long-term lease. If the spot does not work for you, it costs you a month, not a year. That is the whole difference.',
@@ -49,7 +100,6 @@ const copy = {
       { n: '02', h: 'We reply', b: 'We confirm what is open and what the rent is.' },
       { n: '03', h: 'You come see it', b: 'Walk the lot before you decide anything.' },
     ],
-    faqLabel: 'Questions',
     faqH: 'Before you ask.',
     faq: [
       {
@@ -71,8 +121,14 @@ const copy = {
       { q: 'How big is a space?', a: pending('stall size') },
       { q: 'Is power and water included?', a: pending('utilities') },
     ],
-    formLabel: 'Ask about a space',
-    formH: 'Four questions.',
+    /* Was "Four questions." with an "Ask about a space" eyebrow above it. The
+       eyebrow was one of the five cut on 2026-08-18, and the heading has to
+       carry what the section is on its own. It now repeats the hero CTA's
+       wording exactly, which is deliberate: a button that says "Ask about a
+       space" landing on a heading that says the same thing confirms the reader
+       arrived where they meant to. The four-questions signal is not lost —
+       `ctaMicro` states it beside the button that sends people here. */
+    formH: 'Ask about a space.',
     nameL: 'Your name',
     contactL: 'Email or Instagram handle',
     foodL: 'What do you serve?',
@@ -87,21 +143,21 @@ const copy = {
     title: 'Renta de Espacio para Food Truck en Salem, OR | Best Bite Food Park',
     description: `${open} de ${site.stalls.total} espacios están abiertos en Best Bite Food Park en Silverton Rd NE. Mes a mes, sin contrato a largo plazo.`,
     eyebrow: `Renta de espacio · Salem, OR`,
-    h1: 'Renta mes a mes. Te puedes ir cuando quieras.',
+    h1a: 'Mes a mes.',
+    h1b: 'Te vas cuando quieras.',
     lede: `${site.stalls.filled} trucks están abiertos en Best Bite ahora mismo, y todos llevan más de un año aquí. ${open} de ${site.stalls.total} espacios están libres.`,
     cta: 'Pregunta por un espacio',
     ctaMicro: '4 preguntas · 2 minutos · sin compromiso',
+    heroAlt: 'El lote de Best Bite Food Park, con food trucks abiertos a los dos lados',
     bandLabel: 'Disponible ahora',
     bandBody: `${open} de ${site.stalls.total} espacios están disponibles. Buscamos especialmente comida asiática.`,
-    placeLabel: 'El parque',
     placeH: 'Un solo lote, abierto todos los días.',
     placeBody:
       'Silverton Rd NE, con estacionamiento, asientos y lugar para entrar. Abierto los siete días.',
+    placeAlt: 'Asientos bajo carpa y estacionamiento abierto en Best Bite Food Park',
     hours: 'Horario',
     address: 'Dirección',
-    includedLabel: 'Qué recibes',
     includedH: 'Qué incluye un espacio.',
-    rentLabel: 'Las condiciones',
     rentH: 'Cómo funciona la renta.',
     rentBody:
       'No hay contrato a largo plazo. Si el lugar no te funciona, te cuesta un mes y no un año. Esa es toda la diferencia.',
@@ -116,7 +172,6 @@ const copy = {
       { n: '02', h: 'Te respondemos', b: 'Confirmamos qué hay disponible y cuánto es la renta.' },
       { n: '03', h: 'Vienes a verlo', b: 'Recorre el lote antes de decidir nada.' },
     ],
-    faqLabel: 'Preguntas',
     faqH: 'Antes de preguntar.',
     faq: [
       {
@@ -138,8 +193,7 @@ const copy = {
       { q: '¿De qué tamaño es un espacio?', a: pending('medidas del espacio') },
       { q: '¿Incluye luz y agua?', a: pending('servicios') },
     ],
-    formLabel: 'Pregunta por un espacio',
-    formH: 'Cuatro preguntas.',
+    formH: 'Pregunta por un espacio.',
     nameL: 'Tu nombre',
     contactL: 'Correo o usuario de Instagram',
     foodL: '¿Qué vendes?',
@@ -169,28 +223,60 @@ export function LeaseASpace() {
   return (
     <>
       <Seo title={t.title} description={t.description} />
+      {/* Only the answered questions reach Google — see FaqJsonLd. Two of the
+          six are still brackets waiting on Ray, and a placeholder inside
+          structured data is a machine-readable claim rather than a visible gap. */}
+      <FaqJsonLd items={t.faq} />
 
-      {/* Hero. Left-biased, asymmetric, generous — then the page compresses. */}
-      <Section className="pt-16 pb-14 sm:pt-24 sm:pb-20">
-        <div className="max-w-3xl">
-          <Label>{t.eyebrow}</Label>
-          <h1 className="mt-5 text-[2.6rem] leading-[0.95] uppercase sm:text-6xl lg:text-7xl">
-            {t.h1}
+      {/* Hero on the lot itself. Corner-anchored — eyebrow top, headline and
+          ask in the middle, locator bottom — so a near-full screen reads as
+          composed rather than as one big photograph. The scrim is heavy left
+          where the type sits and nearly clear right, so the sunlit half still
+          reads as a working daytime park. Both moves are Home's. */}
+      {/* `gap-y-10` is load-bearing, not decoration. `justify-between` alone
+          lets the three anchored blocks butt into each other the moment the
+          headline grows — which is what a longer Spanish string does. The gap
+          makes the section grow instead of letting the type collide. */}
+      <section className="relative flex min-h-[calc(100svh-var(--header-h)-6rem)] flex-col justify-between gap-y-10 overflow-hidden bg-night px-5 py-9 text-paper sm:px-8 sm:py-12">
+        <img
+          src={heroLot}
+          alt={t.heroAlt}
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover object-[45%_60%]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-night/92 via-night/72 to-night/30"
+        />
+
+        <div className="relative">
+          <Label tone="night">{t.eyebrow}</Label>
+        </div>
+
+        <div className="relative max-w-3xl">
+          <h1 className="text-[2.6rem] leading-[0.95] uppercase sm:text-6xl lg:text-7xl">
+            {t.h1a}
+            <br />
+            {t.h1b}
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{t.lede}</p>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/80">{t.lede}</p>
           <div className="mt-9">
             <Button as="a" href="#ask">
               {t.cta} <span aria-hidden="true">→</span>
             </Button>
-            <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-muted uppercase">
+            <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-paper/70 uppercase">
               {t.ctaMicro}
             </p>
           </div>
         </div>
-      </Section>
+
+        <p className="relative font-mono text-[11px] tracking-[0.12em] text-paper/75 uppercase">
+          {site.address.street} · {site.address.city}, {site.address.state}
+        </p>
+      </section>
 
       {/* Accent band at flood footprint, per design.md. Kraken's 10YR move. */}
-      <section className="bg-brand-yellow px-5 py-10 text-brand-black sm:px-8">
+      <section className="bg-brand-yellow px-5 py-10 text-brand-black sm:px-8 sm:py-14">
         <div className="mx-auto flex max-w-6xl flex-col gap-5 sm:flex-row sm:items-center sm:gap-10">
           <p className="font-display text-6xl leading-none sm:text-7xl">
             {open}
@@ -203,21 +289,20 @@ export function LeaseASpace() {
         </div>
       </section>
 
-      {/* The one dark section on this page. Dark is rationed to two surfaces
-          per page (design.md § Rhythm, amended 2026-08-12) and the footer is
-          the other one, so nothing else here may go night. The old "dark
-          carries the food photography" reasoning is retired; this section is
-          dark for contrast against the yellow band above it, and it holds park
-          photography rather than vendor logos, which need a light ground. */}
-      <Section ground="night" className="py-14 sm:py-20">
+      {/* Cream, not night. This section WAS the page's one dark surface, for
+          contrast against the yellow band. The hero took the night ground on
+          2026-08-18 and the ration is two per page counting the footer, so this
+          one gave its up. It loses nothing: the argument here is the address
+          and the hours, which read better as dark type on paper than as light
+          type on a photograph. */}
+      <Section className="py-14 sm:py-20">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
           <div className="min-w-0">
-            <Label tone="night">{t.placeLabel}</Label>
-            <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.placeH}</h2>
-            <p className="mt-5 max-w-md leading-relaxed text-night-muted">{t.placeBody}</p>
+            <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.placeH}</h2>
+            <p className="mt-5 max-w-md leading-relaxed text-muted">{t.placeBody}</p>
             <dl className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <dt className="font-mono text-[11px] tracking-[0.12em] text-night-muted uppercase">
+                <dt className="font-mono text-[11px] tracking-[0.12em] text-muted uppercase">
                   {t.address}
                 </dt>
                 <dd className="mt-1.5">
@@ -227,7 +312,7 @@ export function LeaseASpace() {
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-[11px] tracking-[0.12em] text-night-muted uppercase">
+                <dt className="font-mono text-[11px] tracking-[0.12em] text-muted uppercase">
                   {t.hours}
                 </dt>
                 <dd className="mt-1.5">{hoursRange()}</dd>
@@ -236,7 +321,7 @@ export function LeaseASpace() {
           </div>
           <img
             src={parkPhoto}
-            alt=""
+            alt={t.placeAlt}
             loading="lazy"
             decoding="async"
             className="h-full max-h-[26rem] w-full object-cover"
@@ -244,26 +329,30 @@ export function LeaseASpace() {
         </div>
       </Section>
 
-      {/* The economics, stated openly. Block 40's move: no burying it. */}
-      <Section className="py-14 sm:py-20">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div className="min-w-0">
-            <Label>{t.rentLabel}</Label>
-            <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.rentH}</h2>
-            <p className="mt-5 max-w-md leading-relaxed text-muted">{t.rentBody}</p>
-          </div>
-          <div className="min-w-0">
-            <Label>{t.includedLabel}</Label>
-            <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.includedH}</h2>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <Chip>{t.includedPending}</Chip>
+      {/* The economics, stated openly. Block 40's move: no burying it. On a
+          wash so the run of cream sections between the yellow band and the
+          footer is broken once. Home changes ground at every section; this page
+          cannot do that without inventing colours, but it can do it here. */}
+      <section className="bg-wash-burrito px-5 py-16 text-ink sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div className="min-w-0">
+              <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.rentH}</h2>
+              <p className="mt-5 max-w-md leading-relaxed text-muted">{t.rentBody}</p>
+            </div>
+            <div className="min-w-0">
+              <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.includedH}</h2>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <Chip>{t.includedPending}</Chip>
+              </div>
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Kraken's numbered sequence. */}
-      <Section className="border-t border-rule py-14 sm:py-20">
+      {/* Kraken's numbered sequence. Keeps its eyebrow: the sequence is the
+          point of the section, and "how it works" is what the numbers mean. */}
+      <Section className="py-14 sm:py-20">
         <Label>{t.stepsLabel}</Label>
         <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.stepsH}</h2>
         <ol className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-6">
@@ -279,9 +368,8 @@ export function LeaseASpace() {
 
       {/* Native <details>: keyboard accessible, and the answers are in the HTML
           for a crawler that never runs JavaScript. */}
-      <Section className="border-t border-rule py-14 sm:py-20">
-        <Label>{t.faqLabel}</Label>
-        <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.faqH}</h2>
+      <Section className="border-t border-rule py-12 sm:py-16">
+        <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.faqH}</h2>
         <div className="mt-8 max-w-3xl">
           {t.faq.map((f) => (
             <details key={f.q} className="group border-b border-rule py-4">
@@ -311,11 +399,10 @@ export function LeaseASpace() {
           Square site's "first month rent free" text and do not invent a
           stand-in. Fill only when Ray gives one. See CLAUDE.md. */}
 
-      <Section id="ask" className="border-t border-rule py-14 sm:py-20">
+      <Section id="ask" className="border-t border-rule py-16 sm:py-24">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
           <div className="min-w-0">
-            <Label>{t.formLabel}</Label>
-            <h2 className="mt-4 text-3xl leading-[1.02] uppercase sm:text-4xl">{t.formH}</h2>
+            <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.formH}</h2>
             <p className="mt-5 max-w-sm leading-relaxed text-muted">{t.reassure}</p>
           </div>
 

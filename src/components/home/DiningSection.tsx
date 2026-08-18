@@ -1,6 +1,8 @@
 import { useLanguage } from '../../i18n/useLanguage';
 import indoorPhoto from '../../assets/best_bite_inside.jpeg';
 import outdoorPhoto from '../../assets/best_bite_outdoor.webp';
+import bathroomsPhoto from '../../assets/bathrooms.jpg';
+import cleaningStationPhoto from '../../assets/cleaning_station.jpg';
 
 export function DiningSection() {
   const { t } = useLanguage();
@@ -14,7 +16,7 @@ export function DiningSection() {
         <p className="mt-4 text-brand-black/70">{t.diningSection.body}</p>
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <figure>
           <div className="aspect-[4/3] w-full overflow-hidden rounded-lg">
             <img
@@ -40,6 +42,34 @@ export function DiningSection() {
           </div>
           <figcaption className="mt-2 text-sm font-bold text-brand-black">
             {t.diningSection.outdoorLabel}
+          </figcaption>
+        </figure>
+
+        <figure>
+          <div className="aspect-[4/3] w-full overflow-hidden rounded-lg">
+            <img
+              src={bathroomsPhoto}
+              alt={t.diningSection.restroomsLabel}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <figcaption className="mt-2 text-sm font-bold text-brand-black">
+            {t.diningSection.restroomsLabel}
+          </figcaption>
+        </figure>
+
+        <figure>
+          <div className="aspect-[4/3] w-full overflow-hidden rounded-lg">
+            <img
+              src={cleaningStationPhoto}
+              alt={t.diningSection.cleaningStationLabel}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <figcaption className="mt-2 text-sm font-bold text-brand-black">
+            {t.diningSection.cleaningStationLabel}
           </figcaption>
         </figure>
       </div>

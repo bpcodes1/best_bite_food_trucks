@@ -28,12 +28,23 @@ export function TruckCard({ truck }: TruckCardProps) {
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-1 p-4">
-        <h3 className="font-heading text-lg font-bold text-brand-black">{truck.name}</h3>
-        <span className="inline-block w-fit rounded-full bg-brand-yellow/15 px-2.5 py-0.5 text-xs font-bold text-brand-black/80">
-          {truck.foodType[lang]}
-        </span>
-        <p className="mt-auto pt-2 text-sm text-brand-black/60">{truck.hours[lang]}</p>
+      <div className="flex flex-1 items-center gap-3 p-4">
+        {truck.logo && (
+          <img
+            src={truck.logo}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="h-20 w-20 shrink-0 rounded-full border border-brand-black/10 object-cover"
+          />
+        )}
+        <div className="flex flex-1 flex-col gap-1">
+          <h3 className="font-heading text-lg font-bold text-brand-black">{truck.name}</h3>
+          <span className="inline-block w-fit rounded-full bg-brand-yellow/15 px-2.5 py-0.5 text-xs font-bold text-brand-black/80">
+            {truck.foodType[lang]}
+          </span>
+          <p className="mt-auto pt-2 text-sm text-brand-black/60">{truck.hours[lang]}</p>
+        </div>
       </div>
     </li>
   );

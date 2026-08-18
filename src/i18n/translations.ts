@@ -44,6 +44,8 @@ export interface Translations {
     body: string;
     indoorLabel: string;
     outdoorLabel: string;
+    restroomsLabel: string;
+    cleaningStationLabel: string;
   };
   vendorCta: {
     heading: string;
@@ -65,11 +67,25 @@ export interface Translations {
   foodTrucksPage: {
     heading: string;
     intro: string;
+    allCategories: string;
+    noResults: string;
+    vendorCtaHeading: string;
+    vendorCtaBody: string;
+    vendorCtaCta: string;
   };
   eventsPage: {
     heading: string;
     intro: string;
     calendarHeading: string;
+    previousMonth: string;
+    nextMonth: string;
+    jumpToToday: string;
+    scheduledHeading: string;
+    noScheduledEvents: string;
+    holdEventHeading: string;
+    holdEventBody: string;
+    holdEventCta: string;
+    pastEventsHeading: string;
   };
   contactPage: {
     heading: string;
@@ -152,9 +168,11 @@ export const translations: Record<Lang, Translations> = {
     },
     diningSection: {
       heading: 'Indoor & Outdoor Dining',
-      body: 'Grab a seat wherever the mood strikes. We have covered indoor seating for rainy days and hot afternoons, plus open-air picnic tables for when the weather is perfect. However you like to eat, there is a spot for you at the park.',
+      body: 'Grab a seat wherever the mood strikes. We have covered indoor seating for rainy days and hot afternoons, plus open-air picnic tables for when the weather is perfect. Clean restrooms and a handwashing station are on site too. However you like to eat, there is a spot for you at the park.',
       indoorLabel: 'Indoor seating',
       outdoorLabel: 'Outdoor seating',
+      restroomsLabel: 'Restrooms',
+      cleaningStationLabel: 'Cleaning station',
     },
     vendorCta: {
       heading: 'Own a food truck?',
@@ -177,12 +195,28 @@ export const translations: Record<Lang, Translations> = {
       heading: 'Food Trucks',
       intro:
         'The full lineup parked at Best Bite Food Park. Swing by any day of the week — the crews rotate, so there is always something new to try.',
+      allCategories: 'All',
+      noResults: 'No food trucks match this filter yet.',
+      vendorCtaHeading: 'Interested in Joining Best Bite Food Park as a Vendor?',
+      vendorCtaBody:
+        'We have spaces available on a month-to-month basis — no long-term lease required. Join a growing community of vendors and reach hungry regulars every week.',
+      vendorCtaCta: 'Join the park',
     },
     eventsPage: {
       heading: 'Events',
       intro:
         'Live music, theme nights, and community gatherings happening at the park. Check the calendar for what is coming up.',
       calendarHeading: 'This month',
+      previousMonth: 'Previous month',
+      nextMonth: 'Next month',
+      jumpToToday: 'Today',
+      scheduledHeading: 'Scheduled',
+      noScheduledEvents: 'No events scheduled this month.',
+      holdEventHeading: 'Want to Hold an Event at Best Bite Food Park?',
+      holdEventBody:
+        'From birthday parties to community fundraisers, our park is a great spot to gather. Reach out and let us know what you have in mind.',
+      holdEventCta: 'Contact us',
+      pastEventsHeading: 'Past Events',
     },
     contactPage: {
       heading: 'Contact Us',
@@ -286,9 +320,11 @@ export const translations: Record<Lang, Translations> = {
     },
     diningSection: {
       heading: 'Comedor Interior y al Aire Libre',
-      body: 'Siéntate donde prefieras. Tenemos asientos cubiertos para los días de lluvia o calor, además de mesas al aire libre para cuando el clima está perfecto. Como sea que te guste comer, aquí hay un lugar para ti en el parque.',
+      body: 'Siéntate donde prefieras. Tenemos asientos cubiertos para los días de lluvia o calor, además de mesas al aire libre para cuando el clima está perfecto. También contamos con baños limpios y una estación para lavarse las manos. Como sea que te guste comer, aquí hay un lugar para ti en el parque.',
       indoorLabel: 'Asientos interiores',
       outdoorLabel: 'Asientos al aire libre',
+      restroomsLabel: 'Baños',
+      cleaningStationLabel: 'Estación de limpieza',
     },
     vendorCta: {
       heading: '¿Tienes un food truck?',
@@ -311,12 +347,28 @@ export const translations: Record<Lang, Translations> = {
       heading: 'Food Trucks',
       intro:
         'La alineación completa en Best Bite Food Park. Pasa cualquier día de la semana — los camiones rotan, así que siempre hay algo nuevo que probar.',
+      allCategories: 'Todos',
+      noResults: 'Ningún food truck coincide con este filtro todavía.',
+      vendorCtaHeading: '¿Interesado en Unirte a Best Bite Food Park como Vendedor?',
+      vendorCtaBody:
+        'Tenemos espacios disponibles mes a mes — sin contrato a largo plazo. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
+      vendorCtaCta: 'Únete al parque',
     },
     eventsPage: {
       heading: 'Eventos',
       intro:
         'Música en vivo, noches temáticas y encuentros comunitarios en el parque. Revisa el calendario para ver lo que se viene.',
       calendarHeading: 'Este mes',
+      previousMonth: 'Mes anterior',
+      nextMonth: 'Mes siguiente',
+      jumpToToday: 'Hoy',
+      scheduledHeading: 'Programado',
+      noScheduledEvents: 'No hay eventos programados este mes.',
+      holdEventHeading: '¿Quieres Realizar un Evento en Best Bite Food Park?',
+      holdEventBody:
+        'Desde fiestas de cumpleaños hasta recaudaciones de fondos comunitarias, nuestro parque es un gran lugar para reunirse. Contáctanos y cuéntanos qué tienes en mente.',
+      holdEventCta: 'Contáctanos',
+      pastEventsHeading: 'Eventos Pasados',
     },
     contactPage: {
       heading: 'Contáctanos',

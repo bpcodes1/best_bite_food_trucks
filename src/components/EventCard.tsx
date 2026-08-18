@@ -1,21 +1,38 @@
 import { useLanguage } from '../i18n/useLanguage';
-import { formatEventWeekday } from '../lib/parkStatus';
 import type { EventItem } from '../data/events';
 
 interface EventCardProps {
   event: EventItem;
+  highlighted?: boolean;
 }
 
-export function EventCard({ event }: EventCardProps) {
+export function EventCard({ event, highlighted }: EventCardProps) {
   const { lang } = useLanguage();
-  const weekday = formatEventWeekday(event.date, lang);
 
   return (
-    <li className="rounded-lg border border-brand-black/10 bg-white p-5">
-      <p className="text-xs font-bold uppercase tracking-wide text-brand-yellow-dark">{weekday}</p>
-      <h3 className="mt-1 font-heading text-lg font-bold text-brand-black">{event.name[lang]}</h3>
-      <p className="mt-1 text-sm text-brand-black/60">{event.time[lang]}</p>
-      <p className="mt-2 text-sm text-brand-black/70">{event.description[lang]}</p>
+    <li
+      id={`event-${event.id}`}
+      className={[
+        'scroll-mt-24 aspect-[3/4] w-full overflow-hidden rounded-lg border bg-brand-yellow/15 transition-shadow',
+        highlighted ? 'border-brand-yellow-dark ring-2 ring-brand-yellow-dark' : 'border-brand-black/10',
+      ].join(' ')}
+    >
+      {event.fullImage ? (
+        <img
+          src={event.fullImage}
+          alt={event.name[lang]}
+          loading="lazy"
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <div
+          className="flex h-full w-full items-center justify-center text-2xl"
+          role="img"
+          aria-label={event.name[lang]}
+        >
+          📅
+        </div>
+      )}
     </li>
   );
 }

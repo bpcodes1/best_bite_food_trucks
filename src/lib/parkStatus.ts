@@ -104,3 +104,20 @@ export function formatEventWeekday(dateIso: string, lang: Lang): string {
     date,
   );
 }
+
+/** Short month + day label for an event's ISO date, e.g. "Aug 16" / "16 ago". */
+export function formatEventDate(dateIso: string, lang: Lang): string {
+  const date = new Date(`${dateIso}T00:00:00`);
+  return new Intl.DateTimeFormat(lang === 'es' ? 'es-MX' : 'en-US', {
+    month: 'short',
+    day: 'numeric',
+  }).format(date);
+}
+
+/** Past events (date before today), most recent first. */
+export function getPastEvents(now: Date = new Date()): EventItem[] {
+  const todayIso = toLocalIsoDate(now);
+  return events
+    .filter((event) => event.date < todayIso)
+    .sort((a, b) => b.date.localeCompare(a.date));
+}

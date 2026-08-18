@@ -1,6 +1,9 @@
 import cruiseImage from '../assets/events/cruise_into_the_school_year.png';
 import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.png';
 import karaokeImage from '../assets/events/karaoke.png';
+import cruiseFullImage from '../assets/events/cruise_into_the_school_year_full.jpg';
+import backToSchoolCruiseFullImage from '../assets/events/back_to_school_cruise_full.jpg';
+import karaokeFullImage from '../assets/events/karaoke_full.jpg';
 
 export interface EventItem {
   id: string;
@@ -15,6 +18,8 @@ export interface EventItem {
    * placeholder in the homepage teaser cards.
    */
   image?: string;
+  /** Full-flyer photo shown on the Events page's image-only event cards. */
+  fullImage?: string;
 }
 
 export const events: EventItem[] = [
@@ -29,6 +34,7 @@ export const events: EventItem[] = [
       es: 'DJ Mike PDX nos acompaña todos los domingos de 6pm a 9pm. ¡Trae a tu familia y amigos para una noche de karaoke, comida increíble y más!',
     },
     image: karaokeImage,
+    fullImage: karaokeFullImage,
   },
   {
     id: 'cruise-into-the-school-year',
@@ -40,6 +46,7 @@ export const events: EventItem[] = [
       es: 'Disfruta de una exhibición de lowriders, comida deliciosa, vendedores locales, juegos, pintura facial, música con DJ en vivo, actividades para todas las edades, ¡y útiles escolares hasta agotar existencias!',
     },
     image: cruiseImage,
+    fullImage: cruiseFullImage,
   },
   {
     id: 'back-to-school-cruise',
@@ -52,35 +59,6 @@ export const events: EventItem[] = [
       es: 'Disfruta de una exhibición de lowriders, comida deliciosa, vendedores locales, juegos, pintura facial, música con DJ en vivo, actividades para todas las edades, ¡y útiles escolares hasta agotar existencias!',
     },
     image: backToSchoolCruiseImage,
-  },
-  {
-    id: 'trivia-tuesday',
-    name: { en: 'Trivia Tuesday', es: 'Martes de Trivia' },
-    date: '2026-08-11',
-    time: { en: '6:30pm–8:30pm', es: '6:30pm–8:30pm' },
-    description: {
-      en: 'Team trivia with prizes from park vendors.',
-      es: 'Trivia en equipo con premios de los vendedores del parque.',
-    },
-  },
-  {
-    id: 'live-music-roadhouse',
-    name: { en: 'Live Music: The Roadhouse Band', es: 'Música en Vivo: The Roadhouse Band' },
-    date: '2026-08-15',
-    time: { en: '6pm–9pm', es: '6pm–9pm' },
-    description: {
-      en: 'Local favorites playing rock and country covers.',
-      es: 'Banda local tocando covers de rock y country.',
-    },
-  },
-  {
-    id: 'food-truck-rally',
-    name: { en: 'Food Truck Rally', es: 'Festival de Food Trucks' },
-    date: '2026-08-23',
-    time: { en: '11am–8pm', es: '11am–8pm' },
-    description: {
-      en: 'Guest trucks join the park for a bigger-than-usual lineup.',
-      es: 'Trucks invitados se suman al parque para una alineación más grande de lo usual.',
-    },
+    fullImage: backToSchoolCruiseFullImage,
   },
 ];

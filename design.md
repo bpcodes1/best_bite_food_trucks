@@ -15,10 +15,34 @@ Extracted 2026-08-11 via `hallmark study`.
 | krakenindustries.co                     | Image | Three-step flow, form philosophy, accent at flood footprint, varied section rhythm, rail-as-progress                                                             | Dark ground. Wizard pattern. Configurator logic. |
 | block40foodhall.com/kiosk-opportunities | URL   | Leasing page information architecture, economics stated openly                                                                                                   | Everything visual — it is a GoDaddy template.    |
 
-Neither visual source is a food business. That is deliberate. Every food park
-site audited (The Yard on Divi, Gather, Rose City, Block 40 on GoDaddy) is a
-template site. Pulling taste from the category guarantees looking like the
-category.
+Neither of those two visual sources is a food business. That is deliberate.
+Every food park site audited (The Yard on Divi, Gather, Rose City, Block 40 on
+GoDaddy) is a template site. Pulling taste from the category guarantees looking
+like the category.
+
+### Added 2026-08-16, for Vendors
+
+Both supplied by Enrique. **Record the URL every time.** Sunbeam Bagels, Kado
+and an events grid are cited by name throughout this file with no link, and
+none of the three can now be recovered.
+
+| Source                                                                                                                                           | Mode | What we took                                                                                                                                                                                                                    | What we rejected                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Foogra](https://themeforest.net/item/foogra-restaurants-directory-listings-template/25074949) (ThemeForest 25074949, by Ansonika)               | URL  | Card structure: the name inside the picture over a bottom-anchored scrim, a chip in the image corner, and the read order of identity-in-picture then facts-below. Separately, the reveal model — trigger once, play on a timer. | Ratings, review counts, price tiers, discount ribbons, Poppins, Bootstrap, three icon fonts, their spacing scale.                                                  |
+| [Dribbble — Restaurant Directory and Listing Website UI](https://dribbble.com/shots/27159242-Restaurant-Directory-and-Listing-Website-UI-Design) | URL  | Exactly one thing: open/closed status as a first-class card element rather than a line of body text.                                                                                                                            | The purple, green/red status colours, star ratings, price tiers, featured/popular/new flags, free delivery, save hearts, reservations, the browse-by-cuisine grid. |
+
+Two demo pages, one source. Card structure came from
+`http://www.ansonika.com/foogra/grid-listing-filterscol-full-width.html`; the
+reveal came from `http://www.ansonika.com/foogra/demo.html`, the template's
+showcase index. **Foogra's own listing pages have no reveal at all.** Their
+implementation is WOW.js firing Animate.css `fadeInUp` at 0.5s with
+`data-wow-delay` stepped 0.2/0.4/0.6s, measured from their CSS. The
+middle-then-right-then-left order across each row is ours, not theirs.
+
+Foogra is a restaurant-category template, which is the thing the paragraph
+above warns against. It is here for **structure only** — where the name sits
+relative to the photograph. None of its taste came across: not its type, not
+its colour, not its spacing, not its component library.
 
 ## Ground and palette
 
@@ -280,8 +304,19 @@ gzipped on top of a 251 kB bundle, and it only runs once JavaScript has loaded
 and hydrated — on a pre-rendered site whose visitors are mostly on phones on
 Salem cell service, that is load time spent on something CSS does for free.
 Everything wanted from the Sunbeam reference is CSS: keyframed rotation,
-transform-based fans and collages, gradient-border glows, and native
-scroll-driven animation via `animation-timeline` with an `@supports` fallback.
+transform-based fans and collages, gradient-border glows, and scroll reveals.
+
+**Scroll reveals are triggered, not scroll-linked.** This section used to
+recommend `animation-timeline: view()` here, and Vendors was built that way
+once. It is the wrong tool: `animation-timeline` ties the animation's position
+to the scroll position, so a fast thumb-flick on a phone completes the whole
+thing in one frame and the reader sees nothing. Enrique reported exactly that,
+2026-08-14. The working model is the Foogra reference's — trigger once on
+entry, then play on a timer, regardless of scroll speed.
+`src/lib/useReveal.ts` is an IntersectionObserver and a class name, which is
+not an animation library and does not touch the ban above. The hiding rule
+lives behind `.js-reveal` on `<html>`, added only by that hook, so no
+JavaScript means every element is simply visible.
 
 **If an effect genuinely cannot be built in CSS, reopen this section and make
 the case for a library.** Do not quietly work around the rule, and do not
@@ -331,12 +366,18 @@ we checked turned out to be English-only. This section is ours, not extracted.
 
 ## Open decisions
 
-1. **A site holding many third-party logos in one grid** without looking like a
-   sponsor wall. This is the Vendors page problem, and it is the last unbuilt
-   page. The containment rules in § Components are the working answer; a studied
-   reference would still strengthen it.
+1. **The display face.** Leaning Archivo Black, not closed. Anton stays wired
+   and switchable in dev via `document.documentElement.dataset.display =
+'anton'`, so the comparison can be shown rather than described.
+2. **Three pages are a generation behind Home.** Únete al Parque, Events and
+   Contact were all built before the 2026-08-12 changes that made Home the
+   reference. Bringing them up is a known job, not a question about the system.
 
 Resolved and folded into the tables above: Únete's tone (utilitarian, built),
 Home's macrostructure (appetite-led brochure, 2026-08-12), the component
 library question (closed — the interactive surface is a nav, a toggle, two
-forms and one accordion; not worth a dependency).
+forms and one accordion; not worth a dependency), and **many third-party logos
+in one grid without a sponsor wall** — answered in practice on Vendors,
+2026-08-16. The name always sits inside the media area, photograph or not; a
+vendor without one gets a wash panel carrying its logo, so nothing moves when a
+photograph arrives. The containment rules in § Components are the written form.

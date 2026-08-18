@@ -20,7 +20,7 @@ npm run dev
 | `npm run dev`     | Dev server with HMR. Serves an empty shell, not pre-rendered |
 | `npm run build`   | Type-check, client build, SSR build, then pre-render         |
 | `npm run preview` | Serve `dist/` locally                                        |
-| `npm run test`    | Route-integrity tests                                        |
+| `npm run test`    | Route integrity and vendor-data tests                        |
 | `npm run pending` | List every placeholder still unfilled                        |
 | `npm run images`  | Recompress `src/assets` in place (sharp). Safe to re-run     |
 | `npm run lint`    | ESLint                                                       |
@@ -77,10 +77,14 @@ src/
     Schema.tsx         LocalBusiness JSON-LD, all values from lib/site.ts
     FanGallery.tsx     the fanned image stack on Home
     EventCard.tsx      one event: photo, title, tags, when, where
+    VendorCard.tsx     one vendor: photo or logo wash, name, hours, status
+    OpenStatus.tsx     open/closed chip, computed after mount in Salem time
     ui.tsx             Section, Label, Chip, Button, form field skins
   lib/routes.ts        every address on the site, plus its nav label
   lib/site.ts          name, address, hours, phone — the one NAP source
+  lib/vendors.ts       the nine vendors: copy in both languages, hours twice
   lib/useLang.ts       reads language off the URL
+  lib/useReveal.ts     triggered scroll reveal, no library, fails safe
   pages/               one component per page, rendered at two addresses
   assets/              client photography, compressed (~4.4MB)
 ```
@@ -90,12 +94,15 @@ src/
 See [STATUS.md](STATUS.md) for where the build actually is, and
 [design.md](design.md) for the design system every page defers to.
 
-In short: four of five pages are built in both languages — Home, Únete al
-Parque, Contact and Events — plus the masthead and footer. **Vendors is the
-only page still a single heading.**
+In short: **all five pages are built in both languages** — Home, Vendors,
+Únete al Parque, Events and Contact — plus the masthead and footer. Vendors was
+the last one, built 2026-08-16.
 
-Home is the reference for how the rest of the site should look; the other three
-predate the 2026-08-12 design changes and are a generation behind.
+Home is the reference for how the rest of the site should look. Únete, Events
+and Contact predate the 2026-08-12 design changes and are a generation behind.
+
+Nothing is deployed anywhere. There is no host and no domain yet; see
+[STATUS.md](STATUS.md) for the setup order and the two traps in it.
 
 Anything Ray has not confirmed renders as visible brackets on the page. Run
 `npm run pending` for the list.

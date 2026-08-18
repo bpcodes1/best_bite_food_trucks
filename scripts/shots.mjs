@@ -71,7 +71,16 @@ const DEFAULT_WIDTHS = [375, 768]
 const VIEWPORT_HEIGHT = { 375: 812, 768: 1024, 1280: 800, 1440: 900 }
 
 /** Retina, the way a phone actually renders. Chrome's texture ceiling is
- *  16384 device pixels, so a very long page drops to 1x rather than truncate. */
+ *  16384 device pixels, so a very long page drops to 1x rather than truncate.
+ *
+ *  SET IN EXACTLY ONE PLACE. This is the `deviceScaleFactor` passed to
+ *  Emulation.setDeviceMetricsOverride, and `Page.captureScreenshot`'s clip
+ *  takes `scale: 1`. The two multiply: setting both to 2 renders a 375px
+ *  viewport at 1500px rather than 750px, which is four times the bytes for no
+ *  extra detail and makes every "the file is 2x the tested width" statement in
+ *  the README a lie. That is exactly what this script shipped with on
+ *  2026-08-18 and it went unnoticed because a 4x screenshot looks correct —
+ *  only measuring the file caught it. */
 const SCALE = 2
 const MAX_DEVICE_PX = 16000
 
@@ -488,26 +497,55 @@ for (const shot of shots) {
 
   // Chrome cannot allocate past its texture ceiling. Drop sharpness rather
   // than silently hand back a cropped page.
-  let scale = SCALE
+  //
+  // The output is contentHeight x deviceScaleFactor. The clip's own `scale`
+  // stays 1 — see the note on SCALE. Passing SCALE here as well multiplied the
+  // two and produced 4x images, which is why this arithmetic reads against
+  // SCALE and not against the clip.
+  let effective = SCALE
+  let clipScale = 1
   let note = ''
-  if (contentHeight * scale > MAX_DEVICE_PX) {
-    scale = 1
+  if (contentHeight * effective > MAX_DEVICE_PX) {
+    // Halve the rendered density rather than crop the page in half.
+    await browser.send(
+      'Emulation.setDeviceMetricsOverride',
+      { width: shot.width, height, deviceScaleFactor: 1, mobile: shot.width < 768 },
+      sessionId,
+    )
+    effective = 1
     note = ' (1x — page too long for 2x)'
   }
 
   const capture = async (clip, suffix) => {
     const { data } = await browser.send(
       'Page.captureScreenshot',
-      { format: 'png', captureBeyondViewport: true, clip: { ...clip, scale } },
+      { format: 'png', captureBeyondViewport: true, clip: { ...clip, scale: clipScale } },
       sessionId,
     )
     const file = path.join(OUT, `${shot.key}-${shot.lang}-${shot.width}-${suffix}.png`)
-    fs.writeFileSync(file, Buffer.from(data, 'base64'))
+    const buf = Buffer.from(data, 'base64')
+    fs.writeFileSync(file, buf)
+
+    // The tool checks its own output, because this one lied. The first version
+    // multiplied the device scale factor by the clip scale and wrote 4x images
+    // while every label said 2x. It looked perfect — a 4x screenshot is just a
+    // sharp screenshot — and only measuring the file caught it. A screenshot
+    // whose pixel width does not match the width it claims to have been taken
+    // at makes every measurement drawn from it worthless, so it is asserted
+    // rather than assumed. PNG width is a big-endian uint32 at byte 16.
+    const actual = buf.readUInt32BE(16)
+    const expected = shot.width * effective
+    if (actual !== expected) {
+      throw new Error(
+        `${path.basename(file)} came out ${actual}px wide, expected ${expected}px ` +
+          `(${shot.width} CSS px at ${effective}x). The scale factors are compounding again.`,
+      )
+    }
     return file
   }
 
   const fullFile = await capture(
-    { x: 0, y: 0, width: shot.width, height: Math.min(contentHeight, MAX_DEVICE_PX / scale) },
+    { x: 0, y: 0, width: shot.width, height: Math.min(contentHeight, MAX_DEVICE_PX / effective) },
     'full',
   )
   if (flags.has('--fold')) {
@@ -579,9 +617,11 @@ fs.writeFileSync(
     '  <page>-<language>-<width>-full.png    the whole page, top to bottom',
     '  <page>-<language>-<width>-fold.png    just the first screen (--fold only)',
     '',
-    'The number in the name is the width the page was TESTED at. The image file',
-    `is ${SCALE}x that many pixels wide, because it is captured at retina sharpness the`,
-    'way a phone renders. A phone screenshot doubles the same way.',
+    `The number in the name is the width the page was TESTED at. The image file is`,
+    `${SCALE}x that many pixels wide, because it is captured at retina sharpness the way`,
+    'a phone renders. A phone screenshot doubles the same way. Every file has its',
+    'width checked against that after capture, so if this paragraph is true of one',
+    'file it is true of all of them.',
     '',
     'WHAT THESE DO NOT PROVE',
     '  Routing. These are served by a local static server, so every address',

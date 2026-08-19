@@ -394,6 +394,43 @@ can see it is a gap; the same string inside JSON-LD is a machine-readable claim
 that this is Best Bite's official answer, and it can surface as a rich result.
 Verified: 4 questions in the markup, zero `PENDIENTE`.
 
+### "Open" meant two opposite things, 2026-08-19
+
+Enrique read the leasing bands' `6/15` as "we have six vendors" and asked for it
+to be changed to 9. **The number was right and the change would have made the
+site lie** — `filled: 9` are trading, `open = 15 - 9 = 6` are empty and rentable,
+and telling truck owners nine spaces are free contradicts both the Vendors page
+and the client context's "6 empty stalls = the core profitability gap."
+
+**But he found a real defect.** He wrote the roster, has been in this project for
+days, and still misread it. A truck owner glancing at it has no chance.
+
+The cause: **the English copy used "open" for both trading and vacant**, and the
+vacant sense sat directly under the numeral.
+
+| String                             | "Open" meant |
+| ---------------------------------- | ------------ |
+| `Open every day` (Home hours band) | trading      |
+| `OPEN NOW` (vendor cards)          | trading      |
+| `Spaces open` (Home door)          | **vacant**   |
+| `Open now` (Únete band)            | **vacant**   |
+
+The worst was Únete's own lede: _"9 trucks are open at Best Bite right now … 6 of
+15 spaces are open"_ — one word carrying both meanings a clause apart.
+
+Fixed in seven places. **"Open" now only ever means trading**; vacancy is
+"free". Both counts are now stated wherever either appears, because a bare
+fraction invites being read as a ratio of occupancy — Home's door says "9
+kitchens are already here" beside the 6/15, and Únete's band says "6 of 15
+spaces are free, with 9 kitchens already trading." Nine trading is also the
+strongest thing we can tell a prospective vendor: it is proof of traffic.
+
+**Spanish mostly escaped it** because `abierto` and `libre` are different words.
+One instance had crossed over — Únete's meta description said "espacios están
+abiertos" — and it is fixed. The lesson is in `CLAUDE.md`: a bilingual QA pass
+that checks layout in both languages will not catch a word doing two jobs in one
+of them.
+
 ### Home's event flyers, dated 2026-08-19
 
 Home showed the Back to School Cruise with a bracketed date and Cruise Into the

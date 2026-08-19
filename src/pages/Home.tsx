@@ -32,7 +32,7 @@ import fotoRibs from '../assets/ribs.webp'
  *   label. Every section carrying a mono eyebrow was the audit's "labelled
  *   lists" tell. Do not add one to a new section without removing one.
  *   The two accent bands each carry a mono line naming their numeral — "open
- *   every day" above the hours, "spaces open" below the 6/15. Those are units
+ *   every day" above the hours, "spaces free" below the 6/15. Those are units
  *   on numbers, not section kickers, and they do not count against the two.
  *   The rule exists to stop every section wearing a label; it is not a ban on
  *   saying what a number is.
@@ -188,11 +188,16 @@ const copy = {
       'The park is open every day, noon to eight. Bring the kids, take a table, and try a truck you have not tried yet.',
     doorH: 'Got a truck?',
     /* The count moved out of this sentence and into the numeral beside it, so
-       repeating "6 of 15 spaces are open" here would say the same thing twice
-       in one band. What is left is the terms, which is the part a truck owner
-       is actually weighing. */
-    doorUnit: 'Spaces open',
-    doorBody: 'Month to month, no long-term lease. The lot already has the traffic.',
+       repeating the fraction here would say the same thing twice in one band.
+
+       What replaced it is the OTHER number. Enrique read "6/15" as "we have six
+       vendors" on 2026-08-19, and he has been living in this project for days —
+       a truck owner glancing at it has no chance. A fraction invites being read
+       as a ratio of occupancy, so the band now states both counts in words and
+       leaves nothing to infer. Nine kitchens already trading is also the
+       strongest thing we can tell a prospective vendor: it is proof of traffic. */
+    doorUnit: 'Spaces free',
+    doorBody: `${site.stalls.filled} kitchens are already here. Month to month, no long-term lease.`,
     doorCta: 'Lease a space',
   },
   es: {
@@ -256,7 +261,7 @@ const copy = {
       'El parque abre todos los días de doce a ocho. Trae a los niños, agarra una mesa y prueba un truck que todavía no conoces.',
     doorH: '¿Tienes un truck?',
     doorUnit: 'Espacios libres',
-    doorBody: 'Mes a mes, sin contrato a largo plazo. El lote ya tiene movimiento.',
+    doorBody: `${site.stalls.filled} cocinas ya están aquí. Mes a mes, sin contrato a largo plazo.`,
     doorCta: 'Pregunta por un espacio',
   },
 } as const
@@ -471,7 +476,7 @@ export function Home() {
           where the hours band puts its label above, so the two do not read as
           the same band repeated.
 
-          The "spaces open" line is a unit on a numeral, not a section eyebrow,
+          The "spaces free" line is a unit on a numeral, not a section eyebrow,
           and does not count against the cap of two — see STATUS.md § "What Home
           looks like now, and why". The rule exists to stop every section
           carrying a mono kicker; it is not a ban on labelling a number. */}

@@ -67,7 +67,7 @@ const open = site.stalls.total - site.stalls.filled
 const copy = {
   en: {
     title: 'Lease a Food Cart Space in Salem, OR | Best Bite Food Park',
-    description: `${open} of ${site.stalls.total} spaces are open at Best Bite Food Park on Silverton Rd NE. Month to month, no long-term lease. Ask about a space.`,
+    description: `${open} of ${site.stalls.total} spaces are free at Best Bite Food Park on Silverton Rd NE, with ${site.stalls.filled} kitchens already trading. Month to month, no long-term lease.`,
     eyebrow: `Lease a space · Salem, OR`,
     /* Two lines, split like Home's. It was "Park here month to month. Leave any
        time." as one string, which wrapped to four lines in English and five in
@@ -77,12 +77,15 @@ const copy = {
        and lede were not already doing. */
     h1a: 'Month to month.',
     h1b: 'Leave any time.',
-    lede: `${site.stalls.filled} trucks are open at Best Bite right now, and every one of them has been here more than a year. ${open} of ${site.stalls.total} spaces are open.`,
+    /* "Open" is banned here for vacancy — see CLAUDE.md. This sentence used to
+       read "9 trucks are open at Best Bite right now ... 6 of 15 spaces are
+       open", using the same word for trading and for empty one clause apart. */
+    lede: `${site.stalls.filled} trucks are trading at Best Bite right now, and every one of them has been here more than a year. ${open} of ${site.stalls.total} spaces are free.`,
     cta: 'Ask about a space',
     ctaMicro: '4 questions · 2 minutes · no commitment',
     heroAlt: 'The lot at Best Bite Food Park, with food trucks open on both sides',
-    bandLabel: 'Open now',
-    bandBody: `${open} of ${site.stalls.total} spaces are available. We are especially looking for Asian food.`,
+    bandLabel: 'Available now',
+    bandBody: `${open} of ${site.stalls.total} spaces are free, with ${site.stalls.filled} kitchens already trading. We are especially looking for Asian food.`,
     placeH: 'One lot, open every day.',
     placeBody:
       'Silverton Rd NE, with parking, seating and room to pull in. Open seven days a week.',
@@ -97,7 +100,7 @@ const copy = {
     stepsH: 'Three steps.',
     steps: [
       { n: '01', h: 'Tell us about your truck', b: 'What you serve and when you want to start.' },
-      { n: '02', h: 'We reply', b: 'We confirm what is open and what the rent is.' },
+      { n: '02', h: 'We reply', b: 'We confirm what is free and what the rent is.' },
       { n: '03', h: 'You come see it', b: 'Walk the lot before you decide anything.' },
     ],
     faqH: 'Before you ask.',
@@ -111,12 +114,12 @@ const copy = {
         a: 'Anything that is not already here. We are especially looking for Asian food, since the lineup is mostly Mexican right now.',
       },
       {
-        q: 'How many spaces are open?',
-        a: `${open} of ${site.stalls.total}.`,
+        q: 'How many spaces are free?',
+        a: `${open} of ${site.stalls.total}. The other ${site.stalls.filled} are taken.`,
       },
       {
         q: 'What does it cost?',
-        a: 'Ask through the form below and we will give you the rent for the space that is open.',
+        a: 'Ask through the form below and we will give you the rent for the space that is free.',
       },
       { q: 'How big is a space?', a: pending('stall size') },
       { q: 'Is power and water included?', a: pending('utilities') },
@@ -141,7 +144,7 @@ const copy = {
   },
   es: {
     title: 'Renta de Espacio para Food Truck en Salem, OR | Best Bite Food Park',
-    description: `${open} de ${site.stalls.total} espacios están abiertos en Best Bite Food Park en Silverton Rd NE. Mes a mes, sin contrato a largo plazo.`,
+    description: `${open} de ${site.stalls.total} espacios están libres en Best Bite Food Park en Silverton Rd NE, con ${site.stalls.filled} cocinas ya trabajando. Mes a mes, sin contrato a largo plazo.`,
     eyebrow: `Renta de espacio · Salem, OR`,
     h1a: 'Mes a mes.',
     h1b: 'Te vas cuando quieras.',
@@ -150,7 +153,7 @@ const copy = {
     ctaMicro: '4 preguntas · 2 minutos · sin compromiso',
     heroAlt: 'El lote de Best Bite Food Park, con food trucks abiertos a los dos lados',
     bandLabel: 'Disponible ahora',
-    bandBody: `${open} de ${site.stalls.total} espacios están disponibles. Buscamos especialmente comida asiática.`,
+    bandBody: `${open} de ${site.stalls.total} espacios están libres, con ${site.stalls.filled} cocinas ya trabajando. Buscamos especialmente comida asiática.`,
     placeH: 'Un solo lote, abierto todos los días.',
     placeBody:
       'Silverton Rd NE, con estacionamiento, asientos y lugar para entrar. Abierto los siete días.',
@@ -183,8 +186,8 @@ const copy = {
         a: 'Lo que todavía no está aquí. Buscamos especialmente comida asiática, porque ahora la mayoría es mexicana.',
       },
       {
-        q: '¿Cuántos espacios hay disponibles?',
-        a: `${open} de ${site.stalls.total}.`,
+        q: '¿Cuántos espacios hay libres?',
+        a: `${open} de ${site.stalls.total}. Los otros ${site.stalls.filled} están ocupados.`,
       },
       {
         q: '¿Cuánto cuesta?',

@@ -55,6 +55,18 @@ shared address the Spanish half of the site is never indexed.
   language. The toggle is the only thing that changes language.
 - Every page needs its hreflang pair. `<Seo>` handles it; don't hand-roll head
   tags.
+- **"Open" means trading. Never use it for a vacant stall.** The park is open,
+  a truck is open, a kitchen is open now. An empty space is **free**, or
+  **available**, never open. The English copy broke this in five places and
+  Enrique read "6/15 · spaces open" as "we have six vendors" on 2026-08-19 —
+  and he wrote the roster. The worst instance was Únete's own lede: "9 trucks
+  are open at Best Bite right now ... 6 of 15 spaces are open", one word meaning
+  both things a clause apart. Spanish mostly escaped it because `abierto` and
+  `libre` are different words, which is exactly why a bilingual QA pass that
+  only checks layout will not catch this class of bug.
+- **State both counts wherever either appears.** 9 filled and 6 free, never one
+  alone. A bare fraction invites being read as a ratio of occupancy, and the two
+  numbers only make sense against each other.
 
 ## `src/lib/routes.ts` is the only place addresses live
 

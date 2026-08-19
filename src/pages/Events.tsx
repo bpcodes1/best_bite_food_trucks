@@ -6,6 +6,7 @@ import { EventCard } from '../components/EventCard';
 import { EventCalendar } from '../components/EventCalendar';
 import { ScheduledEvents } from '../components/ScheduledEvents';
 import { PastEventsGallery } from '../components/PastEventsGallery';
+import { PageHero } from '../components/PageHero';
 import { ROUTES } from '../lib/routes';
 import holdEventImage from '../assets/best_bite_sign2.jpg';
 
@@ -30,63 +31,62 @@ export function Events() {
   }
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
-      <div className="max-w-2xl">
-        <h1 className="text-3xl font-bold text-brand-black sm:text-4xl">{t.eventsPage.heading}</h1>
-        <p className="mt-4 text-brand-black/70">{t.eventsPage.intro}</p>
-      </div>
+    <>
+      <PageHero heading={t.eventsPage.heading} intro={t.eventsPage.intro} />
 
-      <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {sortedEvents.map((event) => (
-          <EventCard
-            key={event.id}
-            event={event}
-            highlighted={highlightedEventIds.includes(event.id)}
-          />
-        ))}
-      </ul>
+      <section className="mx-auto max-w-6xl px-4 py-16">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {sortedEvents.map((event) => (
+            <EventCard
+              key={event.id}
+              event={event}
+              highlighted={highlightedEventIds.includes(event.id)}
+            />
+          ))}
+        </ul>
 
-      <div className="mt-10 grid grid-cols-1 gap-8 rounded-lg border border-brand-black/10 p-4 sm:grid-cols-[3fr_2fr]">
-        <EventCalendar
-          viewYear={viewYear}
-          viewMonth={viewMonth}
-          onViewChange={handleViewChange}
-          onSelectEvents={handleSelectEvents}
-        />
-        <div className="h-full sm:border-l sm:border-brand-black/10 sm:pl-8">
-          <ScheduledEvents
+        <div className="mt-10 grid grid-cols-1 gap-8 rounded-lg border border-brand-black/10 p-4 sm:grid-cols-[3fr_2fr]">
+          <EventCalendar
             viewYear={viewYear}
             viewMonth={viewMonth}
-            onSelectEvent={(eventId) => handleSelectEvents([eventId])}
+            onViewChange={handleViewChange}
+            onSelectEvents={handleSelectEvents}
           />
-        </div>
-      </div>
-
-      <PastEventsGallery />
-
-      <div className="mt-10 grid grid-cols-1 items-center gap-8 rounded-lg bg-brand-yellow/15 p-6 sm:grid-cols-2 sm:p-10">
-        <div className="aspect-[4/3] w-full overflow-hidden rounded-lg">
-          <img
-            src={holdEventImage}
-            alt=""
-            className="h-full w-full object-cover"
-            loading="lazy"
-          />
+          <div className="h-full sm:border-l sm:border-brand-black/10 sm:pl-8">
+            <ScheduledEvents
+              viewYear={viewYear}
+              viewMonth={viewMonth}
+              onSelectEvent={(eventId) => handleSelectEvents([eventId])}
+            />
+          </div>
         </div>
 
-        <div>
-          <h2 className="font-heading text-2xl font-bold text-brand-black sm:text-3xl">
-            {t.eventsPage.holdEventHeading}
-          </h2>
-          <p className="mt-3 text-brand-black/70">{t.eventsPage.holdEventBody}</p>
-          <Link
-            to={ROUTES.contact}
-            className="mt-6 inline-block rounded-md bg-brand-black px-6 py-3 font-heading font-bold text-brand-yellow transition-colors hover:bg-brand-black/80"
-          >
-            {t.eventsPage.holdEventCta}
-          </Link>
+        <PastEventsGallery />
+
+        <div className="mt-10 grid grid-cols-1 items-center gap-8 rounded-lg bg-brand-yellow/15 p-6 sm:grid-cols-2 sm:p-10">
+          <div className="aspect-[4/3] w-full overflow-hidden rounded-lg">
+            <img
+              src={holdEventImage}
+              alt=""
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <div>
+            <h2 className="font-heading text-2xl font-bold text-brand-black sm:text-3xl">
+              {t.eventsPage.holdEventHeading}
+            </h2>
+            <p className="mt-3 text-brand-black/70">{t.eventsPage.holdEventBody}</p>
+            <Link
+              to={ROUTES.contact}
+              className="mt-6 inline-block rounded-md bg-brand-black px-6 py-3 font-heading font-bold text-brand-yellow transition-colors hover:bg-brand-black/80"
+            >
+              {t.eventsPage.holdEventCta}
+            </Link>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

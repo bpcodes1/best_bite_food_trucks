@@ -274,6 +274,25 @@ filled row.
 "CHOOSE MRKI — PICK LEATHERS", never "Next". Ours say what happens next in the
 reader's language.
 
+Three skins, and the ground decides which:
+
+| Skin      | On              | Why                                                                  |
+| --------- | --------------- | -------------------------------------------------------------------- |
+| `solid`   | paper, wash     | Brand yellow. The default and the loudest thing on a light ground.   |
+| `outline` | paper, wash     | A secondary path, where a second solid button would compete.         |
+| `invert`  | **accent only** | Brand black on the yellow flood, reproducing the logo's own pairing. |
+
+`invert` exists because the default solid button is brand yellow, and a
+brand-yellow button on a brand-yellow flood is invisible. Added 2026-08-19 when
+Home's leasing door moved onto the accent. **Do not use it on paper** — near-black
+on warm off-white is the footer's relationship, not a button's.
+
+A page's most commercially important CTA should not be its quietest. Home's
+leasing door was the only `outline` button on a page where every other CTA was
+`solid`, sitting on the same cream ground as the section above it under a heading
+one size smaller. Check the skin against the section's importance, not against
+what looks balanced in isolation.
+
 **Forms** — the Kraken philosophy, and it is the single most transferable thing
 we extracted:
 

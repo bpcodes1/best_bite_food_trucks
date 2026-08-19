@@ -103,7 +103,7 @@ export function Button({
   as?: 'button' | 'a'
   href?: string
   to?: string
-  variant?: 'solid' | 'outline'
+  variant?: 'solid' | 'outline' | 'invert'
   type?: 'button' | 'submit'
   children: ReactNode
 }) {
@@ -113,10 +113,17 @@ export function Button({
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ' +
     'active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50'
 
-  const skin =
-    variant === 'solid'
-      ? 'bg-brand-yellow text-brand-black hover:bg-ink hover:text-brand-yellow'
-      : 'border border-current text-ink hover:bg-ink hover:text-paper'
+  /* `invert` exists because the default solid button is brand yellow, and a
+     brand-yellow button on a brand-yellow flood is invisible. It reproduces the
+     logo's own colour relationship — the mark is #010101 on #fdc20c — so the
+     strongest CTA on the site is also the most on-brand thing on it. Use it
+     only on an accent ground. */
+  const SKINS = {
+    solid: 'bg-brand-yellow text-brand-black hover:bg-ink hover:text-brand-yellow',
+    outline: 'border border-current text-ink hover:bg-ink hover:text-paper',
+    invert: 'bg-brand-black text-brand-yellow hover:bg-paper hover:text-brand-black',
+  }
+  const skin = SKINS[variant]
 
   if (to) {
     return (

@@ -28,15 +28,32 @@ import fotoRibs from '../assets/ribs.webp'
  *   photo running off the right edge with no margin. Never two stacked
  *   full-width bands — that was the audit's critical finding ("half hero,
  *   half image").
- * - EYEBROWS ARE CAPPED AT TWO on this page: the hero locator and the story
+ * - EYEBROWS ARE CAPPED AT TWO SECTION KICKERS: the hero locator and the story
  *   label. Every section carrying a mono eyebrow was the audit's "labelled
  *   lists" tell. Do not add one to a new section without removing one.
+ *   The two accent bands each carry a mono line naming their numeral — "open
+ *   every day" above the hours, "spaces open" below the 6/15. Those are units
+ *   on numbers, not section kickers, and they do not count against the two.
+ *   The rule exists to stop every section wearing a label; it is not a ban on
+ *   saying what a number is.
  * - SECTION PADDING VARIES on purpose. Equal padding everywhere is the
  *   templated tell design.md § Rhythm names.
  * - The arrow glyph appears on the hero CTA and the door CTA only.
  *
- * Vendors reach the leasing page through search, not by browsing here, so
- * recruiting gets exactly one honest door at the bottom.
+ * ONE HONEST DOOR TO ÚNETE, AT THE BOTTOM, and no recruiting copy anywhere
+ * else. That placement is deliberate and stays: the audit found the Square site
+ * bleeding aspirational vendor-recruitment language into its customer-facing
+ * hero, and this page is overwhelmingly for eaters.
+ *
+ * This comment used to justify the placement with "vendors reach the leasing
+ * page through search, not by browsing here." That is not true yet and will not
+ * be for months — the head-to-head found Google ranking aggregators rather than
+ * individual food park sites for both target queries, so Únete does not rank.
+ * The real reason the placement holds is simpler: "Lease a Space" is a
+ * top-level nav item at 0% scroll depth on every address, so a truck owner has
+ * a one-click path from the moment they land. This block's job is therefore
+ * conversion, not discovery — which is an argument for making it loud, not for
+ * moving it up.
  *
  * DRAFT COPY NOTE: the story section is draft copy written from true facts in
  * the client context. It is written to be replaced by Ray's own story when
@@ -149,7 +166,12 @@ const copy = {
     storyP2:
       'The park is open every day, noon to eight. Bring the kids, take a table, and try a truck you have not tried yet.',
     doorH: 'Got a truck?',
-    doorBody: `${open} of ${site.stalls.total} spaces are open, month to month, no long-term lease.`,
+    /* The count moved out of this sentence and into the numeral beside it, so
+       repeating "6 of 15 spaces are open" here would say the same thing twice
+       in one band. What is left is the terms, which is the part a truck owner
+       is actually weighing. */
+    doorUnit: 'Spaces open',
+    doorBody: 'Month to month, no long-term lease. The lot already has the traffic.',
     doorCta: 'Lease a space',
   },
   es: {
@@ -210,7 +232,8 @@ const copy = {
     storyP2:
       'El parque abre todos los días de doce a ocho. Trae a los niños, agarra una mesa y prueba un truck que todavía no conoces.',
     doorH: '¿Tienes un truck?',
-    doorBody: `${open} de ${site.stalls.total} espacios están libres, mes a mes, sin contrato a largo plazo.`,
+    doorUnit: 'Espacios libres',
+    doorBody: 'Mes a mes, sin contrato a largo plazo. El lote ya tiene movimiento.',
     doorCta: 'Pregunta por un espacio',
   },
 } as const
@@ -392,21 +415,63 @@ export function Home() {
         </div>
       </Section>
 
-      {/* The one honest door to Únete. Compact, low, and the only recruiting
-          copy on the page. */}
-      <Section className="border-t border-rule py-10 sm:py-12">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="min-w-0">
-            <h2 className="text-2xl leading-[1.02] uppercase sm:text-3xl">{t.doorH}</h2>
-            <p className="mt-3 max-w-md leading-relaxed text-muted">{t.doorBody}</p>
+      {/* The one honest door to Únete, and the only recruiting copy on the page.
+          Rebuilt 2026-08-19 on Enrique's read that it disappeared into the story
+          section above it. He was right, and it was worse than blending: the
+          section was demoted on three axes at once. Same cream ground as the
+          story with a 1px hairline between them; a heading one step SMALLER
+          than the story's; and the only outline button on a page where every
+          other CTA is solid. The most commercially important block on Home was
+          the quietest thing on it.
+
+          The fix is design.md § Ground, which this section was simply not
+          following: "accent at flood footprint — full-bleed bands, solid
+          buttons, large numerals. Not a timid 3% underline." Únete already
+          renders exactly this fact exactly this way, so a truck owner now meets
+          the same number in the same treatment on both pages.
+
+          NOT MOVED HIGHER, deliberately. The audit's open finding reads this as
+          a discovery problem because the CTA sits at 84% down the page. It is
+          not: "Lease a Space" is a top-level nav item at 0% scroll depth on
+          every address, so a truck owner has a one-click path from the moment
+          they land. This block's job is converting someone who read the whole
+          page, which argues for making it persuasive rather than early — and
+          design.md gives Home one door at the bottom precisely to stop
+          recruiting copy bleeding into the eater experience, which is the fault
+          the audit found on the Square site.
+
+          SECOND ACCENT BAND ON THE PAGE, alongside the hours. They sit roughly
+          4,000px apart on a phone, carry different numbers for different
+          audiences, and bookend the page. The unit sits BELOW this numeral
+          where the hours band puts its label above, so the two do not read as
+          the same band repeated.
+
+          The "spaces open" line is a unit on a numeral, not a section eyebrow,
+          and does not count against the cap of two — see STATUS.md § "What Home
+          looks like now, and why". The rule exists to stop every section
+          carrying a mono kicker; it is not a ban on labelling a number. */}
+      <section className="bg-brand-yellow px-5 py-12 text-brand-black sm:px-8 sm:py-16">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
+            <div className="shrink-0">
+              <p className="font-display text-6xl leading-none sm:text-7xl">
+                {open}
+                <span className="text-3xl sm:text-4xl">/{site.stalls.total}</span>
+              </p>
+              <p className="mt-2 font-mono text-[11px] tracking-[0.14em] uppercase">{t.doorUnit}</p>
+            </div>
+            <div className="min-w-0">
+              <h2 className="text-3xl leading-[1.02] uppercase sm:text-4xl">{t.doorH}</h2>
+              <p className="mt-2 max-w-md text-lg leading-snug font-medium">{t.doorBody}</p>
+            </div>
           </div>
           <div className="shrink-0">
-            <Button to={pathFor('lease', lang)} variant="outline">
+            <Button to={pathFor('lease', lang)} variant="invert">
               {t.doorCta} <span aria-hidden="true">→</span>
             </Button>
           </div>
         </div>
-      </Section>
+      </section>
     </>
   )
 }

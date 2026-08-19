@@ -394,6 +394,45 @@ can see it is a gap; the same string inside JSON-LD is a machine-readable claim
 that this is Best Bite's official answer, and it can surface as a rich result.
 Verified: 4 questions in the markup, zero `PENDIENTE`.
 
+### Home's leasing door, rebuilt 2026-08-19
+
+Enrique's read was that "Got a truck?" disappeared into the story section above
+it. Correct, and worse than blending — it was demoted on three axes at once:
+
+|         | Story section            | The door                                                      |
+| ------- | ------------------------ | ------------------------------------------------------------- |
+| Ground  | cream                    | cream, separated by a 1px hairline                            |
+| Heading | `text-3xl / sm:text-4xl` | `text-2xl / sm:text-3xl`, one step **smaller**                |
+| Button  | —                        | the only `outline` on a page where every other CTA is `solid` |
+
+The most commercially important block on Home was the quietest thing on it, on a
+site whose client-context goal #1 is filling six empty stalls.
+
+**The fix was already written in design.md § Ground** and this section simply
+was not following it: "accent at flood footprint — full-bleed bands, solid
+buttons, large numerals. Not a timid 3% underline." It now takes the yellow
+flood with `6/15` as a 7xl numeral, matching the treatment Únete already gives
+that exact fact, so a truck owner meets the same number styled the same way on
+both pages.
+
+`Button` gained an `invert` skin — brand black on brand yellow, the logo's own
+pairing — because the default solid button is yellow and would have vanished on
+the band. Recorded in design.md § Components. **Accent grounds only.**
+
+**Not moved higher, and the audit finding it answers is framed wrong.** STATUS
+has carried "the leasing CTA sits at 84% down Home against Bryan's 10%" as an
+open finding, which reads it as a discovery problem. It is not: "Lease a Space"
+is a top-level nav item at 0% scroll depth on every address. The door's job is
+converting someone who read the whole page, which argues for loud rather than
+early — and design.md gives Home one door at the bottom precisely to stop
+recruiting copy bleeding into the eater experience, the fault the audit found on
+the Square site. **Treat that finding as answered.**
+
+Second accent band on the page, alongside the hours. They sit roughly 4,000px
+apart on a phone, carry different numbers for different audiences, and bookend
+it. The unit sits _below_ this numeral where the hours band puts its label
+_above_, so the two do not read as one band repeated.
+
 ## Open decisions
 
 1. **Is Syrian House Cuisine still on the lot, and does the roster hold at

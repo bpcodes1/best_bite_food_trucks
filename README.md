@@ -22,6 +22,7 @@ npm run dev
 | `npm run preview` | Serve `dist/` locally                                        |
 | `npm run test`    | Route integrity and vendor-data tests                        |
 | `npm run pending` | List every placeholder still unfilled                        |
+| `npm run shots`   | Screenshot every address at 375/768 in both languages        |
 | `npm run images`  | Recompress `src/assets` in place (sharp). Safe to re-run     |
 | `npm run lint`    | ESLint                                                       |
 | `npm run format`  | Prettier                                                     |
@@ -66,6 +67,7 @@ prerender.mjs          build step 4 — writes one HTML file per address
 scripts/
   check-pending.mjs    lists every unfilled placeholder
   compress-images.mjs  recompresses src/assets in place
+  shots.mjs            screenshots every address, measures sideways overflow
 src/
   entry-server.tsx     SSR entry, used only at build time
   main.tsx             browser entry, hydrates pre-rendered markup
@@ -86,7 +88,7 @@ src/
   lib/useLang.ts       reads language off the URL
   lib/useReveal.ts     triggered scroll reveal, no library, fails safe
   pages/               one component per page, rendered at two addresses
-  assets/              client photography, compressed (~4.4MB)
+  assets/              client photography, compressed
 ```
 
 ## Current state
@@ -95,11 +97,12 @@ See [STATUS.md](STATUS.md) for where the build actually is, and
 [design.md](design.md) for the design system every page defers to.
 
 In short: **all five pages are built in both languages** — Home, Vendors,
-Únete al Parque, Events and Contact — plus the masthead and footer. Vendors was
-the last one, built 2026-08-16.
+Únete al Parque, Events and Contact — plus the masthead and footer.
 
-Home is the reference for how the rest of the site should look. Únete, Events
-and Contact predate the 2026-08-12 design changes and are a generation behind.
+Home is the reference for how the rest of the site looks, and what that means is
+written out in STATUS.md under "What Home looks like now, and why", including the
+seven-point checklist a page is scored against. **All five pages pass it** as of
+2026-08-19.
 
 Nothing is deployed anywhere. There is no host and no domain yet; see
 [STATUS.md](STATUS.md) for the setup order and the two traps in it.

@@ -2,10 +2,16 @@
 
 Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
-**Last updated:** 2026-08-18 (`npm run shots` built; two Vendors bands added;
-silver cart identified; Bryan's branch harvested — 8 of 9 cards now have a truck
-photo and the karaoke time is real; Únete brought up to Home's standard; stale
-docs corrected)
+**Last updated:** 2026-08-19. All five pages now pass the seven-point checklist
+in "What Home looks like now, and why". Everything is committed and pushed to
+`enrique`; the working tree is clean.
+
+Two sessions are recorded here. **2026-08-18:** `npm run shots` built, two bands
+added to Vendors, the silver cart identified, Bryan's branch harvested (8 of 9
+cards have a truck photo, the karaoke time is real), Únete and Events brought up
+to standard. **2026-08-19:** Contact brought up, Home's leasing door rebuilt,
+Home's event flyers dated and marked past, and the "open"/"free" copy collision
+fixed sitewide.
 
 A word on "shipped" in this file: it means the code is built and committed to
 `enrique`. **Nothing has been delivered to Ray and nothing is on the internet.**
@@ -16,17 +22,22 @@ A word on "shipped" in this file: it means the code is built and committed to
 
 ## START HERE NEXT SESSION
 
-1. **`og:image`.** Every share of all ten addresses is still a bare text card.
-   `entrance_sign.webp` is now a candidate and is already cropped clean.
-2. **Decide whether Vendors keeps three dark surfaces.** `src/index.css`
-   rations dark to two per page and this one spends three. See Open decisions.
-3. **`og:image`.** Every share of all ten addresses is still a bare text card.
+**All five pages are built and all five pass the seven-point checklist.** The
+structural design work is finished. Everything left is content from Ray, hosting
+from Enrique, or one of the three jobs below.
 
-Done 2026-08-18, all uncommitted: `npm run shots`, the karaoke band and the
-practical band on Vendors, bigger cards via the page measure, the silver cart
-identification, Bryan's branch harvested (8 of 9 cards now have a truck photo,
-karaoke time and DJ now real), and four stale claims corrected in `README.md`
-and `design.md`.
+1. **`og:image`.** Every share of all ten addresses is a bare text card — no
+   picture when Ray or a vendor posts a link. `park/entrance_sign.webp` is the
+   candidate: it is already cropped clean of the out-of-date vendor board.
+2. **`hallmark audit` across all ten addresses.** Nothing has been audited since
+   the three pages were rebuilt, and the audit is what catches drift from
+   design.md.
+3. **Decide whether Vendors keeps three dark surfaces.** It is the only page
+   that spends three; every other spends two. `hallmark audit` will flag it as
+   critical, so it wants an answer either way. See Open decisions.
+
+**Everything through 2026-08-19 is committed and pushed to `enrique`.** Working
+tree clean. Nothing is deployed and no host exists.
 
 ## Where we are
 
@@ -45,7 +56,7 @@ pass the seven-point checklist.
 | Scaffold        | Vite + React 19 + TS + Tailwind v4, pre-rendered to 11 HTML files              |
 | Addresses       | 5 pages × 2 languages, all deriving from `src/lib/routes.ts`                   |
 | Chrome          | Masthead nav + statement footer, both derived from `routes.ts`                 |
-| Home            | Full-screen hero, tinting fan gallery, events grid, story, door                |
+| Home            | Full-screen hero, hours flood, tinting fan gallery, flyers, story, 6/15 door   |
 | Vendors         | **BUILT** — hero, nine 4:3 cards (8 with a truck photo), karaoke + facts bands |
 | QA              | `npm run shots` — every address, 375/768, both languages, overflow as a number |
 | Únete al Parque | **BUILT** — photo hero, 6/15 accent band, three steps, FAQ + schema, form      |
@@ -55,9 +66,11 @@ pass the seven-point checklist.
 | Schema          | LocalBusiness, ItemList of nine vendors, FAQPage on Únete, Event on Events     |
 | Tests           | 16, across `routes.test.ts` and `vendors.test.ts`                              |
 
-Verified 2026-08-16: build passes, lint clean, 16 tests, 11 HTML files, all nine
-vendors present in the raw HTML with JavaScript off, no horizontal overflow at
-375 or 768 in either language. Screenshots in `qa-screenshots/vendors/`.
+Verified 2026-08-19, after every change below: build passes, lint clean, 16
+tests, 11 HTML files, and `npm run shots` reports no overflow, no broken images,
+a `<title>` on every page and a correct `<html lang>` across all twenty
+screenshots (ten addresses × 375 and 768). Screenshots land flat in
+`qa-screenshots/`, which is git-ignored and regenerated on demand.
 
 **Nothing has ever been deployed.** Every "verified" line means verified
 locally. No live host exists to check against. (Bryan's separate build IS live —
@@ -109,11 +122,23 @@ Four truck photos, wired into `vendors.ts` and on the page:
 `las_cuatas_lokas_truck.webp`, `las_jarochitas_truck.webp`,
 `the_red_marino_truck.webp`, `que_rollon_sushi_truck.webp`.
 
-Park photos in `src/assets/park/`. All but one are now placed: `lot_wagon.webp`
-is the Únete hero, `seating_tent.webp` is the Únete park section (the karaoke
-band took Bryan's better tent shot). **`park_sign.webp` is unused and should
-stay that way** until Ray updates his sign — its vendor board still lists Adan's
-Grill and El Chilango, both cut from the roster.
+Park photos in `src/assets/park/`, and every one is now placed except the banned
+file:
+
+| File                   | Where                                                  |
+| ---------------------- | ------------------------------------------------------ |
+| `lot_wagon.webp`       | Únete hero                                             |
+| `seating_tent.webp`    | Únete "one lot" section                                |
+| `outdoor_seating.webp` | Vendors karaoke band (Bryan's, better than mine)       |
+| `inside_sign.webp`     | Events hero                                            |
+| `entrance_sign.webp`   | Contact hero — a 2800×1950 crop above the vendor board |
+| `park_sign.webp`       | **BANNED. Never publish.** See below.                  |
+
+**`park_sign.webp` is the uncropped sign and must stay unused.** Its vendor
+board lists Adan's Grill, El Chilango, Syrian House and "J JS Boba" — none on
+the roster — and omits Las Cuatas Lokas, Nieve Casera and Que Rollon Sushi,
+which are on it. Publishing it puts a wrong vendor list on the site inside a
+photograph, where nobody would think to check.
 
 ### The silver cart is Syrian House Cuisine — resolved 2026-08-18
 
@@ -198,10 +223,15 @@ he may want to know.
 El Chilango, both cut from the roster. Worth telling Ray; it is his sign, not
 our page.
 
-**The sign shots are a stronger hero candidate than what Home currently uses.**
-Home's hero is `best_bite_sign.jpg` at 1024×576, the lowest-resolution asset in
-the repo. `park_sign.webp` is far better. Not swapped — Home is Enrique's
-reference page and nothing changes there without asking.
+**Home's hero is still the lowest-resolution asset in the repo.**
+`best_bite_sign.jpg` at 1024×576. The sign shots are far better and one of them
+became Contact's hero on 2026-08-19 as `park/entrance_sign.webp`.
+
+This note used to say `park_sign.webp` should replace Home's hero. **It should
+not** — that file is the uncropped sign carrying the out-of-date vendor board.
+If Home's hero is ever swapped, it needs its own crop above the board, the way
+Contact's was done. Either way it is a change to the approved reference page and
+wants asking first.
 
 ---
 
@@ -338,18 +368,19 @@ events.
 the park runs a handful of events a year. Hiding the section makes the page look
 like it has no calendar; a bare heading over nothing looks broken.
 
-#### Known defect left on Home, deliberately
+#### One defect still left on Home
 
-Home still shows "Cruise Into the School Year" dated 16 August 2026 beside the
-recurring karaoke, unlabelled, and that date is now past. Home's copy of that
-flyer also has **Instagram story chrome baked in** — an avatar circle, a mute
-button and the player strip — the same defect trimmed off the karaoke flyer.
+**The dates were fixed on 2026-08-19** — see "Home's event flyers" below. Both
+cruise cards now carry their real times and a past marker.
 
-Enrique's call 2026-08-18 was to leave Home alone; it is the approved reference
-page and this session was Events and Contact. Fixing the chrome means re-cropping
-the asset, which invalidates the hand-tuned `focus: 19` in `Home.tsx` that was
-derived by rendering the crop rather than by reasoning about it. **Both belong to
-Home's own pass.** The stale date gets worse every day until delivery.
+**What remains is the Instagram chrome.** Home's copy of the school-year flyer
+(`events/Cruise-school-year.jpeg`) has an avatar circle, a mute button and the
+story player strip baked into it, the same defect trimmed off the karaoke flyer.
+Enrique's call 2026-08-19 was to leave it for now. Fixing it means re-cropping
+the asset, which invalidates the hand-tuned `focus: 19` in `Home.tsx` — a value
+derived by rendering the crop rather than by reasoning about it, so it has to be
+re-derived the same way. The cleanest fix is asking Ray for the original artwork
+rather than a screenshot of a story.
 
 `back_to_school_cruise_full.webp` is a **second copy** of a flyer the repo
 already has, and that is deliberate: Home's `focus` value is tuned to the nearly
@@ -483,10 +514,10 @@ Events has always rendered its own row layout. Corrected.
 
 #### The hero crop took three attempts, and the lesson is the aspect ratio
 
-Contact needed a photograph and every park asset was already spoken for.
-`park_sign.webp` is the obvious subject — Contact is the "find us" page and the
-sign is what a visitor looks for from the road — but **all seventeen sign
-photographs include the vendor board, and it is staler than recorded**: it lists
+Contact needed a photograph and every park asset was already spoken for. The
+sign is the obvious subject — Contact is the "find us" page and the sign is what
+a visitor looks for from the road — but **all seventeen sign photographs include
+the vendor board, and it is staler than recorded**: it lists
 Adan's Grill, El Chilango, **Syrian House and "J JS Boba"**, none of which are
 on the roster, and omits Las Cuatas Lokas, Nieve Casera and Que Rollon Sushi,
 which are. Publishing it would put a wrong vendor list on the site inside a
@@ -562,11 +593,13 @@ _above_, so the two do not read as one band repeated.
 
 ## Open decisions
 
-1. **Is Syrian House Cuisine still on the lot, and does the roster hold at
-   nine?** The silver cart is identified (see the photos section) and it is
-   already off the roster by Enrique's 2026-08-12 call, but it was trading on
-   2026-08-17. A text to Ray settles it. Nine is printed on four pages and in
-   the structured data.
+1. **Does the roster hold at nine?** Two independent signals say maybe not.
+   Syrian House was trading on 2026-08-17, five days after being cut. And the
+   park's own sign lists **Adan's Grill, El Chilango, Syrian House and "J JS
+   Boba"** — four businesses not on the roster — while omitting Las Cuatas
+   Lokas, Nieve Casera and Que Rollon Sushi, which are on it. Either the sign is
+   stale or the roster is. Nine is printed on four pages and inside the
+   structured data, so it has to be right. One text to Ray settles it.
 2. **Whether to delete `src/assets/in_person_images.zip`.** It is git-ignored so
    it is harmless, but it is 219 MB sitting in the working tree. Enrique has not
    said.
@@ -584,14 +617,14 @@ _above_, so the two do not read as one band repeated.
    and `hallmark audit` will flag it as critical against design.md, so it wants
    a decision either way. The two bands added 2026-08-18 are both light because
    of this.
-6. **Whether the karaoke band's photograph is the right one.**
-   `seating_tent.webp` shows the tent and tables from across the lot, with
-   traffic cones in the foreground. It is honest and it is ours. `lot_wagon.webp`
-   is the alternative.
-7. **Form destination.** Undecided, so both forms are deliberately unwired and
+6. **Form destination.** Undecided, so both forms are deliberately unwired and
    show a visible placeholder on submit.
-8. **The story section on Home.** Deliberately plain, most likely to be replaced
+7. **The story section on Home.** Deliberately plain, most likely to be replaced
    wholesale when Ray's voice notes arrive.
+8. **Whether the boxing gym stays in Contact's hero.** The park sign shares its
+   pole with Lunas Boxing next door, and its panel sits below Best Bite's in the
+   photograph. That is the real sign at the real address; cropping it out
+   entirely means cutting "FOOD PARK". Flagged rather than quietly removed.
 
 ## Vendors: the three agreed changes, built 2026-08-18
 
@@ -733,9 +766,12 @@ crawler without JavaScript against our 767–2,563; one title across six pages; 
 canonicals, hreflang or schema; 10.1s to first paint on throttled mobile against
 our 2.7s; 420px of sideways scroll at a 375px viewport.
 
-Three findings went against our build and two are still open: the leasing CTA
-sits at 84% down Home against Bryan's 10%, and Home pulls 1.1 MB on first load.
-The third, a keywordless H1, applies to both.
+Three findings went against our build. **One is now answered and one is still
+open.** The leasing CTA at 84% down Home was answered 2026-08-19: it is not a
+discovery problem, because "Lease a Space" is a top-level nav item at 0% scroll
+depth on every address, so the block's job is conversion — see "Home's leasing
+door". Still open: Home pulls 1.1 MB on first load. The third, a keywordless H1,
+applies to both builds.
 
 **The finding that reframes everything:** searching both target queries shows
 Google ranking _aggregators_, not individual food park sites. FoodParks.io,
@@ -842,7 +878,7 @@ pass here before.
 ## Blocked on Ray
 
 Everything here is one text message. Placeholders render as visible brackets;
-run `npm run pending` (21 at last count).
+run `npm run pending` (17 at last count, down from 23).
 
 - Site phone, site email — **launch blockers**, not nice-to-haves. Shepard
   counts contact information as a positive signal, and visible `[PENDIENTE]`
@@ -863,9 +899,11 @@ run `npm run pending` (21 at last count).
   vendors the park is "especially looking for Asian food".
 - **Confirm parking and seating**, which now print on Vendors and were read off
   photographs rather than stated by him. See "Facts taken from photographs".
-- **Is Syrian House Cuisine still on the lot?** It was trading on 2026-08-17,
-  five days after being cut from the roster. Nine is printed on four pages and
-  inside the structured data.
+- **Does the roster hold at nine?** Syrian House was trading on 2026-08-17,
+  five days after being cut. Separately, **his own park sign lists four
+  businesses that are not on the roster** — Adan's Grill, El Chilango, Syrian
+  House and "J JS Boba" — and omits three that are. Worth telling him regardless
+  of the answer: the sign is advertising kitchens that are not there.
 
 ## Blocked on Enrique
 
@@ -940,16 +978,56 @@ success message.
 
 **The promo slot on Únete renders nothing on purpose.**
 
+### Added 2026-08-18 and 2026-08-19
+
+**`park/park_sign.webp` must never be published.** It is the uncropped park sign
+and its vendor board lists Adan's Grill, El Chilango, Syrian House and "J JS
+Boba" — none on the roster — while omitting three that are. Use
+`park/entrance_sign.webp`, which is cropped above the board.
+
+**"Open" means trading. An empty stall is "free".** The English copy had one
+word doing both jobs in five places and it cost a real misreading. See the
+section above, and the rule in `CLAUDE.md`.
+
+**A bilingual QA pass that checks layout will not catch a word doing two jobs
+in one language.** Spanish escaped the "open" collision because `abierto` and
+`libre` are different words. Layout parity is not copy parity.
+
+**`npm run pending` is a grep over source.** A code comment that quotes the
+placeholder helper by name registers as an unfilled placeholder that renders
+nowhere. Do not name it in prose. The check is dumb on purpose.
+
+**A hero crop's aspect ratio matters more than how much subject is in it.** The
+hero is portrait at 375 and landscape at 1280, so a wide source survives one and
+fails the other. Contact's took three attempts. Ladder the crop and look at it at
+BOTH widths.
+
+**A status overlay goes wherever it is not covering the client's brand.** The
+past-event chip sits top right because both cruise flyers carry the Best Bite
+mark top left.
+
+**`npm run shots` does not wait for remote iframes.** Contact's map photographs
+as an empty rectangle for that reason and not because it is broken. Do not
+"fix" the map.
+
+**Home is still the approved reference page and changes there need asking.**
+Three sessions' worth of work has now touched it — the leasing door, the flyer
+dates, the copy — each time on Enrique's explicit say-so. Keep that pattern.
+
 ## Still to do before delivery
 
 1. `site.origin` is still `http://localhost:5173`.
 2. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
-   card. `park_sign.webp` is now a candidate.
+   card. Use **`park/entrance_sign.webp`**, which is already cropped clean.
+   **Never `park_sign.webp`** — that is the uncropped sign and its vendor board
+   is wrong.
 3. ~~`FAQPage` schema on Únete~~ — done 2026-08-18.
 4. ~~Bring the three pages up to Home's standard~~ — done 2026-08-19.
-5. **Home's own pass**: a past-dated event shown as current, and Instagram
-   chrome baked into its event flyer. Both logged under Events above.
+5. **Home's own pass**: Instagram story chrome baked into its school-year event
+   flyer. The dates were fixed 2026-08-19; this is what is left.
 6. Wire the forms once the destination is decided.
 7. `hallmark audit` across all ten addresses.
-8. Confirm the Contact map paints in a real browser — it renders empty in
-   headless screenshots, almost certainly a headless quirk.
+8. Confirm the Contact map paints in a real browser. The embed URL resolves 200
+   with the address in it, and the empty box in screenshots is explained:
+   `npm run shots` waits for images and fonts, not for a remote iframe. One look
+   is enough.

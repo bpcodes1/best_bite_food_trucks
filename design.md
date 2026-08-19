@@ -388,14 +388,19 @@ we checked turned out to be English-only. This section is ours, not extracted.
 1. **The display face.** Leaning Archivo Black, not closed. Anton stays wired
    and switchable in dev via `document.documentElement.dataset.display =
 'anton'`, so the comparison can be shown rather than described.
-2. **Three pages are a generation behind Home.** Únete al Parque, Events and
-   Contact were all built before the 2026-08-12 changes that made Home the
-   reference. Bringing them up is a known job, not a question about the system.
+2. **Vendors spends three dark surfaces and this system allows two.** The hero
+   scrim, the Únete door on `ground="night"`, and the footer. Every other page
+   spends two. Not changed unilaterally because the door was built and approved
+   that way, but `hallmark audit` will flag it as critical against this file, so
+   it wants a decision either way.
 
 Resolved and folded into the tables above: Únete's tone (utilitarian, built),
 Home's macrostructure (appetite-led brochure, 2026-08-12), the component
 library question (closed — the interactive surface is a nav, a toggle, two
-forms and one accordion; not worth a dependency), and **many third-party logos
+forms and one accordion; not worth a dependency), **the three pages that were a
+generation behind Home** (Únete, Events and Contact, all brought up 2026-08-18
+and 2026-08-19 against the seven-point checklist in STATUS.md), and **many
+third-party logos
 in one grid without a sponsor wall** — answered in practice on Vendors,
 2026-08-16. The name always sits inside the media area, photograph or not; a
 vendor without one gets a wash panel carrying its logo, so nothing moves when a

@@ -4,27 +4,36 @@ import { parkInfo } from '../../data/parkInfo';
 export function AvailabilitySection() {
   const { t } = useLanguage();
 
-  return (
-    <section aria-labelledby="availability-heading" className="bg-brand-black">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-16 text-center sm:flex-row sm:items-center sm:justify-center sm:gap-10 sm:text-left">
-        <div className="shrink-0">
-          <p className="font-heading text-6xl font-bold text-brand-yellow">
-            {parkInfo.availableSlots}
-          </p>
-          <p className="text-sm font-bold uppercase tracking-wide text-white/70">
-            {t.joinPage.availabilitySlotsLabel}
-          </p>
-        </div>
+  const availabilitySummary = `${parkInfo.availableSlots} ${t.joinPage.availabilityOf} ${parkInfo.totalSlots} ${t.joinPage.availabilityUnitLabel}`;
+  const availabilityAnnouncement = `${availabilitySummary}. ${t.joinPage.availabilityBody} ${t.joinPage.availabilityCta}`;
 
-        <div className="max-w-xl">
-          <h2
-            id="availability-heading"
-            className="font-heading text-2xl font-bold text-white sm:text-3xl"
-          >
-            {t.joinPage.availabilityHeading}
-          </h2>
-          <p className="mt-2 text-white/80">{t.joinPage.availabilityBody}</p>
-        </div>
+  const tickerItem = (
+    <span className="flex shrink-0 items-center gap-3 px-6 py-3">
+      <span className="rounded-full bg-brand-yellow px-3 py-1 font-heading text-xl font-bold text-brand-black">
+        {parkInfo.availableSlots}/{parkInfo.totalSlots}
+      </span>
+      <span className="text-xs font-bold uppercase tracking-wide text-white/70">
+        {availabilitySummary}
+      </span>
+      <span className="text-white/30" aria-hidden="true">
+        ·
+      </span>
+      <span className="text-sm text-white/80">{t.joinPage.availabilityBody}</span>
+      <a
+        href="#move-in-special"
+        tabIndex={-1}
+        className="text-sm font-bold text-brand-yellow hover:underline"
+      >
+        {t.joinPage.availabilityCta}
+      </a>
+    </span>
+  );
+
+  return (
+    <section aria-label={availabilityAnnouncement} className="overflow-hidden bg-brand-black">
+      <div className="flex w-max animate-marquee" aria-hidden="true">
+        {tickerItem}
+        {tickerItem}
       </div>
     </section>
   );

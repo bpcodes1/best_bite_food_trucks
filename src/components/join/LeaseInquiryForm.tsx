@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useLanguage } from '../../i18n/useLanguage';
+import { parkInfo } from '../../data/parkInfo';
 
 const inputClassName =
   'mt-1 w-full rounded-md border border-brand-black/20 bg-white px-3 py-2 text-brand-black focus:border-brand-black focus:outline-none';
@@ -22,6 +23,7 @@ export function LeaseInquiryForm() {
 
   return (
     <section
+      id="lease-form"
       aria-labelledby="lease-form-heading"
       className="border-t border-brand-black/10 bg-white px-4 py-16"
     >
@@ -30,6 +32,7 @@ export function LeaseInquiryForm() {
           {t.joinPage.formHeading}
         </h2>
         <p className="mt-4 text-brand-black/70">{t.joinPage.formIntro}</p>
+        <p className="mt-1 text-sm font-bold text-brand-black/70">{t.joinPage.formReassurance}</p>
 
         <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
           <div>
@@ -113,6 +116,15 @@ export function LeaseInquiryForm() {
             {submitted ? t.joinPage.successMessage : ''}
           </p>
         </form>
+
+        <a
+          href={parkInfo.social.instagram}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-6 inline-block text-sm font-bold text-brand-black hover:underline"
+        >
+          {t.joinPage.instagramCta}
+        </a>
       </div>
     </section>
   );

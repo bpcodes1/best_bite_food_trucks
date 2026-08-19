@@ -30,6 +30,8 @@ export const parkInfo = {
     facebook: 'https://facebook.com/bestbitefoodpark',
     tiktok: 'https://tiktok.com/@bestbitefoodpark',
   },
-  /** Total number of food truck spaces the park has room for. */
+  /** Number of currently open (unleased) food truck spaces. */
   availableSlots: 6,
+  /** Total number of food truck spaces the park has room for. */
+  totalSlots: 15,
 };

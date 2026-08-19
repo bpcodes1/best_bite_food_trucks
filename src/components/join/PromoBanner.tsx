@@ -7,7 +7,7 @@ export function PromoBanner() {
   if (!currentPromo.active) return null;
 
   return (
-    <section aria-labelledby="promo-heading" className="bg-brand-yellow/15">
+    <section id="move-in-special" aria-labelledby="promo-heading" className="bg-brand-yellow/15">
       <div className="mx-auto max-w-6xl px-4 py-16 text-center">
         <p className="text-xs font-bold uppercase tracking-wide text-brand-black/60">
           {lang === 'es' ? 'Promoción por tiempo limitado' : 'Limited-time promotion'}

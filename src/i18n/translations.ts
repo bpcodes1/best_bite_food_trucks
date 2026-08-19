@@ -104,17 +104,30 @@ export interface Translations {
     directLabel: string;
   };
   joinPage: {
+    eyebrow: string;
     heading: string;
     intro: string;
+    ctaLabel: string;
+    ctaMicrocopy: string;
+    availabilityOf: string;
+    availabilityUnitLabel: string;
+    availabilityBody: string;
+    availabilityCta: string;
+    economicsHeading: string;
+    economicsBody: string;
     benefitsHeading: string;
     benefits: { title: string; body: string }[];
     showcaseHeading: string;
     showcaseBody: string;
-    availabilityHeading: string;
-    availabilityBody: string;
-    availabilitySlotsLabel: string;
+    howItWorksHeading: string;
+    howItWorksSteps: { title: string; body: string }[];
+    faqHeading: string;
+    faqItems: { question: string; answer: string }[];
+    faqSpacesQuestion: string;
+    faqSpacesOf: string;
     formHeading: string;
     formIntro: string;
+    formReassurance: string;
     nameLabel: string;
     businessLabel: string;
     emailLabel: string;
@@ -122,6 +135,7 @@ export interface Translations {
     messageLabel: string;
     submitCta: string;
     successMessage: string;
+    instagramCta: string;
   };
 }
 
@@ -236,9 +250,19 @@ export const translations: Record<Lang, Translations> = {
       directLabel: 'Prefer to reach us directly?',
     },
     joinPage: {
-      heading: 'Join the Park',
+      eyebrow: 'Lease a space · Salem, OR',
+      heading: 'Month to Month. Leave Any Time.',
       intro:
-        'Best Bite Food Park is looking for food trucks to join our lineup. Here is what makes the park a great place to grow your business.',
+        '9 food trucks are already open at Best Bite, most of them for more than a year. Right now, 6 of 15 spaces are open.',
+      ctaLabel: 'Ask about a space →',
+      ctaMicrocopy: '4 questions · 2 minutes · no commitment',
+      availabilityOf: 'of',
+      availabilityUnitLabel: 'food truck spaces available',
+      availabilityBody: "We're especially looking for Asian food —",
+      availabilityCta: 'Look at our move-in special →',
+      economicsHeading: 'How the Rent Works',
+      economicsBody:
+        "There's no long-term lease. If a spot doesn't work out for you, it costs you a month, not a year — that's the whole difference.",
       benefitsHeading: 'Why Vendors Choose Best Bite',
       benefits: [
         {
@@ -261,13 +285,44 @@ export const translations: Record<Lang, Translations> = {
       showcaseHeading: 'See the Park',
       showcaseBody:
         'A look at the space — indoor and outdoor seating, and room for the whole lineup of trucks.',
-      availabilityHeading: 'Spaces Are Limited',
-      availabilityBody:
-        'We only have room for a set number of trucks at a time, so spots do not stay open for long. Reach out today to check current availability.',
-      availabilitySlotsLabel: 'Food truck spaces',
+      howItWorksHeading: 'How to Get Started',
+      howItWorksSteps: [
+        {
+          title: 'Tell us about your truck',
+          body: 'What you serve and when you want to start.',
+        },
+        {
+          title: 'We reply',
+          body: 'We confirm what is open and what the rent is.',
+        },
+        {
+          title: 'You come see it',
+          body: 'Walk the lot before you decide anything.',
+        },
+      ],
+      faqHeading: 'Before You Ask',
+      faqItems: [
+        {
+          question: 'Do I have to sign a long-term lease?',
+          answer: 'No. Rent is month to month.',
+        },
+        {
+          question: 'What kind of food are you looking for?',
+          answer:
+            "Anything that isn't already here. We're especially looking for Asian food, since the lineup is mostly Mexican right now.",
+        },
+        {
+          question: 'What does it cost?',
+          answer:
+            'Ask through the form below and we will give you the rent for the space that is open.',
+        },
+      ],
+      faqSpacesQuestion: 'How many spaces are open?',
+      faqSpacesOf: 'of',
       formHeading: 'Inquire About Leasing a Spot',
       formIntro:
         'Tell us about your food truck and we will follow up with availability and next steps.',
+      formReassurance: 'No commitment, and nothing to sign.',
       nameLabel: 'Name',
       businessLabel: 'Food truck / business name',
       emailLabel: 'Email',
@@ -275,6 +330,7 @@ export const translations: Record<Lang, Translations> = {
       messageLabel: 'Tell us about your truck',
       submitCta: 'Send inquiry',
       successMessage: 'Thanks! Your inquiry has been received — we will be in touch soon.',
+      instagramCta: 'Or message us on Instagram',
     },
   },
   es: {
@@ -388,9 +444,19 @@ export const translations: Record<Lang, Translations> = {
       directLabel: '¿Prefieres contactarnos directamente?',
     },
     joinPage: {
-      heading: 'Únete al Parque',
+      eyebrow: 'Renta de espacio · Salem, OR',
+      heading: 'Mes a Mes. Te Vas Cuando Quieras.',
       intro:
-        'Best Bite Food Park está buscando food trucks para sumarse a nuestra alineación. Esto es lo que hace del parque un gran lugar para hacer crecer tu negocio.',
+        '9 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 6 de 15 espacios están libres.',
+      ctaLabel: 'Pregunta por un espacio →',
+      ctaMicrocopy: '4 preguntas · 2 minutos · sin compromiso',
+      availabilityOf: 'de',
+      availabilityUnitLabel: 'espacios para food trucks disponibles',
+      availabilityBody: 'Buscamos especialmente comida asiática —',
+      availabilityCta: 'Mira nuestra promoción de mudanza →',
+      economicsHeading: 'Cómo Funciona la Renta',
+      economicsBody:
+        'No hay contrato a largo plazo. Si el lugar no te funciona, te cuesta un mes y no un año — esa es toda la diferencia.',
       benefitsHeading: 'Por Qué los Vendedores Eligen Best Bite',
       benefits: [
         {
@@ -413,13 +479,44 @@ export const translations: Record<Lang, Translations> = {
       showcaseHeading: 'Conoce el Parque',
       showcaseBody:
         'Un vistazo al espacio — asientos interiores y al aire libre, y lugar para toda la alineación de trucks.',
-      availabilityHeading: 'Los Espacios Son Limitados',
-      availabilityBody:
-        'Solo tenemos lugar para un número determinado de trucks a la vez, así que los espacios no duran disponibles por mucho tiempo. Contáctanos hoy para conocer la disponibilidad actual.',
-      availabilitySlotsLabel: 'Espacios para food trucks',
+      howItWorksHeading: 'Cómo Empezar',
+      howItWorksSteps: [
+        {
+          title: 'Cuéntanos de tu truck',
+          body: 'Qué vendes y cuándo quieres empezar.',
+        },
+        {
+          title: 'Te respondemos',
+          body: 'Confirmamos qué hay disponible y cuánto es la renta.',
+        },
+        {
+          title: 'Vienes a verlo',
+          body: 'Recorre el lote antes de decidir nada.',
+        },
+      ],
+      faqHeading: 'Antes de Preguntar',
+      faqItems: [
+        {
+          question: '¿Tengo que firmar un contrato a largo plazo?',
+          answer: 'No. La renta es mes a mes.',
+        },
+        {
+          question: '¿Qué tipo de comida buscan?',
+          answer:
+            'Lo que todavía no está aquí. Buscamos especialmente comida asiática, porque ahora la mayoría es mexicana.',
+        },
+        {
+          question: '¿Cuánto cuesta?',
+          answer:
+            'Pregunta por el formulario de abajo y te decimos la renta del espacio disponible.',
+        },
+      ],
+      faqSpacesQuestion: '¿Cuántos espacios hay disponibles?',
+      faqSpacesOf: 'de',
       formHeading: 'Pregunta Sobre Rentar un Espacio',
       formIntro:
         'Cuéntanos sobre tu food truck y te contactaremos con la disponibilidad y los siguientes pasos.',
+      formReassurance: 'Sin compromiso y sin nada que firmar.',
       nameLabel: 'Nombre',
       businessLabel: 'Nombre del food truck / negocio',
       emailLabel: 'Correo electrónico',
@@ -427,6 +524,7 @@ export const translations: Record<Lang, Translations> = {
       messageLabel: 'Cuéntanos sobre tu truck',
       submitCta: 'Enviar solicitud',
       successMessage: '¡Gracias! Tu solicitud fue recibida — nos pondremos en contacto pronto.',
+      instagramCta: 'O escríbenos por Instagram',
     },
   },
 };

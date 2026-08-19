@@ -1,7 +1,7 @@
 import { useLanguage } from '../../i18n/useLanguage';
 import signPhoto from '../../assets/best_bite_sign.jpg';
 import insidePhoto from '../../assets/best_bite_inside.jpeg';
-import outdoorPhoto from '../../assets/best_bite_outdoor.webp';
+import outdoorPhoto from '../../assets/decoration.jpg';
 
 const PHOTOS = [signPhoto, insidePhoto, outdoorPhoto];
 

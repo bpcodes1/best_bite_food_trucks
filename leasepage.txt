@@ -1,0 +1,191 @@
+BEST BITE FOOD PARK — LEASE A SPACE PAGE COPY
+(as rendered; 6 of 15 spaces open; hours 12:00pm - 8:00pm)
+
+========================================
+ENGLISH — /lease (slug not final)
+========================================
+
+Page title: Lease a Food Cart Space in Salem, OR | Best Bite Food Park
+Meta description: 6 of 15 spaces are open at Best Bite Food Park on Silverton Rd NE. Month to month, no long-term lease. Ask about a space.
+
+--- HERO ---
+Eyebrow: Lease a space · Salem, OR
+
+Month to month.
+Leave any time.
+
+Lede: 9 trucks are open at Best Bite right now, and every one of them has been here more than a year. 6 of 15 spaces are open.
+
+CTA button: Ask about a space →
+CTA microcopy: 4 questions · 2 minutes · no commitment
+
+Locator: 3282 Silverton Rd NE · Salem, OR
+
+--- ACCENT BAND ---
+6/15
+Open now
+6 of 15 spaces are available. We are especially looking for Asian food.
+
+--- THE PLACE ---
+One lot, open every day.
+Silverton Rd NE, with parking, seating and room to pull in. Open seven days a week.
+
+Address
+3282 Silverton Rd NE
+Salem, OR 97301-8655
+
+Hours
+12:00pm - 8:00pm
+
+--- ECONOMICS ---
+How the rent works.
+There is no long-term lease. If the spot does not work for you, it costs you a month, not a year. That is the whole difference.
+
+What comes with a space.
+[PENDIENTE — what is included]
+
+--- HOW IT WORKS ---
+Eyebrow: How it works
+Three steps.
+
+01 — Tell us about your truck
+What you serve and when you want to start.
+
+02 — We reply
+We confirm what is open and what the rent is.
+
+03 — You come see it
+Walk the lot before you decide anything.
+
+--- FAQ ---
+Before you ask.
+
+Q: Do I have to sign a long-term lease?
+A: No. Rent is month to month.
+
+Q: What kind of food are you looking for?
+A: Anything that is not already here. We are especially looking for Asian food, since the lineup is mostly Mexican right now.
+
+Q: How many spaces are open?
+A: 6 of 15.
+
+Q: What does it cost?
+A: Ask through the form below and we will give you the rent for the space that is open.
+
+Q: How big is a space?
+A: [PENDIENTE — stall size]
+
+Q: Is power and water included?
+A: [PENDIENTE — utilities]
+
+--- PROMO SLOT ---
+(Renders empty on purpose — no active vendor promotion. Do not fill with placeholder or invented copy.)
+
+--- ASK FORM ---
+Ask about a space.
+Reassurance: No commitment, and nothing to sign. We reply within [PENDIENTE — reply time].
+
+Field: Your name
+Field: Email or Instagram handle
+Field: What do you serve?
+Field: Anything else (placeholder: When you want to start, size of your truck, questions)
+
+Submit button: Send →
+Escape line: Or message us on Instagram [PENDIENTE — Instagram]
+
+Post-submit note (form not wired yet): [PENDIENTE — form destination, not wired yet]
+
+
+========================================
+SPANISH — /es/renta-de-espacio (slug not final)
+========================================
+
+Page title: Renta de Espacio para Food Truck en Salem, OR | Best Bite Food Park
+Meta description: 6 de 15 espacios están abiertos en Best Bite Food Park en Silverton Rd NE. Mes a mes, sin contrato a largo plazo.
+
+--- HERO ---
+Eyebrow: Renta de espacio · Salem, OR
+
+Mes a mes.
+Te vas cuando quieras.
+
+Lede: 9 trucks están abiertos en Best Bite ahora mismo, y todos llevan más de un año aquí. 6 de 15 espacios están libres.
+
+CTA button: Pregunta por un espacio →
+CTA microcopy: 4 preguntas · 2 minutos · sin compromiso
+
+Locator: 3282 Silverton Rd NE · Salem, OR
+
+--- ACCENT BAND ---
+6/15
+Disponible ahora
+6 de 15 espacios están disponibles. Buscamos especialmente comida asiática.
+
+--- THE PLACE ---
+Un solo lote, abierto todos los días.
+Silverton Rd NE, con estacionamiento, asientos y lugar para entrar. Abierto los siete días.
+
+Dirección
+3282 Silverton Rd NE
+Salem, OR 97301-8655
+
+Horario
+12:00pm - 8:00pm
+
+--- ECONOMICS ---
+Cómo funciona la renta.
+No hay contrato a largo plazo. Si el lugar no te funciona, te cuesta un mes y no un año. Esa es toda la diferencia.
+
+Qué incluye un espacio.
+[PENDIENTE — qué incluye]
+
+--- HOW IT WORKS ---
+Eyebrow: Cómo funciona
+Tres pasos.
+
+01 — Cuéntanos de tu truck
+Qué vendes y cuándo quieres empezar.
+
+02 — Te respondemos
+Confirmamos qué hay disponible y cuánto es la renta.
+
+03 — Vienes a verlo
+Recorre el lote antes de decidir nada.
+
+--- FAQ ---
+Antes de preguntar.
+
+Q: ¿Tengo que firmar un contrato a largo plazo?
+A: No. La renta es mes a mes.
+
+Q: ¿Qué tipo de comida buscan?
+A: Lo que todavía no está aquí. Buscamos especialmente comida asiática, porque ahora la mayoría es mexicana.
+
+Q: ¿Cuántos espacios hay disponibles?
+A: 6 de 15.
+
+Q: ¿Cuánto cuesta?
+A: Pregunta por el formulario de abajo y te decimos la renta del espacio disponible.
+
+Q: ¿De qué tamaño es un espacio?
+A: [PENDIENTE — medidas del espacio]
+
+Q: ¿Incluye luz y agua?
+A: [PENDIENTE — servicios]
+
+--- PROMO SLOT ---
+(Renderiza vacío a propósito — no hay promoción activa para vendedores. No llenar con texto de relleno ni inventado.)
+
+--- ASK FORM ---
+Pregunta por un espacio.
+Reassurance: Sin compromiso y sin nada que firmar. Respondemos en [PENDIENTE — tiempo de respuesta].
+
+Field: Tu nombre
+Field: Correo o usuario de Instagram
+Field: ¿Qué vendes?
+Field: Algo más (placeholder: Cuándo quieres empezar, tamaño de tu truck, preguntas)
+
+Submit button: Enviar →
+Escape line: O escríbenos por Instagram [PENDIENTE — Instagram]
+
+Post-submit note (form not wired yet): [PENDIENTE — form destination, not wired yet]

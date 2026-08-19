@@ -544,13 +544,16 @@ below Best Bite's. That is the real sign at the real address; cropping it out
 entirely means cutting "FOOD PARK". Flagged rather than quietly removed —
 Enrique's call if it should go.
 
-#### The map
+#### The map — confirmed working 2026-08-19
 
-The embed URL resolves 200 with the address in it, so the markup is right. It
-still photographs as an empty rectangle, and that is now explained: **`npm run
-shots` waits for images and fonts, not for a remote iframe.** Not a site bug and
-not worth building iframe-waiting into the script. Still wants one look in a
-real browser before delivery.
+**Enrique checked it in a real browser and it paints.** This had been an open
+question since 2026-08-12.
+
+It photographs as an empty rectangle because **`npm run shots` waits for images
+and fonts, not for a remote iframe** — the embed loads from google.com and is
+not complete when the capture fires. Not a site bug, and not worth teaching the
+script to wait on third-party frames. **Expect the empty box in every screenshot
+and do not "fix" the map.**
 
 ### Home's leasing door, rebuilt 2026-08-19
 
@@ -1007,8 +1010,9 @@ past-event chip sits top right because both cruise flyers carry the Best Bite
 mark top left.
 
 **`npm run shots` does not wait for remote iframes.** Contact's map photographs
-as an empty rectangle for that reason and not because it is broken. Do not
-"fix" the map.
+as an empty rectangle for that reason and not because it is broken — Enrique
+confirmed it paints in a real browser on 2026-08-19. **Do not "fix" the map**,
+and do not report the empty box as a defect.
 
 **Home is still the approved reference page and changes there need asking.**
 Three sessions' worth of work has now touched it — the leasing door, the flyer
@@ -1027,7 +1031,6 @@ dates, the copy — each time on Enrique's explicit say-so. Keep that pattern.
    flyer. The dates were fixed 2026-08-19; this is what is left.
 6. Wire the forms once the destination is decided.
 7. `hallmark audit` across all ten addresses.
-8. Confirm the Contact map paints in a real browser. The embed URL resolves 200
-   with the address in it, and the empty box in screenshots is explained:
-   `npm run shots` waits for images and fonts, not for a remote iframe. One look
-   is enough.
+8. ~~Confirm the Contact map paints in a real browser~~ — confirmed by Enrique
+   2026-08-19. It paints. The empty box in screenshots is `npm run shots` not
+   waiting for remote iframes, not a site bug.

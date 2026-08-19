@@ -394,6 +394,37 @@ can see it is a gap; the same string inside JSON-LD is a machine-readable claim
 that this is Best Bite's official answer, and it can surface as a rich result.
 Verified: 4 questions in the markup, zero `PENDIENTE`.
 
+### Home's event flyers, dated 2026-08-19
+
+Home showed the Back to School Cruise with a bracketed date and Cruise Into the
+School Year dated 16 August 2026, both sitting beside the recurring karaoke with
+nothing saying either had finished. The date had passed three days earlier.
+
+**The two cruise flyers are one afternoon, and they cover different halves of
+it** — the drive (Burger King on Lancaster, 1pm–3pm) and the arrival (the lot,
+3pm–6pm). Enrique's call 2026-08-19 was to keep all three cards and mark the
+finished ones, rather than collapse to two. Giving each cruise card its own real
+time off its own artwork is what makes two cards for one day read as two parts
+rather than as the park double-counting an event.
+
+`EventCard` gained `past` + `pastLabel`. The marker borrows the vendor
+open/closed language rather than inventing a second one: a live thing is a
+filled brand chip, a finished thing recedes into a muted outline. Not red, not
+struck through, and **not dimmed artwork** — a greyed-out flyer reads as a
+broken image. It sits top **right**, where the vendor chip sits top left,
+because both cruise flyers carry the Best Bite mark in their top-left corner and
+the chip landed square on the client's own logo.
+
+Home now holds no bracketed dates. 19 → 17.
+
+**`npm run pending` is a grep over source, so a comment that quotes the
+placeholder helper by name registers as an unfilled placeholder.** One did, and
+the count read 18 when it was 17. Do not name the helper in prose; the check is
+deliberately dumb and that is what makes it reliable.
+
+`EventCard`'s header claimed it was shared with the Events page. It never was —
+Events has always rendered its own row layout. Corrected.
+
 ### Home's leasing door, rebuilt 2026-08-19
 
 Enrique's read was that "Got a truck?" disappeared into the story section above

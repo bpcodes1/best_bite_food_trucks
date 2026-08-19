@@ -4,7 +4,7 @@ import { LocalBusinessJsonLd } from '../components/Schema'
 import { Button, Label, Section } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { pathFor } from '../lib/routes'
-import { fullAddress, hoursRange, pending, site } from '../lib/site'
+import { fullAddress, hoursRange, site } from '../lib/site'
 import heroSign from '../assets/best_bite_sign.jpg'
 import karaokeFlyer from '../assets/events/karaoke.webp'
 import cruiseFlyer from '../assets/events/back_to_school_cruise.webp'
@@ -81,8 +81,15 @@ const dishes = [
 ] as const
 
 /* The three flyers are the park's own marketing, confirmed real by Enrique
-   2026-08-12. Dates that a flyer does not state stay bracketed — see the
-   Events page, which owns the full list.
+   2026-08-12. As of 2026-08-19 every date here is read off the artwork and
+   this page holds no bracketed dates at all — see the note on the cruise entry
+   below for where the last one had been hiding. Events owns the full list.
+
+   `past` marks a finished event. Two of the three are past, because the cruise
+   ran on 16 August 2026 and both cruise flyers are that same afternoon. They
+   keep their cards rather than being removed: Enrique's call 2026-08-19, and
+   the flyers are good proof the park actually programmes things. What they must
+   not do is read as upcoming.
 
    `fit` and `focus` are per flyer because they depend on the art, not on the
    layout. See the note in EventCard: a flyer fills its square unless something
@@ -98,9 +105,9 @@ const dishes = [
    logo, the headline, the tagline, the date and the 3PM-6PM pill all whole.
    Checked by rendering the crop, not by reasoning about it. */
 const flyers = [
-  { key: 'karaoke', img: karaokeFlyer, fit: 'fill', focus: 50 },
-  { key: 'cruise', img: cruiseFlyer, fit: 'fill', focus: 50 },
-  { key: 'school', img: schoolFlyer, fit: 'fill', focus: 19 },
+  { key: 'karaoke', img: karaokeFlyer, fit: 'fill', focus: 50, past: false },
+  { key: 'cruise', img: cruiseFlyer, fit: 'fill', focus: 50, past: true },
+  { key: 'school', img: schoolFlyer, fit: 'fill', focus: 19, past: true },
 ] as const
 
 const copy = {
@@ -138,18 +145,31 @@ const copy = {
         where: 'Best Bite Food Park',
         alt: 'Flyer for karaoke Sundays at Best Bite Food Park',
       },
+      /* THE TWO CRUISE FLYERS ARE ONE AFTERNOON, and they cover different
+         halves of it. This one is the drive: meet at the Burger King on
+         Lancaster, cruise the strip 1pm to 3pm. The school-year poster below is
+         the arrival, 3pm to 6pm in the lot. Confirmed by Enrique 2026-08-19.
+
+         Its date was a placeholder bracket until then, and it never needed to
+         be — the date was printed on the other flyer all along. (Do not quote
+         the placeholder helper by name in a comment: `npm run pending` is a
+         grep over source, and a comment mentioning it registers as an unfilled
+         placeholder that renders nowhere. That cost a confused count once.)
+         Both now carry the real times off their own artwork, which is what
+         makes two cards for one day read as two parts rather than as the park
+         double-counting an event. */
       cruise: {
         title: 'Back to School Cruise',
         tags: ['Cars', 'Sunday'],
-        description: 'Meet up, cruise, and cruise back in for dinner at the park.',
-        when: pending('Back to School Cruise date'),
-        where: 'Lancaster Dr · Best Bite Food Park',
+        description: 'Lowriders met at the Burger King on Lancaster Drive and cruised the strip.',
+        when: 'Sunday, August 16, 2026, 1:00pm - 3:00pm',
+        where: 'Lancaster Dr · Salem',
         alt: 'Flyer for the Back to School Cruise at Best Bite Food Park',
       },
       school: {
         title: 'Cruise Into the School Year',
         tags: ['Lowriders', 'Family', 'Community'],
-        description: 'Lowriders, food, family, community, all in the lot.',
+        description: 'Lowriders, food, family and community, all in the lot.',
         /* Date, time and address are printed on the poster Enrique supplied
            2026-08-12. Read off the artwork, not inferred. Time is formatted
            the way `hoursRange()` formats the park's own hours, so the two
@@ -159,6 +179,7 @@ const copy = {
         alt: 'Flyer for Cruise Into the School Year at Best Bite Food Park',
       },
     },
+    pastLabel: 'Past',
     storyLabel: 'Our story',
     storyH: 'Family run, Salem grown.',
     storyP1:
@@ -211,9 +232,10 @@ const copy = {
       cruise: {
         title: 'Back to School Cruise',
         tags: ['Autos', 'Domingo'],
-        description: 'Nos reunimos, damos el crucero y regresamos al parque a cenar.',
-        when: pending('fecha del Back to School Cruise'),
-        where: 'Lancaster Dr · Best Bite Food Park',
+        description:
+          'Los lowriders se reunieron en el Burger King de Lancaster Drive y dieron el crucero.',
+        when: 'Domingo 16 de agosto de 2026, 1:00pm - 3:00pm',
+        where: 'Lancaster Dr · Salem',
         alt: 'Volante del Back to School Cruise en Best Bite Food Park',
       },
       school: {
@@ -225,6 +247,7 @@ const copy = {
         alt: 'Volante de Cruise Into the School Year en Best Bite Food Park',
       },
     },
+    pastLabel: 'Ya pasó',
     storyLabel: 'Nuestra historia',
     storyH: 'De familia, y de Salem.',
     storyP1:
@@ -396,6 +419,8 @@ export function Home() {
                     where={e.where}
                     fit={f.fit}
                     focus={f.focus}
+                    past={f.past}
+                    pastLabel={t.pastLabel}
                   />
                 </li>
               )

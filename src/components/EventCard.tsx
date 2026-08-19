@@ -10,8 +10,10 @@ import { Chip } from './ui'
  * blue buttons are NOT carried over — our chips are outlined and our buttons
  * are square, per design.md § Components.
  *
- * Shared rather than page-local because the Events page needs the same card,
- * and two hand-maintained copies of one card is how they drift apart.
+ * USED BY HOME ONLY. This comment used to claim it was shared with the Events
+ * page; Events has always rendered its own row layout, so that was never true.
+ * Corrected 2026-08-19. If Events ever wants this square-flyer treatment, move
+ * it here rather than copying it.
  *
  * The icons are two hand-drawn inline SVGs at one stroke weight. No icon
  * library: mixing icon sets is a named tell, and importing a whole library
@@ -82,6 +84,20 @@ export interface EventCardProps {
    * 1290px square can slide 371px, so an 70px nudge is 70/371 = 19.
    */
   focus?: number
+  /**
+   * Marks a finished event. A past event keeps its card rather than vanishing:
+   * the flyers are the park's own marketing and a park that visibly ran a
+   * lowrider cruise is better proof than a claim that it runs events. What it
+   * must not do is read as upcoming.
+   *
+   * The marker borrows the vendor open/closed language rather than inventing a
+   * second one — a live thing is a filled brand chip, a finished thing recedes
+   * into a muted outline. Not red, not struck through, not dimmed artwork: a
+   * greyed-out flyer reads as a broken image.
+   */
+  past?: boolean
+  /** "Past" / "Ya pasó". Passed in so the card holds no language of its own. */
+  pastLabel?: string
 }
 
 export function EventCard({
@@ -94,6 +110,8 @@ export function EventCard({
   where,
   fit = 'fill',
   focus = 50,
+  past = false,
+  pastLabel,
 }: EventCardProps) {
   return (
     <article className="flex min-w-0 flex-col">
@@ -115,7 +133,7 @@ export function EventCard({
           margins. Then pick `focus`, and only fall back to `whole` when no
           crop keeps what matters — one odd poster is not a reason to put the
           margin back on the ones that do not need it. */}
-      <div className="overflow-hidden rounded-sm border border-rule bg-paper">
+      <div className="relative overflow-hidden rounded-sm border border-rule bg-paper">
         <img
           src={image}
           alt={imageAlt}
@@ -126,6 +144,15 @@ export function EventCard({
             fit === 'fill' ? 'object-cover' : 'object-contain p-2.5 sm:p-3'
           }`}
         />
+        {/* Top RIGHT, where the vendor open/closed chip sits top left. Both
+            cruise flyers carry the Best Bite mark in their top-left corner and
+            the chip landed square on the client's own logo. The right corner is
+            sky on both. */}
+        {past && pastLabel && (
+          <span className="absolute top-3 right-3 inline-block border border-rule bg-paper/90 px-2.5 py-1 font-mono text-[11px] tracking-[0.1em] text-muted uppercase">
+            {pastLabel}
+          </span>
+        )}
       </div>
 
       <h3 className="mt-5 text-xl leading-[1.1] uppercase sm:text-2xl">{title}</h3>

@@ -16,9 +16,8 @@ A word on "shipped" in this file: it means the code is built and committed to
 
 ## START HERE NEXT SESSION
 
-1. **Bring Contact up to Home's standard.** Last of the three; Únete and Events
-   are done. Score it against the seven-point checklist before and after, and
-   expect the same two defects both had: too many eyebrows and a type-only hero.
+1. **`og:image`.** Every share of all ten addresses is still a bare text card.
+   `entrance_sign.webp` is now a candidate and is already cropped clean.
 2. **Decide whether Vendors keeps three dark surfaces.** `src/index.css`
    rations dark to two per page and this one spends three. See Open decisions.
 3. **`og:image`.** Every share of all ten addresses is still a bare text card.
@@ -36,8 +35,8 @@ Events, Contact, plus chrome. Vendors was the last one, built 2026-08-16.
 
 Home is the reference for how the site should look, and what that means is
 written out under "What Home looks like now, and why". **Únete was brought up to
-it 2026-08-18, and Events with it.** Only **Contact** still predates the
-2026-08-12 changes.
+it 2026-08-18, Events with it, and Contact on 2026-08-19.** All five pages now
+pass the seven-point checklist.
 
 ## Built and verified
 
@@ -50,7 +49,7 @@ it 2026-08-18, and Events with it.** Only **Contact** still predates the
 | Vendors         | **BUILT** — hero, nine 4:3 cards (8 with a truck photo), karaoke + facts bands |
 | QA              | `npm run shots` — every address, 375/768, both languages, overflow as a number |
 | Únete al Parque | **BUILT** — photo hero, 6/15 accent band, three steps, FAQ + schema, form      |
-| Contact         | NAP, map, form, cross-door to Únete, LocalBusiness schema                      |
+| Contact         | **BUILT** — sign hero, address at flood + directions, map, form, cross-door    |
 | Events          | **BUILT** — hall hero, karaoke flood + Event schema, past events, door         |
 | Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets      |
 | Schema          | LocalBusiness, ItemList of nine vendors, FAQPage on Únete, Event on Events     |
@@ -461,6 +460,66 @@ deliberately dumb and that is what makes it reliable.
 
 `EventCard`'s header claimed it was shared with the Events page. It never was —
 Events has always rendered its own row layout. Corrected.
+
+### Contact — brought up 2026-08-19
+
+**The last of the three, and the furthest behind: 5 of 7 failed**, against
+Únete's 3 and Events' 2.
+
+- **Four cream sections in a row**, then the footer. One ground change on the
+  whole page, at the very end. Now night → accent → cream → wash → cream →
+  footer.
+- **No accent band at all** — the only address on the site with no yellow on it,
+  on the page whose entire job is a street address. The address now takes the
+  flood with the directions CTA in it. That is the page's primary action and it
+  had been a button two thirds of the way down a cream column.
+- **Four mono eyebrows** against two. Únete had eight, Events five, this four.
+  All three section kickers gone.
+- **Three arrow glyphs**, on directions, submit and the cross-door. The glyph
+  marks the primary path in and the primary path out; three made it decoration.
+  Submit lost its arrow.
+- **A type-only hero**, same as the other two.
+- The cross-door gave up its night ground so the hero could take it.
+
+#### The hero crop took three attempts, and the lesson is the aspect ratio
+
+Contact needed a photograph and every park asset was already spoken for.
+`park_sign.webp` is the obvious subject — Contact is the "find us" page and the
+sign is what a visitor looks for from the road — but **all seventeen sign
+photographs include the vendor board, and it is staler than recorded**: it lists
+Adan's Grill, El Chilango, **Syrian House and "J JS Boba"**, none of which are
+on the roster, and omits Las Cuatas Lokas, Nieve Casera and Que Rollon Sushi,
+which are. Publishing it would put a wrong vendor list on the site inside a
+photograph, where nobody would think to check it.
+
+`src/assets/park/entrance_sign.webp` is a **2800×1950 crop of IMG_8022**, top
+left, which stops above the board.
+
+The two failed attempts are worth not repeating:
+
+1. A **45%-height strip** cleared the board but put the neighbouring gym's
+   boxing gloves more prominently in frame than the client's own mark.
+2. A **28%-height strip** fixed that and was clean at 1280 — but it was 4.76:1,
+   and on a phone `object-cover` cropped it to unreadable letterforms. The sign
+   became abstract yellow shapes.
+
+**Aspect ratio was the variable that mattered, not how much sign was in the
+source.** The hero is portrait at 375 and landscape at 1280, so a wide source
+survives one and not the other. A roughly 1.44:1 crop with the subject near the
+centre survives both. Ladder the crop and look at it **at both widths**.
+
+**The sign is shared with a boxing gym next door** and its panel is visible
+below Best Bite's. That is the real sign at the real address; cropping it out
+entirely means cutting "FOOD PARK". Flagged rather than quietly removed —
+Enrique's call if it should go.
+
+#### The map
+
+The embed URL resolves 200 with the address in it, so the markup is right. It
+still photographs as an empty rectangle, and that is now explained: **`npm run
+shots` waits for images and fonts, not for a remote iframe.** Not a site bug and
+not worth building iframe-waiting into the script. Still wants one look in a
+real browser before delivery.
 
 ### Home's leasing door, rebuilt 2026-08-19
 
@@ -887,7 +946,7 @@ success message.
 2. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
    card. `park_sign.webp` is now a candidate.
 3. ~~`FAQPage` schema on Únete~~ — done 2026-08-18.
-4. Bring **Contact** up to Home's standard. Únete and Events are done.
+4. ~~Bring the three pages up to Home's standard~~ — done 2026-08-19.
 5. **Home's own pass**: a past-dated event shown as current, and Instagram
    chrome baked into its event flyer. Both logged under Events above.
 6. Wire the forms once the destination is decided.

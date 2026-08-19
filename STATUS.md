@@ -16,9 +16,9 @@ A word on "shipped" in this file: it means the code is built and committed to
 
 ## START HERE NEXT SESSION
 
-1. **Bring Events up to Home's standard**, then Contact. Únete is done — see
-   the scorecard under "What Home looks like now, and why". Work one page at a
-   time, and score it against the seven-point checklist before and after.
+1. **Bring Contact up to Home's standard.** Last of the three; Únete and Events
+   are done. Score it against the seven-point checklist before and after, and
+   expect the same two defects both had: too many eyebrows and a type-only hero.
 2. **Decide whether Vendors keeps three dark surfaces.** `src/index.css`
    rations dark to two per page and this one spends three. See Open decisions.
 3. **`og:image`.** Every share of all ten addresses is still a bare text card.
@@ -36,8 +36,8 @@ Events, Contact, plus chrome. Vendors was the last one, built 2026-08-16.
 
 Home is the reference for how the site should look, and what that means is
 written out under "What Home looks like now, and why". **Únete was brought up to
-it 2026-08-18.** Events and Contact still predate the 2026-08-12 changes and are
-a generation behind.
+it 2026-08-18, and Events with it.** Only **Contact** still predates the
+2026-08-12 changes.
 
 ## Built and verified
 
@@ -51,9 +51,9 @@ a generation behind.
 | QA              | `npm run shots` — every address, 375/768, both languages, overflow as a number |
 | Únete al Parque | **BUILT** — photo hero, 6/15 accent band, three steps, FAQ + schema, form      |
 | Contact         | NAP, map, form, cross-door to Únete, LocalBusiness schema                      |
-| Events          | Built on the three real flyers, dated events in a data array                   |
+| Events          | **BUILT** — hall hero, karaoke flood + Event schema, past events, door         |
 | Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets      |
-| Schema          | LocalBusiness on Home + Contact; ItemList of nine vendors; FAQPage on Únete    |
+| Schema          | LocalBusiness, ItemList of nine vendors, FAQPage on Únete, Event on Events     |
 | Tests           | 16, across `routes.test.ts` and `vendors.test.ts`                              |
 
 Verified 2026-08-16: build passes, lint clean, 16 tests, 11 HTML files, all nine
@@ -287,6 +287,75 @@ against these, in both languages:
 5. Are there at most two dark surfaces, counting the footer?
 6. Do arrows appear on at most two buttons?
 7. Is the vertical padding different between at least two sections?
+
+### Events — brought up 2026-08-18
+
+Scored 5 of 7 before, 7 of 7 after, plus two things the checklist does not cover.
+
+- **Five mono eyebrows** against three. Únete had eight, this had five: the
+  habit was systemic, not one page's slip. All three section kickers gone. Two
+  headings were rewritten to stand alone, because a heading that only parses
+  under its eyebrow is not a heading.
+- **A type-only hero**, the same defect Únete had. Now the indoor hall
+  (`inside_sign.webp`) — the lit Best Bite sign, barrel tables, low light. The
+  only asset in the repo that looks like a place where something happens after
+  dark, and already dark so the scrim works with it. The "Coming up" section
+  gave up its night ground in exchange, keeping the ration at two.
+- **No structured data at all** — the only address on the site with none. The
+  karaoke night is now an `Event`. See `KaraokeEventJsonLd` for why it carries
+  no `startDate`: computing the next Sunday at build time freezes a date into a
+  static file, which is the trap the open/closed badge exists to avoid.
+  `eventSchedule` is schema.org's own answer for something that repeats.
+- **No button anywhere.** Not a checklist item, but every other page ends on a
+  door and this one ended on a bracketed Instagram handle. The door goes to
+  Vendors: events bring people to the lot, the kitchens are why they stay.
+
+**Events has no placeholders left.** 21 → 19.
+
+#### The page was advertising an event that had already happened
+
+`DATED_EVENTS` held the Back to School Cruise under "Coming up" with
+`pending('cruise date')`. Two flyers describe that afternoon: the cruise flyer
+gives the route and times, and "Cruise Into the School Year" gives the date —
+**Sunday 16 August 2026**, two days before this was found. Enrique confirmed
+2026-08-18 that they are one event. So the page was wrong twice: it called a
+finished event upcoming, and bracketed a date that was printed on a flyer
+already in the repo.
+
+The array is now **two arrays**, `UPCOMING_EVENTS` and `PAST_EVENTS`, and which
+one an event sits in is a human decision made when it is added. **Not a date
+comparison** — on a pre-rendered site `new Date()` is frozen at the last build,
+so an event would sit under "Coming up" for every day between its date passing
+and the next deploy. A briefly-wrong badge is a nuisance; a wrong calendar is
+the thing the page is for.
+
+The finished cruise keeps its flyer and its full card, in the past section,
+rendered by the same `EventRow` an upcoming one uses. Two reasons: Ray can see
+exactly how a dated event looks without one being scheduled, and a park that
+visibly ran a lowrider cruise is better proof than a sentence claiming it runs
+events.
+
+**"Coming up" has a written empty state**, because empty is its normal state —
+the park runs a handful of events a year. Hiding the section makes the page look
+like it has no calendar; a bare heading over nothing looks broken.
+
+#### Known defect left on Home, deliberately
+
+Home still shows "Cruise Into the School Year" dated 16 August 2026 beside the
+recurring karaoke, unlabelled, and that date is now past. Home's copy of that
+flyer also has **Instagram story chrome baked in** — an avatar circle, a mute
+button and the player strip — the same defect trimmed off the karaoke flyer.
+
+Enrique's call 2026-08-18 was to leave Home alone; it is the approved reference
+page and this session was Events and Contact. Fixing the chrome means re-cropping
+the asset, which invalidates the hand-tuned `focus: 19` in `Home.tsx` that was
+derived by rendering the crop rather than by reasoning about it. **Both belong to
+Home's own pass.** The stale date gets worse every day until delivery.
+
+`back_to_school_cruise_full.webp` is a **second copy** of a flyer the repo
+already has, and that is deliberate: Home's `focus` value is tuned to the nearly
+square crop, and the full flyer is portrait, so sharing one asset would silently
+reframe Home.
 
 ### Únete al Parque — brought up 2026-08-18
 
@@ -711,8 +780,10 @@ success message.
 2. **No `og:image` anywhere.** Every share of all ten addresses is a bare text
    card. `park_sign.webp` is now a candidate.
 3. ~~`FAQPage` schema on Únete~~ — done 2026-08-18.
-4. Bring **Events and Contact** up to Home's standard. Únete is done.
-5. Wire the forms once the destination is decided.
-6. `hallmark audit` across all ten addresses.
-7. Confirm the Contact map paints in a real browser — it renders empty in
+4. Bring **Contact** up to Home's standard. Únete and Events are done.
+5. **Home's own pass**: a past-dated event shown as current, and Instagram
+   chrome baked into its event flyer. Both logged under Events above.
+6. Wire the forms once the destination is decided.
+7. `hallmark audit` across all ten addresses.
+8. Confirm the Contact map paints in a real browser — it renders empty in
    headless screenshots, almost certainly a headless quirk.

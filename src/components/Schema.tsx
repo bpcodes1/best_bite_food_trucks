@@ -130,3 +130,76 @@ export function FaqJsonLd({ items }: { items: readonly { q: string; a: string }[
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
   )
 }
+
+/**
+ * The recurring karaoke night as an Event, for the Events page.
+ *
+ * Events was the only address on the site carrying no structured data at all.
+ * Home and Contact have LocalBusiness, Vendors has the ItemList of nine
+ * kitchens, Únete has FAQPage. A weekly, free, family event is exactly the kind
+ * of thing search engines surface, and it is the one thing on that page a
+ * reader can act on any week of the year.
+ *
+ * NO `startDate`, AND THAT IS DELIBERATE. Google documents `startDate` as
+ * required for Event rich results, so the obvious move is to compute the next
+ * Sunday at build time. That is the same trap the open/closed badge on Vendors
+ * exists to avoid: this site pre-renders to static files, so a computed date is
+ * frozen at whatever `npm run build` last ran and then confidently states a
+ * stale one for however many days pass before the next deploy. `eventSchedule`
+ * with a `Schedule` is schema.org's own answer for something that repeats and
+ * needs no fixed date. If that costs a rich result, the trade is a correct
+ * page over a decorated one.
+ *
+ * The 6pm–9pm and the DJ's name come off the park's own flyer and are the same
+ * facts the page prints. If Ray corrects either, both change together — this
+ * component takes them as props rather than restating them.
+ */
+export function KaraokeEventJsonLd({
+  name,
+  description,
+  image,
+}: {
+  name: string
+  description: string
+  image: string
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    // Every heading on this site ends in a full stop as a type convention.
+    // That is a visual decision and has no business inside a machine-readable
+    // entity name, where it would become part of the event's title.
+    name: name.replace(/\.$/, ''),
+    description,
+    image,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    // Stated on the page in both languages, so it is not a new claim.
+    isAccessibleForFree: true,
+    eventSchedule: {
+      '@type': 'Schedule',
+      repeatFrequency: 'P1W',
+      byDay: 'https://schema.org/Sunday',
+      startTime: '18:00',
+      endTime: '21:00',
+      scheduleTimezone: 'America/Los_Angeles',
+    },
+    organizer: { '@type': 'Organization', name: site.name, url: site.origin },
+    location: {
+      '@type': 'Place',
+      name: site.name,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: site.address.street,
+        addressLocality: site.address.city,
+        addressRegion: site.address.state,
+        postalCode: site.address.zip,
+        addressCountry: 'US',
+      },
+    },
+  }
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+  )
+}

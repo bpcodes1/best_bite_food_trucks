@@ -14,7 +14,9 @@ Home's event flyers dated and marked past, the "open"/"free" copy collision
 fixed sitewide, then in the afternoon — Instagram and Facebook wired including
 `sameAs`, Vendors scored against the checklist for the first time and brought
 up, the two pages that disagreed about vendor tenure settled on the weaker
-claim, and three English screen-reader labels removed from the Spanish pages.
+claim, three English screen-reader labels removed from the Spanish pages, and
+**Events rebuilt against a reference Enrique supplied**, with the first four
+photographs of actual events the project has ever had.
 
 A word on "shipped" in this file: it means the code is built and committed to
 `enrique`. **Nothing has been delivered to Ray and nothing is on the internet.**
@@ -73,6 +75,9 @@ three jobs below.
 1. **`og:image`.** Every share of all ten addresses is a bare text card — no
    picture when Ray or a vendor posts a link. `park/entrance_sign.webp` is the
    candidate: it is already cropped clean of the out-of-date vendor board.
+   **`events/cruise_lowriders.webp` is now the better one** — lowriders in the
+   lot, a person in frame, and the only asset on the site that looks like
+   something happening rather than somewhere existing.
 2. **`hallmark audit` across all ten addresses.** Nothing has been audited since
    the three pages were rebuilt, and the audit is what catches drift from
    design.md.
@@ -111,7 +116,7 @@ it now.
 | QA              | `npm run shots` — every address, 375/768, both languages, overflow as a number |
 | Únete al Parque | **BUILT** — photo hero, 6/15 accent band, three steps, FAQ + schema, form      |
 | Contact         | **BUILT** — sign hero, address at flood + directions, map, form, cross-door    |
-| Events          | **BUILT** — hall hero, karaoke flood + Event schema, past events, door         |
+| Events          | **BUILT** — hall hero, karaoke flood + Event schema, lineup, photo grid, door  |
 | Type            | Archivo Black / Source Sans 3 / IBM Plex Mono, self-hosted, latin subsets      |
 | Schema          | LocalBusiness, ItemList of nine vendors, FAQPage on Únete, Event on Events     |
 | Tests           | 16, across `routes.test.ts` and `vendors.test.ts`                              |
@@ -218,6 +223,45 @@ holds its shape, which is exactly what that treatment exists for.
 
 Nieve Casera and Taqueria Romero were closed on 2026-08-18 from Bryan's branch —
 see below.
+
+## Bryan's branch, harvested again 2026-08-19 — sixteen event files, we had two
+
+`origin/bryan` moved to `04441ac`, two commits past the `17569a6` recorded
+below. Enrique's read was that it held more than we had taken, and it did:
+`src/assets/events/` there carries **sixteen files** and the 2026-08-18 harvest
+had looked at two of them.
+
+**This page had claimed we had zero photographs of an event. That was wrong**,
+and it was wrong because nobody had listed the directory.
+
+| Taken            | As                             | What it is                                                           |
+| ---------------- | ------------------------------ | -------------------------------------------------------------------- |
+| `low_riders.jpg` | `events/cruise_lowriders.webp` | The cruise in the lot — '57 Bel Air, a Harley, a person in frame     |
+| `easter.jpg`     | `events/easter_egg_hunt.webp`  | A few hundred plastic eggs across the asphalt, trucks behind         |
+| `christmas.jpg`  | `events/hall_christmas.webp`   | The hall lit up, the Best Bite sign in red, a decorated tree         |
+| `loteria.jpg`    | `events/loteria.webp`          | A lotería game mid-play, hands on the table. **Cropped** — see below |
+| `decoration.jpg` | `park/wagon_planter.webp`      | The wagon planter, side on. Bryan's iPhone original, unused till now |
+
+**`loteria.webp` is cropped to remove a burned-in reel caption** ("LEMONADE AND
+MUCH MORE") that ran across its lower third — the same Instagram-chrome defect
+trimmed off the karaoke flyer. Worth the crop rather than the omission: it is
+the only photograph we hold of people actually doing something here.
+
+**Also pulled, from the 2026-08-17 set rather than Bryan's:**
+`park/tent_wide.webp` (IMG_8013) and `park/tent_tables.webp` (IMG_7999),
+because every existing photo in `src/assets/park/` is already a hero or a band
+on another address and a grid that reuses them makes the site repeat itself.
+
+### Four files on that branch that must not be published
+
+- **`giveaway.jpg`** — a Louis Vuitton box. Another company's trademark on Ray's
+  commercial page, and it says nothing about a food park.
+- **`mycelium.jpg`** — a flyer for somebody else's meeting, dated 2/23.
+- **`easter2.jpg`, `loteria2.jpg`** — the same events with promo text burned in.
+  The clean Easter original exists, which is why the captioned one is not needed
+  and is good evidence clean versions of the others exist too. Worth asking.
+- **`jarochitas.jpg`** — carries a TikTok watermark and `@lasjarochitas1`, and
+  it is a vendor's own content rather than the park's.
 
 ## Bryan's branch, harvested 2026-08-18
 
@@ -366,6 +410,61 @@ against these, in both languages:
 5. Are there at most two dark surfaces, counting the footer?
 6. Do arrows appear on at most two buttons?
 7. Is the vertical padding different between at least two sections?
+
+### Events — rebuilt again 2026-08-19, against a reference Enrique supplied
+
+The 2026-08-18 pass below fixed the page's structure. This one changed what it
+is for. Enrique found an Alibi Bar & Lounge events page on Dribbble and picked
+out the parts that applied; both are filed in the swipe library as
+`alibi-events-lineup` and `alibi-social-grid`.
+
+**"Coming up" and "Already done here" were two sections splitting one calendar,
+and one of them was always empty.** They are now a single lineup: one full-width
+row per event, thumbnail hard left, status chip hard right, wide empty gutter
+between. Finished events recede rather than getting filed somewhere else.
+Adding an event is one entry; retiring it is one word.
+
+**The reference greys two of four rows and never says why**, so a visitor
+guesses between sold out, cancelled and finished. Ours prints the word, in the
+vendor open/closed language rather than a second one invented for the page.
+
+**The photo grid is new and it is the point.** Seven cells, one at 2x2 in
+columns two and three so its mass sits just left of centre. Four are events and
+three are the place. Until 2026-08-19 this page had no photograph of anything
+happening — every event asset in the repo was a flyer, which proves we have
+flyers.
+
+**Not taken from the reference:** "Book Now" on every row; the reservation form,
+which we are specifically forbidden from implying until the hall permit lands;
+and the two-image "private events" pair, which needs a heading and a paragraph
+per event when for Easter and Christmas we have a photograph and nothing else.
+The last of those goes in when Ray sends two events worth writing about.
+
+**The grid is not headed "Follow our activity"** the way the reference is.
+Theirs implies the grid is the live feed. Ours is seven pictures we chose.
+
+#### Approved from a throwaway prototype, and the prototype earned its keep
+
+Built at `/proto/events`, English only, wired straight into `AppRoutes` behind
+`import.meta.env.DEV` rather than into `src/lib/routes.ts` — a prototype added
+to that array would be pre-rendered to a real file and listed in the sitemap.
+Deleted after approval.
+
+**Two defects surfaced in the prototype that would otherwise have shipped**, and
+both were violations of rules written down earlier the same day. The grid's big
+cell went first in the array, which puts it hard left; the swipe entry says the
+one column of offset is the whole trick. And the image was left in flow, so the
+portrait cruise photograph drove its two rows to 1180px against 340px squares
+and tore a hole down the right of the section — which is exactly what
+design.md § Rhythm says an in-flow `<img>` does. Fixing it took 320px off the
+page height.
+
+#### Placeholders went 15 → 25, and that is not a regression
+
+Ten of the new brackets are event dates, five events across two languages. Those
+gaps already existed; the page simply had no place to show them. **Only the
+cruise has ever been dated.** Each bracket names its own event, so
+`npm run pending` now produces a list Ray can answer line by line.
 
 ### Events — brought up 2026-08-18
 
@@ -929,7 +1028,19 @@ pass here before.
 ## Blocked on Ray
 
 Everything here is one text message. Placeholders render as visible brackets;
-run `npm run pending` (15 at last count, down from 23).
+run `npm run pending` (25 at last count — it went up from 15 on 2026-08-19 when
+the events lineup gave five undated events somewhere to show, in two languages).
+
+- **Dates for five events**, and this is now the top ask. The lineup on Events
+  is a list of dates and **only the cruise has ever been dated.** Easter,
+  Christmas, the lotería night, the pupusa class and the coffee workshop all
+  render a bracket. The Easter flyer prints "April 5th" with no year, so even
+  that one needs him. Ask which year each ran, or just the years.
+- **Anything coming up in the next two months.** The lineup holds upcoming
+  events and currently shows none, which is the one thing the page cannot fake.
+- **Photographs from the cruise on 16 August**, and from any Sunday karaoke
+  night. What we have shows a real place with almost nobody in it; the client
+  context flags exactly that as the fault on his current site.
 
 - Site phone, site email — **launch blockers**, not nice-to-haves. Shepard
   counts contact information as a positive signal, and visible `[PENDIENTE]`

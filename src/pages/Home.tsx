@@ -180,6 +180,11 @@ const copy = {
       },
     },
     pastLabel: 'Past',
+    /* Heard, never seen. The event card's clock and pin have no visible text,
+       so these are the names a screen reader reads out. They were English on
+       the Spanish page until 2026-08-19. */
+    whenLabel: 'When',
+    whereLabel: 'Where',
     storyLabel: 'Our story',
     storyH: 'Family run, Salem grown.',
     storyP1:
@@ -253,6 +258,8 @@ const copy = {
       },
     },
     pastLabel: 'Ya pasó',
+    whenLabel: 'Cuándo',
+    whereLabel: 'Dónde',
     storyLabel: 'Nuestra historia',
     storyH: 'De familia, y de Salem.',
     storyP1:
@@ -426,6 +433,8 @@ export function Home() {
                     focus={f.focus}
                     past={f.past}
                     pastLabel={t.pastLabel}
+                    whenLabel={t.whenLabel}
+                    whereLabel={t.whereLabel}
                   />
                 </li>
               )

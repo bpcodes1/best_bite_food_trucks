@@ -98,6 +98,20 @@ export interface EventCardProps {
   past?: boolean
   /** "Past" / "Ya pasó". Passed in so the card holds no language of its own. */
   pastLabel?: string
+  /**
+   * The two icon rows carry no visible text — a clock and a pin stand in for
+   * "when" and "where" — so each needs a name only a screen reader hears.
+   *
+   * THESE WERE HARDCODED ENGLISH UNTIL 2026-08-19 and shipped that way on the
+   * Spanish page, three times over, one per flyer. Nothing about the site
+   * looked wrong: the words render to nobody with working sight, which is
+   * exactly why a bilingual pass that checks layout in both languages cannot
+   * catch this class of bug. Same lesson as the "open"/"free" collision — see
+   * CLAUDE.md. Grep `sr-only` and `aria-label` when checking a page's Spanish,
+   * not just what is on screen.
+   */
+  whenLabel: string
+  whereLabel: string
 }
 
 export function EventCard({
@@ -112,6 +126,8 @@ export function EventCard({
   focus = 50,
   past = false,
   pastLabel,
+  whenLabel,
+  whereLabel,
 }: EventCardProps) {
   return (
     <article className="flex min-w-0 flex-col">
@@ -169,14 +185,14 @@ export function EventCard({
         <div className="flex items-start gap-2.5">
           <dt className="mt-0.5 text-muted">
             <ClockIcon />
-            <span className="sr-only">When</span>
+            <span className="sr-only">{whenLabel}</span>
           </dt>
           <dd className="min-w-0">{when}</dd>
         </div>
         <div className="flex items-start gap-2.5">
           <dt className="mt-0.5 text-muted">
             <PinIcon />
-            <span className="sr-only">Where</span>
+            <span className="sr-only">{whereLabel}</span>
           </dt>
           <dd className="min-w-0">{where}</dd>
         </div>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { Seo } from '../components/Seo'
 import { FaqJsonLd } from '../components/Schema'
-import { Button, Chip, Label, Section, field } from '../components/ui'
+import { Button, Chip, Label, Section, SocialLink, field } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { hoursRange, pending, site } from '../lib/site'
 /* Was `best_bite_outdoor.webp`, a plate of food on a table. It illustrated a
@@ -80,7 +80,16 @@ const copy = {
     /* "Open" is banned here for vacancy — see CLAUDE.md. This sentence used to
        read "9 trucks are open at Best Bite right now ... 6 of 15 spaces are
        open", using the same word for trading and for empty one clause apart. */
-    lede: `${site.stalls.filled} trucks are trading at Best Bite right now, and every one of them has been here more than a year. ${open} of ${site.stalls.total} spaces are free.`,
+    /* "Most", not "every one of them". This page and Home's story section were
+       making two different claims about the same nine trucks — Home said most,
+       this said all — and only one of them can be true. Enrique's call
+       2026-08-19 was to settle on "most", which is also the weaker claim, and
+       the weaker claim is the safe one when nobody has counted. The client
+       context says the current vendors have survived a year, but it says it
+       about the roster in general, not vendor by vendor, and one truck that
+       arrived in the spring would make the stronger sentence a lie on the page
+       a truck owner is reading to decide whether to trust us. */
+    lede: `${site.stalls.filled} trucks are trading at Best Bite right now, and most of them have been here more than a year. ${open} of ${site.stalls.total} spaces are free.`,
     cta: 'Ask about a space',
     ctaMicro: '4 questions · 2 minutes · no commitment',
     heroAlt: 'The lot at Best Bite Food Park, with food trucks open on both sides',
@@ -148,7 +157,9 @@ const copy = {
     eyebrow: `Renta de espacio · Salem, OR`,
     h1a: 'Mes a mes.',
     h1b: 'Te vas cuando quieras.',
-    lede: `${site.stalls.filled} trucks están abiertos en Best Bite ahora mismo, y todos llevan más de un año aquí. ${open} de ${site.stalls.total} espacios están libres.`,
+    /* "Casi todos", matching Home's story section, which already said it that
+       way. See the note on the English lede. */
+    lede: `${site.stalls.filled} trucks están abiertos en Best Bite ahora mismo, y casi todos llevan más de un año aquí. ${open} de ${site.stalls.total} espacios están libres.`,
     cta: 'Pregunta por un espacio',
     ctaMicro: '4 preguntas · 2 minutos · sin compromiso',
     heroAlt: 'El lote de Best Bite Food Park, con food trucks abiertos a los dos lados',
@@ -462,7 +473,7 @@ export function LeaseASpace() {
                 {t.submit} <span aria-hidden="true">→</span>
               </Button>
               <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-muted uppercase">
-                {t.escape} {site.social.instagram}
+                {t.escape} <SocialLink account={site.social.instagram} className="hover:text-ink" />
               </p>
               {submitted && (
                 <p className="mt-4 border border-ink px-3 py-2 font-mono text-xs">

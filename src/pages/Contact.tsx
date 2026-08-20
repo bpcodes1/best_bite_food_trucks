@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { Seo } from '../components/Seo'
 import { LocalBusinessJsonLd } from '../components/Schema'
-import { Button, Label, Section, field, fieldLabel } from '../components/ui'
+import { Button, Label, Section, SocialLink, field, fieldLabel } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { pathFor } from '../lib/routes'
 import { fullAddress, hoursRange, pending, site } from '../lib/site'
@@ -283,7 +283,8 @@ export function Contact() {
                   cross-door. Three arrows made it decoration. */}
                 <Button type="submit">{t.submit}</Button>
                 <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-muted uppercase">
-                  {t.escape} {site.social.instagram}
+                  {t.escape}{' '}
+                  <SocialLink account={site.social.instagram} className="hover:text-ink" />
                 </p>
                 {submitted && (
                   <p className="mt-4 border border-ink px-3 py-2 font-mono text-xs">

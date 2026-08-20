@@ -1,4 +1,4 @@
-import { PENDING_MARKER, site } from '../lib/site'
+import { PENDING_MARKER, site, socialUrls } from '../lib/site'
 import { VENDORS } from '../lib/vendors'
 
 /**
@@ -18,11 +18,17 @@ import { VENDORS } from '../lib/vendors'
  * the body. Google reads JSON-LD from the body just the same.
  */
 export function LocalBusinessJsonLd() {
+  const sameAs = socialUrls()
+
   const data = {
     '@context': 'https://schema.org',
     '@type': 'FoodEstablishment',
     name: site.name,
     url: site.origin,
+    /* The accounts that prove this is one business rather than several with
+       similar names. Omitted entirely while the list is empty — an empty array
+       is a claim that the park has no accounts, which is not what we mean. */
+    ...(sameAs.length ? { sameAs } : {}),
     address: {
       '@type': 'PostalAddress',
       streetAddress: site.address.street,

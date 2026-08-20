@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { ROUTES, alternatePath, langFromPath, type Lang } from '../lib/routes'
 import { hoursRange, site } from '../lib/site'
+import { SocialLink } from './ui'
 
 /**
  * The statement footer, chosen by Enrique 2026-08-12 after the hallmark audit
@@ -97,9 +98,15 @@ export function SiteFooter() {
             <div className="min-w-0 lg:justify-self-end lg:text-right">
               <p className={heading}>{t.follow}</p>
               <ul className="mt-3 flex flex-col gap-2 text-sm break-words text-night-muted">
-                <li>{site.social.instagram}</li>
-                <li>{site.social.facebook}</li>
-                <li>{site.social.tiktok}</li>
+                <li>
+                  <SocialLink account={site.social.instagram} className="hover:text-brand-yellow" />
+                </li>
+                <li>
+                  <SocialLink account={site.social.facebook} className="hover:text-brand-yellow" />
+                </li>
+                <li>
+                  <SocialLink account={site.social.tiktok} />
+                </li>
               </ul>
             </div>
           </div>

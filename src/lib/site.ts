@@ -45,10 +45,39 @@ export const site = {
   phone: pending('teléfono'),
   email: pending('correo'),
 
+  /**
+   * The park's own accounts. Each carries what the page prints and where it
+   * points; `url: undefined` means we do not have the account yet, and the
+   * label stays a visible bracket.
+   *
+   * These are not decoration. They go into `sameAs` on the LocalBusiness
+   * markup, which is how a search engine confirms that the Instagram account,
+   * the Facebook page and this website are the same business rather than three
+   * businesses with similar names.
+   *
+   * INSTAGRAM AND FACEBOOK CAME FROM ENRIQUE 2026-08-19, as URLs. The Instagram
+   * label is the handle read off its own URL. Facebook's is the bare network
+   * name because THE PAGE HAS NO USERNAME: its address is the numeric
+   * `/p/...-61584137473837/` form, which is what Facebook serves until an owner
+   * sets a vanity URL. There is no `@name` to print, and printing the page's
+   * own title instead would put a second, slightly different spelling of the
+   * business name next to the NAP block — the exact drift `fullAddress()` and
+   * `site.name` exist to prevent. Worth telling Ray: an unnamed page is harder
+   * to find and reads as unfinished.
+   */
   social: {
-    instagram: pending('Instagram'),
-    facebook: pending('Facebook'),
-    tiktok: pending('TikTok'),
+    instagram: {
+      label: '@bestbitefoodpark',
+      url: 'https://www.instagram.com/bestbitefoodpark/',
+    },
+    facebook: {
+      label: 'Facebook',
+      url: 'https://www.facebook.com/p/The-Best-Bite-Food-Truck-Park-61584137473837/',
+    },
+    tiktok: {
+      label: pending('TikTok'),
+      url: undefined,
+    },
   },
 
   stalls: {
@@ -68,6 +97,22 @@ export const site = {
    */
   origin: 'http://localhost:5173',
 } as const
+
+/**
+ * Every social account we actually have, for `sameAs` in the structured data.
+ *
+ * Derived rather than hand-listed, so an account added above reaches the markup
+ * without a second edit — and a pending one can never reach it at all. A
+ * bracket inside `sameAs` would be a machine-readable claim that the park's
+ * TikTok lives at a placeholder.
+ */
+export function socialUrls(): string[] {
+  // `site` is `as const`, so each url reads as its own literal type. Widen
+  // before filtering, or the guard has nothing general to narrow to.
+  return Object.values(site.social)
+    .map((account): string | undefined => account.url)
+    .filter((url): url is string => Boolean(url))
+}
 
 /** The NAP address string, assembled in one place so it can never drift. */
 export function fullAddress(): string {

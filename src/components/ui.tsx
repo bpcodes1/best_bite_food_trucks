@@ -147,6 +147,41 @@ export function Button({
 }
 
 /**
+ * One social account, printed the same way everywhere.
+ *
+ * An account we have renders as a real link; one we do not renders as the
+ * visible bracket and nothing else. That branch is the whole point of the
+ * component: a styled link wrapped around a placeholder reads as a working
+ * link, which is the failure the bracket exists to prevent, and the four call
+ * sites would each have had to remember it.
+ *
+ * Opens in a new tab. Following a social account is a detour from the page,
+ * not the end of it — the reader is mid-way through deciding whether to drive
+ * over, and a park has no reason to hand its visitor to Instagram and lose
+ * them. `rel` is mandatory alongside `target`, or the opened tab can reach back
+ * into this one.
+ */
+export function SocialLink({
+  account,
+  className = '',
+}: {
+  account: { label: string; url?: string }
+  className?: string
+}) {
+  if (!account.url) return <span className={className}>{account.label}</span>
+  return (
+    <a
+      href={account.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${className} underline decoration-1 underline-offset-4 hover:no-underline`}
+    >
+      {account.label}
+    </a>
+  )
+}
+
+/**
  * The text-input skin, shared by the Únete and Contact forms. One string so
  * the two forms cannot drift apart visually.
  */

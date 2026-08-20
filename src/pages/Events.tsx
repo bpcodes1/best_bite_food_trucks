@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Seo } from '../components/Seo'
 import { KaraokeEventJsonLd } from '../components/Schema'
-import { Button, Label, Section } from '../components/ui'
+import { Button, Label, Section, SocialLink } from '../components/ui'
 import { useLang } from '../lib/useLang'
 import { pathFor } from '../lib/routes'
 import { site } from '../lib/site'
@@ -360,10 +360,13 @@ export function Events() {
               .
             </p>
           </div>
-          {/* Renders the visible bracket until Ray sends the handle. A styled
-              button around a dead link would read as a working one. */}
+          {/* A real link since 2026-08-19, when Enrique supplied the account.
+              It stays a link rather than becoming a button: the page's one
+              button is the door to Vendors at the foot, and a second CTA of
+              equal weight pointing off-site would compete with it. */}
           <p className="shrink-0 font-mono text-[11px] tracking-[0.12em] uppercase">
-            {t.followIg}: {site.social.instagram}
+            {t.followIg}:{' '}
+            <SocialLink account={site.social.instagram} className="hover:text-muted" />
           </p>
         </div>
       </Section>

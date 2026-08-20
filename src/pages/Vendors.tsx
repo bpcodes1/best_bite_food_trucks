@@ -244,11 +244,51 @@ export function Vendors() {
       {/* Accent at flood footprint, per design.md § Ground. The hours are the
           large numeral because that is the fact someone standing in a car park
           at 8:15pm actually needs. */}
+      {/* THE HEADING WAS WRITTEN AND NEVER RENDERED. `practicalH` sat unused in
+          both languages until 2026-08-19, so the band ran with a mono kicker
+          standing in for a headline. Restored on Enrique's call, and put above
+          the grid rather than inside the left column: it names both halves —
+          "where it is" is the address rows, "and when" is the hours — so
+          heading only the left one would be wrong. The kicker moved up with it,
+          because an eyebrow labels the section, not one column of it.
+
+          IT IS DELIBERATELY SMALLER THAN THE HOURS. On every other accent band
+          the heading is the loudest thing; here the numeral is, because the
+          fact someone standing in the car park at 8:15pm needs is the closing
+          time, not the name of the section. */}
       <Section measure="wide" ground="accent" className="py-12 sm:py-14">
-        <div className="grid gap-8 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-14">
+        <Label tone="accent">{t.practicalLabel}</Label>
+        <h2 className="mt-3 text-2xl leading-[1.02] uppercase sm:text-3xl">{t.practicalH}</h2>
+
+        {/* `items-center`, not `items-start`. The left column is three short
+            lines and the right is three rows plus a link, so pinning both to
+            the top dumped every pixel of the difference into one hole of empty
+            yellow at the bottom left — about 200px at 768 and still ~140px at
+            1280. design.md § Rhythm names that exact shape: "space produced by
+            one column being taller than another is an accident wearing the same
+            clothes". Centring splits it above and below, so it reads as the
+            band breathing rather than as something missing. Width-independent,
+            which is what a layout fix has to be. */}
+        <div className="mt-8 grid gap-8 sm:grid-cols-[auto_1fr] sm:items-center sm:gap-14">
           <div className="min-w-0">
-            <Label tone="accent">{t.practicalLabel}</Label>
-            <p className="mt-3 text-3xl leading-none whitespace-nowrap uppercase sm:text-4xl">
+            {/* DISPLAY FACE, added 2026-08-19 on Enrique's read that this band
+                looked thin next to Home's. He was right, and it was a straight
+                drift rather than a preference: every other accent band on the
+                site sets its large fact in Archivo Black, and this one was the
+                only one that did not. The reason it slipped is worth knowing —
+                `src/index.css` puts the display face on h1/h2/h3 automatically,
+                and this is a <p>, so it silently fell back to the body face.
+                Any large numeral that is not a heading has to ask for the class.
+
+                THE SIZE STILL DOES NOT MATCH HOME'S, and it cannot. Home sets
+                the same string at sm:text-6xl, but Home's hours can wrap and
+                sit in a full-width column. This one is `whitespace-nowrap` in
+                an `auto` grid column beside the spec rows, and Archivo Black is
+                a wide face: at 60px the string alone is wider than a 640px
+                viewport. Sizes here were raised as far as `npm run shots`
+                reports zero overflow at 375 and 768 in both languages, which is
+                measured, not chosen. */}
+            <p className="font-display text-3xl leading-none whitespace-nowrap uppercase sm:text-4xl">
               {hoursRange()}
             </p>
             <p className="mt-2 font-mono text-[11px] tracking-[0.12em] uppercase">
@@ -281,13 +321,26 @@ export function Vendors() {
       </Section>
 
       {/* The one door to Únete. Small on purpose: this page is for eaters, and
-          a truck owner who got here is already looking. */}
-      <Section measure="wide" ground="night" className="py-12 sm:py-14">
+          a truck owner who got here is already looking.
+
+          CREAM, NOT NIGHT, since 2026-08-19. It was the third dark surface on a
+          page the system rations to two, which made Vendors the only address
+          spending three, and Enrique confirmed it reads wrong sitting directly
+          above the footer — two dark blocks separated by nothing but a page
+          edge. Events and Contact both close on exactly this shape, cream over
+          a hairline, so the site now ends the same way on every interior page.
+
+          The button stays solid rather than following those two to `outline`.
+          The ground was the defect; the button was not. Home's leasing door was
+          rebuilt in July for being the quietest thing on its page, and quieting
+          this one down in the same week would repeat that mistake on the page a
+          truck owner is most likely to be reading. */}
+      <Section measure="wide" className="border-t border-rule py-12 sm:py-14">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
-            <Label tone="night">{t.doorLabel}</Label>
+            <Label>{t.doorLabel}</Label>
             <h2 className="mt-3 text-2xl leading-[1.02] uppercase sm:text-3xl">{t.doorH}</h2>
-            <p className="mt-3 max-w-md leading-relaxed text-night-muted">{t.doorBody}</p>
+            <p className="mt-3 max-w-md leading-relaxed text-muted">{t.doorBody}</p>
           </div>
           <div className="shrink-0">
             <Button to={pathFor('lease', lang)}>

@@ -121,8 +121,8 @@ Four more on `origin/bryan`:
 Home is the reference and this is what "Home's standard" means, checkably. The
 reasoning behind each item is in `docs/build-log.md`.
 
-Not by reading the code. Run `npm run shots -- <page>` and check the page
-against these, in both languages:
+**Score it by looking, not by reading the source.** Run `npm run shots -- <page>`
+and check the rendered page against these, in both languages:
 
 1. Does the hero take less than a full screen, and does the next section peek?
    The formula is `100svh − var(--header-h) − 6rem`, the same on every page but

@@ -6,9 +6,31 @@ never commit it. Read it before acting on anything about the client.
 
 The shared rules in `../CLAUDE.md` apply. This file holds what is true only here.
 
-**Read `STATUS.md` first.** It carries where the build is, what is decided and
-why, what is blocked on whom, and the traps. This file is the rules; that one is
-the state.
+**Read `STATUS.md` first.** It carries where the build is, what is blocked on
+whom, and the traps. This file is the rules; that one is the state.
+
+## What to read at the start of a session, and what not to
+
+**Read two files: this one and `STATUS.md`.** That is the whole opening. Add
+`design.md` before designing anything, and the client context file before acting
+on a client fact. Nothing else, until the task tells you what else.
+
+**Do not read the whole repo looking for contradictions.** The instinct is
+right — the docs have gone stale and caused real mistakes — but reading is the
+wrong tool for it. On 2026-08-19 an opening pass read most of `src/` at a cost of
+~49,000 tokens, and every contradiction it found would have been found by a grep:
+`six of nine` in a comment, `sr-only` holding English on a Spanish page, two
+pages claiming different vendor tenure. **Search for the claim; do not read the
+files.**
+
+**When you hit a contradiction mid-task, stop and say so.** Do not quietly pick
+whichever source looks newer, and do not "fix" the docs to match the code or the
+code to match the docs on your own — either can be the wrong one. Enrique would
+rather answer a question than review work built on a guess.
+
+`docs/build-log.md` is the archive of why things are the way they are. **It is
+not session-opening reading.** Open it when a rule looks wrong and you want the
+story before you break it.
 
 ## Stack
 

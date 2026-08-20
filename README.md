@@ -95,15 +95,15 @@ src/
 
 See [STATUS.md](STATUS.md) for where the build actually is, and
 [design.md](design.md) for the design system every page defers to.
+[docs/build-log.md](docs/build-log.md) holds the reasoning behind past decisions
+— read it when you need to know _why_, not at the start of a session.
 
 In short: **all five pages are built in both languages** — Home, Vendors,
 Únete al Parque, Events and Contact — plus the masthead and footer.
 
-Home is the reference for how the rest of the site looks, and what that means is
-written out in STATUS.md under "What Home looks like now, and why", including the
-seven-point checklist a page is scored against. Home, Únete, Events and Contact
-pass it. **Vendors predates the checklist, was never scored, and fails three** —
-STATUS.md § START HERE has the counts.
+Home is the reference for how the rest of the site looks. What that means is the
+seven-point checklist in STATUS.md; why it means that is in docs/build-log.md.
+**All five pages pass it** as of 2026-08-19.
 
 Nothing is deployed anywhere. There is no host and no domain yet; see
 [STATUS.md](STATUS.md) for the setup order and the two traps in it.

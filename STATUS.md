@@ -2,16 +2,19 @@
 
 Where the build actually is. Read this, then `CLAUDE.md`, then `design.md`.
 
-**Last updated:** 2026-08-19. All five pages now pass the seven-point checklist
-in "What Home looks like now, and why". Everything is committed and pushed to
-`enrique`; the working tree is clean.
+**Last updated:** 2026-08-19. All five pages pass the seven-point checklist in
+"What Home looks like now, and why", Vendors included — it was scored for the
+first time on 2026-08-19 and brought up the same day. See START HERE.
 
 Two sessions are recorded here. **2026-08-18:** `npm run shots` built, two bands
 added to Vendors, the silver cart identified, Bryan's branch harvested (8 of 9
 cards have a truck photo, the karaoke time is real), Únete and Events brought up
 to standard. **2026-08-19:** Contact brought up, Home's leasing door rebuilt,
-Home's event flyers dated and marked past, and the "open"/"free" copy collision
-fixed sitewide.
+Home's event flyers dated and marked past, the "open"/"free" copy collision
+fixed sitewide, then in the afternoon — Instagram and Facebook wired including
+`sameAs`, Vendors scored against the checklist for the first time and brought
+up, the two pages that disagreed about vendor tenure settled on the weaker
+claim, and three English screen-reader labels removed from the Spanish pages.
 
 A word on "shipped" in this file: it means the code is built and committed to
 `enrique`. **Nothing has been delivered to Ray and nothing is on the internet.**
@@ -22,9 +25,50 @@ A word on "shipped" in this file: it means the code is built and committed to
 
 ## START HERE NEXT SESSION
 
-**All five pages are built and all five pass the seven-point checklist.** The
-structural design work is finished. Everything left is content from Ray, hosting
-from Enrique, or one of the three jobs below.
+**All five pages now pass the seven-point checklist — and this time it was
+checked rather than assumed.** This section claimed "all five" on 2026-08-18
+while Vendors had never been scored at all. It was built 2026-08-16, two days
+before the checklist was written down, and the three pages brought up afterwards
+were Únete, Events and Contact. Nobody went back to it. Scored on 2026-08-19 it
+failed three, and all three were settled with Enrique the same day:
+
+| Check                          | Was                                                  | Now                                         |
+| ------------------------------ | ---------------------------------------------------- | ------------------------------------------- |
+| 5 · dark surfaces incl. footer | **3** — hero scrim, Únete door on `night`, footer    | **2** — the door is cream over a hairline   |
+| 6 · arrow glyphs               | **3** — karaoke link, practical link, door button    | **3 — kept, deliberately.** See below       |
+| 2 · section-kicker eyebrows    | **3** — hero locator, "Every Sunday", "Own a truck?" | **3 — kept.** The real defect was elsewhere |
+
+**The arrows stay at three, and the rule is the thing that was wrong, not the
+page.** design.md caps the glyph at two CTAs because an arrow on everything
+stops marking the primary path. Contact genuinely broke that: its three sat on
+three buttons of identical weight. Vendors' three are two underlined text links
+and one solid button, which do not compete the same way, and Enrique's read
+2026-08-19 was that nothing about it reads wrong. He is right. **Count CTAs of
+comparable weight, not glyphs** — a future audit that greps for `→` and reports
+a number is measuring the wrong thing.
+
+**The eyebrow count was a symptom and the diagnosis was wrong.** The practical
+band's kicker was not a surplus label. `practicalH` — "Where it is, and when." —
+had been written in both languages and **never rendered**, so a mono kicker was
+standing in for a missing headline. Restored 2026-08-19, above the grid rather
+than inside the left column, because it names both halves.
+
+**And the band had the void design.md § Rhythm warns about.** `sm:items-start`
+on a grid whose left column is three short lines and whose right column is three
+rows plus a link dumped the whole height difference into one hole of empty
+yellow at the bottom left — about 200px at 768, still ~140px at 1280. Enrique
+read it as a tablet-only problem; it was not, it was just smallest where he
+looked. Fixed with `sm:items-center`, which splits the space above and below.
+
+A width-conditional heading was considered and rejected. **Never show or hide
+copy by breakpoint on this site.** Google crawls mobile-first, so a heading that
+appears only from `sm` up is a heading the crawler never reads, on the section
+that carries the address. Nothing else here changes what it says by width — the
+nav collapses, but every link stays in the HTML at every width — so the one
+exception would read as a bug to the next session and get undone.
+
+Everything else left is content from Ray, hosting from Enrique, or one of the
+three jobs below.
 
 1. **`og:image`.** Every share of all ten addresses is a bare text card — no
    picture when Ray or a vendor posts a link. `park/entrance_sign.webp` is the
@@ -32,12 +76,17 @@ from Enrique, or one of the three jobs below.
 2. **`hallmark audit` across all ten addresses.** Nothing has been audited since
    the three pages were rebuilt, and the audit is what catches drift from
    design.md.
-3. **Decide whether Vendors keeps three dark surfaces.** It is the only page
-   that spends three; every other spends two. `hallmark audit` will flag it as
-   critical, so it wants an answer either way. See Open decisions.
+3. **Wire the two forms**, once Enrique settles where they should send. Both are
+   deliberately unwired and show a visible placeholder on submit.
 
 **Everything through 2026-08-19 is committed and pushed to `enrique`.** Working
 tree clean. Nothing is deployed and no host exists.
+
+**Bryan's branch moved on 2026-08-19** and this file's harvest notes point at the
+old commit. `origin/bryan` is now `04441ac`, two commits past the `17569a6`
+recorded below: "Update the events page" and one touching `deploy.yml` and the
+join page. He is actively working over there. Re-check before harvesting again,
+and remember `main` auto-deploys.
 
 ## Where we are
 
@@ -46,8 +95,9 @@ Events, Contact, plus chrome. Vendors was the last one, built 2026-08-16.
 
 Home is the reference for how the site should look, and what that means is
 written out under "What Home looks like now, and why". **Únete was brought up to
-it 2026-08-18, Events with it, and Contact on 2026-08-19.** All five pages now
-pass the seven-point checklist.
+it 2026-08-18, Events with it, Contact on 2026-08-19, and Vendors the same
+day** — Vendors predated the checklist and had never been scored. All five pass
+it now.
 
 ## Built and verified
 
@@ -612,14 +662,12 @@ _above_, so the two do not read as one band repeated.
    before delivery. Target is "food cart space for rent salem".
 4. **Display face — leaning Archivo Black, not closed.** Anton stays wired:
    `document.documentElement.dataset.display = 'anton'`.
-5. **Vendors spends three dark surfaces and the system allows two.**
-   `src/index.css` rations dark to the hero scrim and the footer, amended
-   2026-08-12 after four dark bands in a row made a daytime family park look
-   like a whisky bar. Vendors adds the Únete door on `ground="night"`, which is
-   a third. Not changed unilaterally — the door was built and approved that way,
-   and `hallmark audit` will flag it as critical against design.md, so it wants
-   a decision either way. The two bands added 2026-08-18 are both light because
-   of this.
+5. ~~**Vendors spends three dark surfaces and the system allows two.**~~
+   **Resolved 2026-08-19.** Enrique's call: the Únete door came off
+   `ground="night"` and onto cream over a hairline, which is how Events and
+   Contact already close. Vendors is back to two, the ration in `src/index.css`,
+   and every interior page now ends the same way. The two bands added
+   2026-08-18 were already light for the same reason.
 6. **Form destination.** Undecided, so both forms are deliberately unwired and
    show a visible placeholder on submit.
 7. **The story section on Home.** Deliberately plain, most likely to be replaced
@@ -881,13 +929,20 @@ pass here before.
 ## Blocked on Ray
 
 Everything here is one text message. Placeholders render as visible brackets;
-run `npm run pending` (17 at last count, down from 23).
+run `npm run pending` (15 at last count, down from 23).
 
 - Site phone, site email — **launch blockers**, not nice-to-haves. Shepard
   counts contact information as a positive signal, and visible `[PENDIENTE]`
   brackets on a public page are a trust defect.
-- Instagram, Facebook, TikTok handles — these are `sameAs` entity
-  disambiguation, not decoration.
+- ~~Instagram, Facebook~~ — supplied by Enrique 2026-08-19 and wired, including
+  into `sameAs`. **TikTok is still missing**, and the client context says the
+  account exists (it is in the Square site's footer), so it is worth asking for
+  by name rather than assuming there is none.
+- **Tell Ray his Facebook page has no username.** Its address is the numeric
+  `/p/...-61584137473837/` form Facebook serves until an owner sets a vanity
+  URL. It is harder to find, it cannot be spoken aloud, and it reads as
+  unfinished. Setting one is thirty seconds in his page settings, and it changes
+  the URL — so the value in `site.ts` has to be updated the day he does it.
 - Stall size, what is included, reply time
 - A truck photo for **Pupusas Chileros** — the last one missing. Three rules:
   shoot straight on, whole truck in frame, leave room around it for cropping.
@@ -995,6 +1050,21 @@ section above, and the rule in `CLAUDE.md`.
 **A bilingual QA pass that checks layout will not catch a word doing two jobs
 in one language.** Spanish escaped the "open" collision because `abierto` and
 `libre` are different words. Layout parity is not copy parity.
+
+**Nor will it catch copy that renders to nobody.** Home's event cards shipped
+`sr-only` "When" and "Where" in English on the Spanish page, three times each,
+from the day they were built until 2026-08-19. A screenshot cannot show it and a
+sighted reader cannot see it. `EventCard` now takes `whenLabel`/`whereLabel` the
+way it already took `pastLabel`. **Grep `sr-only`, `aria-label` and `alt=` when
+checking a page's Spanish.** Rule added to `CLAUDE.md`.
+
+**Two pages made different claims about the same nine trucks.** Home's story
+said most had been there over a year; Únete's lede said every one of them had.
+Settled on "most" in both, 2026-08-19, Enrique's call. The client context
+supports the year in general terms but not vendor by vendor, and the stronger
+sentence sat on the page a truck owner reads to decide whether to trust us.
+**When two pages state the same fact differently, the weaker claim wins unless
+someone has actually counted.**
 
 **`npm run pending` is a grep over source.** A code comment that quotes the
 placeholder helper by name registers as an unfilled placeholder that renders

@@ -64,9 +64,19 @@ shared address the Spanish half of the site is never indexed.
   both things a clause apart. Spanish mostly escaped it because `abierto` and
   `libre` are different words, which is exactly why a bilingual QA pass that
   only checks layout will not catch this class of bug.
-- **State both counts wherever either appears.** 9 filled and 6 free, never one
-  alone. A bare fraction invites being read as a ratio of occupancy, and the two
-  numbers only make sense against each other.
+- **State both counts wherever the vacancy number appears.** 9 filled and 6
+  free, never the 6 alone. A bare fraction invites being read as a ratio of
+  occupancy, and the two numbers only make sense against each other. This is
+  **not** a rule that every mention of "9 kitchens" needs the 6 beside it —
+  Home's headline and the Vendors lede say nine on its own and are correct.
+- **Check the text nobody sees, too.** `sr-only` spans, `aria-label`s and
+  `alt` text are copy, and they are the copy a Spanish page is most likely to
+  ship in English — three of them did, on Home, until 2026-08-19. Nothing looks
+  wrong, because they render to no one with working sight, so a screenshot pass
+  in both languages cannot catch them. Grep `sr-only`, `aria-label` and `alt=`
+  when checking a page's Spanish. Components hold no language of their own:
+  every string a component speaks is passed in by the page, the way
+  `EventCard`'s `pastLabel`, `whenLabel` and `whereLabel` are.
 
 ## `src/lib/routes.ts` is the only place addresses live
 

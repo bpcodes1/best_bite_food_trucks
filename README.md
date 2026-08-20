@@ -101,8 +101,9 @@ In short: **all five pages are built in both languages** — Home, Vendors,
 
 Home is the reference for how the rest of the site looks, and what that means is
 written out in STATUS.md under "What Home looks like now, and why", including the
-seven-point checklist a page is scored against. **All five pages pass it** as of
-2026-08-19.
+seven-point checklist a page is scored against. Home, Únete, Events and Contact
+pass it. **Vendors predates the checklist, was never scored, and fails three** —
+STATUS.md § START HERE has the counts.
 
 Nothing is deployed anywhere. There is no host and no domain yet; see
 [STATUS.md](STATUS.md) for the setup order and the two traps in it.

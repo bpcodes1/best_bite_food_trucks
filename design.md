@@ -186,11 +186,26 @@ form labels — not as a section-head tic. A page where every section opens with
 an uppercase mono kicker reads as "a list of labelled lists", which is a named
 AI tell. Keep an eyebrow only where it does work the heading cannot: a locator
 ("Food truck park · Salem, OR") or a scanning label ("Nuestra historia").
-Únete, Events, and Contact predate this rule and still violate it — they get
-the same pass Home got.
+Únete, Events and Contact predated this rule and were brought into line
+2026-08-18 and 2026-08-19; Vendors followed on 2026-08-19. No page violates it
+now.
+
+**Count what a kicker is standing in for before you cut it.** Vendors read as
+one eyebrow over the cap, and the eyebrow was not the fault: the section's
+heading had been written and never rendered, so the kicker was carrying the
+headline's job. Cutting it would have left the band with neither. A surplus
+label is sometimes a missing heading wearing a smaller font.
 
 **The arrow glyph (→) appears on at most two CTAs per page** — the primary
 action and the door. An arrow on every button is a tic, not an affordance.
+
+**Amended 2026-08-19: count CTAs of comparable weight, not glyphs.** Contact
+broke this rule properly — three arrows on three buttons of identical weight,
+so none of them marked anything. Vendors carries three and does not: two are
+underlined mono text links and the third is the solid door button, which is
+still plainly the loudest thing in the section. Enrique reviewed it rendered and
+kept it. A grep for `→` returning three is not a finding on its own; look at
+what the three are attached to.
 
 **Dark is a section, never the ground — and it is now rationed.** Amended
 2026-08-12: Enrique's read was that the site leaned too brown and black, and he
@@ -388,11 +403,9 @@ we checked turned out to be English-only. This section is ours, not extracted.
 1. **The display face.** Leaning Archivo Black, not closed. Anton stays wired
    and switchable in dev via `document.documentElement.dataset.display =
 'anton'`, so the comparison can be shown rather than described.
-2. **Vendors spends three dark surfaces and this system allows two.** The hero
-   scrim, the Únete door on `ground="night"`, and the footer. Every other page
-   spends two. Not changed unilaterally because the door was built and approved
-   that way, but `hallmark audit` will flag it as critical against this file, so
-   it wants a decision either way.
+2. ~~**Vendors spends three dark surfaces and this system allows two.**~~
+   Resolved 2026-08-19: the Únete door moved to cream over a hairline, matching
+   how Events and Contact close. Every page spends two.
 
 Resolved and folded into the tables above: Únete's tone (utilitarian, built),
 Home's macrostructure (appetite-led brochure, 2026-08-12), the component

@@ -85,6 +85,19 @@ see "Bryan's build is live" below.)
 from Ray. Its card carries the logo wash panel and holds its shape, which is
 exactly what that treatment exists for. Eight of nine cards have a photograph.
 
+### Three assets are now orphaned, and one of them by today's work
+
+Nothing imports `best_bite_inside.jpeg`, `events/cruise_into_the_school_year.png`
+or `events/back_to_school_cruise_full.webp`. Vite only bundles what is imported,
+so none of them ship — they are repo weight, not page weight.
+
+**The last one was orphaned by the Events rebuild on 2026-08-19.** It was kept as
+a deliberate second copy of a flyer Home already had, because Home's `focus`
+value is tuned to a nearly-square crop and this one is portrait. The lineup now
+uses the cruise _photograph_ instead of the flyer, so that reasoning is void.
+Recorded here so nobody reinstates it from `docs/build-log.md`, where the old
+justification still stands unqualified.
+
 ### Never publish these
 
 - **`park/park_sign.webp`** — the uncropped park sign. Its vendor board lists

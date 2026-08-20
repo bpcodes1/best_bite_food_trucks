@@ -196,6 +196,12 @@ layout ideas from it; keep our type, our yellow, our masthead.
   `npm run preview`.
 - Never call a visual change done from code alone. Screenshot at 375 and 768,
   **in both languages.**
+- **Crop before you look.** A full-page capture of this site runs 4,000–6,000px
+  tall. Viewing one costs a large amount of context and shows nothing legible,
+  because it has to be scaled to fit — so you pay for the big picture, learn
+  nothing, then crop and pay again. Capture full-page if you like, but `extract`
+  the section you are judging before viewing it. The exception is checking
+  overall page rhythm, which is the one thing the scaled-down version does show.
 - **Screenshot through the DevTools Protocol, not `--window-size`.** Headless
   Chrome's `--window-size` is not a viewport: it renders at Chrome's default
   minimum layout width and produces pictures of bugs that do not exist. Use

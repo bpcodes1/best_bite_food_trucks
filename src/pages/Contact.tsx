@@ -9,6 +9,9 @@ const inputClassName =
 const labelClassName = 'block text-sm font-bold text-brand-black';
 
 const WEB3FORMS_ACCESS_KEY = '3ff547eb-7d0b-4f4d-85f6-92839b042d1f';
+const EMAIL_PATTERN = '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}';
+const NAME_MAX_LENGTH = 100;
+const MESSAGE_MAX_LENGTH = 1000;
 
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -22,6 +25,14 @@ export function Contact() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+
+    // Honeypot: real visitors never see or fill this field, so a filled-in
+    // value means a bot submitted the form. Bail out without hitting the API.
+    if (formData.get('botcheck')) {
+      setStatus('idle');
+      return;
+    }
+
     formData.append('access_key', WEB3FORMS_ACCESS_KEY);
     formData.append('subject', 'New contact message — Best Bite Food Park');
 
@@ -50,6 +61,15 @@ export function Contact() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[2fr_1fr]">
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ display: 'none' }}
+            />
+
             <div>
               <label htmlFor="contact-name" className={labelClassName}>
                 {t.contactPage.nameLabel}
@@ -60,6 +80,7 @@ export function Contact() {
                 type="text"
                 autoComplete="name"
                 required
+                maxLength={NAME_MAX_LENGTH}
                 className={inputClassName}
               />
             </div>
@@ -74,6 +95,8 @@ export function Contact() {
                 type="email"
                 autoComplete="email"
                 required
+                pattern={EMAIL_PATTERN}
+                title="Enter a valid email address (e.g. name@example.com)"
                 className={inputClassName}
               />
             </div>
@@ -108,6 +131,7 @@ export function Contact() {
                 name="message"
                 rows={5}
                 required
+                maxLength={MESSAGE_MAX_LENGTH}
                 className={inputClassName}
               />
             </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { FormEvent } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 import { useLanguage } from '../../i18n/useLanguage';
 import { parkInfo } from '../../data/parkInfo';
 
@@ -8,12 +8,21 @@ const inputClassName =
 const labelClassName = 'block text-sm font-bold text-brand-black';
 
 const WEB3FORMS_ACCESS_KEY = '3520713f-fc91-4818-a5e3-a6b6ee2df6be';
+const EMAIL_PATTERN = '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}';
+const NAME_MAX_LENGTH = 100;
+const BUSINESS_MAX_LENGTH = 100;
+const MESSAGE_MAX_LENGTH = 1000;
 
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 export function LeaseInquiryForm() {
   const { t } = useLanguage();
   const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [phone, setPhone] = useState('');
+
+  function handlePhoneChange(event: ChangeEvent<HTMLInputElement>) {
+    setPhone(event.target.value.replace(/\D/g, '').slice(0, 10));
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -21,6 +30,14 @@ export function LeaseInquiryForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+
+    // Honeypot: real visitors never see or fill this field, so a filled-in
+    // value means a bot submitted the form. Bail out without hitting the API.
+    if (formData.get('botcheck')) {
+      setStatus('idle');
+      return;
+    }
+
     formData.append('access_key', WEB3FORMS_ACCESS_KEY);
     formData.append('subject', 'New lease inquiry — Best Bite Food Park');
 
@@ -34,6 +51,7 @@ export function LeaseInquiryForm() {
       if (data.success) {
         setStatus('success');
         form.reset();
+        setPhone('');
       } else {
         setStatus('error');
       }
@@ -56,6 +74,15 @@ export function LeaseInquiryForm() {
         <p className="mt-1 text-sm font-bold text-brand-black/70">{t.joinPage.formReassurance}</p>
 
         <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
+          <input
+            type="checkbox"
+            name="botcheck"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ display: 'none' }}
+          />
+
           <div>
             <label htmlFor="lease-name" className={labelClassName}>
               {t.joinPage.nameLabel}
@@ -66,6 +93,7 @@ export function LeaseInquiryForm() {
               type="text"
               autoComplete="name"
               required
+              maxLength={NAME_MAX_LENGTH}
               className={inputClassName}
             />
           </div>
@@ -79,6 +107,7 @@ export function LeaseInquiryForm() {
               name="business"
               type="text"
               required
+              maxLength={BUSINESS_MAX_LENGTH}
               className={inputClassName}
             />
           </div>
@@ -94,6 +123,8 @@ export function LeaseInquiryForm() {
                 type="email"
                 autoComplete="email"
                 required
+                pattern={EMAIL_PATTERN}
+                title="Enter a valid email address (e.g. name@example.com)"
                 className={inputClassName}
               />
             </div>
@@ -106,8 +137,14 @@ export function LeaseInquiryForm() {
                 id="lease-phone"
                 name="phone"
                 type="tel"
+                inputMode="numeric"
                 autoComplete="tel"
                 required
+                pattern="\d{10}"
+                title="Enter a 10-digit phone number"
+                maxLength={10}
+                value={phone}
+                onChange={handlePhoneChange}
                 className={inputClassName}
               />
             </div>
@@ -122,6 +159,7 @@ export function LeaseInquiryForm() {
               name="message"
               rows={5}
               required
+              maxLength={MESSAGE_MAX_LENGTH}
               className={inputClassName}
             />
           </div>

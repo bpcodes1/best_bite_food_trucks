@@ -1,11 +1,13 @@
 import pupusasChilerosTruck from '../assets/food_trucks/pupusas_chileros.jpg';
+import queRollonSushiTruck from '../assets/food_trucks/que_rollon_sushi.jpg';
+import queRollonSushiLogo from '../assets/food_trucks/que_rollon_sushi_logo.jpg';
 import cafeChulaTruck from '../assets/food_trucks/cafe_chula_truck.jpg';
 import cafeChulaLogo from '../assets/food_trucks/cafe_chula_logo.png';
 import tortilleriaElPatronTruck from '../assets/food_trucks/tortilleria_el_patron_truck.jpg';
 import tortilleriaElPatronLogo from '../assets/food_trucks/tortilleria_el_patron_logo.png';
 import elChilangoTruck from '../assets/food_trucks/el_chilango_truck.jpg';
 import elChilangoLogo from '../assets/food_trucks/el_chilango_logo.jpg';
-import lasCuatasLokasTruck from '../assets/food_trucks/las_cuatas_lokas.webp';
+import lasCuatasLokasTruck from '../assets/food_trucks/las_cuatas_lokas.jpg';
 import lasCuatasLokasLogo from '../assets/food_trucks/las_cuatas_lokas_logo.png';
 import lasJarochitasTruck from '../assets/food_trucks/las_jarochitas.webp';
 import lasJarochitasLogo from '../assets/food_trucks/las_jarochitas_logo.jpg';
@@ -25,7 +27,8 @@ export type TruckCategory =
   | 'dessert'
   | 'salvadoran'
   | 'middle-eastern'
-  | 'seafood';
+  | 'seafood'
+  | 'japanese';
 
 export const CATEGORIES: { id: TruckCategory; label: { en: string; es: string } }[] = [
   { id: 'mexican', label: { en: 'Mexican', es: 'Mexicana' } },
@@ -35,6 +38,7 @@ export const CATEGORIES: { id: TruckCategory; label: { en: string; es: string } 
   { id: 'salvadoran', label: { en: 'Salvadoran', es: 'Salvadoreña' } },
   { id: 'middle-eastern', label: { en: 'Middle Eastern', es: 'Medio Oriente' } },
   { id: 'seafood', label: { en: 'Seafood', es: 'Mariscos' } },
+  { id: 'japanese', label: { en: 'Japanese', es: 'Japonesa' } },
 ];
 
 export interface Truck {
@@ -143,6 +147,15 @@ export const trucks: Truck[] = [
     foodType: { en: 'Pupusas & Salvadoran food', es: 'Pupusas y comida salvadoreña' },
     hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
     image: pupusasChilerosTruck,
+  },
+  {
+    id: 'que-rollon-sushi',
+    name: 'Que Rollon Sushi',
+    category: 'japanese',
+    foodType: { en: 'Sushi & Japanese rolls', es: 'Sushi y rollos japoneses' },
+    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    image: queRollonSushiTruck,
+    logo: queRollonSushiLogo,
   },
   {
     id: 'syrian-house',

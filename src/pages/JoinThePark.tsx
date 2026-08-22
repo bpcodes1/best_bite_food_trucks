@@ -15,9 +15,9 @@ export function JoinThePark() {
   return (
     <>
       <PageHero
-        eyebrow={t.joinPage.eyebrow}
         heading={t.joinPage.heading}
         intro={t.joinPage.intro}
+        hideIntroOnMobile
         cta={{ label: t.joinPage.ctaLabel, href: '#lease-form' }}
         ctaMicrocopy={t.joinPage.ctaMicrocopy}
       />

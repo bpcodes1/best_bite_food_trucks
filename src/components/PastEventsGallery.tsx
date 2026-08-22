@@ -93,12 +93,7 @@ export function PastEventsGallery() {
                 style={{ flexGrow: photo.displayRatio, flexBasis: 0 }}
                 className="relative min-h-0 overflow-hidden rounded-lg border border-brand-black/10"
               >
-                <img
-                  src={photo.src}
-                  alt=""
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
+                <img src={photo.src} alt="" loading="lazy" className="h-full w-full object-cover" />
                 <span className="absolute bottom-2 right-2 rounded bg-brand-black/50 px-1.5 py-0.5 text-xs font-bold text-white">
                   {photo.label}
                 </span>

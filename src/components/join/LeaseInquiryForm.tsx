@@ -7,18 +7,39 @@ const inputClassName =
   'mt-1 w-full rounded-md border border-brand-black/20 bg-white px-3 py-2 text-brand-black focus:border-brand-black focus:outline-none';
 const labelClassName = 'block text-sm font-bold text-brand-black';
 
+const WEB3FORMS_ACCESS_KEY = '3520713f-fc91-4818-a5e3-a6b6ee2df6be';
+
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
+
 export function LeaseInquiryForm() {
   const { t } = useLanguage();
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<SubmitStatus>('idle');
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // This form isn't wired up to a backend yet — it just confirms locally.
-    // Before launch, point it at a real submission endpoint (e.g. a Cloudflare
-    // Pages Function or a form service like Formspree) so inquiries actually
-    // reach the park.
-    setSubmitted(true);
-    event.currentTarget.reset();
+    setStatus('submitting');
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+    formData.append('subject', 'New lease inquiry — Best Bite Food Park');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   }
 
   return (
@@ -107,13 +128,19 @@ export function LeaseInquiryForm() {
 
           <button
             type="submit"
-            className="mt-2 inline-block self-start rounded-md bg-brand-yellow px-8 py-3 font-heading font-bold text-brand-black transition-colors hover:bg-brand-yellow-dark"
+            disabled={status === 'submitting'}
+            className="mt-2 inline-block self-start rounded-md bg-brand-yellow px-8 py-3 font-heading font-bold text-brand-black transition-colors hover:bg-brand-yellow-dark disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {t.joinPage.submitCta}
+            {status === 'submitting' ? t.joinPage.sendingCta : t.joinPage.submitCta}
           </button>
 
-          <p role="status" aria-live="polite" className="text-sm font-bold text-brand-black">
-            {submitted ? t.joinPage.successMessage : ''}
+          <p
+            role="status"
+            aria-live="polite"
+            className={`text-sm font-bold ${status === 'error' ? 'text-red-600' : 'text-brand-black'}`}
+          >
+            {status === 'success' && t.joinPage.successMessage}
+            {status === 'error' && t.joinPage.errorMessage}
           </p>
         </form>
 

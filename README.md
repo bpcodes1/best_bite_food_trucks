@@ -1,8 +1,6 @@
 # Best Bite Food Park
 
-React + TypeScript skeleton for the Best Bite Food Park website. Page content has not
-been added yet — this sets up the app shell, routing, and tooling so content can be
-dropped into each page as it becomes available.
+React + TypeScript site for the Best Bite Food Park website.
 
 ## Stack
 
@@ -57,13 +55,13 @@ that file plus the route/page wiring in `App.tsx`.
 4. Join the Park (`/join-the-park`)
 5. Contact (`/contact`)
 
-Each page currently renders a placeholder via `src/components/PagePlaceholder.tsx`.
-Replace the contents of each file in `src/pages/` with real content as it's provided.
-
 ## Notes / follow-ups
 
-- `src/assets/logo.png` is a large (~1MB) source file reused as the favicon. Before
-  launch, generate optimized/compressed variants (and a proper multi-size favicon) from
-  the source logo.
+- `src/assets/logo.png` (also duplicated at `public/logo.png` and `public/favicon.png`)
+  is a large (~1MB) source file reused as the favicon and social preview image. Generate
+  optimized/compressed variants (and a proper multi-size favicon) from the source logo.
+- Several photo assets in `src/assets/` are multiple megabytes (`decoration.jpg`,
+  `cleaning_station.jpg`, `best_bite_sign2.jpg`, `best_bite_inside.jpeg`,
+  `bathrooms.jpg`, and a few food truck logos) — compress these before launch.
 - Brand colors are defined as Tailwind theme tokens in `src/index.css`
   (`brand-yellow`, `brand-black`) — adjust once official brand colors are confirmed.

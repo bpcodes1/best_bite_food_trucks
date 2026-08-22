@@ -69,7 +69,10 @@ export function TrustBar() {
   ];
 
   return (
-    <section aria-label={t.trustBar.heading} className="border-b border-brand-black/10 bg-brand-yellow">
+    <section
+      aria-label={t.trustBar.heading}
+      className="border-b border-brand-black/10 bg-brand-yellow"
+    >
       <div className="mx-auto max-w-6xl px-4 py-4">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:divide-x sm:divide-brand-black/10">
           {badges.map(({ key, icon: Icon, label }) => (

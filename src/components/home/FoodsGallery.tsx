@@ -4,7 +4,7 @@ import { FanGallery } from '../FanGallery';
 
 export function FoodsGallery() {
   const { lang, t } = useLanguage();
-  const fanFoods = foods.filter((food) => food.image).slice(0, 5);
+  const fanFoods = foods.filter((food) => food.image).slice(0, 6);
   const fanImages = fanFoods.map((food) => food.image!);
   const fanAltTexts = fanFoods.map((food) => food.name[lang]);
 

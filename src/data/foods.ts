@@ -1,8 +1,9 @@
-import tacosImage from '../assets/tacos.webp';
-import coffeeImage from '../assets/coffee.webp';
-import pupusasImage from '../assets/pupusas.png';
-import mariscosImage from '../assets/mariscos.webp';
-import ribsImage from '../assets/ribs.webp';
+import tacosImage from '../assets/food_carousel/tacos.webp';
+import coffeeImage from '../assets/food_carousel/coffee.webp';
+import pupusasImage from '../assets/food_carousel/pupusas.png';
+import mariscosImage from '../assets/food_carousel/mariscos.webp';
+import ribsImage from '../assets/food_carousel/ribs.webp';
+import sandwichImage from '../assets/food_carousel/sandwich.jpg';
 
 export interface FoodItem {
   id: string;
@@ -17,7 +18,7 @@ export interface FoodItem {
 
 export const foods: FoodItem[] = [
   { id: 'tacos', name: { en: 'Tacos', es: 'Tacos' }, image: tacosImage },
-  { id: 'tortas', name: { en: 'Tortas', es: 'Tortas' } },
+  { id: 'tortas', name: { en: 'Tortas', es: 'Tortas' }, image: sandwichImage },
   { id: 'elote', name: { en: 'Elote', es: 'Elote' } },
   { id: 'tamales', name: { en: 'Tamales', es: 'Tamales' } },
   { id: 'quesadillas', name: { en: 'Quesadillas', es: 'Quesadillas' } },

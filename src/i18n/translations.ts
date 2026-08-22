@@ -82,6 +82,8 @@ export interface Translations {
     jumpToToday: string;
     scheduledHeading: string;
     noScheduledEvents: string;
+    recentEventHeading: string;
+    recentEventName: string;
     holdEventHeading: string;
     holdEventBody: string;
     holdEventCta: string;
@@ -100,7 +102,9 @@ export interface Translations {
     reasonOther: string;
     messageLabel: string;
     submitCta: string;
+    sendingCta: string;
     successMessage: string;
+    errorMessage: string;
     directLabel: string;
   };
   joinPage: {
@@ -134,7 +138,9 @@ export interface Translations {
     phoneLabel: string;
     messageLabel: string;
     submitCta: string;
+    sendingCta: string;
     successMessage: string;
+    errorMessage: string;
     instagramCta: string;
   };
 }
@@ -158,7 +164,7 @@ export const translations: Record<Lang, Translations> = {
     },
     trustBar: {
       heading: 'Why Visit',
-      trucks: '9 Food Trucks',
+      trucks: '12 Food Trucks',
       friendly: 'Family & Pet Friendly',
       music: 'Live Music Monthly',
       parking: 'Free Parking',
@@ -226,6 +232,8 @@ export const translations: Record<Lang, Translations> = {
       jumpToToday: 'Today',
       scheduledHeading: 'Scheduled',
       noScheduledEvents: 'No events scheduled this month.',
+      recentEventHeading: 'Most Recent Event',
+      recentEventName: 'Back to School',
       holdEventHeading: 'Want to Hold an Event at Best Bite Food Park?',
       holdEventBody:
         'From birthday parties to community fundraisers, our park is a great spot to gather. Reach out and let us know what you have in mind.',
@@ -246,14 +254,17 @@ export const translations: Record<Lang, Translations> = {
       reasonOther: 'Something else',
       messageLabel: 'Message',
       submitCta: 'Send message',
+      sendingCta: 'Sending…',
       successMessage: 'Thanks! Your message has been received — we will get back to you soon.',
+      errorMessage:
+        'Something went wrong sending your message — please try again or reach us directly.',
       directLabel: 'Prefer to reach us directly?',
     },
     joinPage: {
       eyebrow: 'Lease a space · Salem, OR',
-      heading: 'Month to Month. Leave Any Time.',
+      heading: 'Month to Month Flexibility.',
       intro:
-        '9 food trucks are already open at Best Bite, most of them for more than a year. Right now, 6 of 15 spaces are open.',
+        '12 food trucks are already open at Best Bite, most of them for more than a year. Right now, 6 of 15 spaces are open.',
       ctaLabel: 'Ask about a space →',
       ctaMicrocopy: '4 questions · 2 minutes · no commitment',
       availabilityOf: 'of',
@@ -329,7 +340,10 @@ export const translations: Record<Lang, Translations> = {
       phoneLabel: 'Phone',
       messageLabel: 'Tell us about your truck',
       submitCta: 'Send inquiry',
+      sendingCta: 'Sending…',
       successMessage: 'Thanks! Your inquiry has been received — we will be in touch soon.',
+      errorMessage:
+        'Something went wrong sending your inquiry — please try again or message us on Instagram.',
       instagramCta: 'Or message us on Instagram',
     },
   },
@@ -351,7 +365,7 @@ export const translations: Record<Lang, Translations> = {
     },
     trustBar: {
       heading: 'Por Qué Visitarnos',
-      trucks: '9 Food Trucks',
+      trucks: '12 Food Trucks',
       friendly: 'Familiar y Apto para Mascotas',
       music: 'Música en Vivo Mensual',
       parking: 'Estacionamiento Gratis',
@@ -420,6 +434,8 @@ export const translations: Record<Lang, Translations> = {
       jumpToToday: 'Hoy',
       scheduledHeading: 'Programado',
       noScheduledEvents: 'No hay eventos programados este mes.',
+      recentEventHeading: 'Evento Más Reciente',
+      recentEventName: 'Regreso a Clases',
       holdEventHeading: '¿Quieres Realizar un Evento en Best Bite Food Park?',
       holdEventBody:
         'Desde fiestas de cumpleaños hasta recaudaciones de fondos comunitarias, nuestro parque es un gran lugar para reunirse. Contáctanos y cuéntanos qué tienes en mente.',
@@ -440,14 +456,17 @@ export const translations: Record<Lang, Translations> = {
       reasonOther: 'Otro',
       messageLabel: 'Mensaje',
       submitCta: 'Enviar mensaje',
+      sendingCta: 'Enviando…',
       successMessage: '¡Gracias! Tu mensaje fue recibido — te responderemos pronto.',
+      errorMessage:
+        'Algo salió mal al enviar tu mensaje — inténtalo de nuevo o contáctanos directamente.',
       directLabel: '¿Prefieres contactarnos directamente?',
     },
     joinPage: {
       eyebrow: 'Renta de espacio · Salem, OR',
-      heading: 'Mes a Mes. Te Vas Cuando Quieras.',
+      heading: 'Flexibilidad de Mes a Mes.',
       intro:
-        '9 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 6 de 15 espacios están libres.',
+        '12 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 6 de 15 espacios están libres.',
       ctaLabel: 'Pregunta por un espacio →',
       ctaMicrocopy: '4 preguntas · 2 minutos · sin compromiso',
       availabilityOf: 'de',
@@ -523,7 +542,10 @@ export const translations: Record<Lang, Translations> = {
       phoneLabel: 'Teléfono',
       messageLabel: 'Cuéntanos sobre tu truck',
       submitCta: 'Enviar solicitud',
+      sendingCta: 'Enviando…',
       successMessage: '¡Gracias! Tu solicitud fue recibida — nos pondremos en contacto pronto.',
+      errorMessage:
+        'Algo salió mal al enviar tu solicitud — inténtalo de nuevo o escríbenos por Instagram.',
       instagramCta: 'O escríbenos por Instagram',
     },
   },

@@ -53,7 +53,9 @@ export function EventsTeaser() {
           {upcomingEvents.map((event, index) => (
             <li key={event.id}>
               <EventListingCard
-                imageUrl={event.image ?? placeholderImage(event.name[lang], PLACEHOLDER_COLORS[index])}
+                imageUrl={
+                  event.image ?? placeholderImage(event.name[lang], PLACEHOLDER_COLORS[index])
+                }
                 name={event.name[lang]}
                 time={event.time[lang]}
                 description={event.description[lang]}

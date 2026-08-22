@@ -6,6 +6,7 @@ import { EventCard } from '../components/EventCard';
 import { EventCalendar } from '../components/EventCalendar';
 import { ScheduledEvents } from '../components/ScheduledEvents';
 import { PastEventsGallery } from '../components/PastEventsGallery';
+import { RecentEventGallery } from '../components/RecentEventGallery';
 import { PageHero } from '../components/PageHero';
 import { ROUTES } from '../lib/routes';
 import holdEventImage from '../assets/best_bite_sign2.jpg';
@@ -60,6 +61,8 @@ export function Events() {
             />
           </div>
         </div>
+
+        <RecentEventGallery />
 
         <PastEventsGallery />
 

@@ -3,6 +3,8 @@ import heroImage from '../assets/best_bite_inside.jpeg';
 interface PageHeroProps {
   heading: string;
   intro?: string;
+  /** Hides the intro paragraph on mobile (shown again at sm: and up). */
+  hideIntroOnMobile?: boolean;
   /** Small uppercase label shown above the heading, e.g. "Lease a space · Salem, OR". */
   eyebrow?: string;
   cta?: { label: string; href: string };
@@ -10,7 +12,14 @@ interface PageHeroProps {
   ctaMicrocopy?: string;
 }
 
-export function PageHero({ heading, intro, eyebrow, cta, ctaMicrocopy }: PageHeroProps) {
+export function PageHero({
+  heading,
+  intro,
+  hideIntroOnMobile,
+  eyebrow,
+  cta,
+  ctaMicrocopy,
+}: PageHeroProps) {
   return (
     <section className="relative isolate flex min-h-72 items-end overflow-hidden sm:min-h-96">
       <img src={heroImage} alt="" className="absolute inset-0 h-full w-full object-cover" />
@@ -23,8 +32,14 @@ export function PageHero({ heading, intro, eyebrow, cta, ctaMicrocopy }: PageHer
             {eyebrow}
           </p>
         )}
-        <h1 className="mt-1 font-heading text-3xl font-bold text-white sm:text-4xl">{heading}</h1>
-        {intro && <p className="mt-2 max-w-2xl text-white/80">{intro}</p>}
+        <h1 className="mt-1 font-heading text-2xl font-bold text-white sm:text-4xl">{heading}</h1>
+        {intro && (
+          <p
+            className={`mt-2 max-w-2xl text-white/80 ${hideIntroOnMobile ? 'hidden sm:block' : ''}`}
+          >
+            {intro}
+          </p>
+        )}
 
         {cta && (
           <div className="mt-6 flex flex-col items-start gap-2">

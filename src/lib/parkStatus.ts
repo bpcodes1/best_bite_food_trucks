@@ -113,11 +113,3 @@ export function formatEventDate(dateIso: string, lang: Lang): string {
     day: 'numeric',
   }).format(date);
 }
-
-/** Past events (date before today), most recent first. */
-export function getPastEvents(now: Date = new Date()): EventItem[] {
-  const todayIso = toLocalIsoDate(now);
-  return events
-    .filter((event) => event.date < todayIso)
-    .sort((a, b) => b.date.localeCompare(a.date));
-}

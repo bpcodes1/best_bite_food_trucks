@@ -21,8 +21,10 @@ A word on "shipped" in this file: it means built and committed to `enrique`.
 
 ## START HERE NEXT SESSION
 
-Everything through 2026-08-19 is committed and pushed to `enrique`. Working tree
-clean. All five pages pass the seven-point checklist below.
+**Everything is committed and pushed. `enrique` is at `c2cb820`, matching
+`origin/enrique`, working tree clean.** All five pages pass the seven-point
+checklist below. `dist/` has 11 HTML files, 16 tests pass, lint clean,
+`npm run shots` reports no overflow in either language.
 
 Three jobs left that are ours rather than Ray's or Enrique's:
 
@@ -446,3 +448,23 @@ dates, the copy — each time on Enrique's explicit say-so. Keep that pattern.
 8. ~~Confirm the Contact map paints in a real browser~~ — confirmed by Enrique
    2026-08-19. It paints. The empty box in screenshots is `npm run shots` not
    waiting for remote iframes, not a site bug.
+
+## Proposed but not built: `npm run audit`
+
+**Does not exist. It is an idea, not a tool.** Raised 2026-08-20 and left
+undecided; roughly an hour of work. A script at `scripts/audit.mjs` beside
+`pending`, `images` and `shots`, catching the classes of defect this project
+keeps producing:
+
+- **Copy written but never rendered.** `practicalH` sat in both languages on
+  Vendors and reached no page; the mono kicker above it had been carrying the
+  headline's job. Needs real parsing of each page's `copy` object, not a grep —
+  a grep prototype flagged nine things and most were the data arrays, not copy.
+- **English inside a Spanish page.** Hardcoded strings in `sr-only`,
+  `aria-label` and `alt`. Home shipped two of them six times over.
+- **Orphaned assets.** A grep prototype found three and got it exactly right, so
+  this part is cheap.
+- **The checklist counts per page** — eyebrows, arrows, dark surfaces — as a
+  printed report and never a pass/fail. 2026-08-19 established that the arrow
+  rule needs judgement: three glyphs on Vendors was correct and three on Contact
+  was not, and no counter can tell those apart.

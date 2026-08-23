@@ -87,6 +87,27 @@ see "Bryan's build is live" below.)
 from Ray. Its card carries the logo wash panel and holds its shape, which is
 exactly what that treatment exists for. Eight of nine cards have a photograph.
 
+### Provenance of the four event photographs is UNVERIFIED
+
+`cruise_lowriders`, `easter_egg_hunt`, `hall_christmas` and `loteria` all came
+off `origin/bryan` on 2026-08-19 and are all on the Events page now. **Nobody has
+confirmed who shot them.** They are 1320px on the long edge, which is Instagram's
+export width, so the likeliest story is that Bryan downloaded them from the
+park's own account rather than taking them himself. The three park photographs
+beside them in the grid are different: `wagon_planter` is a 4284×5712 iPhone
+original and the two tent shots came out of Enrique's own 2026-08-17 set.
+
+This matters because the 2026-08-18 harvest was verified deliberately — Enrique
+confirmed Bryan shot those, and each truck was matched against its own signage
+rather than against a filename, on the rule that **a filename is a claim and not
+evidence.** The same check was not run here.
+
+It is very likely fine: they are Ray's own marketing either way, and the site is
+Ray's. But "very likely fine" is what the rule exists to stop. **Ask Enrique
+whether Bryan shot these or pulled them**, and if pulled, that is one more reason
+to ask Ray for originals — the downloads are compressed and one of them needed a
+caption cropped off.
+
 ### Three assets are now orphaned, and one of them by today's work
 
 Nothing imports `best_bite_inside.jpeg`, `events/cruise_into_the_school_year.png`

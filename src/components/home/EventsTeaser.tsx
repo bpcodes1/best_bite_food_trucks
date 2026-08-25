@@ -60,6 +60,7 @@ export function EventsTeaser() {
                 time={event.time[lang]}
                 description={event.description[lang]}
                 ctaLabel={t.eventsTeaser.viewAll}
+                dateTbdLabel={event.dateUnconfirmed ? t.eventsPage.dateTbd : undefined}
               />
             </li>
           ))}

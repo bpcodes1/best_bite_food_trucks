@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../i18n/useLanguage';
-import loteria from '../assets/events/loteria.jpg';
-import loteria2 from '../assets/events/loteria2.jpg';
-import easter from '../assets/events/easter.jpg';
-import easter2 from '../assets/events/easter2.jpg';
-import giveaway from '../assets/events/giveaway.jpg';
-import backToSchool from '../assets/events/back_to_school.jpg';
-import lowRiders from '../assets/events/low_riders.jpg';
-import jarochitas from '../assets/events/jarochitas.jpg';
-import mycelium from '../assets/events/mycelium.jpg';
-import christmas from '../assets/events/christmas.jpg';
+import loteria from '../assets/events/loteria.webp';
+import loteria2 from '../assets/events/loteria2.webp';
+import easter from '../assets/events/easter.webp';
+import easter2 from '../assets/events/easter2.webp';
+import giveaway from '../assets/events/giveaway.webp';
+import backToSchool from '../assets/events/back_to_school.webp';
+import lowRiders from '../assets/events/low_riders.webp';
+import jarochitas from '../assets/events/jarochitas.webp';
+import mycelium from '../assets/events/mycelium.webp';
+import christmas from '../assets/events/christmas.webp';
 
 // `packRatio` is each photo's natural height/width — it drives column
 // placement/balance only and should stay fixed so resizing a tile doesn't

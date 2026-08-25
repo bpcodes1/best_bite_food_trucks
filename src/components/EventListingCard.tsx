@@ -7,6 +7,8 @@ interface EventListingCardProps {
   time: string;
   description: string;
   ctaLabel: string;
+  /** Shows a "Date TBD" badge next to the time when the event's date is still a placeholder. */
+  dateTbdLabel?: string;
 }
 
 /**
@@ -22,6 +24,7 @@ export function EventListingCard({
   time,
   description,
   ctaLabel,
+  dateTbdLabel,
 }: EventListingCardProps) {
   return (
     <div className="mx-auto w-full max-w-[300px] rounded-2xl bg-white p-3 shadow-lg">
@@ -35,7 +38,14 @@ export function EventListingCard({
             <h3 className="line-clamp-2 font-heading text-base font-bold text-brand-black">
               {name}
             </h3>
-            <p className="mt-0.5 text-xs font-bold text-brand-yellow-dark">{time}</p>
+            <p className="mt-0.5 text-xs font-bold text-brand-yellow-dark">
+              {time}
+              {dateTbdLabel && (
+                <span className="ml-1.5 rounded bg-brand-black/80 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-white">
+                  {dateTbdLabel}
+                </span>
+              )}
+            </p>
           </div>
           <p className="line-clamp-4 text-xs text-brand-black/70">{description}</p>
 

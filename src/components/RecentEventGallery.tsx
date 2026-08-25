@@ -1,9 +1,9 @@
 import { useLanguage } from '../i18n/useLanguage';
-import cruisePoster from '../assets/events/cruise_into_the_school_year_full.jpg';
-import backToSchool from '../assets/recent_event/back_to_school.jpg';
-import facePainting from '../assets/recent_event/face_painting.jpg';
-import jewelry from '../assets/recent_event/jewelry.jpg';
-import lowRider from '../assets/recent_event/low_rider.jpg';
+import cruisePoster from '../assets/events/cruise_into_the_school_year_full.webp';
+import backToSchool from '../assets/recent_event/back_to_school.webp';
+import facePainting from '../assets/recent_event/face_painting.webp';
+import jewelry from '../assets/recent_event/jewelry.webp';
+import lowRider from '../assets/recent_event/low_rider.webp';
 
 const PHOTOS = [
   { src: backToSchool, label: 'Back to School' },

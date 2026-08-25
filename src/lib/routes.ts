@@ -13,6 +13,7 @@ export const ROUTES = {
   events: '/events',
   joinThePark: '/join-the-park',
   contact: '/contact',
+  privacyPolicy: '/privacy-policy',
 } as const;
 
 export const NAV_ROUTES: NavRoute[] = [

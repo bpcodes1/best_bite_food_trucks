@@ -1,8 +1,8 @@
 import { useLanguage } from '../../i18n/useLanguage';
-import indoorPhoto from '../../assets/best_bite_inside.jpeg';
+import indoorPhoto from '../../assets/best_bite_inside.webp';
 import outdoorPhoto from '../../assets/best_bite_outdoor.webp';
-import bathroomsPhoto from '../../assets/bathrooms.jpg';
-import cleaningStationPhoto from '../../assets/cleaning_station.jpg';
+import bathroomsPhoto from '../../assets/bathrooms.webp';
+import cleaningStationPhoto from '../../assets/cleaning_station.webp';
 
 export function DiningSection() {
   const { t } = useLanguage();

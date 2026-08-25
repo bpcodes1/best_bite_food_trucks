@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/best_bite_sign.jpg';
+import heroImage from '../assets/best_bite_sign.webp';
 import { useLanguage } from '../i18n/useLanguage';
 import { ROUTES } from '../lib/routes';
 

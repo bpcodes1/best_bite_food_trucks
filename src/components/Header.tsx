@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { NAV_ROUTES, ROUTES } from '../lib/routes';
 import { useLanguage } from '../i18n/useLanguage';
 import { LanguageToggle } from './LanguageToggle';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
 
 // Home is represented by the logo link, so it's excluded from the split nav groups.
 const secondaryRoutes = NAV_ROUTES.filter((route) => route.path !== ROUTES.home);
@@ -16,6 +16,33 @@ function navLinkClassName({ isActive }: { isActive: boolean }) {
     'rounded-md px-3 py-2 text-base font-bold transition-colors',
     isActive ? 'bg-brand-black text-brand-yellow' : 'text-brand-black hover:bg-brand-black/10',
   ].join(' ');
+}
+
+// Mobile menu links need a taller tap target (~44px) than the desktop nav's
+// tighter padding — this variant adds the extra height without touching the
+// shared desktop styling above.
+function mobileNavLinkClassName({ isActive }: { isActive: boolean }) {
+  return [
+    'flex min-h-11 items-center rounded-md px-3 text-base font-bold transition-colors',
+    isActive ? 'bg-brand-black text-brand-yellow' : 'text-brand-black hover:bg-brand-black/10',
+  ].join(' ');
+}
+
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-6 w-6"
+      aria-hidden="true"
+    >
+      {open ? <path d="M6 6l12 12M18 6l-12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
+    </svg>
+  );
 }
 
 export function Header() {
@@ -67,12 +94,13 @@ export function Header() {
 
             <button
               type="button"
-              className="rounded-md border border-brand-black/20 px-3 py-2 text-sm font-bold md:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-md border border-brand-black/20 text-brand-black md:hidden"
               aria-expanded={isMenuOpen}
               aria-controls="mobile-nav"
+              aria-label={isMenuOpen ? t.nav.menuClose : t.nav.menuOpen}
               onClick={() => setIsMenuOpen((open) => !open)}
             >
-              {isMenuOpen ? 'Close' : 'Menu'}
+              <MenuIcon open={isMenuOpen} />
             </button>
           </div>
         </div>
@@ -87,7 +115,7 @@ export function Header() {
                 <NavLink
                   to={route.path}
                   end={route.path === '/'}
-                  className={navLinkClassName}
+                  className={mobileNavLinkClassName}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t.nav[route.key]}

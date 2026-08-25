@@ -1,4 +1,4 @@
-import heroImage from '../assets/best_bite_inside.jpeg';
+import heroImage from '../assets/best_bite_inside.webp';
 
 interface PageHeroProps {
   heading: string;

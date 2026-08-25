@@ -7,13 +7,13 @@ interface EventCardProps {
 }
 
 export function EventCard({ event, highlighted }: EventCardProps) {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
     <li
       id={`event-${event.id}`}
       className={[
-        'scroll-mt-24 aspect-[3/4] w-full overflow-hidden rounded-lg border bg-brand-yellow/15 transition-shadow',
+        'relative scroll-mt-24 aspect-[3/4] w-full overflow-hidden rounded-lg border bg-brand-yellow/15 transition-shadow',
         highlighted
           ? 'border-brand-yellow-dark ring-2 ring-brand-yellow-dark'
           : 'border-brand-black/10',
@@ -34,6 +34,12 @@ export function EventCard({ event, highlighted }: EventCardProps) {
         >
           📅
         </div>
+      )}
+
+      {event.dateUnconfirmed && (
+        <span className="absolute left-2 top-2 rounded bg-brand-black/80 px-2 py-1 text-xs font-bold uppercase tracking-wide text-white">
+          {t.eventsPage.dateTbd}
+        </span>
       )}
     </li>
   );

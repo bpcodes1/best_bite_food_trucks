@@ -1,9 +1,9 @@
 import tacosImage from '../assets/food_carousel/tacos.webp';
 import coffeeImage from '../assets/food_carousel/coffee.webp';
-import pupusasImage from '../assets/food_carousel/pupusas.png';
+import pupusasImage from '../assets/food_carousel/pupusas.webp';
 import mariscosImage from '../assets/food_carousel/mariscos.webp';
 import ribsImage from '../assets/food_carousel/ribs.webp';
-import sandwichImage from '../assets/food_carousel/sandwich.jpg';
+import sandwichImage from '../assets/food_carousel/sandwich.webp';
 
 export interface FoodItem {
   id: string;

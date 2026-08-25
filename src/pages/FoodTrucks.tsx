@@ -6,7 +6,7 @@ import type { TruckCategory } from '../data/trucks';
 import { TruckCard } from '../components/TruckCard';
 import { PageHero } from '../components/PageHero';
 import { ROUTES } from '../lib/routes';
-import vendorCtaImage from '../assets/inside_sign.png';
+import vendorCtaImage from '../assets/inside_sign.webp';
 
 export function FoodTrucks() {
   const { t, lang } = useLanguage();

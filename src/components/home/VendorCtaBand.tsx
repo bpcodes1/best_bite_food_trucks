@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../i18n/useLanguage';
 import { ROUTES } from '../../lib/routes';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.webp';
 
 export function VendorCtaBand() {
   const { t } = useLanguage();

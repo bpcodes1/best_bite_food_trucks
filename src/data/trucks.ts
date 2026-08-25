@@ -1,22 +1,23 @@
-import pupusasChilerosTruck from '../assets/food_trucks/pupusas_chileros.jpg';
-import queRollonSushiTruck from '../assets/food_trucks/que_rollon_sushi.jpg';
-import queRollonSushiLogo from '../assets/food_trucks/que_rollon_sushi_logo.jpg';
-import cafeChulaTruck from '../assets/food_trucks/cafe_chula_truck.jpg';
-import cafeChulaLogo from '../assets/food_trucks/cafe_chula_logo.png';
-import tortilleriaElPatronTruck from '../assets/food_trucks/tortilleria_el_patron_truck.jpg';
-import tortilleriaElPatronLogo from '../assets/food_trucks/tortilleria_el_patron_logo.png';
-import elChilangoTruck from '../assets/food_trucks/el_chilango_truck.jpg';
-import elChilangoLogo from '../assets/food_trucks/el_chilango_logo.jpg';
-import lasCuatasLokasTruck from '../assets/food_trucks/las_cuatas_lokas.jpg';
-import lasCuatasLokasLogo from '../assets/food_trucks/las_cuatas_lokas_logo.png';
+import pupusasChilerosTruck from '../assets/food_trucks/pupusas_chileros.webp';
+import queRollonSushiTruck from '../assets/food_trucks/que_rollon_sushi.webp';
+import queRollonSushiLogo from '../assets/food_trucks/que_rollon_sushi_logo.webp';
+import cafeChulaTruck from '../assets/food_trucks/cafe_chula_truck.webp';
+import cafeChulaLogo from '../assets/food_trucks/cafe_chula_logo.webp';
+import tortilleriaElPatronTruck from '../assets/food_trucks/tortilleria_el_patron_truck.webp';
+import tortilleriaElPatronLogo from '../assets/food_trucks/tortilleria_el_patron_logo.webp';
+// El Chilango isn't open yet — import kept for the commented-out entry below.
+// import elChilangoTruck from '../assets/food_trucks/el_chilango_truck.webp';
+// import elChilangoLogo from '../assets/food_trucks/el_chilango_logo.webp';
+import lasCuatasLokasTruck from '../assets/food_trucks/las_cuatas_lokas.webp';
+import lasCuatasLokasLogo from '../assets/food_trucks/las_cuatas_lokas_logo.webp';
 import lasJarochitasTruck from '../assets/food_trucks/las_jarochitas.webp';
-import lasJarochitasLogo from '../assets/food_trucks/las_jarochitas_logo.jpg';
-import nieveCaseraTruck from '../assets/food_trucks/nieve_casera.jpg';
-import nieveCaseraLogo from '../assets/food_trucks/nieve_caseras_logo.jpg';
+import lasJarochitasLogo from '../assets/food_trucks/las_jarochitas_logo.webp';
+import nieveCaseraTruck from '../assets/food_trucks/nieve_casera.webp';
+import nieveCaseraLogo from '../assets/food_trucks/nieve_caseras_logo.webp';
 import taqueriaRomeroTruck from '../assets/food_trucks/taqueria_romero.webp';
-import taqueriaRomeroLogo from '../assets/food_trucks/taqueria_romero_logo.jpg';
+import taqueriaRomeroLogo from '../assets/food_trucks/taqueria_romero_logo.webp';
 import theRedMarinoTruck from '../assets/food_trucks/the_red_marino.webp';
-import theRedMarinoLogo from '../assets/food_trucks/the_red_marino_logo.jpg';
+import theRedMarinoLogo from '../assets/food_trucks/the_red_marino_logo.webp';
 import adansGrillTruck from '../assets/food_trucks/adans_grill.webp';
 import syrianHouseTruck from '../assets/food_trucks/syrian_house.webp';
 
@@ -50,7 +51,7 @@ export interface Truck {
   /**
    * Optional photo, shown on the Food Trucks page. Drop real photos in
    * `src/assets/food_trucks/` and import them here (e.g.
-   * `import image from '../assets/food_trucks/cafe_chula_truck.jpg'`) so Vite can
+   * `import image from '../assets/food_trucks/cafe_chula_truck.webp'`) so Vite can
    * hash and optimize them. Trucks without a photo yet fall back to a placeholder
    * in `TruckCard`.
    */
@@ -91,15 +92,17 @@ export const trucks: Truck[] = [
     logo: cafeChulaLogo,
     featured: true,
   },
-  {
-    id: 'el-chilango-chilaquiles',
-    name: 'El Chilango Chilaquiles',
-    category: 'breakfast',
-    foodType: { en: 'Chilaquiles & Mexican breakfast', es: 'Chilaquiles y desayuno mexicano' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
-    image: elChilangoTruck,
-    logo: elChilangoLogo,
-  },
+  // El Chilango Chilaquiles isn't open yet — commented out (not deleted) so
+  // it's a one-line uncomment to bring back once it's actually operating.
+  // {
+  //   id: 'el-chilango-chilaquiles',
+  //   name: 'El Chilango Chilaquiles',
+  //   category: 'breakfast',
+  //   foodType: { en: 'Chilaquiles & Mexican breakfast', es: 'Chilaquiles y desayuno mexicano' },
+  //   hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+  //   image: elChilangoTruck,
+  //   logo: elChilangoLogo,
+  // },
   {
     id: 'jjs-boba',
     name: "JJ's Boba",

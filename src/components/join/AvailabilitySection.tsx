@@ -30,7 +30,10 @@ export function AvailabilitySection() {
   );
 
   return (
-    <section aria-label={availabilityAnnouncement} className="overflow-hidden bg-brand-black">
+    <section
+      aria-label={availabilityAnnouncement}
+      className="marquee-pausable overflow-hidden bg-brand-black"
+    >
       <div className="flex w-max animate-marquee" aria-hidden="true">
         {tickerItem}
         {tickerItem}

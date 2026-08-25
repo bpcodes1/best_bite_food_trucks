@@ -7,6 +7,13 @@ export interface Translations {
     events: string;
     joinThePark: string;
     contact: string;
+    menuOpen: string;
+    menuClose: string;
+  };
+  notFoundPage: {
+    heading: string;
+    body: string;
+    backHome: string;
   };
   hero: {
     kicker: string;
@@ -55,6 +62,7 @@ export interface Translations {
   footer: {
     followHeading: string;
     contactHeading: string;
+    privacyCta: string;
   };
   visitSection: {
     heading: string;
@@ -82,6 +90,7 @@ export interface Translations {
     jumpToToday: string;
     scheduledHeading: string;
     noScheduledEvents: string;
+    dateTbd: string;
     recentEventHeading: string;
     recentEventName: string;
     holdEventHeading: string;
@@ -106,6 +115,7 @@ export interface Translations {
     successMessage: string;
     errorMessage: string;
     directLabel: string;
+    emailValidationHint: string;
   };
   joinPage: {
     eyebrow: string;
@@ -142,6 +152,23 @@ export interface Translations {
     successMessage: string;
     errorMessage: string;
     instagramCta: string;
+    emailValidationHint: string;
+    phoneValidationHint: string;
+  };
+  privacyPage: {
+    heading: string;
+    effectiveDate: string;
+    intro: string;
+    collectHeading: string;
+    collectBody: string;
+    useHeading: string;
+    useBody: string;
+    thirdPartyHeading: string;
+    thirdPartyBody: string;
+    sharingHeading: string;
+    sharingBody: string;
+    contactHeading: string;
+    contactBody: string;
   };
 }
 
@@ -153,6 +180,13 @@ export const translations: Record<Lang, Translations> = {
       events: 'Events',
       joinThePark: 'Join the Park',
       contact: 'Contact',
+      menuOpen: 'Menu',
+      menuClose: 'Close',
+    },
+    notFoundPage: {
+      heading: 'Page not found',
+      body: "The page you're looking for doesn't exist.",
+      backHome: 'Back to home',
     },
     hero: {
       kicker: 'Salem, OR · Food Truck Park',
@@ -166,7 +200,7 @@ export const translations: Record<Lang, Translations> = {
       heading: 'Why Visit',
       trucks: '12 Food Trucks',
       friendly: 'Family & Pet Friendly',
-      music: 'Live Music Monthly',
+      music: 'Live Music Weekly',
       parking: 'Free Parking',
     },
     trucksTeaser: {
@@ -202,6 +236,7 @@ export const translations: Record<Lang, Translations> = {
     footer: {
       followHeading: 'Follow us',
       contactHeading: 'Contact',
+      privacyCta: 'Privacy Policy',
     },
     visitSection: {
       heading: 'Visit Us',
@@ -232,6 +267,7 @@ export const translations: Record<Lang, Translations> = {
       jumpToToday: 'Today',
       scheduledHeading: 'Scheduled',
       noScheduledEvents: 'No events scheduled this month.',
+      dateTbd: 'Date TBD',
       recentEventHeading: 'Most Recent Event',
       recentEventName: 'Back to School',
       holdEventHeading: 'Want to Hold an Event at Best Bite Food Park?',
@@ -259,12 +295,13 @@ export const translations: Record<Lang, Translations> = {
       errorMessage:
         'Something went wrong sending your message — please try again or reach us directly.',
       directLabel: 'Prefer to reach us directly?',
+      emailValidationHint: 'Enter a valid email address (e.g. name@example.com)',
     },
     joinPage: {
       eyebrow: 'Lease a space · Salem, OR',
       heading: 'Month to Month Flexibility.',
       intro:
-        '12 food trucks are already open at Best Bite, most of them for more than a year. Right now, 6 of 15 spaces are open.',
+        '12 food trucks are already open at Best Bite, most of them for more than a year. Right now, 3 of 15 spaces are open.',
       ctaLabel: 'Ask about a space →',
       ctaMicrocopy: '4 questions · 2 minutes · no commitment',
       availabilityOf: 'of',
@@ -345,6 +382,28 @@ export const translations: Record<Lang, Translations> = {
       errorMessage:
         'Something went wrong sending your inquiry — please try again or message us on Instagram.',
       instagramCta: 'Or message us on Instagram',
+      emailValidationHint: 'Enter a valid email address (e.g. name@example.com)',
+      phoneValidationHint: 'Enter a 10-digit phone number',
+    },
+    privacyPage: {
+      heading: 'Privacy Policy',
+      effectiveDate: 'Effective August 25, 2026',
+      intro:
+        'Best Bite Food Park respects your privacy. This page explains what information we collect through this website and how we use it.',
+      collectHeading: 'What we collect',
+      collectBody:
+        'When you use the contact form or the vendor lease inquiry form, we collect the information you enter — your name, email address, phone number (lease form only), business name (lease form only), and your message.',
+      useHeading: 'How we use it',
+      useBody:
+        'We use this information only to respond to your message, follow up on your interest in leasing a space, or answer your question. We do not use it for advertising or marketing.',
+      thirdPartyHeading: 'Form delivery',
+      thirdPartyBody:
+        'Both forms on this site are delivered to us using a third-party service, Web3Forms, which processes and forwards your submission to our inbox. We do not otherwise share your information with third parties.',
+      sharingHeading: 'Sharing and retention',
+      sharingBody:
+        'We do not sell your information. We keep messages only as long as needed to respond to your inquiry.',
+      contactHeading: 'Questions',
+      contactBody: 'If you have questions about this policy, contact us using the details below.',
     },
   },
   es: {
@@ -354,6 +413,13 @@ export const translations: Record<Lang, Translations> = {
       events: 'Eventos',
       joinThePark: 'Únete al Parque',
       contact: 'Contacto',
+      menuOpen: 'Menú',
+      menuClose: 'Cerrar',
+    },
+    notFoundPage: {
+      heading: 'Página no encontrada',
+      body: 'La página que buscas no existe.',
+      backHome: 'Volver al inicio',
     },
     hero: {
       kicker: 'Salem, OR · Parque de Food Trucks',
@@ -367,7 +433,7 @@ export const translations: Record<Lang, Translations> = {
       heading: 'Por Qué Visitarnos',
       trucks: '12 Food Trucks',
       friendly: 'Familiar y Apto para Mascotas',
-      music: 'Música en Vivo Mensual',
+      music: 'Música en Vivo Semanal',
       parking: 'Estacionamiento Gratis',
     },
     trucksTeaser: {
@@ -404,6 +470,7 @@ export const translations: Record<Lang, Translations> = {
     footer: {
       followHeading: 'Síguenos',
       contactHeading: 'Contacto',
+      privacyCta: 'Aviso de Privacidad',
     },
     visitSection: {
       heading: 'Visítanos',
@@ -434,6 +501,7 @@ export const translations: Record<Lang, Translations> = {
       jumpToToday: 'Hoy',
       scheduledHeading: 'Programado',
       noScheduledEvents: 'No hay eventos programados este mes.',
+      dateTbd: 'Fecha por confirmar',
       recentEventHeading: 'Evento Más Reciente',
       recentEventName: 'Regreso a Clases',
       holdEventHeading: '¿Quieres Realizar un Evento en Best Bite Food Park?',
@@ -461,12 +529,13 @@ export const translations: Record<Lang, Translations> = {
       errorMessage:
         'Algo salió mal al enviar tu mensaje — inténtalo de nuevo o contáctanos directamente.',
       directLabel: '¿Prefieres contactarnos directamente?',
+      emailValidationHint: 'Ingresa un correo electrónico válido (ej. nombre@ejemplo.com)',
     },
     joinPage: {
       eyebrow: 'Renta de espacio · Salem, OR',
       heading: 'Flexibilidad de Mes a Mes.',
       intro:
-        '12 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 6 de 15 espacios están libres.',
+        '12 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 3 de 15 espacios están libres.',
       ctaLabel: 'Pregunta por un espacio →',
       ctaMicrocopy: '4 preguntas · 2 minutos · sin compromiso',
       availabilityOf: 'de',
@@ -547,6 +616,29 @@ export const translations: Record<Lang, Translations> = {
       errorMessage:
         'Algo salió mal al enviar tu solicitud — inténtalo de nuevo o escríbenos por Instagram.',
       instagramCta: 'O escríbenos por Instagram',
+      emailValidationHint: 'Ingresa un correo electrónico válido (ej. nombre@ejemplo.com)',
+      phoneValidationHint: 'Ingresa un número de teléfono de 10 dígitos',
+    },
+    privacyPage: {
+      heading: 'Aviso de Privacidad',
+      effectiveDate: 'Vigente desde el 25 de agosto de 2026',
+      intro:
+        'En Best Bite Food Park respetamos tu privacidad. Esta página explica qué información recopilamos a través de este sitio web y cómo la usamos.',
+      collectHeading: 'Qué recopilamos',
+      collectBody:
+        'Cuando usas el formulario de contacto o el formulario de solicitud de renta para vendedores, recopilamos la información que ingresas — tu nombre, correo electrónico, número de teléfono (solo formulario de renta), nombre del negocio (solo formulario de renta) y tu mensaje.',
+      useHeading: 'Cómo la usamos',
+      useBody:
+        'Usamos esta información únicamente para responder a tu mensaje, dar seguimiento a tu interés en rentar un espacio, o contestar tu pregunta. No la usamos para publicidad ni mercadotecnia.',
+      thirdPartyHeading: 'Entrega de formularios',
+      thirdPartyBody:
+        'Ambos formularios de este sitio se entregan mediante un servicio externo, Web3Forms, que procesa y reenvía tu solicitud a nuestra bandeja de entrada. No compartimos tu información con terceros de ninguna otra forma.',
+      sharingHeading: 'Uso compartido y retención',
+      sharingBody:
+        'No vendemos tu información. Conservamos los mensajes solo el tiempo necesario para responder a tu solicitud.',
+      contactHeading: 'Preguntas',
+      contactBody:
+        'Si tienes preguntas sobre este aviso, contáctanos usando los datos que aparecen abajo.',
     },
   },
 };

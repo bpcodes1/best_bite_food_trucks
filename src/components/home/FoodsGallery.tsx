@@ -9,7 +9,10 @@ export function FoodsGallery() {
   const fanAltTexts = fanFoods.map((food) => food.name[lang]);
 
   return (
-    <section aria-labelledby="foods-heading" className="bg-brand-yellow/10 px-4 py-16">
+    <section
+      aria-labelledby="foods-heading"
+      className="overflow-x-hidden bg-brand-yellow/10 px-4 py-16"
+    >
       <div className="mx-auto max-w-6xl text-center">
         <p className="font-heading text-sm font-bold uppercase tracking-widest text-brand-yellow-dark">
           {t.foodsSection.kicker}

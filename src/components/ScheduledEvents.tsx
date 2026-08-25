@@ -34,7 +34,7 @@ export function ScheduledEvents({ viewYear, viewMonth, onSelectEvent }: Schedule
                 className="w-full rounded-md border border-brand-black/10 p-3 text-left transition-colors hover:border-brand-yellow-dark hover:bg-brand-yellow/10"
               >
                 <p className="text-xs font-bold uppercase tracking-wide text-brand-yellow-dark">
-                  {formatEventWeekday(event.date, lang)}
+                  {event.dateUnconfirmed ? t.eventsPage.dateTbd : formatEventWeekday(event.date, lang)}
                 </p>
                 <p className="mt-0.5 font-bold text-brand-black">{event.name[lang]}</p>
                 <p className="text-sm text-brand-black/60">{event.time[lang]}</p>

@@ -124,7 +124,7 @@ export function LeaseInquiryForm() {
                 autoComplete="email"
                 required
                 pattern={EMAIL_PATTERN}
-                title="Enter a valid email address (e.g. name@example.com)"
+                title={t.joinPage.emailValidationHint}
                 className={inputClassName}
               />
             </div>
@@ -141,7 +141,7 @@ export function LeaseInquiryForm() {
                 autoComplete="tel"
                 required
                 pattern="\d{10}"
-                title="Enter a 10-digit phone number"
+                title={t.joinPage.phoneValidationHint}
                 maxLength={10}
                 value={phone}
                 onChange={handlePhoneChange}

@@ -1,8 +1,8 @@
 import { useLanguage } from '../../i18n/useLanguage';
-import seatingArea from '../../assets/seating_area.jpg';
-import parkView2 from '../../assets/park_view2.jpg';
-import crowd from '../../assets/crowd.jpg';
-import decoration from '../../assets/decoration.jpg';
+import seatingArea from '../../assets/seating_area.webp';
+import parkView2 from '../../assets/park_view2.webp';
+import crowd from '../../assets/crowd.webp';
+import decoration from '../../assets/decoration.webp';
 
 const IMAGES = [seatingArea, parkView2, crowd, decoration];
 

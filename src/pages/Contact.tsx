@@ -96,7 +96,7 @@ export function Contact() {
                 autoComplete="email"
                 required
                 pattern={EMAIL_PATTERN}
-                title="Enter a valid email address (e.g. name@example.com)"
+                title={t.contactPage.emailValidationHint}
                 className={inputClassName}
               />
             </div>

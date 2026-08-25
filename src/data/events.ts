@@ -1,15 +1,22 @@
-import cruiseImage from '../assets/events/cruise_into_the_school_year.png';
-import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.png';
-import karaokeImage from '../assets/events/karaoke.png';
-import cruiseFullImage from '../assets/events/cruise_into_the_school_year_full.jpg';
-import backToSchoolCruiseFullImage from '../assets/events/back_to_school_cruise_full.jpg';
-import karaokeFullImage from '../assets/events/karaoke_full.jpg';
+import cruiseImage from '../assets/events/cruise_into_the_school_year.webp';
+import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.webp';
+import karaokeImage from '../assets/events/karaoke.webp';
+import cruiseFullImage from '../assets/events/cruise_into_the_school_year_full.webp';
+import backToSchoolCruiseFullImage from '../assets/events/back_to_school_cruise_full.webp';
+import karaokeFullImage from '../assets/events/karaoke_full.webp';
 
 export interface EventItem {
   id: string;
   name: { en: string; es: string };
   /** ISO date (YYYY-MM-DD) used for sorting and computing the weekday label. */
   date: string;
+  /**
+   * True when `date` is a placeholder, not a confirmed booking (e.g. still
+   * waiting on the client to lock a real date). Shows a "Date TBD" badge
+   * instead of the real weekday everywhere the date would otherwise render,
+   * so an unconfirmed date is never mistaken for a real one.
+   */
+  dateUnconfirmed?: boolean;
   time: { en: string; es: string };
   description: { en: string; es: string };
   /**
@@ -51,8 +58,7 @@ export const events: EventItem[] = [
   {
     id: 'back-to-school-cruise',
     name: { en: 'Sunday Back to School Cruise', es: 'Cruise de Regreso a Clases del Domingo' },
-    // Placeholder date — real date to follow.
-    date: '2026-08-30',
+    date: '2026-08-16',
     time: { en: '3pm–6pm', es: '3pm–6pm' },
     description: {
       en: 'Enjoy a lowrider showcase, delicious food, local vendors, games, face painting, music by our live DJ, activities for all ages, and school supplies while they last!',

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { NAV_ROUTES, ROUTES } from '../lib/routes';
 import { useLanguage } from '../i18n/useLanguage';
 import { parkInfo } from '../data/parkInfo';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
 
 const footerNavRoutes = NAV_ROUTES.filter((route) => route.path !== ROUTES.home);
 
@@ -76,9 +76,12 @@ export function Footer() {
       </div>
 
       <div className="border-t border-brand-black/20">
-        <p className="mx-auto max-w-6xl px-4 py-3 text-xs text-brand-black/70">
-          © {year} Best Bite Food Park
-        </p>
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-xs text-brand-black/70 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} Best Bite Food Park</p>
+          <Link to={ROUTES.privacyPolicy} className="hover:underline">
+            {t.footer.privacyCta}
+          </Link>
+        </div>
       </div>
     </footer>
   );

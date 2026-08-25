@@ -10,12 +10,12 @@ export interface DaySchedule {
  */
 export const weeklyHours: Record<number, DaySchedule | null> = {
   0: { open: '12:00', close: '20:00' },
-  1: null,
-  2: { open: '11:00', close: '21:00' },
-  3: { open: '11:00', close: '21:00' },
-  4: { open: '11:00', close: '21:00' },
-  5: { open: '11:00', close: '22:00' },
-  6: { open: '11:00', close: '22:00' },
+  1: { open: '12:00', close: '20:00' },
+  2: { open: '12:00', close: '20:00' },
+  3: { open: '12:00', close: '20:00' },
+  4: { open: '12:00', close: '20:00' },
+  5: { open: '12:00', close: '20:00' },
+  6: { open: '12:00', close: '20:00' },
 };
 
 export const parkInfo = {
@@ -27,11 +27,11 @@ export const parkInfo = {
   email: 'hello@bestbitefoodpark.com',
   social: {
     instagram: 'https://instagram.com/bestbitefoodpark',
-    facebook: 'https://facebook.com/bestbitefoodpark',
-    tiktok: 'https://tiktok.com/@bestbitefoodpark',
+    facebook: 'https://www.facebook.com/p/The-Best-Bite-Food-Truck-Park-61584137473837/',
+    tiktok: 'https://tiktok.com/@the_bestbite_',
   },
   /** Number of currently open (unleased) food truck spaces. */
-  availableSlots: 6,
+  availableSlots: 3,
   /** Total number of food truck spaces the park has room for. */
   totalSlots: 15,
 };

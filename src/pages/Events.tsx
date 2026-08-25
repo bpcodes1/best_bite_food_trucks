@@ -9,7 +9,7 @@ import { PastEventsGallery } from '../components/PastEventsGallery';
 import { RecentEventGallery } from '../components/RecentEventGallery';
 import { PageHero } from '../components/PageHero';
 import { ROUTES } from '../lib/routes';
-import holdEventImage from '../assets/best_bite_sign2.jpg';
+import holdEventImage from '../assets/best_bite_sign2.webp';
 
 const today = new Date();
 const sortedEvents = [...events].sort((a, b) => a.date.localeCompare(b.date));

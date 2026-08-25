@@ -1,10 +1,10 @@
 import { useLanguage } from '../../i18n/useLanguage';
-import parkView from '../../assets/park_view.jpg';
-import insidePhoto from '../../assets/best_bite_inside.jpeg';
-import parkView3 from '../../assets/park_view3.jpg';
-import parkView4 from '../../assets/park_view4.jpg';
-import parkView5 from '../../assets/park_view5.jpg';
-import parkView6 from '../../assets/park_view6.jpg';
+import parkView from '../../assets/park_view.webp';
+import insidePhoto from '../../assets/best_bite_inside.webp';
+import parkView3 from '../../assets/park_view3.webp';
+import parkView4 from '../../assets/park_view4.webp';
+import parkView5 from '../../assets/park_view5.webp';
+import parkView6 from '../../assets/park_view6.webp';
 
 const PHOTOS = [parkView, insidePhoto, parkView3, parkView4, parkView5, parkView6];
 

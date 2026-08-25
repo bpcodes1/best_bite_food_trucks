@@ -34,7 +34,7 @@ export function Contact() {
     }
 
     formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-    formData.append('subject', 'New contact message — Best Bite Food Park');
+    formData.append('subject', 'New contact message: Best Bite Food Park');
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {

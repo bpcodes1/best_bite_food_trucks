@@ -21,4 +21,13 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // The SSR prerender entry (scripts/prerender.mjs) is never loaded by the
+    // dev server's Fast Refresh client bundle, so its non-component exports
+    // (render, PAGE_META, getLocalBusinessSchema) are fine.
+    files: ['src/entry-server.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ]);

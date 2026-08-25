@@ -4,13 +4,15 @@ import { parkInfo } from '../../data/parkInfo';
 export function AvailabilitySection() {
   const { t } = useLanguage();
 
+  const filledSlots = parkInfo.totalSlots - parkInfo.availableSlots;
   const availabilitySummary = `${parkInfo.availableSlots} ${t.joinPage.availabilityOf} ${parkInfo.totalSlots} ${t.joinPage.availabilityUnitLabel}`;
   const availabilityAnnouncement = `${availabilitySummary}. ${t.joinPage.availabilityBody} ${t.joinPage.availabilityCta}`;
 
   const tickerItem = (
     <span className="flex shrink-0 items-center gap-3 px-6 py-3">
-      <span className="rounded-full bg-brand-yellow px-3 py-1 font-heading text-xl font-bold text-brand-black">
-        {parkInfo.availableSlots}/{parkInfo.totalSlots}
+      <span className="rounded-full bg-brand-yellow px-3 py-1 font-heading text-sm font-bold text-brand-black">
+        {filledSlots}/{parkInfo.totalSlots} {t.joinPage.availabilityFilledLabel},{' '}
+        {parkInfo.availableSlots}/{parkInfo.totalSlots} {t.joinPage.availabilityFreeLabel}
       </span>
       <span className="text-xs font-bold uppercase tracking-wide text-white/70">
         {availabilitySummary}

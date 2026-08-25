@@ -125,6 +125,8 @@ export interface Translations {
     ctaMicrocopy: string;
     availabilityOf: string;
     availabilityUnitLabel: string;
+    availabilityFilledLabel: string;
+    availabilityFreeLabel: string;
     availabilityBody: string;
     availabilityCta: string;
     economicsHeading: string;
@@ -212,7 +214,7 @@ export const translations: Record<Lang, Translations> = {
       kicker: 'Gallery',
       heading: 'What to Eat',
       subheading:
-        'A taste of the flavors you will find across the park — from savory street food to something sweet.',
+        'A taste of the flavors you will find across the park, from savory street food to something sweet.',
       imagesComingSoon: 'Images coming soon',
     },
     eventsTeaser: {
@@ -230,7 +232,7 @@ export const translations: Record<Lang, Translations> = {
     },
     vendorCta: {
       heading: 'Own a food truck?',
-      body: 'We have spaces available on a month-to-month basis — no long-term lease required. Join a growing community of vendors and reach hungry regulars every week.',
+      body: 'We have spaces available on a month-to-month basis, no long-term lease required. Join a growing community of vendors and reach hungry regulars every week.',
       cta: 'Join the park',
     },
     footer: {
@@ -249,12 +251,12 @@ export const translations: Record<Lang, Translations> = {
     foodTrucksPage: {
       heading: 'Food Trucks',
       intro:
-        'The full lineup parked at Best Bite Food Park. Swing by any day of the week — the crews rotate, so there is always something new to try.',
+        'The full lineup parked at Best Bite Food Park. Swing by any day of the week: the crews rotate, so there is always something new to try.',
       allCategories: 'All',
       noResults: 'No food trucks match this filter yet.',
       vendorCtaHeading: 'Interested in Joining Best Bite Food Park as a Vendor?',
       vendorCtaBody:
-        'We have spaces available on a month-to-month basis — no long-term lease required. Join a growing community of vendors and reach hungry regulars every week.',
+        'We have spaces available on a month-to-month basis, no long-term lease required. Join a growing community of vendors and reach hungry regulars every week.',
       vendorCtaCta: 'Join the park',
     },
     eventsPage: {
@@ -291,9 +293,9 @@ export const translations: Record<Lang, Translations> = {
       messageLabel: 'Message',
       submitCta: 'Send message',
       sendingCta: 'Sending…',
-      successMessage: 'Thanks! Your message has been received — we will get back to you soon.',
+      successMessage: 'Thanks! Your message has been received. We will get back to you soon.',
       errorMessage:
-        'Something went wrong sending your message — please try again or reach us directly.',
+        'Something went wrong sending your message. Please try again or reach us directly.',
       directLabel: 'Prefer to reach us directly?',
       emailValidationHint: 'Enter a valid email address (e.g. name@example.com)',
     },
@@ -301,16 +303,18 @@ export const translations: Record<Lang, Translations> = {
       eyebrow: 'Lease a space · Salem, OR',
       heading: 'Month to Month Flexibility.',
       intro:
-        '12 food trucks are already open at Best Bite, most of them for more than a year. Right now, 3 of 15 spaces are open.',
+        '12 food trucks are already open at Best Bite, most of them for more than a year. Right now, 3 of 15 spaces are available.',
       ctaLabel: 'Ask about a space →',
       ctaMicrocopy: '4 questions · 2 minutes · no commitment',
       availabilityOf: 'of',
       availabilityUnitLabel: 'food truck spaces available',
-      availabilityBody: "We're especially looking for Asian food —",
+      availabilityFilledLabel: 'filled',
+      availabilityFreeLabel: 'free',
+      availabilityBody: "We're especially looking for Asian food.",
       availabilityCta: 'Look at our move-in special →',
       economicsHeading: 'How the Rent Works',
       economicsBody:
-        "There's no long-term lease. If a spot doesn't work out for you, it costs you a month, not a year — that's the whole difference.",
+        "There's no long-term lease. If a spot doesn't work out for you, it costs you a month, not a year: that's the whole difference.",
       benefitsHeading: 'Why Vendors Choose Best Bite',
       benefits: [
         {
@@ -319,7 +323,7 @@ export const translations: Record<Lang, Translations> = {
         },
         {
           title: 'No Long-Term Contract',
-          body: 'Rent is month-to-month — no lease to sign, so you can stay as long as it makes sense for your business.',
+          body: 'Rent is month-to-month, no lease to sign, so you can stay as long as it makes sense for your business.',
         },
         {
           title: 'Built-In Customer Base',
@@ -327,12 +331,11 @@ export const translations: Record<Lang, Translations> = {
         },
         {
           title: 'Shared Amenities',
-          body: 'Power hookups, trash service, and seating areas are ready to go — just pull in and open your window.',
+          body: 'Power hookups, trash service, and seating areas are ready to go. Just pull in and open your window.',
         },
       ],
       showcaseHeading: 'See the Park',
-      showcaseBody:
-        'A look at the space — indoor and outdoor seating, and room for the whole lineup of trucks.',
+      showcaseBody: 'A look at the space: indoor and outdoor seating, and room for the whole lineup of trucks.',
       howItWorksHeading: 'How to Get Started',
       howItWorksSteps: [
         {
@@ -341,7 +344,7 @@ export const translations: Record<Lang, Translations> = {
         },
         {
           title: 'We reply',
-          body: 'We confirm what is open and what the rent is.',
+          body: 'We confirm what is available and what the rent is.',
         },
         {
           title: 'You come see it',
@@ -362,10 +365,10 @@ export const translations: Record<Lang, Translations> = {
         {
           question: 'What does it cost?',
           answer:
-            'Ask through the form below and we will give you the rent for the space that is open.',
+            'Ask through the form below and we will give you the rent for the space that is available.',
         },
       ],
-      faqSpacesQuestion: 'How many spaces are open?',
+      faqSpacesQuestion: 'How many spaces are available?',
       faqSpacesOf: 'of',
       formHeading: 'Inquire About Leasing a Spot',
       formIntro:
@@ -378,9 +381,9 @@ export const translations: Record<Lang, Translations> = {
       messageLabel: 'Tell us about your truck',
       submitCta: 'Send inquiry',
       sendingCta: 'Sending…',
-      successMessage: 'Thanks! Your inquiry has been received — we will be in touch soon.',
+      successMessage: 'Thanks! Your inquiry has been received. We will be in touch soon.',
       errorMessage:
-        'Something went wrong sending your inquiry — please try again or message us on Instagram.',
+        'Something went wrong sending your inquiry. Please try again or message us on Instagram.',
       instagramCta: 'Or message us on Instagram',
       emailValidationHint: 'Enter a valid email address (e.g. name@example.com)',
       phoneValidationHint: 'Enter a 10-digit phone number',
@@ -392,7 +395,7 @@ export const translations: Record<Lang, Translations> = {
         'Best Bite Food Park respects your privacy. This page explains what information we collect through this website and how we use it.',
       collectHeading: 'What we collect',
       collectBody:
-        'When you use the contact form or the vendor lease inquiry form, we collect the information you enter — your name, email address, phone number (lease form only), business name (lease form only), and your message.',
+        'When you use the contact form or the vendor lease inquiry form, we collect the information you enter: your name, email address, phone number (lease form only), business name (lease form only), and your message.',
       useHeading: 'How we use it',
       useBody:
         'We use this information only to respond to your message, follow up on your interest in leasing a space, or answer your question. We do not use it for advertising or marketing.',
@@ -446,7 +449,7 @@ export const translations: Record<Lang, Translations> = {
       kicker: 'Galería',
       heading: 'Qué Comer',
       subheading:
-        'Una probada de los sabores que encontrarás en el parque — de antojitos salados a algo dulce.',
+        'Una probada de los sabores que encontrarás en el parque, de antojitos salados a algo dulce.',
       imagesComingSoon: 'Imágenes próximamente',
     },
     eventsTeaser: {
@@ -464,7 +467,7 @@ export const translations: Record<Lang, Translations> = {
     },
     vendorCta: {
       heading: '¿Tienes un food truck?',
-      body: 'Tenemos espacios disponibles mes a mes — sin contrato a largo plazo. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
+      body: 'Tenemos espacios disponibles mes a mes, sin contrato a largo plazo. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
       cta: 'Únete al parque',
     },
     footer: {
@@ -483,12 +486,12 @@ export const translations: Record<Lang, Translations> = {
     foodTrucksPage: {
       heading: 'Food Trucks',
       intro:
-        'La alineación completa en Best Bite Food Park. Pasa cualquier día de la semana — los camiones rotan, así que siempre hay algo nuevo que probar.',
+        'La alineación completa en Best Bite Food Park. Pasa cualquier día de la semana: los camiones rotan, así que siempre hay algo nuevo que probar.',
       allCategories: 'Todos',
       noResults: 'Ningún food truck coincide con este filtro todavía.',
       vendorCtaHeading: '¿Interesado en Unirte a Best Bite Food Park como Vendedor?',
       vendorCtaBody:
-        'Tenemos espacios disponibles mes a mes — sin contrato a largo plazo. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
+        'Tenemos espacios disponibles mes a mes, sin contrato a largo plazo. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
       vendorCtaCta: 'Únete al parque',
     },
     eventsPage: {
@@ -525,9 +528,9 @@ export const translations: Record<Lang, Translations> = {
       messageLabel: 'Mensaje',
       submitCta: 'Enviar mensaje',
       sendingCta: 'Enviando…',
-      successMessage: '¡Gracias! Tu mensaje fue recibido — te responderemos pronto.',
+      successMessage: '¡Gracias! Tu mensaje fue recibido. Te responderemos pronto.',
       errorMessage:
-        'Algo salió mal al enviar tu mensaje — inténtalo de nuevo o contáctanos directamente.',
+        'Algo salió mal al enviar tu mensaje. Inténtalo de nuevo o contáctanos directamente.',
       directLabel: '¿Prefieres contactarnos directamente?',
       emailValidationHint: 'Ingresa un correo electrónico válido (ej. nombre@ejemplo.com)',
     },
@@ -540,11 +543,13 @@ export const translations: Record<Lang, Translations> = {
       ctaMicrocopy: '4 preguntas · 2 minutos · sin compromiso',
       availabilityOf: 'de',
       availabilityUnitLabel: 'espacios para food trucks disponibles',
-      availabilityBody: 'Buscamos especialmente comida asiática —',
+      availabilityFilledLabel: 'ocupados',
+      availabilityFreeLabel: 'libres',
+      availabilityBody: 'Buscamos especialmente comida asiática.',
       availabilityCta: 'Mira nuestra promoción de mudanza →',
       economicsHeading: 'Cómo Funciona la Renta',
       economicsBody:
-        'No hay contrato a largo plazo. Si el lugar no te funciona, te cuesta un mes y no un año — esa es toda la diferencia.',
+        'No hay contrato a largo plazo. Si el lugar no te funciona, te cuesta un mes y no un año: esa es toda la diferencia.',
       benefitsHeading: 'Por Qué los Vendedores Eligen Best Bite',
       benefits: [
         {
@@ -553,7 +558,7 @@ export const translations: Record<Lang, Translations> = {
         },
         {
           title: 'Sin Contrato a Largo Plazo',
-          body: 'La renta es mes a mes — sin contrato que firmar, para que te quedes el tiempo que le convenga a tu negocio.',
+          body: 'La renta es mes a mes, sin contrato que firmar, para que te quedes el tiempo que le convenga a tu negocio.',
         },
         {
           title: 'Clientela Ya Establecida',
@@ -561,12 +566,12 @@ export const translations: Record<Lang, Translations> = {
         },
         {
           title: 'Servicios Compartidos',
-          body: 'Conexión eléctrica, servicio de basura y áreas para sentarse ya están listos — solo llega y abre tu ventana.',
+          body: 'Conexión eléctrica, servicio de basura y áreas para sentarse ya están listos. Solo llega y abre tu ventana.',
         },
       ],
       showcaseHeading: 'Conoce el Parque',
       showcaseBody:
-        'Un vistazo al espacio — asientos interiores y al aire libre, y lugar para toda la alineación de trucks.',
+        'Un vistazo al espacio: asientos interiores y al aire libre, y lugar para toda la alineación de trucks.',
       howItWorksHeading: 'Cómo Empezar',
       howItWorksSteps: [
         {
@@ -612,9 +617,9 @@ export const translations: Record<Lang, Translations> = {
       messageLabel: 'Cuéntanos sobre tu truck',
       submitCta: 'Enviar solicitud',
       sendingCta: 'Enviando…',
-      successMessage: '¡Gracias! Tu solicitud fue recibida — nos pondremos en contacto pronto.',
+      successMessage: '¡Gracias! Tu solicitud fue recibida. Nos pondremos en contacto pronto.',
       errorMessage:
-        'Algo salió mal al enviar tu solicitud — inténtalo de nuevo o escríbenos por Instagram.',
+        'Algo salió mal al enviar tu solicitud. Inténtalo de nuevo o escríbenos por Instagram.',
       instagramCta: 'O escríbenos por Instagram',
       emailValidationHint: 'Ingresa un correo electrónico válido (ej. nombre@ejemplo.com)',
       phoneValidationHint: 'Ingresa un número de teléfono de 10 dígitos',
@@ -626,7 +631,7 @@ export const translations: Record<Lang, Translations> = {
         'En Best Bite Food Park respetamos tu privacidad. Esta página explica qué información recopilamos a través de este sitio web y cómo la usamos.',
       collectHeading: 'Qué recopilamos',
       collectBody:
-        'Cuando usas el formulario de contacto o el formulario de solicitud de renta para vendedores, recopilamos la información que ingresas — tu nombre, correo electrónico, número de teléfono (solo formulario de renta), nombre del negocio (solo formulario de renta) y tu mensaje.',
+        'Cuando usas el formulario de contacto o el formulario de solicitud de renta para vendedores, recopilamos la información que ingresas: tu nombre, correo electrónico, número de teléfono (solo formulario de renta), nombre del negocio (solo formulario de renta) y tu mensaje.',
       useHeading: 'Cómo la usamos',
       useBody:
         'Usamos esta información únicamente para responder a tu mensaje, dar seguimiento a tu interés en rentar un espacio, o contestar tu pregunta. No la usamos para publicidad ni mercadotecnia.',

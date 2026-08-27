@@ -1,10 +1,17 @@
-import cruiseImage from '../assets/events/cruise_into_the_school_year.webp';
-import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.webp';
-import cruiseFullImage from '../assets/events/cruise_into_the_school_year_full.webp';
-import backToSchoolCruiseFullImage from '../assets/events/back_to_school_cruise_full.webp';
 // Karaoke Night is on hold — imports kept for the commented-out entry below.
 // import karaokeImage from '../assets/events/karaoke.webp';
 // import karaokeFullImage from '../assets/events/karaoke_full.webp';
+
+// Past cruise events — imports kept for the commented-out entries below.
+// import cruiseImage from '../assets/events/cruise_into_the_school_year.webp';
+// import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.webp';
+// import cruiseFullImage from '../assets/events/cruise_into_the_school_year_full.webp';
+// import backToSchoolCruiseFullImage from '../assets/events/back_to_school_cruise_full.webp';
+
+import ponteChulaEng from '../assets/events/ponte_chula_eng.png';
+import ponteChulaEsp from '../assets/events/ponte_chula_esp.png';
+import cafecitaEng from '../assets/events/cafecito_eng.jpg';
+import cafecitaEsp from '../assets/events/cafecity_esp.jpg';
 
 export interface EventItem {
   id: string;
@@ -26,8 +33,10 @@ export interface EventItem {
    * placeholder in the homepage teaser cards.
    */
   image?: string;
-  /** Full-flyer photo shown on the Events page's image-only event cards. */
+  /** Full-flyer photo shown on the Events page's image-only event cards (English). */
   fullImage?: string;
+  /** Spanish version of the full-flyer photo. Falls back to `fullImage` if absent. */
+  fullImageEs?: string;
 }
 
 export const events: EventItem[] = [
@@ -54,39 +63,44 @@ export const events: EventItem[] = [
       en: 'More event details coming soon.',
       es: 'Más detalles del evento próximamente.',
     },
+    fullImage: ponteChulaEng,
+    fullImageEs: ponteChulaEsp,
   },
   {
-    id: 'coffee-social',
-    name: { en: 'Coffee Social', es: 'Café Social' },
-    date: '2026-08-30',
+    id: 'cafecito',
+    name: { en: 'Cafecito', es: 'Cafecito' },
+    date: '2026-09-06',
     time: { en: 'Time TBD', es: 'Hora por confirmar' },
     description: {
       en: 'More event details coming soon.',
       es: 'Más detalles del evento próximamente.',
     },
+    fullImage: cafecitaEng,
+    fullImageEs: cafecitaEsp,
   },
-  {
-    id: 'cruise-into-the-school-year',
-    name: { en: 'Cruise Into The School Year', es: 'Cruise Into The School Year' },
-    date: '2026-08-16',
-    time: { en: '3pm–6pm', es: '3pm–6pm' },
-    description: {
-      en: 'Enjoy a lowrider showcase, delicious food, local vendors, games, face painting, music by our live DJ, activities for all ages, and school supplies while they last!',
-      es: 'Disfruta de una exhibición de lowriders, comida deliciosa, vendedores locales, juegos, pintura facial, música con DJ en vivo, actividades para todas las edades, ¡y útiles escolares hasta agotar existencias!',
-    },
-    image: cruiseImage,
-    fullImage: cruiseFullImage,
-  },
-  {
-    id: 'back-to-school-cruise',
-    name: { en: 'Sunday Back to School Cruise', es: 'Cruise de Regreso a Clases del Domingo' },
-    date: '2026-08-16',
-    time: { en: '3pm–6pm', es: '3pm–6pm' },
-    description: {
-      en: 'Enjoy a lowrider showcase, delicious food, local vendors, games, face painting, music by our live DJ, activities for all ages, and school supplies while they last!',
-      es: 'Disfruta de una exhibición de lowriders, comida deliciosa, vendedores locales, juegos, pintura facial, música con DJ en vivo, actividades para todas las edades, ¡y útiles escolares hasta agotar existencias!',
-    },
-    image: backToSchoolCruiseImage,
-    fullImage: backToSchoolCruiseFullImage,
-  },
+  // Past events — kept for reference; images live in RecentEventGallery.
+  // {
+  //   id: 'cruise-into-the-school-year',
+  //   name: { en: 'Cruise Into The School Year', es: 'Cruise Into The School Year' },
+  //   date: '2026-08-16',
+  //   time: { en: '3pm–6pm', es: '3pm–6pm' },
+  //   description: {
+  //     en: 'Enjoy a lowrider showcase, delicious food, local vendors, games, face painting, music by our live DJ, activities for all ages, and school supplies while they last!',
+  //     es: 'Disfruta de una exhibición de lowriders, comida deliciosa, vendedores locales, juegos, pintura facial, música con DJ en vivo, actividades para todas las edades, ¡y útiles escolares hasta agotar existencias!',
+  //   },
+  //   image: cruiseImage,
+  //   fullImage: cruiseFullImage,
+  // },
+  // {
+  //   id: 'back-to-school-cruise',
+  //   name: { en: 'Sunday Back to School Cruise', es: 'Cruise de Regreso a Clases del Domingo' },
+  //   date: '2026-08-16',
+  //   time: { en: '3pm–6pm', es: '3pm–6pm' },
+  //   description: {
+  //     en: 'Enjoy a lowrider showcase, delicious food, local vendors, games, face painting, music by our live DJ, activities for all ages, and school supplies while they last!',
+  //     es: 'Disfruta de una exhibición de lowriders, comida deliciosa, vendedores locales, juegos, pintura facial, música con DJ en vivo, actividades para todas las edades, ¡y útiles escolares hasta agotar existencias!',
+  //   },
+  //   image: backToSchoolCruiseImage,
+  //   fullImage: backToSchoolCruiseFullImage,
+  // },
 ];

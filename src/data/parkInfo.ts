@@ -27,7 +27,7 @@ export const parkInfo = {
   email: 'bestbite868@gmail.com',
   social: {
     instagram: 'https://instagram.com/bestbitefoodpark',
-    facebook: 'https://www.facebook.com/p/The-Best-Bite-Food-Truck-Park-61584137473837/',
+    facebook: 'https://www.facebook.com/Thebestbitefoodpark/',
     tiktok: 'https://tiktok.com/@the_bestbite_',
   },
   /** Number of currently open (unleased) food truck spaces. */

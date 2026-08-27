@@ -7,13 +7,13 @@ export interface Promo {
 
 /** Update this each month, or set `active: false` when there's no current promo. */
 export const currentPromo: Promo = {
-  active: true,
+  active: false,
   headline: {
     en: "This Month's Move-In Special",
     es: 'Promoción de Este Mes',
   },
   body: {
-    en: 'Sign a lease this month and get your first 15 days of rent free.',
-    es: 'Firma tu contrato este mes y obtén gratis los primeros 15 días de renta.',
+    en: 'Contact us to learn about current availability and leasing terms.',
+    es: 'Contáctanos para conocer la disponibilidad y términos de arrendamiento actuales.',
   },
 };

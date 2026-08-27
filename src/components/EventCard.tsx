@@ -21,7 +21,7 @@ export function EventCard({ event, highlighted }: EventCardProps) {
     >
       {event.fullImage ? (
         <img
-          src={event.fullImage}
+          src={lang === 'es' && event.fullImageEs ? event.fullImageEs : event.fullImage}
           alt={event.name[lang]}
           loading="lazy"
           className="h-full w-full object-cover"

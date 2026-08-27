@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bpcodes1.github.io/best_bite_food_trucks/sitemap.xml
+Sitemap: https://bestbitefoodpark.com/sitemap.xml

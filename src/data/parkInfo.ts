@@ -21,7 +21,7 @@ export const weeklyHours: Record<number, DaySchedule | null> = {
 export const parkInfo = {
   address: {
     line1: '3282 Silverton Rd NE',
-    line2: 'Salem, OR 97301',
+    line2: 'Salem, OR 97301-8655',
   },
   phone: '(503) 902-2050',
   email: 'bestbite868@gmail.com',

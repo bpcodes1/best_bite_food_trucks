@@ -35,7 +35,7 @@ const jsonLdScript = `<script type="application/ld+json">${jsonLdJson}</script>`
 
 for (const { path, title, description } of PAGE_META) {
   const { html } = render(path);
-  const canonicalUrl = `https://bpcodes1.github.io/best_bite_food_trucks${path}`;
+  const canonicalUrl = `https://bestbitefoodpark.com${path}`;
   const safeTitle = escapeHtml(title);
   const safeDescription = escapeHtml(description);
 
@@ -47,7 +47,7 @@ for (const { path, title, description } of PAGE_META) {
       `<meta name="description" content="${safeDescription}" />`,
     )
     .replace(
-      'href="https://bpcodes1.github.io/best_bite_food_trucks/"',
+      'href="https://bestbitefoodpark.com/"',
       `href="${canonicalUrl}"`,
     )
     .replace(
@@ -59,7 +59,7 @@ for (const { path, title, description } of PAGE_META) {
       `<meta property="og:description" content="${safeDescription}" />`,
     )
     .replace(
-      '<meta property="og:url" content="https://bpcodes1.github.io/best_bite_food_trucks/" />',
+      '<meta property="og:url" content="https://bestbitefoodpark.com/" />',
       `<meta property="og:url" content="${canonicalUrl}" />`,
     )
     .replace(
@@ -85,7 +85,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${PAGE_META.map(
   ({ path }) =>
-    `  <url>\n    <loc>https://bpcodes1.github.io/best_bite_food_trucks${path === '/' ? '/' : path}</loc>\n  </url>`,
+    `  <url>\n    <loc>https://bestbitefoodpark.com${path === '/' ? '/' : path}</loc>\n  </url>`,
 ).join('\n')}
 </urlset>
 `;

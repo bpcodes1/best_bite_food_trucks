@@ -1,7 +1,7 @@
 import { parkInfo, weeklyHours } from '../data/parkInfo';
 import { ROUTES } from './routes';
 
-export const SITE_URL = 'https://bpcodes1.github.io/best_bite_food_trucks';
+export const SITE_URL = 'https://bestbitefoodpark.com';
 export const SITE_NAME = 'Best Bite Food Park';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/logo.png`;
 
@@ -88,7 +88,7 @@ export function getLocalBusinessSchema() {
       streetAddress: parkInfo.address.line1,
       addressLocality: 'Salem',
       addressRegion: 'OR',
-      postalCode: '97301',
+      postalCode: '97301-8655',
       addressCountry: 'US',
     },
     openingHoursSpecification: Object.entries(weeklyHours).flatMap(([dayIndex, schedule]) =>

@@ -303,7 +303,7 @@ export const translations: Record<Lang, Translations> = {
       eyebrow: 'Lease a space · Salem, OR',
       heading: 'Month to Month Flexibility.',
       intro:
-        '11 food trucks are already open at Best Bite, most of them for more than a year. Right now, 4 of 15 spaces are available.',
+        '11 food trucks are already open at Best Bite, most of them for more than a year. Right now, 11 spaces are filled and 4 are available.',
       ctaLabel: 'Ask about a space →',
       ctaMicrocopy: '4 questions · 2 minutes · no commitment',
       availabilityOf: 'of',
@@ -538,7 +538,7 @@ export const translations: Record<Lang, Translations> = {
       eyebrow: 'Renta de espacio · Salem, OR',
       heading: 'Flexibilidad de Mes a Mes.',
       intro:
-        '11 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 4 de 15 espacios están libres.',
+        '11 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 11 espacios ocupados y 4 libres.',
       ctaLabel: 'Pregunta por un espacio →',
       ctaMicrocopy: '4 preguntas · 2 minutos · sin compromiso',
       availabilityOf: 'de',

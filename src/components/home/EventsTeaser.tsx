@@ -54,7 +54,9 @@ export function EventsTeaser() {
             <li key={event.id}>
               <EventListingCard
                 imageUrl={
-                  event.image ?? placeholderImage(event.name[lang], PLACEHOLDER_COLORS[index])
+                  event.image ??
+                  (lang === 'es' && event.fullImageEs ? event.fullImageEs : event.fullImage) ??
+                  placeholderImage(event.name[lang], PLACEHOLDER_COLORS[index])
                 }
                 name={event.name[lang]}
                 time={event.time[lang]}

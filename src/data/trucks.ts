@@ -103,19 +103,21 @@ export const trucks: Truck[] = [
   //   image: elChilangoTruck,
   //   logo: elChilangoLogo,
   // },
-  {
-    id: 'jjs-boba',
-    name: "JJ's Boba",
-    category: 'boba',
-    foodType: { en: 'Boba & Asian drinks', es: 'Boba y bebidas asiáticas' },
-    hours: { en: 'Coming soon', es: 'Próximamente' },
-  },
+  // JJ's Boba isn't open yet — commented out (not deleted) so it's a
+  // one-line uncomment to bring back once it's actually operating.
+  // {
+  //   id: 'jjs-boba',
+  //   name: "JJ's Boba",
+  //   category: 'boba',
+  //   foodType: { en: 'Boba & Asian drinks', es: 'Boba y bebidas asiáticas' },
+  //   hours: { en: 'Coming soon', es: 'Próximamente' },
+  // },
   {
     id: 'las-cuatas-lokas',
     name: 'Las Cuatas Lokas',
     category: 'mexican',
     foodType: { en: 'Mexican street food', es: 'Antojitos mexicanos' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: { en: 'Wed–Sun 3pm–9:30pm, Mon–Tue closed', es: 'Mié–Dom 3pm–9:30pm, Lun–Mar cerrado' },
     image: lasCuatasLokasTruck,
     logo: lasCuatasLokasLogo,
   },
@@ -156,7 +158,10 @@ export const trucks: Truck[] = [
     name: 'Que Rollon Sushi',
     category: 'japanese',
     foodType: { en: 'Sushi & Japanese rolls', es: 'Sushi y rollos japoneses' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Wed–Thu 12pm–8pm, Fri–Sat 12pm–10pm, Sun 2pm–9pm, Mon–Tue closed',
+      es: 'Mié–Jue 12pm–8pm, Vie–Sáb 12pm–10pm, Dom 2pm–9pm, Lun–Mar cerrado',
+    },
     image: queRollonSushiTruck,
     logo: queRollonSushiLogo,
   },
@@ -165,7 +170,7 @@ export const trucks: Truck[] = [
     name: 'Syrian House',
     category: 'middle-eastern',
     foodType: { en: 'Syrian & Middle Eastern food', es: 'Comida siria y del medio oriente' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: { en: 'Daily 11am–2pm', es: 'Todos los días 11am–2pm' },
     image: syrianHouseTruck,
   },
   {

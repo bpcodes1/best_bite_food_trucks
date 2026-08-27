@@ -1,9 +1,10 @@
 import cruiseImage from '../assets/events/cruise_into_the_school_year.webp';
 import backToSchoolCruiseImage from '../assets/events/back_to_school_cruise.webp';
-import karaokeImage from '../assets/events/karaoke.webp';
 import cruiseFullImage from '../assets/events/cruise_into_the_school_year_full.webp';
 import backToSchoolCruiseFullImage from '../assets/events/back_to_school_cruise_full.webp';
-import karaokeFullImage from '../assets/events/karaoke_full.webp';
+// Karaoke Night is on hold — imports kept for the commented-out entry below.
+// import karaokeImage from '../assets/events/karaoke.webp';
+// import karaokeFullImage from '../assets/events/karaoke_full.webp';
 
 export interface EventItem {
   id: string;
@@ -30,18 +31,39 @@ export interface EventItem {
 }
 
 export const events: EventItem[] = [
+  // Karaoke Night / Sunday DJ program has ended — commented out (not
+  // deleted) so it's a one-line uncomment if it comes back.
+  // {
+  //   id: 'karaoke-night',
+  //   name: { en: 'Karaoke Night', es: 'Noche de Karaoke' },
+  //   date: '2026-08-16',
+  //   time: { en: '6pm–9pm, every Sunday', es: '6pm–9pm, todos los domingos' },
+  //   description: {
+  //     en: 'DJ Mike PDX joins us every Sunday from 6pm–9pm. Bring family and friends for karaoke night, amazing food, and more!',
+  //     es: 'DJ Mike PDX nos acompaña todos los domingos de 6pm a 9pm. ¡Trae a tu familia y amigos para una noche de karaoke, comida increíble y más!',
+  //   },
+  //   image: karaokeImage,
+  //   fullImage: karaokeFullImage,
+  // },
   {
-    id: 'karaoke-night',
-    name: { en: 'Karaoke Night', es: 'Noche de Karaoke' },
-    // Recurring every Sunday — date reflects the next occurrence.
-    date: '2026-08-16',
-    time: { en: '6pm–9pm, every Sunday', es: '6pm–9pm, todos los domingos' },
+    id: 'salem-ponte-chula',
+    name: { en: 'Salem Ponte Chula', es: 'Salem Ponte Chula' },
+    date: '2026-08-28',
+    time: { en: 'Time TBD', es: 'Hora por confirmar' },
     description: {
-      en: 'DJ Mike PDX joins us every Sunday from 6pm–9pm. Bring family and friends for karaoke night, amazing food, and more!',
-      es: 'DJ Mike PDX nos acompaña todos los domingos de 6pm a 9pm. ¡Trae a tu familia y amigos para una noche de karaoke, comida increíble y más!',
+      en: 'More event details coming soon.',
+      es: 'Más detalles del evento próximamente.',
     },
-    image: karaokeImage,
-    fullImage: karaokeFullImage,
+  },
+  {
+    id: 'coffee-social',
+    name: { en: 'Coffee Social', es: 'Café Social' },
+    date: '2026-08-30',
+    time: { en: 'Time TBD', es: 'Hora por confirmar' },
+    description: {
+      en: 'More event details coming soon.',
+      es: 'Más detalles del evento próximamente.',
+    },
   },
   {
     id: 'cruise-into-the-school-year',

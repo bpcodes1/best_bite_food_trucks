@@ -200,9 +200,9 @@ export const translations: Record<Lang, Translations> = {
     },
     trustBar: {
       heading: 'Why Visit',
-      trucks: '12 Food Trucks',
+      trucks: '11 Food Trucks',
       friendly: 'Family & Pet Friendly',
-      music: 'Live Music Weekly',
+      music: 'Community Events',
       parking: 'Free Parking',
     },
     trucksTeaser: {
@@ -303,7 +303,7 @@ export const translations: Record<Lang, Translations> = {
       eyebrow: 'Lease a space · Salem, OR',
       heading: 'Month to Month Flexibility.',
       intro:
-        '12 food trucks are already open at Best Bite, most of them for more than a year. Right now, 3 of 15 spaces are available.',
+        '11 food trucks are already open at Best Bite, most of them for more than a year. Right now, 4 of 15 spaces are available.',
       ctaLabel: 'Ask about a space →',
       ctaMicrocopy: '4 questions · 2 minutes · no commitment',
       availabilityOf: 'of',
@@ -434,9 +434,9 @@ export const translations: Record<Lang, Translations> = {
     },
     trustBar: {
       heading: 'Por Qué Visitarnos',
-      trucks: '12 Food Trucks',
+      trucks: '11 Food Trucks',
       friendly: 'Familiar y Apto para Mascotas',
-      music: 'Música en Vivo Semanal',
+      music: 'Eventos Comunitarios',
       parking: 'Estacionamiento Gratis',
     },
     trucksTeaser: {
@@ -538,7 +538,7 @@ export const translations: Record<Lang, Translations> = {
       eyebrow: 'Renta de espacio · Salem, OR',
       heading: 'Flexibilidad de Mes a Mes.',
       intro:
-        '12 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 3 de 15 espacios están libres.',
+        '11 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 4 de 15 espacios están libres.',
       ctaLabel: 'Pregunta por un espacio →',
       ctaMicrocopy: '4 preguntas · 2 minutos · sin compromiso',
       availabilityOf: 'de',

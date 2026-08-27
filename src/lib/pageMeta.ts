@@ -72,9 +72,7 @@ const DAY_NAMES = [
 /**
  * schema.org LocalBusiness JSON-LD, built from the same `parkInfo` data the
  * rest of the site renders — never hand-duplicated, so it can't drift out of
- * sync. Deliberately omits `telephone`/`email`: those are still placeholders
- * (see parkInfo.ts) and baking fake contact info into structured data is
- * worse than a visible placeholder, since search engines trust it more.
+ * sync.
  */
 export function getLocalBusinessSchema() {
   return {
@@ -83,6 +81,8 @@ export function getLocalBusinessSchema() {
     name: SITE_NAME,
     url: `${SITE_URL}/`,
     image: DEFAULT_OG_IMAGE,
+    telephone: parkInfo.phone,
+    email: parkInfo.email,
     address: {
       '@type': 'PostalAddress',
       streetAddress: parkInfo.address.line1,

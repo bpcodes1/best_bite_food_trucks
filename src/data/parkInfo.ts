@@ -23,15 +23,15 @@ export const parkInfo = {
     line1: '3282 Silverton Rd NE',
     line2: 'Salem, OR 97301',
   },
-  phone: '(512) 555-0148',
-  email: 'hello@bestbitefoodpark.com',
+  phone: '(503) 902-2050',
+  email: 'bestbite868@gmail.com',
   social: {
     instagram: 'https://instagram.com/bestbitefoodpark',
     facebook: 'https://www.facebook.com/p/The-Best-Bite-Food-Truck-Park-61584137473837/',
     tiktok: 'https://tiktok.com/@the_bestbite_',
   },
   /** Number of currently open (unleased) food truck spaces. */
-  availableSlots: 3,
+  availableSlots: 4,
   /** Total number of food truck spaces the park has room for. */
   totalSlots: 15,
 };

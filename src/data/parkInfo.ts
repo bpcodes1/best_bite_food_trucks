@@ -9,13 +9,13 @@ export interface DaySchedule {
  * both the live status bar and the footer hours list.
  */
 export const weeklyHours: Record<number, DaySchedule | null> = {
-  0: { open: '12:00', close: '20:00' },
-  1: { open: '12:00', close: '20:00' },
-  2: { open: '12:00', close: '20:00' },
-  3: { open: '12:00', close: '20:00' },
-  4: { open: '12:00', close: '20:00' },
-  5: { open: '12:00', close: '20:00' },
-  6: { open: '12:00', close: '20:00' },
+  0: { open: '09:00', close: '20:00' },
+  1: { open: '09:00', close: '20:00' },
+  2: { open: '09:00', close: '20:00' },
+  3: { open: '09:00', close: '20:00' },
+  4: { open: '09:00', close: '20:00' },
+  5: { open: '09:00', close: '20:00' },
+  6: { open: '09:00', close: '20:00' },
 };
 
 export const parkInfo = {

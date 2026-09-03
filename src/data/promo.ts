@@ -7,13 +7,13 @@ export interface Promo {
 
 /** Update this each month, or set `active: false` when there's no current promo. */
 export const currentPromo: Promo = {
-  active: false,
+  active: true,
   headline: {
-    en: "This Month's Move-In Special",
-    es: 'Promoción de Este Mes',
+    en: 'Move-In Special: $750/mo for Your First 3 Months',
+    es: 'Promoción de Mudanza: $750/mes los Primeros 3 Meses',
   },
   body: {
-    en: 'Contact us to learn about current availability and leasing terms.',
-    es: 'Contáctanos para conocer la disponibilidad y términos de arrendamiento actuales.',
+    en: 'Sign a six-month contract and pay $750/month for the first 3 months, then $1,000/month for the next 3. Contact us to claim a space.',
+    es: 'Firma un contrato de seis meses y paga $750/mes durante los primeros 3 meses, luego $1,000/mes los siguientes 3. Contáctanos para reservar tu espacio.',
   },
 };

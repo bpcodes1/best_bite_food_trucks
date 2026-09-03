@@ -72,6 +72,7 @@ export function LeaseInquiryForm() {
         </h2>
         <p className="mt-4 text-brand-black/70">{t.joinPage.formIntro}</p>
         <p className="mt-1 text-sm font-bold text-brand-black/70">{t.joinPage.formReassurance}</p>
+        <p className="mt-1 text-sm text-brand-black/70">{t.joinPage.replyTimeNote}</p>
 
         <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
           <input

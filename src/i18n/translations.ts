@@ -115,6 +115,7 @@ export interface Translations {
     successMessage: string;
     errorMessage: string;
     directLabel: string;
+    replyTimeNote: string;
     emailValidationHint: string;
   };
   joinPage: {
@@ -144,6 +145,7 @@ export interface Translations {
     formHeading: string;
     formIntro: string;
     formReassurance: string;
+    replyTimeNote: string;
     nameLabel: string;
     businessLabel: string;
     emailLabel: string;
@@ -297,6 +299,7 @@ export const translations: Record<Lang, Translations> = {
       errorMessage:
         'Something went wrong sending your message. Please try again or reach us directly.',
       directLabel: 'Prefer to reach us directly?',
+      replyTimeNote: 'We usually reply within 24 to 48 hours.',
       emailValidationHint: 'Enter a valid email address (e.g. name@example.com)',
     },
     joinPage: {
@@ -379,6 +382,7 @@ export const translations: Record<Lang, Translations> = {
       formIntro:
         'Tell us about your food truck and we will follow up with availability and next steps.',
       formReassurance: 'No commitment, and nothing to sign.',
+      replyTimeNote: 'We usually reply within 24 to 48 hours.',
       nameLabel: 'Name',
       businessLabel: 'Food truck / business name',
       emailLabel: 'Email',
@@ -537,6 +541,7 @@ export const translations: Record<Lang, Translations> = {
       errorMessage:
         'Algo salió mal al enviar tu mensaje. Inténtalo de nuevo o contáctanos directamente.',
       directLabel: '¿Prefieres contactarnos directamente?',
+      replyTimeNote: 'Normalmente respondemos en 24 a 48 horas.',
       emailValidationHint: 'Ingresa un correo electrónico válido (ej. nombre@ejemplo.com)',
     },
     joinPage: {
@@ -620,6 +625,7 @@ export const translations: Record<Lang, Translations> = {
       formIntro:
         'Cuéntanos sobre tu food truck y te contactaremos con la disponibilidad y los siguientes pasos.',
       formReassurance: 'Sin compromiso y sin nada que firmar.',
+      replyTimeNote: 'Normalmente respondemos en 24 a 48 horas.',
       nameLabel: 'Nombre',
       businessLabel: 'Nombre del food truck / negocio',
       emailLabel: 'Correo electrónico',

@@ -70,6 +70,8 @@ export function Contact() {
               style={{ display: 'none' }}
             />
 
+            <p className="text-sm text-brand-black/70">{t.contactPage.replyTimeNote}</p>
+
             <div>
               <label htmlFor="contact-name" className={labelClassName}>
                 {t.contactPage.nameLabel}

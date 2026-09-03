@@ -13,9 +13,12 @@ interface EventListingCardProps {
 
 /**
  * Tall, skinny, photo-forward event card for the homepage teaser: image on
- * top at its own aspect ratio (4:5, matching the park's flyer artwork so
- * posters show in full rather than getting cropped), title, hours, and
- * short description below, a "view all events" CTA at the bottom. A white
+ * top in a fixed 4:5 box (center-cropped via `object-cover` so every card's
+ * image is exactly the same height regardless of the source poster's
+ * dimensions, which keeps the text below starting at the same point across
+ * a row), title, hours, and short description below, a "view all events"
+ * CTA at the bottom. The `<img>` is positioned `absolute` inside the
+ * `relative` aspect box so its intrinsic size can't stretch the box. A white
  * matting border (the outer padded frame) sits around the whole card, so
  * the photo/content block reads as inset and smaller than the card's own
  * outer edge. The card stretches to fill its grid cell (`h-full`) and the
@@ -34,8 +37,12 @@ export function EventListingCard({
   return (
     <div className="mx-auto flex h-full w-full max-w-[300px] flex-col rounded-2xl bg-white p-3 shadow-lg">
       <div className="flex h-full flex-col overflow-hidden rounded-xl">
-        <div className="aspect-[4/5] w-full shrink-0">
-          <img src={imageUrl} alt={name} className="h-full w-full object-cover" />
+        <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden">
+          <img
+            src={imageUrl}
+            alt={name}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         </div>
 
         <div className="flex flex-1 flex-col gap-2 bg-white p-5">

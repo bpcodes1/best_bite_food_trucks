@@ -367,6 +367,11 @@ export const translations: Record<Lang, Translations> = {
           answer:
             'Ask through the form below and we will give you the rent for the space that is available.',
         },
+        {
+          question: 'How much space do I have, and what comes with my spot?',
+          answer:
+            'Each space is 25 ft wide. Water, drain, gas, and electricity are all hooked up and included, along with trash service and access to the shared indoor and outdoor seating. The only thing you bring is propane.',
+        },
       ],
       faqSpacesQuestion: 'How many spaces are available?',
       faqSpacesOf: 'of',
@@ -602,6 +607,11 @@ export const translations: Record<Lang, Translations> = {
           question: '¿Cuánto cuesta?',
           answer:
             'Pregunta por el formulario de abajo y te decimos la renta del espacio disponible.',
+        },
+        {
+          question: '¿De qué tamaño es mi espacio y qué incluye?',
+          answer:
+            'Cada espacio mide 25 pies de ancho. El agua, el drenaje, el gas y la electricidad ya están conectados e incluidos, junto con el servicio de basura y el acceso a los asientos compartidos, techados y al aire libre. Lo único que tú traes es el propano.',
         },
       ],
       faqSpacesQuestion: '¿Cuántos espacios hay disponibles?',

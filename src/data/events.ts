@@ -8,10 +8,12 @@
 // import cruiseFullImage from '../assets/events/cruise_into_the_school_year_full.webp';
 // import backToSchoolCruiseFullImage from '../assets/events/back_to_school_cruise_full.webp';
 
-import ponteChulaEng from '../assets/events/ponte_chula_eng.png';
-import ponteChulaEsp from '../assets/events/ponte_chula_esp.png';
-import cafecitaEng from '../assets/events/cafecito_eng.jpg';
-import cafecitaEsp from '../assets/events/cafecity_esp.jpg';
+// Salem Ponte Chula has passed — imports kept for the commented-out entry below.
+// import ponteChulaEng from '../assets/events/ponte_chula_eng.png';
+// import ponteChulaEsp from '../assets/events/ponte_chula_esp.png';
+import cafecitaEng from '../assets/events/cafecito_eng.webp';
+import cafecitaEsp from '../assets/events/cafecity_esp.webp';
+import endOfSummerLowrider from '../assets/events/end_of_summer_lowrider.webp';
 
 export interface EventItem {
   id: string;
@@ -54,17 +56,33 @@ export const events: EventItem[] = [
   //   image: karaokeImage,
   //   fullImage: karaokeFullImage,
   // },
+  // Salem Ponte Chula has passed — commented out (not deleted) so it's a
+  // one-line uncomment if it comes back.
+  // {
+  //   id: 'salem-ponte-chula',
+  //   name: { en: 'Salem Ponte Chula', es: 'Salem Ponte Chula' },
+  //   date: '2026-08-28',
+  //   time: { en: '5pm–7pm', es: '5pm–7pm' },
+  //   description: {
+  //     en: 'Try our new drink menu and enjoy a dancing horse performance. Come hang out, sip, and enjoy the evening.',
+  //     es: 'Prueba nuestro nuevo menú de bebidas y disfruta una actuación de caballo bailador. Ven a convivir, tomar algo y disfrutar la noche.',
+  //   },
+  //   fullImage: ponteChulaEng,
+  //   fullImageEs: ponteChulaEsp,
+  // },
   {
-    id: 'salem-ponte-chula',
-    name: { en: 'Salem Ponte Chula', es: 'Salem Ponte Chula' },
-    date: '2026-08-28',
-    time: { en: '5pm–7pm', es: '5pm–7pm' },
-    description: {
-      en: 'Try our new drink menu and enjoy a dancing horse performance. Come hang out, sip, and enjoy the evening.',
-      es: 'Prueba nuestro nuevo menú de bebidas y disfruta una actuación de caballo bailador. Ven a convivir, tomar algo y disfrutar la noche.',
+    id: 'end-of-summer-lowrider-cruise-in',
+    name: {
+      en: 'Lowrider End of the Summer Cruise In',
+      es: 'Lowrider Cruise In de Fin de Verano',
     },
-    fullImage: ponteChulaEng,
-    fullImageEs: ponteChulaEsp,
+    date: '2026-09-05',
+    time: { en: 'Meet 4:30pm, cruise in 5pm', es: 'Reunión 4:30pm, cruise in 5pm' },
+    description: {
+      en: "Cap off the season with a lowrider cruise in. Meet up at the ARCO at 4433 Lancaster Drive at 4:30pm, roll out at 5pm, and cruise in to Best Bite Food Park. Good vibes, good rides, good food — let's end the summer right!",
+      es: 'Cierra la temporada con un cruise in de lowriders. Nos reunimos en el ARCO de 4433 Lancaster Drive a las 4:30pm, salimos a las 5pm y llegamos en caravana a Best Bite Food Park. Buena vibra, buenos carros, buena comida... ¡vamos a despedir el verano como se debe!',
+    },
+    fullImage: endOfSummerLowrider,
   },
   {
     id: 'cafecito',

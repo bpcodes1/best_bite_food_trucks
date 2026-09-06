@@ -49,6 +49,18 @@ export interface Truck {
   foodType: { en: string; es: string };
   hours: { en: string; es: string };
   /**
+   * The same hours as `hours`, machine readable, for the open/closed badge on
+   * the Food Trucks page. Keys are `Date#getDay()` (0 = Sunday), values are
+   * [opens, closes] in minutes from midnight. A missing day means closed that
+   * day; a missing `hoursByDay` entirely means the vendor has never given us
+   * hours, and the badge says so rather than guessing.
+   *
+   * KEEP IN SYNC WITH `hours` ABOVE. That string is what a reader and a
+   * crawler see; this is what the badge computes from. If they ever disagree,
+   * the string is the one a person wrote and wins.
+   */
+  hoursByDay?: Record<number, [number, number]>;
+  /**
    * Optional photo, shown on the Food Trucks page. Drop real photos in
    * `src/assets/food_trucks/` and import them here (e.g.
    * `import image from '../assets/food_trucks/cafe_chula_truck.webp'`) so Vite can
@@ -70,6 +82,7 @@ export interface Truck {
 export const trucks: Truck[] = [
   {
     id: 'adans-grill',
+    hoursByDay: { 0: [720, 1260], 4: [720, 1260], 5: [720, 1260], 6: [720, 1260] },
     name: "Adan's Grill",
     category: 'mexican',
     foodType: { en: 'Grilled Mexican specialties', es: 'Especialidades mexicanas a la parrilla' },
@@ -81,6 +94,7 @@ export const trucks: Truck[] = [
   },
   {
     id: 'cafe-chula',
+    hoursByDay: { 0: [540, 960], 1: [420, 840], 2: [420, 840], 3: [420, 840], 4: [420, 840], 5: [420, 960], 6: [420, 960] },
     name: 'Cafe Chula',
     category: 'breakfast',
     foodType: { en: 'Coffee & Mexican breakfast', es: 'Café y desayuno mexicano' },
@@ -114,6 +128,7 @@ export const trucks: Truck[] = [
   // },
   {
     id: 'las-cuatas-lokas',
+    hoursByDay: { 0: [900, 1290], 3: [900, 1290], 4: [900, 1290], 5: [900, 1290], 6: [900, 1290] },
     name: 'Las Cuatas Lokas',
     category: 'mexican',
     foodType: { en: 'Mexican street food', es: 'Antojitos mexicanos' },
@@ -123,6 +138,7 @@ export const trucks: Truck[] = [
   },
   {
     id: 'las-jarochitas',
+    hoursByDay: { 0: [600, 1080], 2: [600, 1200], 3: [600, 1200], 4: [600, 1080], 5: [600, 1260], 6: [600, 1260] },
     name: 'Las Jarochitas',
     category: 'mexican',
     foodType: { en: 'Veracruz-style Mexican food', es: 'Comida mexicana estilo veracruzano' },
@@ -135,6 +151,7 @@ export const trucks: Truck[] = [
   },
   {
     id: 'nieve-casera',
+    hoursByDay: { 0: [660, 1200], 1: [840, 1200], 2: [840, 1200], 3: [840, 1200], 4: [840, 1200], 5: [840, 1200], 6: [720, 1200] },
     name: 'Nieve Casera',
     category: 'dessert',
     foodType: { en: 'Homemade ice cream & paletas', es: 'Nieve y paletas caseras' },
@@ -155,6 +172,7 @@ export const trucks: Truck[] = [
   },
   {
     id: 'que-rollon-sushi',
+    hoursByDay: { 0: [840, 1260], 3: [720, 1200], 4: [720, 1200], 5: [720, 1320], 6: [720, 1320] },
     name: 'Que Rollon Sushi',
     category: 'japanese',
     foodType: { en: 'Sushi & Japanese rolls', es: 'Sushi y rollos japoneses' },
@@ -167,6 +185,7 @@ export const trucks: Truck[] = [
   },
   {
     id: 'syrian-house',
+    hoursByDay: { 0: [660, 840], 1: [660, 840], 2: [660, 840], 3: [660, 840], 4: [660, 840], 5: [660, 840], 6: [660, 840] },
     name: 'Syrian House',
     category: 'middle-eastern',
     foodType: { en: 'Syrian & Middle Eastern food', es: 'Comida siria y del medio oriente' },
@@ -175,6 +194,7 @@ export const trucks: Truck[] = [
   },
   {
     id: 'taqueria-romero',
+    hoursByDay: { 1: [720, 1200], 2: [720, 1200], 3: [720, 1200], 4: [720, 1200], 5: [720, 1200], 6: [720, 1320] },
     name: 'Taqueria Romero',
     category: 'mexican',
     foodType: { en: 'Tacos & Mexican eats', es: 'Tacos y comida mexicana' },
@@ -187,6 +207,7 @@ export const trucks: Truck[] = [
   },
   {
     id: 'the-red-marino',
+    hoursByDay: { 0: [750, 1230], 3: [750, 1230], 4: [750, 1230], 5: [750, 1230], 6: [750, 1230] },
     name: 'The Red Marino',
     category: 'seafood',
     foodType: { en: 'Seafood & Mexican specialties', es: 'Mariscos y especialidades mexicanas' },
@@ -199,6 +220,7 @@ export const trucks: Truck[] = [
   },
   {
     id: 'tortilleria-el-patron',
+    hoursByDay: { 0: [540, 1200], 1: [540, 1200], 2: [540, 1200], 3: [540, 1200], 4: [540, 1200], 5: [540, 1200], 6: [540, 1200] },
     name: 'Tortilleria El Patron',
     category: 'mexican',
     foodType: { en: 'Fresh tortillas & Mexican eats', es: 'Tortillas frescas y comida mexicana' },

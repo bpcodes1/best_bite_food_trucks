@@ -1,5 +1,6 @@
 import { useLanguage } from '../i18n/useLanguage';
 import type { Truck } from '../data/trucks';
+import { OpenStatus } from './OpenStatus';
 
 interface TruckCardProps {
   truck: Truck;
@@ -10,7 +11,12 @@ export function TruckCard({ truck }: TruckCardProps) {
 
   return (
     <li className="flex flex-col overflow-hidden rounded-lg border border-brand-black/10 bg-white">
-      <div className="aspect-[4/3] w-full bg-brand-yellow/15">
+      <div className="relative aspect-[4/3] w-full bg-brand-yellow/15">
+        {/* Live open/closed, top left over the photo. Fills in after mount; the
+            written hours below are what a crawler reads. */}
+        <div className="absolute left-3 top-3 z-10">
+          <OpenStatus truck={truck} lang={lang} />
+        </div>
         {truck.image ? (
           <img
             src={truck.image}

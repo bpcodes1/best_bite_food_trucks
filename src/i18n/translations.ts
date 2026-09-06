@@ -221,7 +221,7 @@ export const translations: Record<Lang, Translations> = {
     },
     eventsTeaser: {
       heading: 'Upcoming events',
-      subheading: 'Live music, theme nights, and community gatherings.',
+      subheading: 'Theme nights and community gatherings.',
       viewAll: 'See all events →',
     },
     diningSection: {
@@ -234,7 +234,7 @@ export const translations: Record<Lang, Translations> = {
     },
     vendorCta: {
       heading: 'Own a food truck?',
-      body: 'We have spaces available on a month-to-month basis, no long-term lease required. Join a growing community of vendors and reach hungry regulars every week.',
+      body: 'We have 4 spaces available on a six month term, $750 a month for the first three. Join a growing community of vendors and reach hungry regulars every week.',
       cta: 'Join the park',
     },
     footer: {
@@ -258,13 +258,13 @@ export const translations: Record<Lang, Translations> = {
       noResults: 'No food trucks match this filter yet.',
       vendorCtaHeading: 'Interested in Joining Best Bite Food Park as a Vendor?',
       vendorCtaBody:
-        'We have spaces available on a month-to-month basis, no long-term lease required. Join a growing community of vendors and reach hungry regulars every week.',
+        'We have 4 spaces available on a six month term, $750 a month for the first three. Join a growing community of vendors and reach hungry regulars every week.',
       vendorCtaCta: 'Join the park',
     },
     eventsPage: {
       heading: 'Events',
       intro:
-        'Live music, theme nights, and community gatherings happening at the park. Check the calendar for what is coming up.',
+        'Theme nights and community gatherings happening at the park. Check the calendar for what is coming up.',
       calendarHeading: 'This month',
       previousMonth: 'Previous month',
       nextMonth: 'Next month',
@@ -304,20 +304,20 @@ export const translations: Record<Lang, Translations> = {
     },
     joinPage: {
       eyebrow: 'Lease a space · Salem, OR',
-      heading: 'Month to Month Flexibility.',
+      heading: 'Your First Three Months Are $750.',
       intro:
         '11 food trucks are already open at Best Bite, most of them for more than a year. Right now, 11 spaces are filled and 4 are available.',
       ctaLabel: 'Ask about a space →',
-      ctaMicrocopy: '4 questions · 2 minutes · no commitment',
+      ctaMicrocopy: '4 questions · 2 minutes',
       availabilityOf: 'of',
       availabilityUnitLabel: 'food truck spaces available',
       availabilityFilledLabel: 'filled',
       availabilityFreeLabel: 'free',
-      availabilityBody: "We're especially looking for Asian food.",
-      availabilityCta: 'Look at our move-in special →',
+      availabilityBody: 'We are looking for food we do not already have.',
+      availabilityCta: 'See what a space costs →',
       economicsHeading: 'How the Rent Works',
       economicsBody:
-        "There's no long-term lease. If a spot doesn't work out for you, it costs you a month, not a year: that's the whole difference.",
+        'Spaces are a six month commitment. The first three months are $750 a month, the last three are $1,000 a month, and you know both numbers before you sign anything.',
       benefitsHeading: 'Why Vendors Choose Best Bite',
       benefits: [
         {
@@ -325,16 +325,16 @@ export const translations: Record<Lang, Translations> = {
           body: 'We sit on a high-visibility corner in Salem with steady foot and car traffic every day of the week.',
         },
         {
-          title: 'No Long-Term Contract',
-          body: 'Rent is month-to-month, no lease to sign, so you can stay as long as it makes sense for your business.',
+          title: 'Both Numbers Up Front',
+          body: 'Six months, $750 a month for the first three and $1,000 a month for the last three. Nothing changes on you halfway through.',
         },
         {
           title: 'Built-In Customer Base',
-          body: 'Join a park that already draws regulars for food, live music, and community events.',
+          body: 'Join a park that already draws regulars for food and community events.',
         },
         {
           title: 'Shared Amenities',
-          body: 'Power hookups, trash service, and seating areas are ready to go. Just pull in and open your window.',
+          body: 'Water, gas, electricity, trash service and used oil disposal are ready to go. Just pull in and open your window.',
         },
       ],
       showcaseHeading: 'See the Park',
@@ -357,23 +357,24 @@ export const translations: Record<Lang, Translations> = {
       faqHeading: 'Before You Ask',
       faqItems: [
         {
-          question: 'Do I have to sign a long-term lease?',
-          answer: 'No. Rent is month to month.',
+          question: 'Is there a commitment?',
+          answer:
+            'Yes. Spaces are a six month commitment. The first three months are $750 a month and the last three are $1,000 a month.',
         },
         {
           question: 'What kind of food are you looking for?',
           answer:
-            "Anything that isn't already here. We're especially looking for Asian food, since the lineup is mostly Mexican right now.",
+            'Anything we do not already have. The lineup is mostly Mexican right now, so anything that adds variety works, Asian food included.',
         },
         {
           question: 'What does it cost?',
           answer:
-            'Ask through the form below and we will give you the rent for the space that is available.',
+            '$750 a month for your first three months, then $1,000 a month for the next three, on a six month commitment.',
         },
         {
           question: 'How much space do I have, and what comes with my spot?',
           answer:
-            'Each space is 25 ft wide. Water, drain, gas, and electricity are all hooked up and included, along with trash service and access to the shared indoor and outdoor seating. The only thing you bring is propane.',
+            'Each space is 25 ft in length. Water, drain, gas, electricity and used oil disposal are all hooked up and included, along with trash service and access to the shared indoor and outdoor seating. The only thing you bring is propane.',
         },
       ],
       faqSpacesQuestion: 'How many spaces are available?',
@@ -381,7 +382,7 @@ export const translations: Record<Lang, Translations> = {
       formHeading: 'Inquire About Leasing a Spot',
       formIntro:
         'Tell us about your food truck and we will follow up with availability and next steps.',
-      formReassurance: 'No commitment, and nothing to sign.',
+      formReassurance: 'Sending this does not commit you to anything.',
       replyTimeNote: 'We usually reply within 24 to 48 hours.',
       nameLabel: 'Name',
       businessLabel: 'Food truck / business name',
@@ -463,7 +464,7 @@ export const translations: Record<Lang, Translations> = {
     },
     eventsTeaser: {
       heading: 'Próximos eventos',
-      subheading: 'Música en vivo, noches temáticas y encuentros comunitarios.',
+      subheading: 'Noches temáticas y encuentros comunitarios.',
       viewAll: 'Ver todos los eventos →',
     },
     diningSection: {
@@ -476,7 +477,7 @@ export const translations: Record<Lang, Translations> = {
     },
     vendorCta: {
       heading: '¿Tienes un food truck?',
-      body: 'Tenemos espacios disponibles mes a mes, sin contrato a largo plazo. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
+      body: 'Tenemos 4 espacios disponibles con un plazo de seis meses, $750 al mes los primeros tres. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
       cta: 'Únete al parque',
     },
     footer: {
@@ -500,13 +501,13 @@ export const translations: Record<Lang, Translations> = {
       noResults: 'Ningún food truck coincide con este filtro todavía.',
       vendorCtaHeading: '¿Interesado en Unirte a Best Bite Food Park como Vendedor?',
       vendorCtaBody:
-        'Tenemos espacios disponibles mes a mes, sin contrato a largo plazo. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
+        'Tenemos 4 espacios disponibles con un plazo de seis meses, $750 al mes los primeros tres. Únete a una comunidad de vendedores en crecimiento y llega a clientes frecuentes cada semana.',
       vendorCtaCta: 'Únete al parque',
     },
     eventsPage: {
       heading: 'Eventos',
       intro:
-        'Música en vivo, noches temáticas y encuentros comunitarios en el parque. Revisa el calendario para ver lo que se viene.',
+        'Noches temáticas y encuentros comunitarios en el parque. Revisa el calendario para ver lo que se viene.',
       calendarHeading: 'Este mes',
       previousMonth: 'Mes anterior',
       nextMonth: 'Mes siguiente',
@@ -546,20 +547,20 @@ export const translations: Record<Lang, Translations> = {
     },
     joinPage: {
       eyebrow: 'Renta de espacio · Salem, OR',
-      heading: 'Flexibilidad de Mes a Mes.',
+      heading: 'Tus Primeros Tres Meses Son $750.',
       intro:
         '11 food trucks ya están abiertos en Best Bite, la mayoría desde hace más de un año. Ahora mismo, 11 espacios ocupados y 4 libres.',
       ctaLabel: 'Pregunta por un espacio →',
-      ctaMicrocopy: '4 preguntas · 2 minutos · sin compromiso',
+      ctaMicrocopy: '4 preguntas · 2 minutos',
       availabilityOf: 'de',
       availabilityUnitLabel: 'espacios para food trucks disponibles',
       availabilityFilledLabel: 'ocupados',
       availabilityFreeLabel: 'libres',
-      availabilityBody: 'Buscamos especialmente comida asiática.',
-      availabilityCta: 'Mira nuestra promoción de mudanza →',
+      availabilityBody: 'Buscamos comida que todavía no tenemos.',
+      availabilityCta: 'Mira cuánto cuesta un espacio →',
       economicsHeading: 'Cómo Funciona la Renta',
       economicsBody:
-        'No hay contrato a largo plazo. Si el lugar no te funciona, te cuesta un mes y no un año: esa es toda la diferencia.',
+        'Los espacios son un compromiso de seis meses. Los primeros tres meses son $750 al mes, los últimos tres son $1,000 al mes, y conoces los dos números antes de firmar nada.',
       benefitsHeading: 'Por Qué los Vendedores Eligen Best Bite',
       benefits: [
         {
@@ -567,16 +568,16 @@ export const translations: Record<Lang, Translations> = {
           body: 'Estamos en una esquina de alta visibilidad en Salem, con tráfico peatonal y vehicular constante toda la semana.',
         },
         {
-          title: 'Sin Contrato a Largo Plazo',
-          body: 'La renta es mes a mes, sin contrato que firmar, para que te quedes el tiempo que le convenga a tu negocio.',
+          title: 'Los Dos Números por Adelantado',
+          body: 'Seis meses, $750 al mes los primeros tres y $1,000 al mes los últimos tres. Nada te cambia a medio camino.',
         },
         {
           title: 'Clientela Ya Establecida',
-          body: 'Únete a un parque que ya atrae clientes frecuentes por la comida, la música en vivo y los eventos comunitarios.',
+          body: 'Únete a un parque que ya atrae clientes frecuentes por la comida y los eventos comunitarios.',
         },
         {
           title: 'Servicios Compartidos',
-          body: 'Conexión eléctrica, servicio de basura y áreas para sentarse ya están listos. Solo llega y abre tu ventana.',
+          body: 'El agua, el gas, la electricidad, el servicio de basura y el desecho de aceite usado ya están listos. Solo llega y abre tu ventana.',
         },
       ],
       showcaseHeading: 'Conoce el Parque',
@@ -600,23 +601,24 @@ export const translations: Record<Lang, Translations> = {
       faqHeading: 'Antes de Preguntar',
       faqItems: [
         {
-          question: '¿Tengo que firmar un contrato a largo plazo?',
-          answer: 'No. La renta es mes a mes.',
+          question: '¿Hay algún compromiso?',
+          answer:
+            'Sí. Los espacios son un compromiso de seis meses. Los primeros tres meses son $750 al mes y los últimos tres son $1,000 al mes.',
         },
         {
           question: '¿Qué tipo de comida buscan?',
           answer:
-            'Lo que todavía no está aquí. Buscamos especialmente comida asiática, porque ahora la mayoría es mexicana.',
+            'Cualquier cosa que todavía no tengamos. Ahora la mayoría es comida mexicana, así que buscamos variedad, incluida la comida asiática.',
         },
         {
           question: '¿Cuánto cuesta?',
           answer:
-            'Pregunta por el formulario de abajo y te decimos la renta del espacio disponible.',
+            '$750 al mes tus primeros tres meses, luego $1,000 al mes los siguientes tres, con un compromiso de seis meses.',
         },
         {
           question: '¿De qué tamaño es mi espacio y qué incluye?',
           answer:
-            'Cada espacio mide 25 pies de ancho. El agua, el drenaje, el gas y la electricidad ya están conectados e incluidos, junto con el servicio de basura y el acceso a los asientos compartidos, techados y al aire libre. Lo único que tú traes es el propano.',
+            'Cada espacio mide 25 pies de largo. El agua, el drenaje, el gas, la electricidad y el desecho de aceite usado ya están conectados e incluidos, junto con el servicio de basura y el acceso a los asientos compartidos, techados y al aire libre. Lo único que tú traes es el propano.',
         },
       ],
       faqSpacesQuestion: '¿Cuántos espacios hay disponibles?',
@@ -624,7 +626,7 @@ export const translations: Record<Lang, Translations> = {
       formHeading: 'Pregunta Sobre Rentar un Espacio',
       formIntro:
         'Cuéntanos sobre tu food truck y te contactaremos con la disponibilidad y los siguientes pasos.',
-      formReassurance: 'Sin compromiso y sin nada que firmar.',
+      formReassurance: 'Enviar esto no te compromete a nada.',
       replyTimeNote: 'Normalmente respondemos en 24 a 48 horas.',
       nameLabel: 'Nombre',
       businessLabel: 'Nombre del food truck / negocio',

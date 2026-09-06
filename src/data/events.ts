@@ -79,7 +79,7 @@ export const events: EventItem[] = [
     date: '2026-09-05',
     time: { en: 'Meet 4:30pm, cruise in 5pm', es: 'Reunión 4:30pm, cruise in 5pm' },
     description: {
-      en: "Cap off the season with a lowrider cruise in. Meet up at the ARCO at 4433 Lancaster Drive at 4:30pm, roll out at 5pm, and cruise in to Best Bite Food Park. Good vibes, good rides, good food — let's end the summer right!",
+      en: "Cap off the season with a lowrider cruise in. Meet up at the ARCO at 4433 Lancaster Drive at 4:30pm, roll out at 5pm, and cruise in to Best Bite Food Park. Good vibes, good rides, good food. Let's end the summer right!",
       es: 'Cierra la temporada con un cruise in de lowriders. Nos reunimos en el ARCO de 4433 Lancaster Drive a las 4:30pm, salimos a las 5pm y llegamos en caravana a Best Bite Food Park. Buena vibra, buenos carros, buena comida... ¡vamos a despedir el verano como se debe!',
     },
     fullImage: endOfSummerLowrider,

@@ -22,7 +22,7 @@ export function AvailabilitySection() {
       </span>
       <span className="text-sm text-white/80">{t.joinPage.availabilityBody}</span>
       <a
-        href="#move-in-special"
+        href="#pricing"
         tabIndex={-1}
         className="text-sm font-bold text-brand-yellow hover:underline"
       >

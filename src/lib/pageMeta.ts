@@ -16,7 +16,7 @@ export const PAGE_META: PageMetaEntry[] = [
     path: ROUTES.home,
     title: 'Best Bite Food Park | Food Truck Park in Salem, OR',
     description:
-      'A food truck park in Salem, OR with a rotating lineup of food trucks, live music, and family-friendly indoor and outdoor dining. Open daily 12pm to 8pm.',
+      'A food truck park in Salem, OR with a rotating lineup of food trucks and family-friendly indoor and outdoor dining. Open daily 9am to 8pm.',
   },
   {
     path: ROUTES.foodTrucks,
@@ -28,12 +28,12 @@ export const PAGE_META: PageMetaEntry[] = [
     path: ROUTES.events,
     title: 'Events | Best Bite Food Park',
     description:
-      'Live music, theme nights, and community events at Best Bite Food Park in Salem, OR. Check the calendar for what is coming up.',
+      'Theme nights and community events at Best Bite Food Park in Salem, OR. Check the calendar for what is coming up.',
   },
   {
     path: ROUTES.joinThePark,
     title: 'Lease a Food Cart Space in Salem, OR | Best Bite Food Park',
-    description: `${parkInfo.availableSlots} of ${parkInfo.totalSlots} food truck spaces are available at Best Bite Food Park on Silverton Rd NE. Month to month, no long-term lease.`,
+    description: `${parkInfo.availableSlots} of ${parkInfo.totalSlots} food truck spaces are available at Best Bite Food Park on Silverton Rd NE. $750 a month for your first three months.`,
   },
   {
     path: ROUTES.contact,

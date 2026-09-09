@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../i18n/useLanguage';
-import { ROUTES } from '../../lib/routes';
 import { getUpcomingEvents } from '../../lib/parkStatus';
 import { EventListingCard } from '../EventListingCard';
 
@@ -19,7 +18,7 @@ function placeholderImage(label: string, background: string): string {
 }
 
 export function EventsTeaser() {
-  const { lang, t } = useLanguage();
+  const { lang, t, path } = useLanguage();
   // Pull every upcoming event, then prioritize the ones with a real photo —
   // otherwise events with a fixed, further-out date would crowd out ones
   // whose real date/time is still TBD but already have real artwork.
@@ -42,7 +41,7 @@ export function EventsTeaser() {
             <p className="mt-2 max-w-xl text-white/70">{t.eventsTeaser.subheading}</p>
           </div>
           <Link
-            to={ROUTES.events}
+            to={path('events')}
             className="whitespace-nowrap font-bold text-brand-yellow hover:underline"
           >
             {t.eventsTeaser.viewAll}
@@ -62,6 +61,7 @@ export function EventsTeaser() {
                 time={event.time[lang]}
                 description={event.description[lang]}
                 ctaLabel={t.eventsTeaser.viewAll}
+                ctaTo={path('events')}
                 dateTbdLabel={event.dateUnconfirmed ? t.eventsPage.dateTbd : undefined}
               />
             </li>

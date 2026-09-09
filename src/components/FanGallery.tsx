@@ -3,6 +3,12 @@ import { useState } from 'react';
 interface FanGalleryProps {
   images: string[];
   altTexts?: string[];
+  /**
+   * Arrow labels. Passed in rather than held here, like altTexts, so this
+   * component speaks no language of its own.
+   */
+  previousLabel: string;
+  nextLabel: string;
 }
 
 // Fan offset -> horizontal translate (fixed px, mobile value first, sm:
@@ -52,7 +58,7 @@ function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
  * arrow buttons. Every image stays mounted (keyed by its own index) so the
  * transform swap animates as a slide instead of a hard cut.
  */
-export function FanGallery({ images, altTexts }: FanGalleryProps) {
+export function FanGallery({ images, altTexts, previousLabel, nextLabel }: FanGalleryProps) {
   const [current, setCurrent] = useState(0);
   const length = images.length;
 
@@ -80,7 +86,7 @@ export function FanGallery({ images, altTexts }: FanGalleryProps) {
         <button
           type="button"
           onClick={() => goTo(current - 1)}
-          aria-label="Previous image"
+          aria-label={previousLabel}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-black/20 bg-white text-brand-black transition-colors hover:bg-brand-black hover:text-white"
         >
           <ChevronIcon direction="left" />
@@ -88,7 +94,7 @@ export function FanGallery({ images, altTexts }: FanGalleryProps) {
         <button
           type="button"
           onClick={() => goTo(current + 1)}
-          aria-label="Next image"
+          aria-label={nextLabel}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-black/20 bg-white text-brand-black transition-colors hover:bg-brand-black hover:text-white"
         >
           <ChevronIcon direction="right" />

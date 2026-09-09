@@ -8,14 +8,13 @@ import { ScheduledEvents } from '../components/ScheduledEvents';
 import { PastEventsGallery } from '../components/PastEventsGallery';
 import { RecentEventGallery } from '../components/RecentEventGallery';
 import { PageHero } from '../components/PageHero';
-import { ROUTES } from '../lib/routes';
 import holdEventImage from '../assets/best_bite_sign2.webp';
 
 const today = new Date();
 const sortedEvents = [...events].sort((a, b) => a.date.localeCompare(b.date));
 
 export function Events() {
-  const { t } = useLanguage();
+  const { t, path } = useLanguage();
   const [highlightedEventIds, setHighlightedEventIds] = useState<string[]>([]);
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
@@ -82,7 +81,7 @@ export function Events() {
             </h2>
             <p className="mt-3 text-brand-black/70">{t.eventsPage.holdEventBody}</p>
             <Link
-              to={ROUTES.contact}
+              to={path('contact')}
               className="mt-6 inline-block rounded-md bg-brand-black px-6 py-3 font-heading font-bold text-brand-yellow transition-colors hover:bg-brand-black/80"
             >
               {t.eventsPage.holdEventCta}

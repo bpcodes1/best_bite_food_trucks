@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NAV_ROUTES, ROUTES } from '../lib/routes';
+import { NAV_KEYS } from '../lib/routes';
 import { useLanguage } from '../i18n/useLanguage';
 import { LanguageToggle } from './LanguageToggle';
 import logo from '../assets/logo.webp';
 
 // Home is represented by the logo link, so it's excluded from the split nav groups.
-const secondaryRoutes = NAV_ROUTES.filter((route) => route.path !== ROUTES.home);
-const splitIndex = Math.ceil(secondaryRoutes.length / 2);
-const leftRoutes = secondaryRoutes.slice(0, splitIndex);
-const rightRoutes = secondaryRoutes.slice(splitIndex);
+// Keys rather than paths: the path depends on the language of the current page.
+const secondaryKeys = NAV_KEYS.filter((key) => key !== 'home');
+const splitIndex = Math.ceil(secondaryKeys.length / 2);
+const leftKeys = secondaryKeys.slice(0, splitIndex);
+const rightKeys = secondaryKeys.slice(splitIndex);
 
 function navLinkClassName({ isActive }: { isActive: boolean }) {
   return [
@@ -47,11 +48,11 @@ function MenuIcon({ open }: { open: boolean }) {
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t } = useLanguage();
+  const { t, path } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 font-nav bg-brand-yellow">
-      <nav aria-label="Primary">
+      <nav aria-label={t.nav.primaryLabel}>
         <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-6 px-4 py-3">
           <div className="col-start-1 flex items-center gap-3 justify-self-start md:justify-self-end">
             <div className="md:hidden">
@@ -59,10 +60,10 @@ export function Header() {
             </div>
 
             <ul className="hidden items-center gap-2 md:flex">
-              {leftRoutes.map((route) => (
-                <li key={route.path}>
-                  <NavLink to={route.path} className={navLinkClassName}>
-                    {t.nav[route.key]}
+              {leftKeys.map((key) => (
+                <li key={key}>
+                  <NavLink to={path(key)} className={navLinkClassName}>
+                    {t.nav[key]}
                   </NavLink>
                 </li>
               ))}
@@ -70,7 +71,7 @@ export function Header() {
           </div>
 
           <NavLink
-            to="/"
+            to={path('home')}
             className="col-start-2 justify-self-center"
             onClick={() => setIsMenuOpen(false)}
           >
@@ -79,10 +80,10 @@ export function Header() {
 
           <div className="col-start-3 flex items-center justify-end gap-3 md:justify-between">
             <ul className="hidden items-center gap-2 md:flex">
-              {rightRoutes.map((route) => (
-                <li key={route.path}>
-                  <NavLink to={route.path} className={navLinkClassName}>
-                    {t.nav[route.key]}
+              {rightKeys.map((key) => (
+                <li key={key}>
+                  <NavLink to={path(key)} className={navLinkClassName}>
+                    {t.nav[key]}
                   </NavLink>
                 </li>
               ))}
@@ -110,15 +111,15 @@ export function Header() {
             id="mobile-nav"
             className="flex flex-col gap-1 border-t border-brand-black/10 px-4 py-3 md:hidden"
           >
-            {NAV_ROUTES.map((route) => (
-              <li key={route.path}>
+            {NAV_KEYS.map((key) => (
+              <li key={key}>
                 <NavLink
-                  to={route.path}
-                  end={route.path === '/'}
+                  to={path(key)}
+                  end={key === 'home'}
                   className={mobileNavLinkClassName}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t.nav[route.key]}
+                  {t.nav[key]}
                 </NavLink>
               </li>
             ))}

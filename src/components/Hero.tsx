@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/best_bite_sign.webp';
 import { useLanguage } from '../i18n/useLanguage';
-import { ROUTES } from '../lib/routes';
 
 export function Hero() {
-  const { t } = useLanguage();
+  const { t, path } = useLanguage();
 
   return (
     <section className="relative isolate flex h-[calc(100vh-5rem)] items-end overflow-hidden">
@@ -30,13 +29,13 @@ export function Hero() {
 
         <div className="flex flex-col gap-3 sm:flex-row">
           <Link
-            to={ROUTES.foodTrucks}
+            to={path('foodTrucks')}
             className="rounded-sm bg-brand-yellow px-[22px] py-[11px] text-center font-heading text-sm font-semibold text-brand-black transition-colors hover:bg-brand-yellow-dark"
           >
             {t.hero.ctaTrucks}
           </Link>
           <Link
-            to={ROUTES.joinThePark}
+            to={path('joinThePark')}
             className="rounded-sm border border-white px-[22px] py-[11px] text-center font-heading text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-black"
           >
             {t.hero.ctaJoin}

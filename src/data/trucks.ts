@@ -151,13 +151,13 @@ export const trucks: Truck[] = [
   },
   {
     id: 'nieve-casera',
-    hoursByDay: { 0: [660, 1200], 1: [840, 1200], 2: [840, 1200], 3: [840, 1200], 4: [840, 1200], 5: [840, 1200], 6: [720, 1200] },
-    name: 'Nieve Casera',
+    hoursByDay: { 0: [900, 1260], 3: [900, 1260], 4: [900, 1260], 5: [900, 1260], 6: [900, 1260] },
+    name: 'Nieve Casera Villegas',
     category: 'dessert',
     foodType: { en: 'Homemade ice cream & paletas', es: 'Nieve y paletas caseras' },
     hours: {
-      en: 'Mon–Fri 2pm–8pm, Sat 12pm–8pm, Sun 11am–8pm',
-      es: 'Lun–Vie 2pm–8pm, Sáb 12pm–8pm, Dom 11am–8pm',
+      en: 'Mon–Tue closed, Wed–Sun 3pm–9pm',
+      es: 'Lun–Mar cerrado, Mié–Dom 3pm–9pm',
     },
     image: nieveCaseraTruck,
     logo: nieveCaseraLogo,
@@ -186,7 +186,7 @@ export const trucks: Truck[] = [
   {
     id: 'syrian-house',
     hoursByDay: { 0: [660, 840], 1: [660, 840], 2: [660, 840], 3: [660, 840], 4: [660, 840], 5: [660, 840], 6: [660, 840] },
-    name: 'Syrian House',
+    name: 'Syrian House Cuisine',
     category: 'middle-eastern',
     foodType: { en: 'Syrian & Middle Eastern food', es: 'Comida siria y del medio oriente' },
     hours: { en: 'Daily 11am–2pm', es: 'Todos los días 11am–2pm' },
@@ -207,13 +207,13 @@ export const trucks: Truck[] = [
   },
   {
     id: 'the-red-marino',
-    hoursByDay: { 0: [750, 1230], 3: [750, 1230], 4: [750, 1230], 5: [750, 1230], 6: [750, 1230] },
+    hoursByDay: { 0: [720, 1230], 3: [720, 1230], 4: [720, 1230], 5: [720, 1230], 6: [720, 1230] },
     name: 'The Red Marino',
     category: 'seafood',
     foodType: { en: 'Seafood & Mexican specialties', es: 'Mariscos y especialidades mexicanas' },
     hours: {
-      en: 'Mon–Tue closed, Wed–Sun 12:30pm–8:30pm',
-      es: 'Lun–Mar cerrado, Mié–Dom 12:30pm–8:30pm',
+      en: 'Mon–Tue closed, Wed–Sun 12pm–8:30pm',
+      es: 'Lun–Mar cerrado, Mié–Dom 12pm–8:30pm',
     },
     image: theRedMarinoTruck,
     logo: theRedMarinoLogo,

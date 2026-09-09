@@ -334,7 +334,7 @@ export const translations: Record<Lang, Translations> = {
         },
         {
           title: 'Shared Amenities',
-          body: 'Water, gas, electricity, trash service and used oil disposal are ready to go. Just pull in and open your window.',
+          body: 'Water, electricity, trash service and used oil disposal are ready to go. Just pull in and open your window.',
         },
       ],
       showcaseHeading: 'See the Park',
@@ -374,7 +374,7 @@ export const translations: Record<Lang, Translations> = {
         {
           question: 'How much space do I have, and what comes with my spot?',
           answer:
-            'Each space is 25 ft in length. Water, drain, gas, electricity and used oil disposal are all hooked up and included, along with trash service and access to the shared indoor and outdoor seating. The only thing you bring is propane.',
+            'Each space is 25 ft in length. Water, drain, electricity and used oil disposal are all hooked up and included, along with trash service and access to the shared indoor and outdoor seating. The only thing you bring is propane.',
         },
       ],
       faqSpacesQuestion: 'How many spaces are available?',
@@ -577,7 +577,7 @@ export const translations: Record<Lang, Translations> = {
         },
         {
           title: 'Servicios Compartidos',
-          body: 'El agua, el gas, la electricidad, el servicio de basura y el desecho de aceite usado ya están listos. Solo llega y abre tu ventana.',
+          body: 'El agua, la electricidad, el servicio de basura y el desecho de aceite usado ya están listos. Solo llega y abre tu ventana.',
         },
       ],
       showcaseHeading: 'Conoce el Parque',
@@ -618,7 +618,7 @@ export const translations: Record<Lang, Translations> = {
         {
           question: '¿De qué tamaño es mi espacio y qué incluye?',
           answer:
-            'Cada espacio mide 25 pies de largo. El agua, el drenaje, el gas, la electricidad y el desecho de aceite usado ya están conectados e incluidos, junto con el servicio de basura y el acceso a los asientos compartidos, techados y al aire libre. Lo único que tú traes es el propano.',
+            'Cada espacio mide 25 pies de largo. El agua, el drenaje, la electricidad y el desecho de aceite usado ya están conectados e incluidos, junto con el servicio de basura y el acceso a los asientos compartidos, techados y al aire libre. Lo único que tú traes es el propano.',
         },
       ],
       faqSpacesQuestion: '¿Cuántos espacios hay disponibles?',

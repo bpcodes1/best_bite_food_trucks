@@ -23,7 +23,12 @@ export function FoodsGallery() {
         <p className="mx-auto mt-2 max-w-2xl text-brand-black/70">{t.foodsSection.subheading}</p>
 
         <div className="mt-8">
-          <FanGallery images={fanImages} altTexts={fanAltTexts} />
+          <FanGallery
+            images={fanImages}
+            altTexts={fanAltTexts}
+            previousLabel={t.foodsSection.previousImage}
+            nextLabel={t.foodsSection.nextImage}
+          />
         </div>
       </div>
     </section>

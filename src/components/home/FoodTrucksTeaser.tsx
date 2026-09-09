@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../i18n/useLanguage';
-import { ROUTES } from '../../lib/routes';
 import { trucks } from '../../data/trucks';
 import { TruckListingCard } from '../TruckListingCard';
 
 export function FoodTrucksTeaser() {
-  const { lang, t } = useLanguage();
+  const { lang, t, path } = useLanguage();
   const featuredTrucks = trucks.filter((truck) => truck.featured);
 
   return (
@@ -23,7 +22,7 @@ export function FoodTrucksTeaser() {
           </div>
 
           <Link
-            to={ROUTES.foodTrucks}
+            to={path('foodTrucks')}
             className="inline-block shrink-0 rounded-md bg-brand-yellow px-10 py-2 font-heading text-sm font-bold text-brand-black transition-colors hover:bg-brand-yellow-dark"
           >
             {t.trucksTeaser.viewAll}

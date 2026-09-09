@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { NAV_ROUTES, ROUTES } from '../lib/routes';
+import { NAV_KEYS } from '../lib/routes';
 import { useLanguage } from '../i18n/useLanguage';
 import { parkInfo } from '../data/parkInfo';
 import logo from '../assets/logo.webp';
 
-const footerNavRoutes = NAV_ROUTES.filter((route) => route.path !== ROUTES.home);
+const footerNavKeys = NAV_KEYS.filter((key) => key !== 'home');
 
 const SOCIAL_LINKS = [
   { key: 'instagram', href: parkInfo.social.instagram, label: 'Instagram' },
@@ -13,25 +13,25 @@ const SOCIAL_LINKS = [
 ] as const;
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, path } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-brand-black/10 bg-brand-yellow">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-10 sm:grid-cols-3">
-        <Link to={ROUTES.home}>
+        <Link to={path('home')}>
           <img src={logo} alt="Best Bite Food Park" className="h-16 w-16" />
         </Link>
 
-        <nav aria-label="Footer">
+        <nav aria-label={t.nav.footerLabel}>
           <h2 className="text-xs font-bold uppercase tracking-wide text-brand-black/60">
             {t.nav.home}
           </h2>
           <ul className="mt-2 space-y-1 text-sm font-bold text-brand-black">
-            {footerNavRoutes.map((route) => (
-              <li key={route.path}>
-                <Link to={route.path} className="hover:underline">
-                  {t.nav[route.key]}
+            {footerNavKeys.map((key) => (
+              <li key={key}>
+                <Link to={path(key)} className="hover:underline">
+                  {t.nav[key]}
                 </Link>
               </li>
             ))}
@@ -78,7 +78,7 @@ export function Footer() {
       <div className="border-t border-brand-black/20">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-xs text-brand-black/70 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Best Bite Food Park</p>
-          <Link to={ROUTES.privacyPolicy} className="hover:underline">
+          <Link to={path('privacyPolicy')} className="hover:underline">
             {t.footer.privacyCta}
           </Link>
         </div>

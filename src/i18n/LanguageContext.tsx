@@ -1,56 +1,41 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import type { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { translations } from './translations';
 import type { Lang } from './translations';
 import { LanguageContext } from './context';
 import type { LanguageContextValue } from './context';
+import { counterpartPath, langFromPath, pathFor } from '../lib/routes';
+import type { RouteKey } from '../lib/routes';
 
-const STORAGE_KEY = 'best-bite-lang';
-
-// localStorage can throw (private browsing, sandboxed test environments, etc.),
-// so reads/writes are best-effort and never block rendering.
-function readStoredLang(): Lang | null {
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    return stored === 'en' || stored === 'es' ? stored : null;
-  } catch {
-    return null;
-  }
-}
-
-function writeStoredLang(lang: Lang): void {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, lang);
-  } catch {
-    // ignore
-  }
-}
-
-function getInitialLang(): Lang {
-  if (typeof window === 'undefined') return 'en';
-
-  const stored = readStoredLang();
-  if (stored) return stored;
-
-  return window.navigator.language.toLowerCase().startsWith('es') ? 'es' : 'en';
-}
-
+/**
+ * Language is read from the address and nowhere else: `/es/...` is Spanish,
+ * everything else is English.
+ *
+ * There is deliberately no stored preference and no browser-language
+ * detection. The address is the preference, so a shared link opens in the
+ * language it was shared in, a visitor is never moved somewhere they did not
+ * ask to go, and Google sees exactly one language per address.
+ *
+ * This provider holds no state. It exists so that components can read `t`
+ * and build links without each one re-deriving the language from the URL.
+ */
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(getInitialLang);
+  const { pathname } = useLocation();
+  const lang = langFromPath(pathname);
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    writeStoredLang(lang);
   }, [lang]);
 
-  const setLang = useCallback((next: Lang) => setLangState(next), []);
-  const toggleLang = useCallback(() => {
-    setLangState((prev) => (prev === 'en' ? 'es' : 'en'));
-  }, []);
-
   const value = useMemo<LanguageContextValue>(
-    () => ({ lang, setLang, toggleLang, t: translations[lang] }),
-    [lang, setLang, toggleLang],
+    () => ({
+      lang,
+      t: translations[lang],
+      path: (key: RouteKey) => pathFor(key, lang),
+      counterpartPath: (target: Lang) => counterpartPath(pathname, target),
+    }),
+    [lang, pathname],
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

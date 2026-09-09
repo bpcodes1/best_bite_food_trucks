@@ -1,1 +1,12 @@
-/* /index.html 200
+# Intentionally rule-free. Do not add a catch-all here.
+#
+# This site is PRE-RENDERED: scripts/prerender.mjs writes a real index.html for
+# all twelve addresses, and Cloudflare Pages serves those files directly. An
+# unmatched path already returns a correct HTTP 404 without any rule in this
+# file (verified against the live host 2026-09-09).
+#
+# The rule that used to live here was `/*  /index.html  200`, the splat a plain
+# single-page app needs. It was doing nothing, because static files take
+# precedence over it. On a pre-rendered site a splat targeting a .html file can
+# also 308-loop forever, because Pages' own extension-strip redirect re-matches
+# it. Leave this file empty of rules.

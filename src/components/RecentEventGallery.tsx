@@ -5,15 +5,18 @@ import facePainting from '../assets/recent_event/face_painting.webp';
 import jewelry from '../assets/recent_event/jewelry.webp';
 import lowRider from '../assets/recent_event/low_rider.webp';
 
+// Keyed, not labelled: the alt text comes from translations so it is not
+// English on the Spanish page.
 const PHOTOS = [
-  { src: backToSchool, label: 'Back to School' },
-  { src: facePainting, label: 'Face Painting' },
-  { src: jewelry, label: 'Jewelry' },
-  { src: lowRider, label: 'Low Riders' },
-];
+  { src: backToSchool, key: 'backToSchool' },
+  { src: facePainting, key: 'facePainting' },
+  { src: jewelry, key: 'jewelry' },
+  { src: lowRider, key: 'lowRiders' },
+] as const;
 
 export function RecentEventGallery() {
   const { t } = useLanguage();
+  const photoAlt = t.eventsPage.recentEventPhotos;
 
   return (
     <div className="mt-10 sm:mx-auto sm:max-w-2xl sm:text-center">
@@ -28,7 +31,7 @@ export function RecentEventGallery() {
         <div className="aspect-square w-full max-w-sm overflow-hidden rounded-lg border border-brand-black/10 justify-self-start sm:aspect-auto sm:h-full">
           <img
             src={cruisePoster}
-            alt="Cruise Into The School Year flyer"
+            alt={photoAlt.poster}
             loading="lazy"
             className="h-full w-full object-cover"
           />
@@ -37,12 +40,12 @@ export function RecentEventGallery() {
         <ul className="grid grid-cols-2 grid-rows-2 gap-2 sm:gap-4">
           {PHOTOS.map((photo) => (
             <li
-              key={photo.label}
+              key={photo.key}
               className="aspect-square overflow-hidden rounded-lg border border-brand-black/10 sm:aspect-[3/4]"
             >
               <img
                 src={photo.src}
-                alt={photo.label}
+                alt={photoAlt[photo.key]}
                 loading="lazy"
                 className="h-full w-full object-cover"
               />

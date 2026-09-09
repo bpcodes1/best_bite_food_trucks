@@ -5,11 +5,10 @@ import { trucks, CATEGORIES } from '../data/trucks';
 import type { TruckCategory } from '../data/trucks';
 import { TruckCard } from '../components/TruckCard';
 import { PageHero } from '../components/PageHero';
-import { ROUTES } from '../lib/routes';
 import vendorCtaImage from '../assets/inside_sign.webp';
 
 export function FoodTrucks() {
-  const { t, lang } = useLanguage();
+  const { t, lang, path } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<TruckCategory | 'all'>('all');
 
   const usedCategories = CATEGORIES.filter((category) =>
@@ -77,7 +76,7 @@ export function FoodTrucks() {
             </h2>
             <p className="mt-3 text-brand-black/70">{t.foodTrucksPage.vendorCtaBody}</p>
             <Link
-              to={ROUTES.joinThePark}
+              to={path('joinThePark')}
               className="mt-6 inline-block rounded-md bg-brand-black px-6 py-3 font-heading font-bold text-brand-yellow transition-colors hover:bg-brand-black/80"
             >
               {t.foodTrucksPage.vendorCtaCta}

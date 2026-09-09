@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../lib/routes';
 
 interface EventListingCardProps {
   imageUrl: string;
@@ -7,6 +6,8 @@ interface EventListingCardProps {
   time: string;
   description: string;
   ctaLabel: string;
+  /** Where the CTA goes. Passed in, like the label, so the card carries no language of its own. */
+  ctaTo: string;
   /** Shows a "Date TBD" badge next to the time when the event's date is still a placeholder. */
   dateTbdLabel?: string;
 }
@@ -32,6 +33,7 @@ export function EventListingCard({
   time,
   description,
   ctaLabel,
+  ctaTo,
   dateTbdLabel,
 }: EventListingCardProps) {
   return (
@@ -62,7 +64,7 @@ export function EventListingCard({
           <p className="line-clamp-4 text-xs text-brand-black/70">{description}</p>
 
           <Link
-            to={ROUTES.events}
+            to={ctaTo}
             className="mt-auto block w-full rounded-md bg-brand-yellow px-4 py-2.5 text-center font-heading text-xs font-bold text-brand-black transition-colors hover:bg-brand-yellow-dark"
           >
             {ctaLabel}

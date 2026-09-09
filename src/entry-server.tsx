@@ -36,3 +36,4 @@ export function render(url: string) {
 }
 
 export { PAGE_META, getLocalBusinessSchema };
+export { NOT_FOUND_URL } from './lib/routes';

@@ -9,6 +9,9 @@ export interface Translations {
     contact: string;
     menuOpen: string;
     menuClose: string;
+    /** Landmark names. Never visible; read aloud by screen readers. */
+    primaryLabel: string;
+    footerLabel: string;
   };
   notFoundPage: {
     heading: string;
@@ -40,6 +43,8 @@ export interface Translations {
     heading: string;
     subheading: string;
     imagesComingSoon: string;
+    previousImage: string;
+    nextImage: string;
   };
   eventsTeaser: {
     heading: string;
@@ -93,6 +98,14 @@ export interface Translations {
     dateTbd: string;
     recentEventHeading: string;
     recentEventName: string;
+    /** alt text for the five photos in the most-recent-event gallery. */
+    recentEventPhotos: {
+      poster: string;
+      backToSchool: string;
+      facePainting: string;
+      jewelry: string;
+      lowRiders: string;
+    };
     holdEventHeading: string;
     holdEventBody: string;
     holdEventCta: string;
@@ -186,6 +199,8 @@ export const translations: Record<Lang, Translations> = {
       contact: 'Contact',
       menuOpen: 'Menu',
       menuClose: 'Close',
+      primaryLabel: 'Primary',
+      footerLabel: 'Footer',
     },
     notFoundPage: {
       heading: 'Page not found',
@@ -218,6 +233,8 @@ export const translations: Record<Lang, Translations> = {
       subheading:
         'A taste of the flavors you will find across the park, from savory street food to something sweet.',
       imagesComingSoon: 'Images coming soon',
+      previousImage: 'Previous image',
+      nextImage: 'Next image',
     },
     eventsTeaser: {
       heading: 'Upcoming events',
@@ -274,6 +291,13 @@ export const translations: Record<Lang, Translations> = {
       dateTbd: 'Date TBD',
       recentEventHeading: 'Most Recent Event',
       recentEventName: 'Back to School',
+      recentEventPhotos: {
+        poster: 'Cruise Into The School Year event flyer',
+        backToSchool: 'Families at the Back to School event',
+        facePainting: 'Face painting at the park',
+        jewelry: 'Handmade jewelry stall',
+        lowRiders: 'Lowrider cars on display at the park',
+      },
       holdEventHeading: 'Want to Hold an Event at Best Bite Food Park?',
       holdEventBody:
         'From birthday parties to community fundraisers, our park is a great spot to gather. Reach out and let us know what you have in mind.',
@@ -428,6 +452,8 @@ export const translations: Record<Lang, Translations> = {
       contact: 'Contacto',
       menuOpen: 'Menú',
       menuClose: 'Cerrar',
+      primaryLabel: 'Principal',
+      footerLabel: 'Pie de página',
     },
     notFoundPage: {
       heading: 'Página no encontrada',
@@ -461,6 +487,8 @@ export const translations: Record<Lang, Translations> = {
       subheading:
         'Una probada de los sabores que encontrarás en el parque, de antojitos salados a algo dulce.',
       imagesComingSoon: 'Imágenes próximamente',
+      previousImage: 'Imagen anterior',
+      nextImage: 'Imagen siguiente',
     },
     eventsTeaser: {
       heading: 'Próximos eventos',
@@ -517,6 +545,13 @@ export const translations: Record<Lang, Translations> = {
       dateTbd: 'Fecha por confirmar',
       recentEventHeading: 'Evento Más Reciente',
       recentEventName: 'Regreso a Clases',
+      recentEventPhotos: {
+        poster: 'Volante del evento Cruise Into The School Year',
+        backToSchool: 'Familias en el evento de Regreso a Clases',
+        facePainting: 'Pintacaritas en el parque',
+        jewelry: 'Puesto de joyería hecha a mano',
+        lowRiders: 'Lowriders en exhibición en el parque',
+      },
       holdEventHeading: '¿Quieres Realizar un Evento en Best Bite Food Park?',
       holdEventBody:
         'Desde fiestas de cumpleaños hasta recaudaciones de fondos comunitarias, nuestro parque es un gran lugar para reunirse. Contáctanos y cuéntanos qué tienes en mente.',

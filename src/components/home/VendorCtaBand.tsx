@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../i18n/useLanguage';
-import { ROUTES } from '../../lib/routes';
 import logo from '../../assets/logo.webp';
 
 export function VendorCtaBand() {
-  const { t } = useLanguage();
+  const { t, path } = useLanguage();
 
   return (
     <section aria-labelledby="vendor-cta-heading" className="bg-brand-black">
@@ -22,7 +21,7 @@ export function VendorCtaBand() {
           </h2>
           <p className="mt-3 text-white/80">{t.vendorCta.body}</p>
           <Link
-            to={ROUTES.joinThePark}
+            to={path('joinThePark')}
             className="mt-6 inline-block rounded-md bg-brand-yellow px-6 py-3 font-heading font-bold text-brand-black transition-colors hover:bg-brand-yellow-dark"
           >
             {t.vendorCta.cta}

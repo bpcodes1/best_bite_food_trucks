@@ -362,7 +362,8 @@ export const translations: Record<Lang, Translations> = {
         },
       ],
       showcaseHeading: 'See the Park',
-      showcaseBody: 'A look at the space: indoor and outdoor seating, and room for the whole lineup of trucks.',
+      showcaseBody:
+        'A look at the space: indoor and outdoor seating, and room for the whole lineup of trucks.',
       howItWorksHeading: 'How to Get Started',
       howItWorksSteps: [
         {

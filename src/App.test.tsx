@@ -5,6 +5,8 @@ import App from './App';
 import { NAV_KEYS, pathFor } from './lib/routes';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { translations } from './i18n/translations';
+import { trucks } from './data/trucks';
+import { isOpenAt } from './lib/hours';
 
 function renderApp(initialEntries: string[]) {
   return render(
@@ -91,6 +93,51 @@ describe('Spanish addresses', () => {
     renderApp(['/es/no-existe']);
     for (const toggle of screen.getAllByRole('link', { name: /Switch to English/ })) {
       expect(toggle).toHaveAttribute('href', '/');
+    }
+  });
+});
+
+describe('open/closed badge', () => {
+  const syrianHouse = trucks.find((t) => t.id === 'syrian-house');
+  // 11am-2pm and 5pm-9pm, every day.
+  const LUNCH_OPEN = 11 * 60;
+  const LUNCH_CLOSE = 14 * 60;
+  const DINNER_OPEN = 17 * 60;
+  const DINNER_CLOSE = 21 * 60;
+
+  it('reports a split-shift vendor open during BOTH services', () => {
+    for (let day = 0; day <= 6; day += 1) {
+      expect(isOpenAt(syrianHouse?.hoursByDay, day, LUNCH_OPEN + 30)).toBe(true);
+      expect(isOpenAt(syrianHouse?.hoursByDay, day, DINNER_OPEN + 30)).toBe(true);
+    }
+  });
+
+  // The regression this whole shape change exists for. Before 2026-09-09 the
+  // day held one pair, so this vendor read as closed right through dinner.
+  it('reports it CLOSED in the gap between lunch and dinner', () => {
+    expect(isOpenAt(syrianHouse?.hoursByDay, 3, 15 * 60)).toBe(false);
+  });
+
+  it('treats the closing minute as shut and the opening minute as open', () => {
+    expect(isOpenAt(syrianHouse?.hoursByDay, 3, LUNCH_CLOSE)).toBe(false);
+    expect(isOpenAt(syrianHouse?.hoursByDay, 3, LUNCH_OPEN)).toBe(true);
+    expect(isOpenAt(syrianHouse?.hoursByDay, 3, DINNER_CLOSE)).toBe(false);
+  });
+
+  it('reports closed on a day the vendor does not trade, and when hours are unknown', () => {
+    const redMarino = trucks.find((t) => t.id === 'the-red-marino');
+    expect(isOpenAt(redMarino?.hoursByDay, 1, 13 * 60)).toBe(false); // Mon: closed
+    expect(isOpenAt(redMarino?.hoursByDay, 3, 13 * 60)).toBe(true); // Wed: open
+    expect(isOpenAt(undefined, 3, 13 * 60)).toBe(false);
+  });
+
+  it('keeps every vendor to windows that open before they close', () => {
+    for (const truck of trucks) {
+      for (const windows of Object.values(truck.hoursByDay ?? {})) {
+        for (const [opens, closes] of windows) {
+          expect(opens).toBeLessThan(closes);
+        }
+      }
     }
   });
 });

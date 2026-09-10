@@ -40,11 +40,7 @@ export function EventListingCard({
     <div className="mx-auto flex h-full w-full max-w-[300px] flex-col rounded-2xl bg-white p-3 shadow-lg">
       <div className="flex h-full flex-col overflow-hidden rounded-xl">
         <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden">
-          <img
-            src={imageUrl}
-            alt={name}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+          <img src={imageUrl} alt={name} className="absolute inset-0 h-full w-full object-cover" />
         </div>
 
         <div className="flex flex-1 flex-col gap-2 bg-white p-5">

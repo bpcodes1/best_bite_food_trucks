@@ -23,12 +23,7 @@ export const DEFAULT_LANG: Lang = 'en';
 const ES_PREFIX = '/es';
 
 export type RouteKey =
-  | 'home'
-  | 'foodTrucks'
-  | 'events'
-  | 'joinThePark'
-  | 'contact'
-  | 'privacyPolicy';
+  'home' | 'foodTrucks' | 'events' | 'joinThePark' | 'contact' | 'privacyPolicy';
 
 /** The routes that appear in the header and footer nav. */
 export type NavRouteKey = Exclude<RouteKey, 'privacyPolicy'>;

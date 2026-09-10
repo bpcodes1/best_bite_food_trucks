@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Truck } from '../data/trucks';
 import type { Lang } from '../i18n/translations';
+import { isOpenAt } from '../lib/hours';
 
 /**
  * "Open now" / "Closed", per vendor, computed against the clock.
@@ -66,8 +67,7 @@ export function OpenStatus({ truck, lang }: { truck: Truck; lang: Lang }) {
     if (!truck.hoursByDay) return;
     const tick = () => {
       const { day, minutes } = salemNow();
-      const today = truck.hoursByDay?.[day];
-      setIsOpen(Boolean(today) && minutes >= today![0] && minutes < today![1]);
+      setIsOpen(isOpenAt(truck.hoursByDay, day, minutes));
     };
     tick();
     // A reader can sit on this page across an opening or closing time. Once a
@@ -79,7 +79,9 @@ export function OpenStatus({ truck, lang }: { truck: Truck; lang: Lang }) {
   // Never sent us hours. True at build time, so it ships in the HTML.
   if (!truck.hoursByDay) {
     return (
-      <span className={`${BASE} border border-dashed border-brand-black/25 bg-white/80 text-brand-black/50`}>
+      <span
+        className={`${BASE} border border-dashed border-brand-black/25 bg-white/80 text-brand-black/50`}
+      >
         {t.pending}
       </span>
     );

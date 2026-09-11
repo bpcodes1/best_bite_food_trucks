@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/useLanguage';
-import { events } from '../data/events';
+import { getUpcomingEvents } from '../lib/parkStatus';
 import { EventCard } from '../components/EventCard';
 import { EventCalendar } from '../components/EventCalendar';
 import { ScheduledEvents } from '../components/ScheduledEvents';
@@ -11,7 +11,10 @@ import { PageHero } from '../components/PageHero';
 import holdEventImage from '../assets/best_bite_sign2.webp';
 
 const today = new Date();
-const sortedEvents = [...events].sort((a, b) => a.date.localeCompare(b.date));
+// Flyers are only for events still to come. A past event stays on the calendar
+// as a record, but its flyer at the top of the page reads as an ad for
+// something that already happened. Same rule as the home page's EventsTeaser.
+const upcomingEvents = getUpcomingEvents(Number.MAX_SAFE_INTEGER, today);
 
 export function Events() {
   const { t, path } = useLanguage();
@@ -35,17 +38,19 @@ export function Events() {
       <PageHero heading={t.eventsPage.heading} intro={t.eventsPage.intro} />
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {sortedEvents.map((event) => (
-            <EventCard
-              key={event.id}
-              event={event}
-              highlighted={highlightedEventIds.includes(event.id)}
-            />
-          ))}
-        </ul>
+        {upcomingEvents.length > 0 && (
+          <ul className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {upcomingEvents.map((event) => (
+              <EventCard
+                key={event.id}
+                event={event}
+                highlighted={highlightedEventIds.includes(event.id)}
+              />
+            ))}
+          </ul>
+        )}
 
-        <div className="mt-10 grid grid-cols-1 gap-8 rounded-lg border border-brand-black/10 p-4 sm:grid-cols-[3fr_2fr]">
+        <div className="grid grid-cols-1 gap-8 rounded-lg border border-brand-black/10 p-4 sm:grid-cols-[3fr_2fr]">
           <EventCalendar
             viewYear={viewYear}
             viewMonth={viewMonth}

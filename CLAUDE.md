@@ -1,8 +1,11 @@
 # Best Bite Food Park
 
 Client: Ray (also owns Rays Produce, parent of Restogo). Food park in Salem, OR.
-Full client context lives in `clients/ray-bestbite-context.xml` — git-ignored,
-never commit it. Read it before acting on anything about the client.
+Full client context lives OUTSIDE this repo, in
+`../best-bite-project/clients/ray-bestbite-context.xml` — moved there 2026-09-11 so
+it has version history in `Business web projects` without ever reaching this
+repo's GitHub remote. Never copy it back in here. Read it before acting on
+anything about the client.
 
 The shared rules in `../CLAUDE.md` apply. This file holds what is true only here.
 
@@ -46,16 +49,21 @@ No head-tag library. React 19 hoists `<title>`, `<meta>`, and `<link>` natively
 and emits them at the front of the SSR string, which `prerender.mjs` splits off.
 Adding react-helmet-async back would be dead weight — it was tried and removed.
 
-**Nothing is deployed anywhere.** Enrique checked the Cloudflare dashboard on
-2026-08-12: there is no project for Best Bite. Pushing to `enrique` moves code
-to GitHub and nothing else — the shared rule in `../CLAUDE.md` that "every push
-is a production deploy" is **not** true on this project yet. Do not tell anyone
-a change is live, and do not `curl` a live host that does not exist.
+**The site is live, but not from this branch.** bestbitefoodpark.com has been
+live since 2026-08-27 on Cloudflare Pages (project `best-bite-food-trucks`),
+built from Bryan's `bryan` branch — a different build from the one this file
+describes. **Every push to `bryan` is a production deploy.** A push to `enrique`
+never reaches the live site: Cloudflare builds it as a branch preview, and every
+`*.best-bite-food-trucks.pages.dev` address 301s to the real domain, so nobody
+can see it. Never tell anyone a change on this branch is live. Verify changes
+made on `bryan` with `curl` against bestbitefoodpark.com. Live-site state is in
+`STATUS.md` § "THE SITE LAUNCHED".
 
-Intended host is still Cloudflare Pages; production is a domain not yet
-purchased. See `STATUS.md` § "Deployment: nothing exists yet" for the setup
-order, which has two traps in it. `base` is `/` — only a GitHub Pages _project_
-site would need a subpath.
+**The GitHub repo is public.** Money, pricing and client notes never go in it,
+not even in `STATUS.md`. They live in `ai-fundamentals/core-files/business-state.xml`
+and `../best-bite-project/clients/`.
+
+`base` is `/` — only a GitHub Pages _project_ site would need a subpath.
 
 ## The site is bilingual, and that changes the rules
 

@@ -10,23 +10,227 @@ past decision moved to `docs/build-log.md`; what stayed here is the state a new
 session needs before it can act. **Keep it that way** — when a section stops
 describing what is true now and starts describing how it got that way, move it.
 
-**Last updated:** 2026-08-20.
+**Last updated:** 2026-09-11.
 **Branch:** `enrique` (never `main` — `main` is Bryan's, unrelated work).
-**Deadline:** ~Sept 2 (four weeks from the ~Aug 5 clock start).
+**Deadline:** passed and irrelevant. The project is DELIVERED AND PAID.
 
 A word on "shipped" in this file: it means built and committed to `enrique`.
-**Nothing has been delivered to Ray and nothing is on the internet.**
+**Nothing on this branch has been delivered to Ray and nothing on it is on the
+internet.** The live site is Bryan's build — see the session below.
 
 ---
 
-## START HERE NEXT SESSION
+## SESSION 2026-09-07 → 09-09 — paid in full, and Spanish now exists to Google
 
-**Everything is committed and pushed. `enrique` is at `c2cb820`, matching
-`origin/enrique`, working tree clean.** All five pages pass the seven-point
+**NEXT TASK is business-side: Ray's October billing, due ~09-25.** The amounts,
+the customer record, and the watch item that decides whether it is easy all live
+in `ai-fundamentals/core-files/business-state.xml`, loop "Best Bite / Ray".
+
+**This repo is public on GitHub, so money never goes in this file.** No totals,
+no invoices, no customer ids, no other client's deal. Four commits carrying all
+of that were caught unpushed on 2026-09-11 and rewritten before they reached
+the remote.
+
+### What shipped to the LIVE SITE this session (all on `bryan`, all verified)
+
+Every push to `bryan` is a production deploy. Three landed:
+
+- **Gas removed from the leasing copy**, four strings across both languages.
+  Cynthia confirmed there is no gas line. The page had been claiming gas was
+  hooked up and included while the same paragraph told prospects "the only thing
+  you bring is propane" — it contradicted itself and a prospect could have
+  leased on the strength of it.
+- **Spanish got its own addresses.** PR #1, the repo's first ever. Six pages now
+  answer at twelve; English addresses did not move.
+- **Syrian House Cuisine's split shift**, plus the shape change that allows one.
+
+### The bilingual defect, which is the thing worth understanding
+
+The delivered site served six addresses, every one declaring `lang="en"`, with
+Spanish held in browser memory by a toggle that never changed the URL. **Google
+files pages by address, so there was no Spanish page for it to rank.** Bilingual
+was a named part of what Ray bought and the search half of it did not exist.
+
+Nobody caught it because **nothing looks wrong**. Both languages rendered, the
+copy was good, every screenshot passed, Ray and Cynthia approved it in the
+meeting. What was missing was an address, and an address is not a thing anyone
+looks at.
+
+**The cause was not Bryan.** The rule against toggles was written out, with its
+full reasoning, in `CLAUDE.md` on THIS branch. `origin/bryan` carries no
+`CLAUDE.md`, no `STATUS.md`, no `docs/`. He had never seen it, and a toggle is a
+reasonable thing to build if nobody tells you otherwise. **A standard that lives
+only in the branch that did not ship is not a standard.** Logged as a
+transferable rule in `../docs/build-chain.md` § 6.
+
+### Fixed in the same push, each verified against the live host first
+
+- The food-trucks meta description **advertised boba**. There is no boba vendor;
+  the only one is commented out of `trucks.ts` because it never opened. A false
+  claim on an indexed page.
+- **Canonicals had no trailing slash.** Cloudflare 308s `/events` to `/events/`,
+  so every crawl paid a wasted hop. Twelve correct URLs now.
+- **`public/_redirects` held the SPA splat.** It was doing nothing, since static
+  files take precedence, but it is documented to 308-loop on pre-rendered sites
+  and six nested paths had just been added under it.
+- **`404.html` was a redirect stub.** The status code was already correct, but a
+  person following a dead link was thrown to the homepage with no explanation.
+  Now a real page with site chrome, marked `noindex`.
+- **Eight strings were English on Spanish pages** in the layer nobody sees: two
+  nav landmarks, two gallery arrows, four event photo descriptions. Found only
+  by grepping. The Spanish test now looks the nav up by its Spanish landmark
+  name, so a regression fails the suite instead of shipping quietly.
+
+### Why `hoursByDay` changed shape
+
+Cynthia gave Syrian House Cuisine's real hours: 11am–2pm **and** 5pm–9pm, a
+lunch service and a dinner service with the truck shut between. The field held
+one `[opens, closes]` pair per day and **there was no correct value to put in
+it.** Flattening to 11am–9pm tells someone the kitchen is serving at 3pm; leaving
+11am–2pm is what shipped, and it reported them closed right through dinner, the
+busier half of their day. Each day now holds a LIST of windows. The decision
+moved to `src/lib/hours.ts` as a pure `isOpenAt()` with five tests on it,
+including the exact regression. Test count went 9 → 14.
+
+### Decisions made, with the reasoning
+
+- **`/es/food-trucks` keeps the English term.** Enrique proposed
+  `/es/camion-de-comida`; DataForSEO overruled it. Oregon, Spanish-language
+  searchers: "food trucks salem oregon" 880/mo, "camiones de comida salem" no
+  measurable volume. The site's own Spanish nav already said "Food Trucks". **Do
+  not "fix" this later.**
+- **The `/join-the-park` slug is NOT worth changing.** It was flagged as a
+  half-optimised money page, its title chasing "Lease a Food Cart Space in
+  Salem" while its address said a brand phrase. The data killed it: every Salem
+  vendor-side term returns no measurable volume. **That page is a conversion
+  page, not a search page** — vendors arrive from the Google profile, from
+  driving past, from Ray. Where the volume actually is: "food truck park" 3,600
+  and "food cart pod" 1,600 statewide, July running roughly double January.
+- **Ray's language recorded for the first time**: Spanish, tú register,
+  Enrique's own regional dialect for texts; usted for formal documents. The
+  "correspond in ENGLISH" note belongs to **Cynthia's** block and had been
+  misread as Ray's.
+
+### Corrections made to these files, so they are not re-made
+
+- **The `pages.dev` twin is RETIRED**, done 2026-09-07, verified 09-09 on the
+  homepage and deep paths. This file's old `[OPEN]` line was stale and got
+  repeated back to Enrique as outstanding. Do not reopen it without curling a
+  deep path.
+- **Ray's email habit was overstated.** The context file said "emails he will
+  most likely not see." He monitors email; it is just easy for him to miss
+  something, so a text should point at anything important. The rule is BOTH, not
+  either.
+- **Keyword Planner on a dormant Ads account gives RANGES, not exact numbers.**
+  Enrique was told it was a free substitute for DataForSEO. It is not, for
+  choosing between similar terms.
+
+### Still outstanding on the live site
+
+- `RecentEventGallery` is hardcoded and still shows the back-to-school cruise.
+  Waiting on Lowrider Cruise In photos from Cynthia. **The 2026-09-06 Cafecito
+  never happened — rained out.**
+- The broken GitHub Pages build and the Square site are still up.
+- Cloudflare Email Obfuscation stays on. Enrique's call.
+
+---
+
+## SESSION 2026-09-06 — what moved, and the one next task
+
+**[DONE 2026-09-08 — this was the next task and it is no longer. The current one
+is at the top of this file.]** Text Ray to arrange collecting the balance and
+set up October billing. The text went 09-07 and the balance was collected in
+person 09-08. **October billing is the only part still outstanding**, tracked in
+`business-state.xml`.
+
+Everything below in this section is new today. Read it before anything else,
+because the site changed twice and both changes are live.
+
+**Ray and Cynthia approved the site on 2026-09-03.** First real client approval
+on this project. The retainer is month to month; its rate lives in
+`business-state.xml`, not here.
+
+**Two pushes to `origin/bryan`, both live and verified on bestbitefoodpark.com.**
+Enrique's call to stop waiting for Bryan and do it himself. Work happened on a
+new branch, `enrique-on-bryan`, in a git worktree at
+`../Best_bite_bryan_build`, so this branch was never touched.
+
+- **`b22d474`** — the leasing page contradicted Ray's real terms in fifteen
+  places. It offered a six-month contract in the promo banner while promising
+  month-to-month and "nothing to sign" in the heading, CTA, FAQ, form
+  reassurance and the join-page meta description. A prospect could read "no
+  commitment", call, and be handed a six-month contract. Now states the real
+  terms in both languages: six-month commitment, $750/mo for the first three,
+  $1,000/mo for the last three. Space corrected from 25 ft WIDE to 25 ft IN
+  LENGTH. Used oil disposal added. Live music removed sitewide, since Cynthia
+  confirmed karaoke and the Sunday DJ have ended. Home meta description had
+  hardcoded 12pm-8pm hours and now reads 9am-8pm. Recruiting copy widened from
+  "especially Asian food" to anything adding variety. Promotion framing dropped
+  entirely, including a "Limited-time promotion" eyebrow that rendered outside
+  the active/inactive branch and so showed regardless.
+- **`88064f7`** — live open/closed badge on the vendor cards, ported from this
+  branch's `OpenStatus.tsx`. Adan's Grill photo replaced, 382x286 to 1200x900.
+
+**Hours are now held twice on `origin/bryan`.** `hours` is the sentence; a new
+`hoursByDay` is machine-readable ranges the badge computes from. Every range was
+derived from that branch's own strings, then verified by rendering them back
+into English and diffing against each truck's sentence. All ten matched.
+Pupusas Chileros deliberately has none: no truck yet, so the badge says "Hours
+pending".
+
+**Facts settled at the meeting.** Fifteen total spaces, not fourteen. Eleven
+vendors, and NINE IS A DEAD NUMBER that still appears in `src/lib/vendors.ts` on
+this branch and in `docs/build-log.md`. La Flauta PDX and El Chilango are both
+out. Reply time 24-48 hours. Cynthia answers every form inquiry. Pupusas
+Chileros has no truck yet, which is why its card carries the logo and no hours,
+and that card is correct as it stands.
+
+**Client comms.** Cynthia emailed 2026-09-06 (one-line record in
+`../best-bite-project/clients/ray-bestbite-context.xml`, emails_to_cynthia).
+Ray's retainer package emailed the same day
+(`../best-bite-project/clients/ray-retainer-email-2026-09-03.md`), which doubles as the written scope
+recap. Ray already knew about the descope from a verbal on 2026-08-19, so the
+recap is a formality rather than news.
+
+## READ THIS FIRST: this branch is not the delivery candidate
+
+**Bryan's build is what gets presented to Ray. This one does not, unless Ray
+turns his down.** Enrique's call, 2026-08-25. Everything below describes a build
+that is now a *fallback and a practice rep*, not the deliverable — read every
+to-do list in this file with that in front of it.
+
+**Ray did not choose between them.** On a phone call Wednesday 2026-08-19,
+Enrique sent him two homepages — this build's and Bryan's. Ray said they looked
+"kind of identical" and that either way does not matter. Only the homepages were
+shown; the deeper pages, where the two builds diverge completely, he has never
+seen. So the decision to lead with Bryan's is **ours, made against an indifferent
+client**, and it stays cheap to reverse.
+
+Two things follow from that, and neither is optional:
+
+- **If Ray rejects Bryan's build at presentation, this one is the alternative
+  that gets shown.** It has to stay presentable and it has to stay runnable
+  locally. **Never delete this branch, and never let anything here rot on the
+  assumption it is dead.**
+- **"They look identical" is unaddressed client feedback.** It is the only
+  reaction Ray has ever given to either build. If this one is ever shown as the
+  alternative, looking like the thing he just turned down is the failure mode.
+
+Enrique will keep making changes here — reps, and material for `swipe/`. That is
+a legitimate reason to work on this branch and does not need re-justifying each
+session.
+
+## Where this branch stands
+
+**Everything is committed and pushed (2026-09-11).** Read the current hash from
+`git status`, not from this file; a hash written here is stale on the next
+commit. All five pages pass the seven-point
 checklist below. `dist/` has 11 HTML files, 16 tests pass, lint clean,
 `npm run shots` reports no overflow in either language.
 
-Three jobs left that are ours rather than Ray's or Enrique's:
+Three jobs left on this branch, all of them ours rather than the client's. **None
+is urgent any more** — they were sized against a delivery date this branch no
+longer owns:
 
 1. **`og:image`.** Every share of all ten addresses is a bare text card.
    `events/cruise_lowriders.webp` is the candidate — lowriders in the lot, a
@@ -36,10 +240,6 @@ Three jobs left that are ours rather than Ray's or Enrique's:
 2. **`hallmark audit` across all ten addresses.** Nothing has been audited since
    the pages were rebuilt, and the audit is what catches drift from `design.md`.
 3. **Wire the two forms**, once Enrique settles where they send.
-
-**Bryan is actively working on his branch.** `origin/bryan` was `04441ac` on
-2026-08-19 — re-check before harvesting. If `enrique` is ever merged into `main`
-its workflow publishes our build at the wrong base path, broken.
 
 ## Where we are
 
@@ -74,9 +274,9 @@ a `<title>` on every page and a correct `<html lang>` across all twenty
 screenshots (ten addresses × 375 and 768). Screenshots land flat in
 `qa-screenshots/`, which is git-ignored and regenerated on demand.
 
-**Nothing has ever been deployed.** Every "verified" line means verified
-locally. No live host exists to check against. (Bryan's separate build IS live —
-see "Bryan's build is live" below.)
+**Nothing from this branch has ever been deployed.** Every "verified" line here
+means verified locally, because this build has no live host. The live site at
+bestbitefoodpark.com is Bryan's build; see "THE SITE LAUNCHED" below.
 
 ---
 
@@ -128,16 +328,39 @@ justification still stands unqualified.
   and omits three that are. Publishing it puts a wrong vendor list on the site
   inside a photograph, where nobody would think to check.
 
-Four more on `origin/bryan`:
+### The four on `origin/bryan` were downgraded 2026-09-03
 
-- **`giveaway.jpg`** — a Louis Vuitton box. Another company's trademark on Ray's
-  commercial page, and it says nothing about a food park.
-- **`mycelium.jpg`** — a flyer for somebody else's meeting, dated 2/23.
-- **`easter2.jpg`, `loteria2.jpg`** — the same events with promo text burned in.
-  The clean Easter original exists, which is why the captioned one is not needed
-  and is good evidence clean versions of the others exist too. Worth asking.
-- **`jarochitas.jpg`** — carries a TikTok watermark and `@lasjarochitas1`, and
-  it is a vendor's own content rather than the park's.
+They are **live on the production events page** and were previously listed here
+as never-publish. That was overstated. They are client-supplied assets, Enrique
+confirmed 2026-09-03, and a client sending an asset is a point in its favour that
+the earlier note ignored. Re-graded:
+
+- **`giveaway`** — a Louis Vuitton box. Previously called "another company's
+  trademark on Ray's commercial page." **That was wrong**, or at least far
+  stronger than the evidence. If the park ran that giveaway, a photo of the prize
+  is ordinary marketing and the trademark risk is negligible; nobody is passing
+  off or selling LV goods. The only real objection was always editorial — it says
+  nothing about a food park. **Taste call, not a defect. Ray's to make.**
+- **`mycelium`** — a flyer reading "Mycelium Meeting, 2/23 6:00-8:00pm", no Best
+  Bite branding on it. **This is an open QUESTION, not a finding: did the park
+  host that meeting?** If Ray rented the hall to a mushroom group, it is a
+  legitimate past event and there is no issue at all. If it merely landed in the
+  photo pile, the page is claiming an event the park did not host. One question to
+  Ray settles it. Do not assert either way.
+- **`easter2`, `loteria2`** — the same events already listed, in the versions with
+  promo text burned in, so Easter and Lotería each appear twice on the page.
+  Untidy, not broken. Editorial.
+- **`jarochitas`** — the one with a residual real issue, and it is small: the
+  TikTok watermark and `@lasjarochitas1` point visitors from the park's page at a
+  vendor's own account.
+
+**The general rule this corrects:** a past event sitting in a section labelled
+"Past Events" is that section working correctly, not a defect. Content freshness
+is the client's side of the retainer. What stays ours is code that reads the clock
+wrong — see the events-page findings under the live-defect section.
+
+`park/park_sign.webp` above is **unaffected** and still never publishes. Its
+objection is a verifiable factual error inside the photograph, not taste.
 
 ## The seven-point checklist every page is scored against
 
@@ -190,19 +413,130 @@ and check the rendered page against these, in both languages:
    photograph. That is the real sign at the real address; cropping it out
    entirely means cutting "FOOD PARK". Flagged rather than quietly removed.
 
-## Bryan's build is live, and ours is not
+## THE SITE LAUNCHED. bestbitefoodpark.com is live.
 
-`main` auto-deploys to `https://bpcodes1.github.io/best_bite_food_trucks/` on
-every push, and it is public and indexable. The repo docs previously said
-"nothing is deployed"; Enrique's call 2026-08-12 was to leave it alone, since
-his build is not deployed and Bryan's being live is fine.
+**Recorded 2026-08-31.** Bryan bought the domain and cut Best Bite over to
+Cloudflare Pages on 2026-08-27 (`6b8a661` "Prepare for CloudFlare Pages"). It is
+serving the real production site now. Verified 2026-08-31: all five routes return
+200 (one 308 to the trailing slash, then 200), assets resolve, canonicals and the
+sitemap point at the real domain.
 
-Two things to remember. If `enrique` is ever merged into `main`, that workflow
-fires and publishes our build at the wrong base path, broken. And at launch,
-three properties will describe Best Bite differently — the Square site with six
-vendors and contradictory hours, Bryan's with twelve including three who left,
-and ours with nine. Slawski penalises inconsistent entity information, so
+**Neither Ray nor Cynthia knows it is live** (Enrique, 2026-08-31). Nothing has
+been presented and nothing has been delivered. The Google Business Profile has
+not been touched, so nothing points at the new site yet.
+
+Every earlier line in this repo saying "nothing is deployed" and "no Cloudflare
+project exists" is superseded. **The shared rule now applies here: every push to
+`bryan` is a production deploy.** It was not true on this project before; it is
+now.
+
+### Four properties describe Best Bite right now
+
+1. **`bestbitefoodpark.com`** — the real site. Correct.
+2. **`best-bite-food-trucks.pages.dev`** — the Cloudflare twin. **Retired
+   2026-09-07**: it and every branch-preview subdomain 301 to the real domain,
+   deep paths included (re-verified 2026-09-11).
+3. **`bpcodes1.github.io/best_bite_food_trucks/`** — **BROKEN AND PUBLIC.**
+   `base` changed to `/` for Cloudflare, so on the subpath its CSS and JS both
+   return 404. The HTML still serves, unstyled. It still auto-deploys on every
+   push to `bryan`. Anyone holding the old link sees a broken site. This is not
+   an SEO problem, it is a live broken page.
+4. **`bestbitefoodpark.square.site`** — still up, still says six vendors with
+   contradictory hours.
+
+Retiring 3 and 4 is still open. Slawski penalises
+inconsistent entity information and one of them is simply broken.
+
+## The old GitHub Pages history
+
+Was live at `https://bpcodes1.github.io/best_bite_food_trucks/`, public and
+indexable. Verified 2026-08-25 against `origin/bryan` `e702008`: all six URLs in
+its sitemap return 200, and `robots.txt` says `Allow: /`.
+
+**Two GitHub Actions workflows publish to that one address**, and they race.
+`origin/main`'s `deploy.yml` fires on a push to `main`; `origin/bryan`'s fires on
+a push to `bryan`. Same destination, so **whoever pushed last is what the public
+sees** — not whoever pushed first. Bryan's is showing today only because he
+pushed this morning and nothing has touched `main` in two weeks.
+
+**The live danger: if `enrique` is ever merged into `main`, `main`'s workflow
+fires and replaces Bryan's live site with ours, at the wrong base path, broken.**
+This build expects to sit at a domain root; Bryan's is built for the
+`/best_bite_food_trucks/` subpath. Deleting `main`'s workflow would close this
+permanently — proposed 2026-08-25, **not done**, and it is a change on a branch
+that is not ours.
+
+At launch, three properties will describe Best Bite differently — the Square site
+with six vendors and contradictory hours, Bryan's with twelve including three who
+left, and ours with nine. Slawski penalises inconsistent entity information, so
 retiring the other two belongs on the launch checklist.
+
+### What is still wrong on the live production site — updated 2026-09-06
+
+Verified against the rendered live pages, not the source.
+
+- **`public/_redirects` carries `/* /index.html 200`** on a pre-rendered site.
+  The documented 308-loop **did not fire** — all five routes were traced and each
+  is a single 308 to the trailing slash then 200. It is not breaking anything
+  today. It still should not be there.
+- **`public/404.html` meta-refreshes to `/`.** A real 404 silently becomes the
+  homepage. That is a soft-404, and broken links never surface as broken.
+- **Sitemap URLs have no trailing slash**, so every crawled URL takes a 308 hop
+  it does not need.
+- **`RecentEventGallery.tsx` is fully hardcoded** — poster, four photos and
+  their labels written into the component, no date logic. It still shows the
+  back-to-school cruise and cannot self-update. Waiting on photos from the
+  2026-09-05 Lowrider Cruise In or the 2026-09-06 Cafecito. Worth making it read
+  from the events data later so it follows dates the way the calendar does.
+- **Cloudflare Email Obfuscation** rewrites the footer address to
+  `[email protected]`. Smaller than first reported: the JSON-LD carries the real
+  address in the clear, so Google gets it. Costs only the mailto link for
+  visitors without JavaScript. Toggle lives in Scrape Shield. Enrique's call was
+  to LEAVE IT ON, since the spam protection is worth more.
+
+**The events calendar month is NOT a bug to chase.** `const today = new Date()`
+sits at module scope in `Events.tsx`, so the month gets frozen into the static
+HTML at build time and drifts until the next deploy. A real visitor always saw
+the correct month, because that line re-runs in the browser. Only crawlers and
+the pre-JavaScript paint see the stale one. Fixing it properly trades a stale
+month for a visible flash. Leave it.
+
+**Cleared 2026-09-06:** park hours now 9am-8pm live and in the schema, and
+`totalSlots: 15` is confirmed correct by Ray and Cynthia rather than assumed.
+
+Cleared since the 2026-08-23 report: the fake phone, the invented email, the
+malformed hours table, per-page titles, `sitemap.xml`, `robots.txt`, crawlable
+deep pages, and the TikTok link. **The Facebook link was verified by Enrique
+2026-08-31 — it lands on the correct page** despite having no username.
+
+### Enrique now pushes to Bryan's branch too — use the worktree
+
+**`../Best_bite_bryan_build` is a git worktree of this repo, cut from
+`origin/bryan`.** Its local branch name changes per task (`enrique-on-bryan` on
+09-06, `syrian-house-split-hours` from 09-09); what matters is that it pushes
+with `git push origin HEAD:bryan`. Created 2026-09-06 so Enrique
+could fix the live site without waiting for Bryan and without touching this
+branch. It has its own `node_modules`; do not run `npm ci` again unless
+something breaks.
+
+Working there means: edit, `npm run build`, look at it, then
+`git push origin HEAD:bryan`, which deploys to bestbitefoodpark.com within
+about thirty seconds. **Fetch and confirm a fast-forward before every push** —
+Bryan pushes to that branch too. Both pushes so far were clean fast-forwards.
+
+**Bryan has not been told his branch moved.** He pushed five times on
+2026-09-03 and will not expect it. Both commits carry their reasoning in the
+body so a pull explains itself, but he still needs a message.
+
+### Bryan's QA report is retired
+
+`QA-REPORT-bryan.md` audited `origin/bryan` at `4e6776c` on 2026-08-23 and was
+deleted 2026-09-11, never having reached GitHub. It was about thirty commits
+stale and most of its findings are cleared above. Its one lead-costing item, two
+lead forms sending to unverified inboxes, is **closed**: both forms deliver to
+Cynthia, who runs them, and they have been tested (Enrique, 2026-09-11). If a
+current verdict is wanted, run a fresh audit against the live `bryan` tip and
+name the commit; do not resurrect the old report.
 
 ## The QA script — built 2026-08-18
 
@@ -279,9 +613,26 @@ is live. Must hit the live domain and assert a marker only the current build
 contains; checking for something the old build already had has produced a false
 pass here before.
 
-## Blocked on Ray
+## Blocked on the client — and the channel changed on 2026-08-25
 
-Everything here is one text message. Placeholders render as visible brackets;
+**Cynthia is now the point of contact, during the build, by email.** Ray hired
+her to run the business side of Best Bite and gave Enrique her details on the
+2026-08-19 call. Ray knows we are going to her. This **supersedes** the client
+context file, which recorded her as post-delivery only with the instruction
+"don't chase it during build" — that line is now wrong and the file needs
+updating.
+
+Routing, per Enrique 2026-08-25:
+
+- **Everything below goes to Cynthia, by email.** Including items that look like
+  owner decisions — she may simply know, and if she does not, she reports back to
+  Ray herself.
+- **Ray still gets texted directly for the few that genuinely need him**, kept as
+  a short separate list rather than buried in the email. His own rule stands:
+  text, not email — he will most likely not read email.
+
+Everything here was previously scoped as one text message to Ray. Placeholders
+render as visible brackets;
 run `npm run pending` (25 at last count — it went up from 15 on 2026-08-19 when
 the events lineup gave five undated events somewhere to show, in two languages).
 
@@ -330,34 +681,43 @@ the events lineup gave five undated events somewhere to show, in two languages).
 
 ## Blocked on Enrique
 
-- **Create the Cloudflare Pages project.** Nothing exists yet — see the section
-  below for the order and the two traps.
+- ~~**Which build gets the domain, and therefore which host.**~~ **Settled.**
+  Bryan's build has bestbitefoodpark.com, on Cloudflare Pages, since 2026-08-27.
+- ~~**Create the Cloudflare Pages project.**~~ **Exists**: `best-bite-food-trucks`,
+  production branch `bryan`.
 - **Text Ray the descope offer**, get his yes, send the two-line written recap.
   Bryan already agreed to Option A. Open since 2026-08-10.
-- **The domain.** Gates `site.origin`, every canonical, and cutover.
+- ~~**The domain.**~~ **Bought and live.** This branch's `site.origin` stays
+  `localhost` because this build is not deployed.
 - **GBP overhaul.** Promised "within days of kickoff", ~Aug 5. Two independent
   frameworks make this the highest-leverage search work on the account, above
   anything on the site itself.
 
-## Deployment: nothing exists yet
+## Deploying THIS branch: not planned — kept in case it ever is
 
-**Do these in order. Steps 1 and 2 are the traps.**
+**The Cloudflare Pages project exists and serves Bryan's build** (project
+`best-bite-food-trucks`, production branch `bryan`). A push to `enrique` already
+triggers a Cloudflare branch-preview build, but its address redirects to the
+live domain, so it is invisible. If this build ever replaces Bryan's, that is a
+change to the existing project, not a new one, and the traps below still apply.
 
-1. **Point `site.origin` at the `*.pages.dev` URL before the first deploy.** It
-   is `http://localhost:5173` today, so a deploy now would publish ten pages
-   whose canonical, hreflang, OG and JSON-LD all point at localhost.
-2. **Block crawling at the Cloudflare account level, not in `public/`.** An
+**Do these in order. Steps 1 and 4 are the traps.**
+
+1. **Point `site.origin` at `https://bestbitefoodpark.com` before any production
+   build of this branch.** It is `http://localhost:5173` today, so deploying now
+   would publish ten pages whose canonical, hreflang, OG and JSON-LD all point
+   at localhost.
+2. **Control crawling at the Cloudflare account level, never in `public/`.** An
    `X-Robots-Tag: noindex` in `public/_headers` ships with the build and would
-   de-index the real site on launch day.
-3. Create the Pages project, connect `bpcodes1/best_bite_food_trucks`, build
-   `npm run build`, output `dist`.
-4. **Set the production branch to `enrique`.** Defaulting to `main` publishes
-   Bryan's build.
+   de-index the real site.
+3. Confirm the existing project's build settings: `npm run build`, output `dist`.
+4. **Switching the production branch from `bryan` to `enrique` IS the cutover.**
+   The next build replaces the live site. Only with Ray's yes.
 5. Set environment variables for **both** Production and Preview.
 6. After the first deploy, confirm 11 HTML files and `curl -I` all ten addresses
    on the live host. Never verify routing with `npm run preview`.
-7. At cutover, add an account-level redirect from `<project>.pages.dev` to the
-   real domain, and retire the Square site and Bryan's GitHub Pages build.
+7. The `pages.dev` redirect already exists. Retire the Square site and Bryan's
+   GitHub Pages build if they are still up.
 
 ## Traps a new session will fall into
 
@@ -453,7 +813,11 @@ and do not report the empty box as a defect.
 Three sessions' worth of work has now touched it — the leasing door, the flyer
 dates, the copy — each time on Enrique's explicit say-so. Keep that pattern.
 
-## Still to do before delivery
+## Still to do on this branch before it could be shown
+
+Renamed 2026-08-25: this list is no longer a delivery checklist, it is what
+stands between this build and being presentable as the alternative if Ray turns
+Bryan's down. Items 1 and 2 only matter once it is going somewhere public.
 
 1. `site.origin` is still `http://localhost:5173`.
 2. **No `og:image` anywhere.** Every share of all ten addresses is a bare text

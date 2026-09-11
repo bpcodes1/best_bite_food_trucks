@@ -60,10 +60,13 @@ export function EventCalendar({
   }
 
   const weeks = getMonthWeeks(viewYear, viewMonth);
-  const monthLabel = new Intl.DateTimeFormat(lang === 'es' ? 'es-MX' : 'en-US', {
+  const monthName = new Intl.DateTimeFormat(lang === 'es' ? 'es-MX' : 'en-US', {
     month: 'long',
     year: 'numeric',
   }).format(new Date(viewYear, viewMonth, 1));
+  // Only the first letter is raised. CSS `capitalize` raised every word and
+  // printed "Septiembre De 2026"; Spanish capitalizes the first word only.
+  const monthLabel = monthName.charAt(0).toUpperCase() + monthName.slice(1);
   const weekdayLabels = WEEK_ORDER.map((dayIndex) => getWeekdayName(dayIndex, lang, 'short'));
   const isCurrentMonth = viewYear === today.getFullYear() && viewMonth === today.getMonth();
 
@@ -94,7 +97,7 @@ export function EventCalendar({
         </button>
 
         <div className="flex flex-col items-center">
-          <h3 className="font-heading text-lg font-bold text-brand-black capitalize">
+          <h3 className="font-heading text-lg font-bold text-brand-black">
             {monthLabel}
           </h3>
           {!isCurrentMonth && (

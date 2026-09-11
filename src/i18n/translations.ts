@@ -110,6 +110,15 @@ export interface Translations {
     holdEventBody: string;
     holdEventCta: string;
     pastEventsHeading: string;
+    /** Labels on the Past Events tiles, so they are not English on the Spanish page. */
+    pastEventLabels: {
+      backToSchool: string;
+      christmas: string;
+      easter: string;
+      jarochitas: string;
+      giveaway: string;
+      lowriders: string;
+    };
   };
   contactPage: {
     heading: string;
@@ -304,6 +313,14 @@ export const translations: Record<Lang, Translations> = {
         'From birthday parties to community fundraisers, our park is a great spot to gather. Reach out and let us know what you have in mind.',
       holdEventCta: 'Contact us',
       pastEventsHeading: 'Past Events',
+      pastEventLabels: {
+        backToSchool: 'Back to School',
+        christmas: 'Christmas',
+        easter: 'Easter',
+        jarochitas: 'Las Jarochitas',
+        giveaway: 'Giveaway',
+        lowriders: 'Lowriders',
+      },
     },
     contactPage: {
       heading: 'Contact Us',
@@ -560,6 +577,16 @@ export const translations: Record<Lang, Translations> = {
         'Desde fiestas de cumpleaños hasta recaudaciones de fondos comunitarias, nuestro parque es un gran lugar para reunirse. Contáctanos y cuéntanos qué tienes en mente.',
       holdEventCta: 'Contáctanos',
       pastEventsHeading: 'Eventos Pasados',
+      pastEventLabels: {
+        backToSchool: 'Regreso a Clases',
+        christmas: 'Navidad',
+        // "Easter" and "Giveaway" stay in English here on purpose (Enrique,
+        // 2026-09-11). Do not translate them.
+        easter: 'Easter',
+        jarochitas: 'Las Jarochitas',
+        giveaway: 'Giveaway',
+        lowriders: 'Lowriders',
+      },
     },
     contactPage: {
       heading: 'Contáctanos',

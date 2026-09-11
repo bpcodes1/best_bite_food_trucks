@@ -1,17 +1,18 @@
 import { useLanguage } from '../i18n/useLanguage';
-import cruisePoster from '../assets/events/cruise_into_the_school_year_full.webp';
-import backToSchool from '../assets/recent_event/back_to_school.webp';
-import facePainting from '../assets/recent_event/face_painting.webp';
-import jewelry from '../assets/recent_event/jewelry.webp';
-import lowRider from '../assets/recent_event/low_rider.webp';
+import eventPoster from '../assets/events/end_of_summer_lowrider.webp';
+import lowriderTeal from '../assets/recent_event/lowrider_teal.webp';
+import lowriderRedClassic from '../assets/recent_event/lowrider_red_classic.webp';
+import lowriderOwners from '../assets/recent_event/lowrider_owners.webp';
+import lowriderGroup from '../assets/recent_event/lowrider_group.webp';
 
 // Keyed, not labelled: the alt text comes from translations so it is not
-// English on the Spanish page.
+// English on the Spanish page. Swap a photo here and its alt text there in the
+// same commit — a stale description is worse than none.
 const PHOTOS = [
-  { src: backToSchool, key: 'backToSchool' },
-  { src: facePainting, key: 'facePainting' },
-  { src: jewelry, key: 'jewelry' },
-  { src: lowRider, key: 'lowRiders' },
+  { src: lowriderTeal, key: 'tealLowrider' },
+  { src: lowriderRedClassic, key: 'redClassic' },
+  { src: lowriderOwners, key: 'carOwners' },
+  { src: lowriderGroup, key: 'group' },
 ] as const;
 
 export function RecentEventGallery() {
@@ -30,7 +31,7 @@ export function RecentEventGallery() {
       <div className="mt-4 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-[1fr_1fr]">
         <div className="aspect-square w-full max-w-sm overflow-hidden rounded-lg border border-brand-black/10 justify-self-start sm:aspect-auto sm:h-full">
           <img
-            src={cruisePoster}
+            src={eventPoster}
             alt={photoAlt.poster}
             loading="lazy"
             className="h-full w-full object-cover"

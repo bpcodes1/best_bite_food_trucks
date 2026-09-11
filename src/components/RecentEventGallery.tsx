@@ -29,7 +29,8 @@ export function RecentEventGallery() {
       </p>
 
       <div className="mt-4 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-[1fr_1fr]">
-        <div className="aspect-square w-full max-w-sm overflow-hidden rounded-lg border border-brand-black/10 justify-self-start sm:aspect-auto sm:h-full">
+        {/* The flyer's own shape on phones, so none of it is cropped away. */}
+        <div className="aspect-[900/1250] w-full max-w-sm overflow-hidden rounded-lg border border-brand-black/10 justify-self-start sm:aspect-auto sm:h-full">
           <img
             src={eventPoster}
             alt={photoAlt.poster}

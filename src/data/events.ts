@@ -11,8 +11,9 @@
 // Salem Ponte Chula has passed — imports kept for the commented-out entry below.
 // import ponteChulaEng from '../assets/events/ponte_chula_eng.png';
 // import ponteChulaEsp from '../assets/events/ponte_chula_esp.png';
-import cafecitaEng from '../assets/events/cafecito_eng.webp';
-import cafecitaEsp from '../assets/events/cafecity_esp.webp';
+// Cafecito was rained out — imports kept for the commented-out entry below.
+// import cafecitaEng from '../assets/events/cafecito_eng.webp';
+// import cafecitaEsp from '../assets/events/cafecity_esp.webp';
 import endOfSummerLowrider from '../assets/events/end_of_summer_lowrider.webp';
 
 export interface EventItem {
@@ -84,18 +85,20 @@ export const events: EventItem[] = [
     },
     fullImage: endOfSummerLowrider,
   },
-  {
-    id: 'cafecito',
-    name: { en: 'Cafecito', es: 'Cafecito' },
-    date: '2026-09-06',
-    time: { en: '9am–11am', es: '9am–11am' },
-    description: {
-      en: 'A space for women in every season of life to connect, share, learn, and meet new people. Come enjoy a morning just for you, where we can talk about life, family, business, goals, wellness, and everything in between... all while learning and growing together.',
-      es: 'Un espacio para mujeres en cada etapa de la vida para conectar, compartir, aprender y conocer personas nuevas. Ven a disfrutar una mañana solo para ti, donde podemos hablar de vida, familia, negocios, metas, bienestar y todo lo que hay en medio... todo mientras aprendemos y crecemos juntas.',
-    },
-    fullImage: cafecitaEng,
-    fullImageEs: cafecitaEsp,
-  },
+  // Cafecito (2026-09-06) was rained out — commented out (not deleted) so
+  // it's a one-line uncomment if it gets a new date.
+  // {
+  //   id: 'cafecito',
+  //   name: { en: 'Cafecito', es: 'Cafecito' },
+  //   date: '2026-09-06',
+  //   time: { en: '9am–11am', es: '9am–11am' },
+  //   description: {
+  //     en: 'A space for women in every season of life to connect, share, learn, and meet new people. Come enjoy a morning just for you, where we can talk about life, family, business, goals, wellness, and everything in between... all while learning and growing together.',
+  //     es: 'Un espacio para mujeres en cada etapa de la vida para conectar, compartir, aprender y conocer personas nuevas. Ven a disfrutar una mañana solo para ti, donde podemos hablar de vida, familia, negocios, metas, bienestar y todo lo que hay en medio... todo mientras aprendemos y crecemos juntas.',
+  //   },
+  //   fullImage: cafecitaEng,
+  //   fullImageEs: cafecitaEsp,
+  // },
   // Past events — kept for reference; images live in RecentEventGallery.
   // {
   //   id: 'cruise-into-the-school-year',

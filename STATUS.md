@@ -192,33 +192,25 @@ Ray's retainer package emailed the same day
 recap. Ray already knew about the descope from a verbal on 2026-08-19, so the
 recap is a formality rather than news.
 
-## READ THIS FIRST: this branch is not the delivery candidate
+## READ THIS FIRST: this branch was not the one delivered
 
-**Bryan's build is what gets presented to Ray. This one does not, unless Ray
-turns his down.** Enrique's call, 2026-08-25. Everything below describes a build
-that is now a *fallback and a practice rep*, not the deliverable — read every
-to-do list in this file with that in front of it.
+**Bryan's build is what Ray got.** Ray and Cynthia approved it on 2026-09-03,
+and it is live at bestbitefoodpark.com. Everything below describes a practice
+build, not the deliverable — read every to-do list in this file with that in
+front of it.
 
-**Ray did not choose between them.** On a phone call Wednesday 2026-08-19,
-Enrique sent him two homepages — this build's and Bryan's. Ray said they looked
-"kind of identical" and that either way does not matter. Only the homepages were
-shown; the deeper pages, where the two builds diverge completely, he has never
-seen. So the decision to lead with Bryan's is **ours, made against an indifferent
-client**, and it stays cheap to reverse.
+**This branch is no longer a fallback.** It was kept presentable from 2026-08-25
+in case Ray turned Bryan's build down at presentation. He approved it instead,
+so that reason is gone. Nothing here ships unless that is decided fresh, with
+Ray, and then § "Deploying THIS branch" below is the order.
 
-Two things follow from that, and neither is optional:
-
-- **If Ray rejects Bryan's build at presentation, this one is the alternative
-  that gets shown.** It has to stay presentable and it has to stay runnable
-  locally. **Never delete this branch, and never let anything here rot on the
-  assumption it is dead.**
-- **"They look identical" is unaddressed client feedback.** It is the only
-  reaction Ray has ever given to either build. If this one is ever shown as the
-  alternative, looking like the thing he just turned down is the failure mode.
-
-Enrique will keep making changes here — reps, and material for `swipe/`. That is
-a legitimate reason to work on this branch and does not need re-justifying each
+**What it is now: Enrique's practice reps and material for `swipe/`.** That is a
+legitimate reason to work on this branch and does not need re-justifying each
 session.
+
+**Do not delete it.** It is where the live build's improvements have come from
+(the open/closed badge was ported from `OpenStatus.tsx` here), and it carries the
+project's only `CLAUDE.md`, `STATUS.md` and `docs/`. `origin/bryan` has none.
 
 ## Where this branch stands
 
@@ -685,8 +677,8 @@ the events lineup gave five undated events somewhere to show, in two languages).
   Bryan's build has bestbitefoodpark.com, on Cloudflare Pages, since 2026-08-27.
 - ~~**Create the Cloudflare Pages project.**~~ **Exists**: `best-bite-food-trucks`,
   production branch `bryan`.
-- **Text Ray the descope offer**, get his yes, send the two-line written recap.
-  Bryan already agreed to Option A. Open since 2026-08-10.
+- ~~**Text Ray the descope offer**~~ **Done.** Told on the 08-19 call, the full
+  picture in person 09-03, in writing in the 09-06 retainer email.
 - ~~**The domain.**~~ **Bought and live.** This branch's `site.origin` stays
   `localhost` because this build is not deployed.
 - **GBP overhaul.** Promised "within days of kickoff", ~Aug 5. Two independent
@@ -813,11 +805,11 @@ and do not report the empty box as a defect.
 Three sessions' worth of work has now touched it — the leasing door, the flyer
 dates, the copy — each time on Enrique's explicit say-so. Keep that pattern.
 
-## Still to do on this branch before it could be shown
+## Still to do on this branch
 
-Renamed 2026-08-25: this list is no longer a delivery checklist, it is what
-stands between this build and being presentable as the alternative if Ray turns
-Bryan's down. Items 1 and 2 only matter once it is going somewhere public.
+Not a delivery checklist: Ray approved Bryan's build on 2026-09-03. This is what
+is unfinished on the practice build. Items 1 and 2 only matter if it ever goes
+somewhere public.
 
 1. `site.origin` is still `http://localhost:5173`.
 2. **No `og:image` anywhere.** Every share of all ten addresses is a bare text

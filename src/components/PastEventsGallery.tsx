@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../i18n/useLanguage';
-import loteria from '../assets/events/loteria.webp';
-import loteria2 from '../assets/events/loteria2.webp';
 import easter from '../assets/events/easter.webp';
 import easter2 from '../assets/events/easter2.webp';
 import giveaway from '../assets/events/giveaway.webp';
 import backToSchool from '../assets/events/back_to_school.webp';
 import lowRiders from '../assets/events/low_riders.webp';
 import jarochitas from '../assets/events/jarochitas.webp';
-import mycelium from '../assets/events/mycelium.webp';
 import christmas from '../assets/events/christmas.webp';
+// The two Lotería tiles and the Mycelium flyer came out 2026-09-11: a flyer
+// advertises an event, it does not show one. These three Back to School photos
+// took their places, moved down from the Most Recent Event section.
+import backToSchoolSupplies from '../assets/recent_event/back_to_school.webp';
+import facePainting from '../assets/recent_event/face_painting.webp';
+import jewelry from '../assets/recent_event/jewelry.webp';
 
 // `packRatio` is each photo's natural height/width — it drives column
 // placement/balance only and should stay fixed so resizing a tile doesn't
@@ -18,17 +21,23 @@ import christmas from '../assets/events/christmas.webp';
 // bumped independently to make a specific tile taller — the extra height
 // just crops more of that image via object-cover.
 const PHOTOS = [
-  { src: backToSchool, packRatio: 2611 / 1320, displayRatio: 2611 / 1320, label: 'Back to School' },
-  { src: christmas, packRatio: 1133 / 1320, displayRatio: 1133 / 1320, label: 'Christmas' },
-  { src: easter, packRatio: 993 / 1320, displayRatio: 993 / 1320, label: 'Easter' },
-  { src: jarochitas, packRatio: 1368 / 1320, displayRatio: 1368 / 1320, label: 'Las Jarochitas' },
-  { src: giveaway, packRatio: 2246 / 1320, displayRatio: 2246 / 1320, label: 'Giveaway' },
-  { src: loteria2, packRatio: 1639 / 1320, displayRatio: 2.4, label: 'Lotería' },
-  { src: mycelium, packRatio: 1640 / 1320, displayRatio: 2.4, label: 'Mycelium' },
-  { src: loteria, packRatio: 2270 / 1320, displayRatio: 2270 / 1320, label: 'Lotería' },
-  { src: easter2, packRatio: 2263 / 1320, displayRatio: 2263 / 1320, label: 'Easter' },
-  { src: lowRiders, packRatio: 2267 / 1320, displayRatio: 2267 / 1320, label: 'Lowriders' },
+  { src: backToSchool, packRatio: 2611 / 1320, displayRatio: 2611 / 1320, labelKey: 'backToSchool' as const },
+  { src: christmas, packRatio: 1133 / 1320, displayRatio: 1133 / 1320, labelKey: 'christmas' as const },
+  { src: easter, packRatio: 993 / 1320, displayRatio: 993 / 1320, labelKey: 'easter' as const },
+  { src: jarochitas, packRatio: 1368 / 1320, displayRatio: 1368 / 1320, labelKey: 'jarochitas' as const },
+  { src: giveaway, packRatio: 2246 / 1320, displayRatio: 2246 / 1320, labelKey: 'giveaway' as const },
+  { src: backToSchoolSupplies, packRatio: 800 / 1200, displayRatio: 800 / 1200, labelKey: 'backToSchool' as const },
+  { src: facePainting, packRatio: 800 / 1200, displayRatio: 800 / 1200, labelKey: 'backToSchool' as const },
+  { src: jewelry, packRatio: 1800 / 1200, displayRatio: 1800 / 1200, labelKey: 'backToSchool' as const },
+  { src: easter2, packRatio: 2263 / 1320, displayRatio: 2263 / 1320, labelKey: 'easter' as const },
+  { src: lowRiders, packRatio: 2267 / 1320, displayRatio: 2267 / 1320, labelKey: 'lowriders' as const },
 ];
+
+// No tile grows less than this. Wide photos have a small ratio, and inside a
+// fixed-height column they were squeezed into strips: at 375px the Easter tile
+// was 38px tall. With this floor and the taller phone section below, the
+// smallest tile at 375px is ~137px. The extra height just crops via object-cover.
+const MIN_TILE_RATIO = 1.2;
 
 function useColumnCount(): number {
   const [columnCount, setColumnCount] = useState(4);
@@ -84,18 +93,18 @@ export function PastEventsGallery() {
         {t.eventsPage.pastEventsHeading}
       </h2>
 
-      <div className="mt-4 flex h-[520px] gap-4 sm:h-[620px] lg:h-[720px]">
+      <div className="mt-4 flex h-[900px] gap-4 sm:h-[620px] lg:h-[720px]">
         {columns.map((column, columnIndex) => (
           <div key={columnIndex} className="flex h-full flex-1 flex-col gap-4">
             {column.map((photo, photoIndex) => (
               <div
                 key={photoIndex}
-                style={{ flexGrow: photo.displayRatio, flexBasis: 0 }}
+                style={{ flexGrow: Math.max(photo.displayRatio, MIN_TILE_RATIO), flexBasis: 0 }}
                 className="relative min-h-0 overflow-hidden rounded-lg border border-brand-black/10"
               >
                 <img src={photo.src} alt="" loading="lazy" className="h-full w-full object-cover" />
                 <span className="absolute bottom-2 right-2 rounded bg-brand-black/50 px-1.5 py-0.5 text-xs font-bold text-white">
-                  {photo.label}
+                  {t.eventsPage.pastEventLabels[photo.labelKey]}
                 </span>
               </div>
             ))}

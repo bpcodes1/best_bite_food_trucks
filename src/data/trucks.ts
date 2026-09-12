@@ -201,6 +201,10 @@ export const trucks: Truck[] = [
   },
   {
     id: 'pupusas-chileros',
+<<<<<<< HEAD
+=======
+    // Hours from Cynthia 2026-09-11, published 2026-09-12, their opening day.
+>>>>>>> ecb19c2475c138f4c8486948f49a764c67bce718
     hoursByDay: {
       0: [[630, 1200]],
       1: [[630, 1200]],
@@ -208,14 +212,23 @@ export const trucks: Truck[] = [
       3: [[630, 1200]],
       4: [[630, 1200]],
       5: [[630, 1380]],
+<<<<<<< HEAD
       6: [[480, 1380]],
+=======
+      6: [[630, 1380]],
+>>>>>>> ecb19c2475c138f4c8486948f49a764c67bce718
     },
     name: 'Pupusas Chileros',
     category: 'salvadoran',
     foodType: { en: 'Pupusas & Salvadoran food', es: 'Pupusas y comida salvadoreña' },
     hours: {
+<<<<<<< HEAD
       en: 'Sun–Thu 10:30am–8pm, Fri 10:30am–11pm, Sat 8am–11pm',
       es: 'Dom–Jue 10:30am–8pm, Vie 10:30am–11pm, Sáb 8am–11pm',
+=======
+      en: 'Sun–Thu 10:30am–8pm, Fri–Sat 10:30am–11pm',
+      es: 'Dom–Jue 10:30am–8pm, Vie–Sáb 10:30am–11pm',
+>>>>>>> ecb19c2475c138f4c8486948f49a764c67bce718
     },
     image: pupusasChilerosTruck,
   },

@@ -101,15 +101,24 @@ export interface Translations {
     /** alt text for the five photos in the most-recent-event gallery. */
     recentEventPhotos: {
       poster: string;
-      backToSchool: string;
-      facePainting: string;
-      jewelry: string;
-      lowRiders: string;
+      tealLowrider: string;
+      redClassic: string;
+      carOwners: string;
+      group: string;
     };
     holdEventHeading: string;
     holdEventBody: string;
     holdEventCta: string;
     pastEventsHeading: string;
+    /** Labels on the Past Events tiles, so they are not English on the Spanish page. */
+    pastEventLabels: {
+      backToSchool: string;
+      christmas: string;
+      easter: string;
+      jarochitas: string;
+      giveaway: string;
+      lowriders: string;
+    };
   };
   contactPage: {
     heading: string;
@@ -290,19 +299,28 @@ export const translations: Record<Lang, Translations> = {
       noScheduledEvents: 'No events scheduled this month.',
       dateTbd: 'Date TBD',
       recentEventHeading: 'Most Recent Event',
-      recentEventName: 'Back to School',
+      recentEventName: 'Lowrider End of the Summer Cruise In',
       recentEventPhotos: {
-        poster: 'Cruise Into The School Year event flyer',
-        backToSchool: 'Families at the Back to School event',
-        facePainting: 'Face painting at the park',
-        jewelry: 'Handmade jewelry stall',
-        lowRiders: 'Lowrider cars on display at the park',
+        poster: 'Lowrider End of the Summer Cruise In event flyer',
+        tealLowrider:
+          'A teal lowrider with its front end raised, beside red umbrellas, picnic tables and a food truck at the park',
+        redClassic: 'A red classic car with a white roof and chrome trim, with more cars parked behind it',
+        carOwners: 'Two men posing beside a black lowrider under a wooden arch',
+        group: 'Five women posing in front of a bronze lowrider lifted high off the ground',
       },
       holdEventHeading: 'Want to Hold an Event at Best Bite Food Park?',
       holdEventBody:
         'From birthday parties to community fundraisers, our park is a great spot to gather. Reach out and let us know what you have in mind.',
       holdEventCta: 'Contact us',
       pastEventsHeading: 'Past Events',
+      pastEventLabels: {
+        backToSchool: 'Back to School',
+        christmas: 'Christmas',
+        easter: 'Easter',
+        jarochitas: 'Las Jarochitas',
+        giveaway: 'Giveaway',
+        lowriders: 'Lowriders',
+      },
     },
     contactPage: {
       heading: 'Contact Us',
@@ -545,19 +563,30 @@ export const translations: Record<Lang, Translations> = {
       noScheduledEvents: 'No hay eventos programados este mes.',
       dateTbd: 'Fecha por confirmar',
       recentEventHeading: 'Evento Más Reciente',
-      recentEventName: 'Regreso a Clases',
+      recentEventName: 'Lowrider Cruise In de Fin de Verano',
       recentEventPhotos: {
-        poster: 'Volante del evento Cruise Into The School Year',
-        backToSchool: 'Familias en el evento de Regreso a Clases',
-        facePainting: 'Pintacaritas en el parque',
-        jewelry: 'Puesto de joyería hecha a mano',
-        lowRiders: 'Lowriders en exhibición en el parque',
+        poster: 'Volante del evento Lowrider Cruise In de Fin de Verano',
+        tealLowrider:
+          'Un lowrider turquesa con la parte delantera levantada, junto a sombrillas rojas, mesas de picnic y un food truck en el parque',
+        redClassic: 'Un carro clásico rojo con techo blanco y detalles cromados, con más carros estacionados detrás',
+        carOwners: 'Dos hombres posando junto a un lowrider negro bajo un arco de madera',
+        group: 'Cinco mujeres posando frente a un lowrider color bronce levantado del suelo',
       },
       holdEventHeading: '¿Quieres Realizar un Evento en Best Bite Food Park?',
       holdEventBody:
         'Desde fiestas de cumpleaños hasta recaudaciones de fondos comunitarias, nuestro parque es un gran lugar para reunirse. Contáctanos y cuéntanos qué tienes en mente.',
       holdEventCta: 'Contáctanos',
       pastEventsHeading: 'Eventos Pasados',
+      pastEventLabels: {
+        backToSchool: 'Regreso a Clases',
+        christmas: 'Navidad',
+        // "Easter" and "Giveaway" stay in English here on purpose (Enrique,
+        // 2026-09-11). Do not translate them.
+        easter: 'Easter',
+        jarochitas: 'Las Jarochitas',
+        giveaway: 'Giveaway',
+        lowriders: 'Lowriders',
+      },
     },
     contactPage: {
       heading: 'Contáctanos',

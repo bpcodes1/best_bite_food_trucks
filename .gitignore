@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Photos waiting to be processed by `npm run images`. The originals live in
+# ../best-bite-project/photos and stay there; these are working copies and
+# must never reach the public GitHub remote.
+photos-inbox/**
+!photos-inbox/**/
+!photos-inbox/README.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

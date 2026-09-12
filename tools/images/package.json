@@ -1,0 +1,9 @@
+{
+  "name": "bestbite-image-tools",
+  "private": true,
+  "type": "module",
+  "description": "Deliberately NOT part of the site's package.json. Cloudflare runs an install at the repo root on every push, and this is the live site with no staging step, so a native binary like sharp does not belong in that install. It lives here and is installed by hand, once, on the machine doing the work.",
+  "dependencies": {
+    "sharp": "^0.34.2"
+  }
+}

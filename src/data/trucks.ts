@@ -1,4 +1,5 @@
-import pupusasChilerosTruck from '../assets/food_trucks/pupusas_chileros.webp';
+import pupusasChilerosTruck from '../assets/food_trucks/pupusas_chileros_truck.webp';
+import pupusasChilerosLogo from '../assets/food_trucks/pupusas_chileros_logo.webp';
 import queRollonSushiTruck from '../assets/food_trucks/que_rollon_sushi.webp';
 import queRollonSushiLogo from '../assets/food_trucks/que_rollon_sushi_logo.webp';
 import cafeChulaTruck from '../assets/food_trucks/cafe_chula_truck.webp';
@@ -218,7 +219,10 @@ export const trucks: Truck[] = [
       en: 'Sun–Thu 10:30am–8pm, Fri–Sat 10:30am–11pm',
       es: 'Dom–Jue 10:30am–8pm, Vie–Sáb 10:30am–11pm',
     },
+    // Truck photo and logo both from Cynthia, 2026-09-12. The logo is a
+    // square crop of the banner artwork that used to sit in the photo slot.
     image: pupusasChilerosTruck,
+    logo: pupusasChilerosLogo,
   },
   {
     id: 'que-rollon-sushi',

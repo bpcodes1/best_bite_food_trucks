@@ -71,11 +71,20 @@ export function FanGallery({ images, altTexts, previousLabel, nextLabel }: FanGa
           const delta = signedDelta(index, current, length);
           const offsetStyle = Math.abs(delta) <= 2 ? OFFSET_STYLES[delta] : HIDDEN_STYLE;
 
+          // Hidden cards are still in the viewport, just scaled to nothing at
+          // zero opacity, so loading="lazy" would not defer them. Dropping
+          // their fetch priority does: the five on screen download first and
+          // the rest trickle in behind. Their `src` stays in the markup either
+          // way, which is what a crawler reads.
+          const onScreen = Math.abs(delta) <= 2;
+
           return (
             <img
               key={index}
               src={src}
               alt={altTexts?.[index] ?? `Gallery image ${index + 1}`}
+              decoding="async"
+              fetchPriority={delta === 0 ? 'high' : onScreen ? 'auto' : 'low'}
               className={`absolute left-1/2 top-1/2 -ml-20 h-56 w-40 -translate-y-1/2 rounded-2xl object-cover shadow-lg transition-all duration-500 ease-out motion-reduce:transition-none sm:-ml-36 sm:h-96 sm:w-72 ${offsetStyle}`}
             />
           );

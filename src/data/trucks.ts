@@ -201,10 +201,22 @@ export const trucks: Truck[] = [
   },
   {
     id: 'pupusas-chileros',
+    hoursByDay: {
+      0: [[630, 1200]],
+      1: [[630, 1200]],
+      2: [[630, 1200]],
+      3: [[630, 1200]],
+      4: [[630, 1200]],
+      5: [[630, 1380]],
+      6: [[480, 1380]],
+    },
     name: 'Pupusas Chileros',
     category: 'salvadoran',
     foodType: { en: 'Pupusas & Salvadoran food', es: 'Pupusas y comida salvadoreña' },
-    hours: { en: 'Hours coming soon', es: 'Horario próximamente' },
+    hours: {
+      en: 'Sun–Thu 10:30am–8pm, Fri 10:30am–11pm, Sat 8am–11pm',
+      es: 'Dom–Jue 10:30am–8pm, Vie 10:30am–11pm, Sáb 8am–11pm',
+    },
     image: pupusasChilerosTruck,
   },
   {
